@@ -1,1 +1,1 @@
-rvm --create use 1.9.3@dev-socrata-com
+rvm --create use 1.9.2@github-pages

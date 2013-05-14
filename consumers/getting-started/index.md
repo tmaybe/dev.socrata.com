@@ -3,6 +3,10 @@ layout: default
 title: Getting started with the SODA Consumer API
 ---
 
+<div id="tryit-visor">
+  <div id="tryit-target"><!-- This space intentionally left blank --></div>
+</div>
+
 <img src="/img/soda-small.png" class="right" alt="SODA Consumer API" />
 
 # Getting Started with the SODA Consumer API
@@ -13,7 +17,7 @@ A few examples:
 
 * Retrieve the last five earthquakes: <http://soda.demo.socrata.com/resource/earthquakes.json?$limit=5&$order=datetime DESC>
 * Retrieve only quakes with a `source` of "uw": <http://soda.demo.socrata.com/resource/earthquakes.json?source=uw>
-* Retrieve only quakes with a `magnitude` greater than 5: <http://soda.demo.socrata.com/resource/earthquakes.json?$where=magnitude%3E5>
+* Retrieve only quakes with a `magnitude` less than 5: <http://soda.demo.socrata.com/resource/earthquakes.json?$where=magnitude < 5>
 
 ## SODA Datasets and Custom APIs
 
@@ -28,11 +32,9 @@ In SODA 2.0, the endpoint for every `dataset` and `custom API` is by default hos
 For example, the [USGS Earthquake Reports](https://soda.demo.socrata.com/dataset/USGS-Earthquake-Reports/4tka-6guv)
 set on [soda.demo.socrata.com](https://soda.demo.socrata.com) has a unique identifier of `4tka-6guv`, so its API endpoint is `https://soda.demo.socrata.com/resource/4tka-6guv.json`. However, a `custom API` has also been created for it and, as stated in its [API documentation](https://soda.demo.socrata.com/developers/docs/earthquakes), its custom endpoint is at `https://soda.demo.socrata.com/resource/earthquakes.json`.
 
-<ul class="more-info">
-  <li>
-    Details on SODA endpoints can be found their <a href="/docs/endpoints">detailed documentation</a>.
-  </li>
-</ul>
+<div class="more-info">
+  Details on SODA endpoints can be found their <a href="/docs/endpoints.html">detailed documentation</a>.
+</div>
 
 ## API Schemas
 
@@ -66,11 +68,9 @@ X-SODA2-Fields: ["region",":updated_at","source","location","magnitude ","number
 X-SODA2-Types: ["text","meta_data","text","location","number","number" ,"meta_data","calendar_date","meta_data","text","number","text"]
 </pre>
 
-<ul class="more-info">
-  <li>
-    Details on SODA datatypes can be found their <a href="/docs/datatypes">detailed documentation</a>.
-  </li>
-</ul>
+<div class="more-info">
+  Details on SODA datatypes can be found their <a href="/docs/datatypes.html">detailed documentation</a>.
+</div>
 
 ## Querying with SoQL
 
@@ -78,55 +78,41 @@ If you perform a `GET` request on an API endpoint using an HTTP client (such as 
 
 To perform simple equality queries, simply use the field name as a GET parameter with the your chosen filter as the value. For example, to query the [USGS Earthquakes API](https://soda.demo.socrata.com/developers/docs/earthquakes) for quakes with a `region` of `Washington`:
 
-<https://soda.demo.socrata.com/resource/earthquakes.json?region=Washington>
+[https://soda.demo.socrata.com/resource/earthquakes.json?region=Washington](https://soda.demo.socrata.com/resource/earthquakes.json?region=Washington)
 
 In addition to this base functionality, SODA adds a rich query language to let you build  expressive queries.
 Here is set of progressively more complex queries that could be added to the endpoint for more interesting results:
 
 * Quakes with a `magnitude` of greater than 5: [http://soda.demo.socrata.com/resource/earthquakes.json?$where=magnitude > 5](http://soda.demo.socrata.com/resource/earthquakes.json?$where=magnitude%3E5)
-* Return only the `magnitude`, `location`, and `datetime` of the above query: [http://soda.demo.socrata.com/resource/earthquakes.json?$where=magnitude > 5&$select=magnitude,location,datetime](http%3A%2F%2Fsoda.demo.socrata.com%2Fresource%2Fearthquakes.json%3F%24where%3Dmagnitude%20%3E%205%26%24select%3Dmagnitude%2Clocation%2Cdatetime)
-* Group by `region` and return the count of earthquakes with a `magnitude` of greater than 5: [http://soda.demo.socrata.com/resource/earthquakes.json?$select=region,count(earthquake_id)&$where=magnitude > 5&$group=region](http%3A%2F%2Fsoda.demo.socrata.com%2Fresource%2Fearthquakes.json%3F%24select%3Dregion%2Ccount(earthquake_id)%26%24where%3Dmagnitude%20%3E%205%26%24group%3Dregion)
+* Return only the `magnitude`, `location`, and `datetime` of the above query: [http://soda.demo.socrata.com/resource/earthquakes.json?$where=magnitude > 5&$select=magnitude,location,datetime](http://soda.demo.socrata.com/resource/earthquakes.json?$where=magnitude+>+5&$select=magnitude,location,datetime)
+* Group by `region` and return the count of earthquakes with a `magnitude` of greater than 5: [http://soda.demo.socrata.com/resource/earthquakes.json?$select=region,count(earthquake_id)&$where=magnitude > 5&$group=region](http://soda.demo.socrata.com/resource/earthquakes.json?$select=region,count%28earthquake_id%29&$where=magnitude+>+5&$group=region)
 
-For those looking for a little more in the way of geo-queries, we offer those as well. You can <!--perform range queries using the `within_circle` function, and you can--> perform bounding-box queries using `within_box`:
+For those looking for a little more in the way of geo-queries, we offer those as well. You can perform range queries using the `within_circle` function, and you can perform bounding-box queries using `within_box`:
 
-<!-- Grumble * Quakes within 5 kilometers of the Socrata offices in Pioneer Square, Seattle, WA: [http://soda.demo.socrata.com/resource/earthquakes.json?$where=within_circle(location, 47.598178, -122.334526, 5000)](http%3A%2F%2Fsoda.demo.socrata.com%2Fresource%2Fearthquakes.json%3F%24where%3Dwithin_circle(location%2C%2047.598178%2C%20-122.334526%2C%205000)) -->
+* Quakes within 5 kilometers of the Socrata offices in Pioneer Square, Seattle, WA: [http://soda.demo.socrata.com/resource/earthquakes.json?$where=within_circle(location, 47.598178, -122.334526, 5000)](http://soda.demo.socrata.com/resource/earthquakes.json?$where=within_circle%28location,+47.598178,+-122.334526,+5000%29)
+* Quakes within the City of Seattle, WA: [http://soda.demo.socrata.com/resource/earthquakes.json?$where=within_box(location, 47.712585, -122.464676, 47.510759, -122.249756)](http://soda.demo.socrata.com/resource/earthquakes.json?$where=within_box%28location,+47.712585,+-122.464676,+47.510759,+-122.249756%29)
 
-* Quakes within the City of Seattle, WA: [http://soda.demo.socrata.com/resource/earthquakes.json?$where=within_box(location, 47.712585, -122.464676, 47.510759, -122.249756)](http%3A%2F%2Fsoda.demo.socrata.com%2Fresource%2Fearthquakes.json%3F%24where%3Dwithin_box(location%2C%2047.712585%2C%20-122.464676%2C%2047.510759%2C%20-122.249756))
-
-<ul class="more-info">
-  <li>
-    Details on SODA queries can be found in their <a href="/docs/queries">detailed documentation</a>.
-  </li>
-</ul>
+<div class="more-info">
+  Details on SODA queries can be found in their <a href="/docs/queries.html">detailed documentation</a>.
+</div>
 
 ## Available Data Formats
 
-The Socrata Open Data API supports a number of different formats, including [JSON](/docs/formats/json), [XML](/docs/formats/xml), [CSV](/docs/formats/csv), and [RDF](/docs/formats/rdf). To change the output format of a request, simply change the extension you use on the resource you are trying to receive.
+The Socrata Open Data API supports a number of different formats, including [JSON](/docs/formats/json.html), [XML](/docs/formats/xml.html), [CSV](/docs/formats/csv.html), and [RDF](/docs/formats/rdf.html). To change the output format of a request, simply change the extension you use on the resource you are trying to receive.
 
 Most of the API examples use the JSON format, as it is the most compact and efficient format we provide.
 
-<ul class="more-info">
-  <li>
-    Details on SODA data formats can be found in their <a href="/docs/formats">detailed documentation</a>.
-  </li>
-</ul>
-
 ## Authentication, Application Tokens, and Throttling
 
-If you only wish to consume data from the Socrata Open Data API, you don't need to worry about authentication. However, all requests are subject to throttling to protect one application, malicious or otherwise, from affecting the availability of the API for everyone else using it. If you're going to be making a large number of requests, [register your application][3] for an application token. You'll receive higher request quotas, and you'll also receive free publicity for your app. What's not to love?
+If you only wish to consume data from the Socrata Open Data API, you don't need to worry about authentication. However, all requests are subject to throttling to protect one application, malicious or otherwise, from affecting the availability of the API for everyone else using it. If you're going to be making a large number of requests, [register your application](http://opendata.socrata.com/profile/app_tokens) for an application token. You'll receive higher request quotas, and you'll also receive free publicity for your app. What's not to love?
 
-If you wish to act on behalf of a Socrata user, however, you will need to use one of the SODA API's two authentication methods. The API is built to authenticate primarily with [OAuth 2][4]. We support only the server-based flow with a callback URL for security reasons. Please see the [API Authentication and Application Tokens][5] section for further details on authenticating using OAuth 2.
+If you wish to act on behalf of a Socrata user, however, you will need to use one of the SODA API's two authentication methods. The API is built to authenticate primarily with [OAuth 2](http://oauth.net/2/). We support only the server-based flow with a callback URL for security reasons. Please see the [API Authentication and Application Tokens](/authentication/) section for further details on authenticating using OAuth 2.
 
-If you're only writing a quick application to authenticate as yourself, or you are unable for some other reason to use OAuth 2, the SODA API provides a fall-back authentication method using [HTTP Basic][6] authentication. Simply use the email address and password you registered with Socrata. When making authenticated requests, please remember to *always* use HTTPS connections, and to supply an application token.
+If you're only writing a quick application to authenticate as yourself, or you are unable for some other reason to use OAuth 2, the SODA API provides a fall-back authentication method using [HTTP Basic](http://en.wikipedia.org/wiki/Basic_access_authentication) authentication. Simply use the email address and password you registered with Socrata. When making authenticated requests, please remember to *always* use HTTPS connections, and to supply an application token.
 
-<ul class="more-info">
-  <li>
-    For more information, see the <a href="/authentication">API Authentication and Application Tokens</a> section.
-  </li>
-</ul>
+<div class="more-info">
+  For more information, see the <a href="/authentication">API Authentication and Application Tokens</a> section.
+</div>
 
- [3]: /register
- [4]: http://oauth.net/2/
- [5]: /authentication
- [6]: http://en.wikipedia.org/wiki/Basic_access_authentication
- [7]: http://en.wikipedia.org/wiki/Representational_State_Transfer
+{% include try.html %}
+{% include prettifier.html %}
