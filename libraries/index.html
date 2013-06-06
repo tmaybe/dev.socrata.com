@@ -1,0 +1,57 @@
+---
+layout: default
+title: Home
+libraries:
+  -
+    name: soda-php
+    language: PHP
+    icon: /img/icons/php.png
+    desc: A thin wrapper around libcurl to make it easier to access SODA APIs from PHP.
+    guide: /libaries/php
+  -
+    name: soda-ruby
+    language: Ruby
+    icon: /img/icons/ruby.png
+    desc: A thin Scalaish wrapper around opencsv
+    docs: /libraries/ruby/docs
+    guide: /libraries/ruby
+  -
+    name: soda-scala
+    language: Scala
+    icon: /img/icons/scala.png
+    desc: Rack-inspired toolkit for building HTTP services
+    docs: /libraries/scala/docs
+    guide: /libraries/scala
+  -
+    name: soda-ios-sdk
+    language: Objective C
+    icon: /img/icons/ios.png
+    desc: Rack-inspired toolkit for building HTTP services
+    docs: /libraries/ios/docs
+    guide: /libraries/ios
+    banner: Beta
+  -
+    name: soda-android-sdk
+    language: Objective C
+    icon: /img/icons/ios.png
+    desc: Rack-inspired toolkit for building HTTP services
+    docs: /libraries/ios/docs
+    guide: /libraries/ios
+    banner: Coming Soon
+---
+
+<div class="row-fluid libraries">
+  {% for lib in page.libraries %}
+    <div class="span4 component lib" data-lib="{{ lib.name}}">
+      {% if lib.banner %}
+      <div class="banner">{{ lib.banner }}</div>
+      {% endif %}
+
+      <img src="{{ lib.icon }}" alt="{{ lib.name }}" />
+
+      <div class="meta">
+        <a href="https://github.com/socrata/{{ lib.name }}"><i class="icon-cog"></i> {{ lib.name }}</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>

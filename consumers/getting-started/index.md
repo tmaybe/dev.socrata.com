@@ -11,7 +11,7 @@ title: Getting started with the SODA Consumer API
 
 # Getting Started with the SODA Consumer API
 
-In addition to our [code samples on Github](http://github.com/socrata), we also provide simple runnable examples inline with the documentation. In order to make the examples as language-agnostic as possible, and to show how you can use the SODA API with the simplest tools possible, examples are provided in-line live sample queries. Wherever you see a link like <http://soda.demo.socrata.com/resource/earthquakes.json?$limit=5>, you can click it to dynamically run that request in the example "visor". You can examine the URL that was constructed, see what results were returned, and experiment, all without ever leaving the page you're currently on.
+In addition to our [code samples and SDKs](/libraries/), we also provide simple runnable examples inline with the documentation. In order to make the examples as language-agnostic as possible, and to show how you can use the SODA API with the simplest tools possible, examples are provided in-line live sample queries. Wherever you see a link like <http://soda.demo.socrata.com/resource/earthquakes.json?$limit=5>, you can click it to dynamically run that request in the example "visor". You can examine the URL that was constructed, see what results were returned, and experiment, all without ever leaving the page you're currently on.
 
 A few examples:
 
