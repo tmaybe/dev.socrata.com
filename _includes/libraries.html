@@ -1,0 +1,30 @@
+---
+---
+<div class="row libraries">
+  {% for lib in page.libraries %}
+    <div class="component lib" data-lib="{{ lib.name}}">
+      <div class="icon">
+        {% if lib.banner %}
+        <div class="banner">{{ lib.banner }}</div>
+        {% endif %}
+
+        <img src="{{ lib.icon }}" alt="{{ lib.name }}" />
+      </div>
+
+      <h3>{{ lib.name }}</h3>
+
+      <p class="description">{{ lib.description }}</p>
+
+      <div class="meta">
+        <div class="pull-left">
+          <ul>
+            <li><em>Language:</em> {{ lib.language }}</li>
+          </ul>
+        </div>
+        <div class="right">
+          <a href="https://github.com/socrata/{{ lib.name }}"><i class="icon-cog">&nbsp;</i>{{ lib.name }}</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>

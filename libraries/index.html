@@ -40,18 +40,8 @@ libraries:
     banner: Coming Soon
 ---
 
-<div class="row-fluid libraries">
-  {% for lib in page.libraries %}
-    <div class="span4 component lib" data-lib="{{ lib.name}}">
-      {% if lib.banner %}
-      <div class="banner">{{ lib.banner }}</div>
-      {% endif %}
+# Libraries & SDKs
 
-      <img src="{{ lib.icon }}" alt="{{ lib.name }}" />
+To help you get started, we've provided 
 
-      <div class="meta">
-        <a href="https://github.com/socrata/{{ lib.name }}"><i class="icon-cog"></i> {{ lib.name }}</a>
-      </div>
-    </div>
-  {% endfor %}
-</div>
+{% include libraries.html %}
