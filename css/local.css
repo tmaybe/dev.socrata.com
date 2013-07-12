@@ -37,25 +37,33 @@ iframe.live-docs {
     color: black;
     font-size: 0.9em; }
 
-.libraries .lib {
-  position: relative;
-  overflow: hidden; }
-  .libraries .lib .banner {
-    color: white;
-    background-color: #096f38;
-    border-bottom: 1px #0d9e50 solid;
-    border-top: 1px #0d9e50 solid;
-    -moz-box-shadow: 2px 2px 20px #888888;
-    -moz-transform: rotate(-45deg);
-    -moz-transform-origin: 50% 50%;
-    -webkit-transform: rotate(-45deg);
-    -webkit-transform-origin: 50% 50%;
-    position: absolute;
-    width: 300px;
-    top: 45px;
-    left: -95px;
-    text-align: center;
-    overflow: hidden; }
+.repositories {
+  padding-top: 10px; }
+  .repositories li {
+    list-style: none; }
+  .repositories .repo {
+    position: relative;
+    min-height: 66px;
+    padding-left: 35px;
+    padding-bottom: 20px;
+    margin: 0 0 20px;
+    overflow: hidden;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    border-bottom: 1px solid #eeeeee; }
+    .repositories .repo .meta {
+      font-size: 0.8em;
+      padding-bottom: 1em; }
+    .repositories .repo .body .updated-at {
+      margin: 0;
+      font-size: 0.9em;
+      color: #999999; }
+    .repositories .repo ul.contributors {
+      list-style: none; }
+      .repositories .repo ul.contributors li {
+        display: inline-block;
+        padding-right: 5px;
+        float: right; }
 
 .homepage .tagline {
   font-size: 45px; }

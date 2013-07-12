@@ -1,47 +1,51 @@
 ---
 layout: default
-title: Home
-libraries:
-  -
-    name: soda-php
-    language: PHP
-    icon: /img/icons/php.png
-    desc: A thin wrapper around libcurl to make it easier to access SODA APIs from PHP.
-    guide: /libaries/php
-  -
-    name: soda-ruby
-    language: Ruby
-    icon: /img/icons/ruby.png
-    desc: A thin Scalaish wrapper around opencsv
-    docs: /libraries/ruby/docs
-    guide: /libraries/ruby
-  -
-    name: soda-scala
-    language: Scala
-    icon: /img/icons/scala.png
-    desc: Rack-inspired toolkit for building HTTP services
-    docs: /libraries/scala/docs
-    guide: /libraries/scala
-  -
-    name: soda-ios-sdk
-    language: Objective C
-    icon: /img/icons/ios.png
-    desc: Rack-inspired toolkit for building HTTP services
-    docs: /libraries/ios/docs
-    guide: /libraries/ios
-    banner: Beta
-  -
-    name: soda-android-sdk
-    language: Objective C
-    icon: /img/icons/ios.png
-    desc: Rack-inspired toolkit for building HTTP services
-    docs: /libraries/ios/docs
-    guide: /libraries/ios
-    banner: Coming Soon
+title: Libraries &amp; SDKs
+organization: socrata
+repos:
+  - soda-ios-sdk
+  - soda-java
+  - soda-java-examples
+  - soda-js
+  - soda-ruby
+  - soda-scala
 ---
 
-# Libraries & SDKs
+<h1>Libraries & SDKs</h1>
 
-To help you get started, we've provided 
+<p>To help you get started, we've provided helpful libraries for a number of different languages:</p>
 
-{% include libraries.html %}
+<ul class="repositories">
+  {% for repo in page.repos %}
+    <li class="component repo" data-organization="{{ page.organization }}" data-repo="{{ repo }}">
+      <div class="buttons pull-right">
+        <iframe src="http://ghbtns.com/github-btn.html?user={{ page.organization }}&repo={{ repo }}&type=watch&count=true&size=large" allowtransparency frameborder="0" scrolling="0" width="170" height="30"> </iframe>
+      </div>
+
+      <h3 class="name"><a href="http://github.com/{{ page.organization }}/{{ repo }}"><i class="icon-cogs"></i> {{ repo }}</a></h3>
+
+      <ul class="contributors"></ul>
+
+      <div class="body">
+        <p class="github description">&nbsp;</p>
+
+        <ul class="meta">
+          <li><em>Language:</em> <span class="github language"></span</li>
+          <li><em>Last updated:</em> <span class="github pushed_at date"></li>
+        </ul>
+
+        <div class="links btn-group">
+          <button class="btn"><a href="http://github.com/{{ page.organization }}/{{ repo }}" class="github"><i class="icon-github alt"></i> Github Repository</a></button>
+          <button class="btn"><a href="http://{{ page.organization }}.github.io/{{ repo }}" class="docs"><i class="icon-book"></i> Documentation</a></button>
+          <button class="btn"><a href="http://github.com/{{ page.organization }}/{{ repo }}/issues" class="issues"><i class="icon-exclamation-sign"></i> Issues</a></button>
+        </div>
+
+      </div>
+    </li>
+  {% endfor %}
+</ul>
+
+<script type="text/javascript" charset="utf-8" src="/js/d3/d3.v3.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/cal-heatmap/cal-heatmap.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/github.js"></script>
+

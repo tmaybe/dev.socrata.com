@@ -1,30 +1,37 @@
 ---
 ---
-<div class="row libraries">
-  {% for lib in page.libraries %}
-    <div class="component lib" data-lib="{{ lib.name}}">
-      <div class="icon">
-        {% if lib.banner %}
-        <div class="banner">{{ lib.banner }}</div>
-        {% endif %}
 
-        <img src="{{ lib.icon }}" alt="{{ lib.name }}" />
-      </div>
+<iframe src="http://ghbtns.com/github-btn.html?user=markdotto&repo=github-buttons&type=watch&count=true" allowtransparency frameborder="0" scrolling="0" width="110" height="20"> </iframe>
 
-      <h3>{{ lib.name }}</h3>
+<ul class="repositories">
+  {% for repo in page.repos %}
+    <li class="component repo" data-organization="{{ page.organization }}" data-repo="{{ repo }}">
+      <ul class="meta">
+        <li class="buttons">
+          <div class="btn-group">
+            <button class="btn"><a href="http://github.com/{{ page.organization }}/{{ repo }}/star" class="github"><i class="icon-star"><!-- Github Star--></i> Star</a></button>
+            <button class="btn"><a href="http://{{ page.organization }}.github.io/{{ repo }}" class="docs"><i class="icon-book"><!-- Docs --></i> Documentation</a></button>
+          </div>
+        </li>
+        <li class="github language">&nbsp;</li>
+      </ul>
 
-      <p class="description">{{ lib.description }}</p>
+      <h3 class="name"><a href="http://github.com/{{ page.organization }}/{{ repo }}"><i class="icon-cog"><!-- Cogs --></i> {{ repo }}</a></h3>
 
-      <div class="meta">
-        <div class="pull-left">
-          <ul>
-            <li><em>Language:</em> {{ lib.language }}</li>
-          </ul>
+      <div class="body">
+        <p class="github description">&nbsp;</p>
+        <p class="github pushed_at date">&nbsp;</p>
+
+        <div class="links btn-group">
+          <button class="btn"><a href="http://github.com/{{ page.organization }}/{{ repo }}" class="github"><i class="icon-github alt"><!-- Github Rocks --></i> Github Repository</a></button>
+          <button class="btn"><a href="http://{{ page.organization }}.github.io/{{ repo }}" class="docs"><i class="icon-book"><!-- Docs --></i> Documentation</a></button>
+          <button class="btn"><a href="http://github.com/{{ page.organization }}/{{ repo }}/wiki" class="wiki"><i class="icon-edit"><!-- Wiki --></i> Wiki</a></button>
         </div>
-        <div class="right">
-          <a href="https://github.com/socrata/{{ lib.name }}"><i class="icon-cog">&nbsp;</i>{{ lib.name }}</a>
-        </div>
+        <p class="something-pretty">&nbsp;</p>
       </div>
-    </div>
+    </li>
   {% endfor %}
-</div>
+</ul>
+
+<script type="text/javascript" charset="utf-8" src="/js/github.js"></script>
+  

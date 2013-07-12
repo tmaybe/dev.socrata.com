@@ -20,30 +20,18 @@ $(".repo").each(function(index, repo) {
     }
   });
 
-  // Generate a nice little D3 column chart
-  d3.json("https://api.github.com/repos/" + org + "/" + repo_name + "/stats/participation", function(error, data) {
-    if(error) return console.warn("Error loading participation history: " + error);
+  $.getJSON("https://api.github.com/repos/" + org + "/" + repo_name + "/stats/contributors", function(contributors) {
+    $.each(contributors, function(idx, contributor) { 
+      var li = "<li>"
+        + "<a href=\"" + contributor["author"]["html_url"] + "\" target=\"_blank\">"
+        + "<img height=\"80\" width=\"80\" src=\"" + contributor["author"]["avatar_url"] + "\" alt=\"" + contributor["author"]["login"] + "\"/>"
+        + "</a></li>";
 
-    // Fetch our data and figure out what the max on our chart will be
-    var participation = data["all"];
-    var max_commits = d3.max(participation, function(d) { return d });
-
-    var x = d3.scale.ordinal()
-      .domain(data)
-      .rangeBands([0, 120]);
-
-    var y = d3.scale.linear()
-      .domain([0, max_commits])
-      .range(["0px", "50px"]);
-
-    var chart = d3.select($(repo).find(".chart").get(0))
-      .append("svg")
-      .attr("class", "chart")
-      .selectAll("rect")
-      .data(data)
-      .enter().append("rect")
-      .attr("x", function(d, i) { return i * 20; })
-      .attr("height", y)
-      .attr("width", 20);
+      $(repo).find(".contributors").append(li);
+    });
+  }).fail(function(jqxhr, text_status, error) {
+    if(error == "Not Found") {
+      $(repo).find(".contributors").remove();
+    }
   });
 });
