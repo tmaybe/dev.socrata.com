@@ -1,0 +1,55 @@
+{% case include.type %}
+{% when 'consumer' %}
+  <li class="nav-header">Getting Started</li>
+  <li><a href="/consumers/getting-started/">Getting Started</a></li>
+  <li><a href="/authentication/">Authentication</a></li>
+  <li><a href="/throttling/">App Tokens &amp; Throttling</a></li>
+
+  <li class="nav-header">Documentation</li>
+  <li><a href="#">Link</a></li>
+
+  <li class="nav-header">Examples</li>
+  {% for page in site.pages %}
+    {% if page.type == 'example' and page.audience == 'consumer' %}
+      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+    {% endif %}
+  {% endfor %}
+
+  <li class="nav-header">SDKs &amp; Libraries</li>
+  {% for page in site.pages %}
+    {% if page.type == 'sdk' and (page.audience == 'consumer' or page.audience == 'all') %}
+      <li><a href="{{ page.external_url }}">{{ page.title }} &raquo;</a></li>
+    {% endif %}
+  {% endfor %}
+
+{% when 'publisher' %}
+  <li class="nav-header">Getting Started</li>
+  <li><a href="/publishers/getting-started/">Getting Started</a></li>
+  <li><a href="/authentication/">Authentication</a></li>
+  <li><a href="/throttling/">App Tokens &amp; Throttling</a></li>
+  <li class="nav-header">Documentation</li>
+  <li><a href="#">Link</a></li>
+  <li class="nav-header">Examples</li>
+  {% for page in site.pages %}
+    {% if page.type == 'example' and page.audience == 'publisher' %}
+      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+    {% endif %}
+  {% endfor %}
+  
+  <li class="nav-header">Off-the-Shelf Integrations</li>
+  {% for page in site.pages %}
+    {% if page.type == 'integration' %}
+      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+    {% endif %}
+  {% endfor %}
+  
+  <li class="nav-header">SDKs &amp; Libraries</li>
+  {% for page in site.pages %}
+    {% if page.type == 'sdk' and (page.audience == 'publisher' or page.audience == 'all') %}
+      <li><a href="{{ page.external_url }}">{{ page.title }} &raquo;</a></li>
+    {% endif %}
+  {% endfor %}
+
+{% else %}
+  <li>Please pass a "type" variable</li>
+{% endcase %}
