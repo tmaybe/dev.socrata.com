@@ -1,10 +1,8 @@
 ---
 layout: with-sidebar
-sidebar: documentation
-title: CSV Format
+sidebar: documentation 
+title: Data Formats
 ---
-
-# {{ page.title }}
 
 The CSV format is a comma separated list.  It is the easiest output to use, if you want to consume the results in Excel.
 

@@ -2,11 +2,14 @@
 {% when 'consumer' %}
   <li class="nav-header">Getting Started</li>
   <li><a href="/consumers/getting-started/">Getting Started</a></li>
-  <li><a href="/authentication/">Authentication</a></li>
+  <li><a href="/consumers/authentication/">Authentication</a></li>
   <li><a href="/throttling/">App Tokens &amp; Throttling</a></li>
+  <li><a href="/consumers/endpoints">RESTful Endpoints</a></li>
 
   <li class="nav-header">Documentation</li>
-  <li><a href="#">Link</a></li>
+  <li><a href="/docs/formats/">Data Formats</a></li>
+  <li><a href="/docs/datatypes/">Datatypes</a></li>
+  <li><a href="/docs/functions/">SoQL Functions</a></li>
 
   <li class="nav-header">Examples</li>
   {% for page in site.pages %}
@@ -49,6 +52,20 @@
       <li><a href="{{ page.external_url }}">{{ page.title }} &raquo;</a></li>
     {% endif %}
   {% endfor %}
+
+{% when 'documentation' %}
+  <li class="nav-header">Data Formats</li>
+  <li><a href="/docs/formats/json.html">JSON</a></li>
+  <li><a href="/docs/formats/rdf-xml.html">RDF-XML</a></li>
+  <li><a href="/docs/formats/csv.html">CSV</a></li>
+
+  <li class="nav-header">Datatypes</li>
+  <li><a href="/docs/datatypes/string.html">String</a></li>
+  <li><a href="/docs/datatypes/numeric.html">Numeric</a></li>
+  <li><a href="/docs/datatypes/boolean.html">Boolean</a></li>
+  <li><a href="/docs/datatypes/floating-timestamp.html">Floating Timestamp</a></li>
+  <li><a href="/docs/datatypes/fixed-timestamp.html">Fixed Timestamp</a></li>
+  <li><a href="/docs/datatypes/location.html">Location</a></li>
 
 {% else %}
   <li>Please pass a "type" variable</li>

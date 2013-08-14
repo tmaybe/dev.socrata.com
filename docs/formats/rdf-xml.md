@@ -1,6 +1,7 @@
 ---
-layout: default
-title: RDF Format
+layout: with-sidebar
+sidebar: documentation
+title: XML-RDF Format
 ---
 
 # {{ page.title }}

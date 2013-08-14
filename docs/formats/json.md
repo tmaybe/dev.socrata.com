@@ -1,9 +1,9 @@
 ---
-layout: default
+layout: with-sidebar
+sidebar: documentation 
 title: JSON Format
+audience: documentation
 ---
-
-# {{ page.title }}
 
 ## Basic Format
 
