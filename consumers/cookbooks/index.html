@@ -1,0 +1,17 @@
+---
+layout: with-sidebar
+title: Data Consumer Cookbooks
+audience: consumers
+sidebar: consumer
+---
+
+<p>To help you get started, peruse the following quick-start cookbooks for different tasks.</p>
+
+<ul class="cookbooks">
+  {% for cookbook in site.pages %}
+    {% if cookbook.type == 'cookbook' %}
+      <li class="cookbook"><a href="{{ cookbook.url }}">{{ cookbook.title }}</li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
