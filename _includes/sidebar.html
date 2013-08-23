@@ -6,11 +6,6 @@
   <li><a href="/throttling/">App Tokens &amp; Throttling</a></li>
   <li><a href="/consumers/endpoints">RESTful Endpoints</a></li>
 
-  <li class="nav-header">Documentation</li>
-  <li><a href="/docs/formats/">Data Formats</a></li>
-  <li><a href="/docs/datatypes/">Datatypes</a></li>
-  <li><a href="/docs/functions/">SoQL Functions</a></li>
-
   <li class="nav-header">Examples</li>
   {% for page in site.pages %}
     {% if page.type == 'example' and page.audience == 'consumer' %}
@@ -30,8 +25,7 @@
   <li><a href="/publishers/getting-started/">Getting Started</a></li>
   <li><a href="/authentication/">Authentication</a></li>
   <li><a href="/throttling/">App Tokens &amp; Throttling</a></li>
-  <li class="nav-header">Documentation</li>
-  <li><a href="#">Link</a></li>
+
   <li class="nav-header">Examples</li>
   {% for page in site.pages %}
     {% if page.type == 'example' and page.audience == 'publisher' %}
@@ -54,6 +48,13 @@
   {% endfor %}
 
 {% when 'documentation' %}
+  <li class="nav-header">Overview</li>
+  <li><a href="/docs/endpoints.html">API Endpoints</a></li>
+  <li><a href="/docs/vebs.html">RESTful Verbs</a></li>
+  <li><a href="/docs/authentication.html">Authentication</a></li>
+  <li><a href="/docs/app-tokens.html">Application Tokens</a></li>
+  <li><a href="/docs/throttling.html">Request Throttling</a></li>
+
   <li class="nav-header">Data Formats</li>
   <li><a href="/docs/formats/json.html">JSON</a></li>
   <li><a href="/docs/formats/rdf-xml.html">RDF-XML</a></li>

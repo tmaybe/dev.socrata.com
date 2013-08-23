@@ -1,19 +1,21 @@
-<li class="dropdown">
+<li class="dropdown {% if page.audience == "consumer" %} active {% endif %}">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cloud-download"></i> App Developers <i class="icon-caret-down"></i></a>
   <ul class="dropdown-menu">
     {% include sidebar.html type="consumer" %}
   </ul>
 </li>
-<li class="dropdown">
+<li class="dropdown {% if page.audience == "publisher" %} active {% endif %}">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cloud-upload"></i> Data Publishers <i class="icon-caret-down"></i></a>
   <ul class="dropdown-menu">
     {% include sidebar.html type="publisher" %}
   </ul>
 </li> 
-<li class="dropdown">
+<li class="dropdown {% if page.audience == "documentation" %} active {% endif %}">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book"></i> API Docs <i class="icon-caret-down"></i></a>
   <ul class="dropdown-menu">
     {% include sidebar.html type="documentation" %}
   </ul>
 </li> 
-<li><a href="/libraries/"><i class="icon-github-alt"></i> Libraries &amp; SDKs</a></li> 
+<li class="{% if page.audience == "libraries" %} active {% endif %}">
+  <a href="/libraries/"><i class="icon-github-alt"></i> Libraries &amp; SDKs</a>
+</li> 
