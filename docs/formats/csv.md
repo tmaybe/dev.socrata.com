@@ -2,22 +2,27 @@
 layout: with-sidebar
 sidebar: documentation
 title: CSV Format
+audience: documentation
+status: beta
 ---
 
-# {{ page.title }}
-
-The CSV format is a comma separated list.  It is the easiest output to use, if you want to consume the results in Excel.
+`CSV`, or [Comma-separated Values](http://en.wikipedia.org/wiki/Comma-separated_values), is an extremely common flat-file format that uses commas as a delimiter between values. Anyone familiar with common spreadsheet programs has undoubtably encountered CSV files before - they're easily consumed by Google Spreadsheet, Microsoft Excel, and countless other applications.
 
 ## Format
 
-CSV output will always start with the first row returning the column names.  Then each additional row will return
-a result from the query.
+CSV output will always start with the first row returning the column field names.  Then the data itself will follow as CSV records.
 
-    Name,Position,Agency Name,Agency Website,Nomination Date,Confirmation Vote,Confirmed,Holdover
-    "Aaron, Henry Jacob",Member,Social Security Advisory Board,SSAB (http://www.ssab.gov),02/14/2011 12:00 AM,,,
+{% highlight text %}
+name,date,count,description,replaces_product,approved
+"Inflatable Elephant, African", 2013-09-23,5,"Found in Africa.
+They live in dense forests, mopane and miombo woodlands, Sahelian scrub or deserts.",null,true
+Large Mouse,2013-08-19,3,"A ""largish"" mouse",General Mouse,false
+{% endhighlight %}
 
-Although the format is basically simple, there are a few things to notice:
+Although the format is basically simple, there are a few rules you'll need to follow:
 
-1. `Aaron, Henry Jacob` has quotes around it.  The reason for this is because it has a `,` in it.  The quotes are needed to distinguish the comma in the value from a comma used to delimit columns.
-2.  Empty fields are denoted by no value.  E.g. `,,`
-3.  If a value had a quote in it, it needs to be escaped.  This happens by putting quotes around the value and doubling the existing quote.  E.g.  `"String` would be escaped as `"""String"`.
+1. Strings containing embedded commas, newlines, or quotes will themselves be quoted. For example, `Inflatable Elephant, African` has quotes around it because it contains a comma.  And its description also is quoted, because it contains a newline.
+2. Empty fields are denoted by no value.  For example, `description` is empty for the Large Mouse.
+3. Null values are denoted explicitly by the text "`null`", since CSV has no explicit way of describing a null value. For example, `replaces_product` is `null` for the Inflatable Elephant.
+4.  Quotes within values are escaped by doubling them, so `"` becomes `""`. For example, the quotes in `A "largish" mouse` are doubled because they must be escaped.
+

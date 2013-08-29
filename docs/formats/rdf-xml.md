@@ -2,9 +2,9 @@
 layout: with-sidebar
 sidebar: documentation
 title: XML-RDF Format
+audience: documentation
+status: alpha
 ---
-
-# {{ page.title }}
 
 The RDF format is a little different than many of the other formats, because that dataset (or view) owners are able
 to map the output to different semantic web schemas, through changing the metadata on the dataset itself, or the columns
