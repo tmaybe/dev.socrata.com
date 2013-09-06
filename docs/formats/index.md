@@ -22,7 +22,7 @@ Simply add the extension for the output type you want to receive to the endpoint
 
 * `/resource/earthquakes.json` would get you [JSON](/docs/formats/json.html) output
 * `/resource/earthquakes.csv` would get you [CSV](/docs/formats/csv.html)
-* And * `/resource/earthquakes.rdf` would get you [RDF-XML](/docs/formats/rdf-xml.html)
+* And `/resource/earthquakes.rdf` would get you [RDF-XML](/docs/formats/rdf-xml.html)
 
 ## HTTP Accept Headers
 

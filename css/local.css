@@ -7,6 +7,23 @@ iframe.live-docs {
   border: none;
   margin-top: 5px; }
 
+.url {
+  font-size: 1.5em;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0.25em;
+  margin-bottom: 0.5em; }
+  .url .transport {
+    color: #12daeb; }
+  .url .domain {
+    color: #f513aa; }
+  .url .path {
+    color: #ffca14; }
+  .url .identifier {
+    color: #ff9c4e; }
+  .url .extension {
+    color: #ffca14; }
+
 .results {
   position: relative;
   background: whitesmoke;

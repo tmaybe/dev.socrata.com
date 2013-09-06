@@ -1,9 +1,8 @@
 ---
-layout: default
+layout: with-sidebar
+sidebar: documentation
 title: Queries using SODA2
 ---
-
-# {{ page.title }} 
 
 SODA2 provides a new rich API for querying against data on the Socrata Platform.  This API borrows a lot from SQL to
 provide a generic ability to query data.  This part of the API is aimed towards web applications and mobile applications

@@ -1,9 +1,8 @@
 ---
-layout: default
-title: Authentication and Application Tokens
+layout: with-sidebar
+sidebar: documentation
+title: Request Throttling
 ---
-
-# {{ page.title }}
 
 The Socrata Open Data API has two concepts around API access: **authentication** and **application tokens**. You only need to **authenticate** if you wish to add, delete, or modify data that is attached to your account, or if you wish to read data you own that you have marked as private. See the [publisher API documentation](/publisher/getting-started/) for more details on how to do that.
 
