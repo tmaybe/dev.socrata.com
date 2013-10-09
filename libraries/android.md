@@ -3,6 +3,7 @@ layout: external-link
 title: Google Android
 type: sdk 
 audience: consumer
+status: final
 
 language: Java
 

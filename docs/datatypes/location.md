@@ -1,8 +1,8 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: Request Throttling
+title: Location
 status: placeholder
 ---
 
-Placeholder
+Content goes here.

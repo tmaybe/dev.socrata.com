@@ -3,6 +3,7 @@ layout: external-link
 title: Scala
 type: sdk 
 audience: consumer
+status: final
 
 language: Scala
 

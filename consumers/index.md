@@ -2,6 +2,7 @@
 layout: with-sidebar
 title: Data Consumers
 sidebar: consumer
+status: placeholder
 ---
 
 ## Socrata API Overview

@@ -1,8 +1,8 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: Request Throttling
+title: Fixed Timestamp
 status: placeholder
 ---
 
-Placeholder
+Content goes here.

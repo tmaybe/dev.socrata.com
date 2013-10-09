@@ -1,8 +1,8 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: Request Throttling
+title: avg
 status: placeholder
 ---
 
-Placeholder
+Content goes here.

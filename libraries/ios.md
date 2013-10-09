@@ -3,6 +3,7 @@ layout: external-link
 title: Apple iOS
 type: sdk 
 audience: consumer
+status: final
 
 language: Objective C
 

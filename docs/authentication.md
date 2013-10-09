@@ -2,25 +2,12 @@
 layout: with-sidebar
 sidebar: documentation
 title: Authentication and Application Tokens
+status: draft
 ---
 
 Authentication is only necessary when accessing datasets that have been marked as _private_ or when making write requests (`PUT`, `POST`, and `DELETE`)
 
-## Application Tokens and Throttling
-
-While it is possible to perform simple unauthenticated queries against the Socrata Open Data API without making use of an application token, you'll receive much higher throttling limits if you [register your application](http://opendata.socrata.com/profile/app_tokens) and include it in your requests.
-
-You can include your application token using either the `$$app_token` parameter on your request (`app_token` if you're using the old SODA1 API), or using the `X-App-Token` HTTP header. Application tokens are not used for authentication, but you should still preserve the security of your application token by always using `HTTPS` requests.
-
-Making a request using an application token as a parameter:
-
-    > curl https://sandbox.socrata.com/resources/earthquakes.json?$$app_token=b6bThWI6I3dJfulFek8JRizjo
-
-Using an application token in the HTTP header. Using an HTTP header is the preferred method:
-
-    > curl --header "X-App-Token: b6bThWI6I3dJfulFek8JRizjo" https://sandbox.socrata.com/resources/earthquakes.json
-
-## Authenticating using HTTP Basic Authentication
+## HTTP Basic Authentication
 
 Requests can be authenticated by passing in HTTP Basic Authentication headers. We only support this method for legacy reasons, and encourage all our API users to use the OAuth workflow to authenticate their users. We may deprecate this authentication method in the future.
 
@@ -30,7 +17,7 @@ Here is a sample on how to use HTTP Basic Authentication:
 
     > curl --header "X-App-Token: b6bThWI6I3dJfulFek8JRizjo" --user LOGIN:PASS https://sandbox.socrata.com/resource/earthquakes.json
 
-## Authentication with OAuth 2
+## OAuth 2
 
 ### Authentication Workflow with OAuth 2
 
@@ -77,5 +64,5 @@ Note that all authenticated requests *must* be performed over a secure connectio
 
 One quirk of authenticating via OAuth 2 is that the entire process happens without the 3rd party application (that's you!) having any knowledge of who, exactly, the user is that just authorized the application. To remedy this, we have set up an endpoint that simply returns the information of the current user:
 
-    https://sandbox.socrata.com/users/current.json
+    https://sandbox.socrata.com/api/users/current.json
 

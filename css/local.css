@@ -27,6 +27,8 @@ iframe.live-docs {
     max-width: 1050px;
     padding-top: 1.5em;
     padding-bottom: 2em px; }
+    .homepage .content .build-something .tryit-link {
+      font-size: 1.5em; }
     .homepage .content .build-something .trailhead {
       padding-top: 1em; }
   .homepage .content footer {
@@ -113,3 +115,49 @@ iframe.live-docs {
   font-size: 45px; }
 .homepage .hero-unit {
   padding-bottom: 0px; }
+
+ul.pages {
+  list-style: none; }
+  ul.pages .page h3 {
+    font-size: 1em; }
+    ul.pages .page h3.placeholder a {
+      color: #8a8a8a; }
+    ul.pages .page h3.draft a {
+      color: #ff4756; }
+    ul.pages .page h3.alpha a {
+      color: #ff7e47; }
+    ul.pages .page h3.beta a {
+      color: #ff7e47; }
+    ul.pages .page h3.final a {
+      color: #3ec821; }
+  ul.pages .page ul.meta {
+    list-style: none;
+    font-size: 0.8em; }
+
+ul.debug {
+  list-style: none;
+  min-height: 20px;
+  padding: 0.5em;
+  margin-bottom: 20px;
+  background-color: whitesmoke;
+  border: 1px solid #e3e3e3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); }
+  ul.debug li {
+    display: inline-block;
+    min-width: 5em;
+    padding-right: 2em; }
+    ul.debug li .placeholder {
+      color: #8a8a8a; }
+    ul.debug li .draft {
+      color: #ff4756; }
+    ul.debug li .alpha {
+      color: #ff7e47; }
+    ul.debug li .beta {
+      color: #ff7e47; }
+    ul.debug li .final {
+      color: #3ec821; }

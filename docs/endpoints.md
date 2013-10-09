@@ -2,6 +2,8 @@
 layout: with-sidebar
 sidebar: documentation
 title: API Endpoints
+status: draft
+audience: docs
 ---
 
 ## What is an API Endpoint?

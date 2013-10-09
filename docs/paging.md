@@ -1,8 +1,9 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: Request Throttling
+title: Paging Through Data
 status: placeholder
+audience: docs
 ---
 
 Placeholder

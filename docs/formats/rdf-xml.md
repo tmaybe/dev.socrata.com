@@ -3,7 +3,7 @@ layout: with-sidebar
 sidebar: documentation
 title: XML-RDF Format
 audience: documentation
-status: alpha
+status: draft
 ---
 
 The RDF format is a little different than many of the other formats, because that dataset (or view) owners are able

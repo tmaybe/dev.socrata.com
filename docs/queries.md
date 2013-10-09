@@ -2,6 +2,8 @@
 layout: with-sidebar
 sidebar: documentation
 title: Queries using SODA2
+status: draft
+comment: This one is very draft...
 ---
 
 SODA2 provides a new rich API for querying against data on the Socrata Platform.  This API borrows a lot from SQL to
@@ -11,7 +13,7 @@ for quickly and easily retrieving data.
 At the root of the query API is a language called SoQL, however, there are several ways to express the SoQL in a query
 to make it easier for different programming languages as uses.
 
-SoQl can then be used on any of the dataset [endpoints](/soda2/endpoints).
+SoQl can then be used on any of the dataset [endpoints](/docs/endpoints.html).
 
 ## SoQL Clauses
 
