@@ -6,9 +6,8 @@ audience: documentation
 status: alpha
 ---
 
-The RDF format is a little different than many of the other formats, because that dataset (or view) owners are able
-to map the output to different semantic web schemas, through changing the metadata on the dataset itself, or the columns
-of the dataset.
+The RDF ([Resource Description Framework](http://www.w3.org/TR/REC-rdf-syntax/)) format is a little different the other formats, because that dataset (or view) owners are able
+to map the output to different semantic web schemas through changing either the metadata on the dataset itself or metadata on the columns of the dataset.
 
 For example, the following URL
 
@@ -27,5 +26,5 @@ yields:
         </dsbase:_6cpn-3h7n>
     </rdf:RDF>
 
-To change the formats in this, you can change the values in the metadata for the column.
+You can modify the returned format by changing the values in the metadata for the column.
 
