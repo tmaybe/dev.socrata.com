@@ -6,9 +6,9 @@ audience: documentation
 status: beta
 ---
 
-JSON is our most commonly used format. JSON, or more properly [JavaScript Object Notation](http://en.wikipedia.org/wiki/Json), is a text-based open standard derived from the format used to represent simple data structures in JavaScript. Although it is rooted in JavaScript, it is language-agnostic and parsers exist for all popular (and many unpopular) languages.
+JSON ([JavaScript Object Notation](http://en.wikipedia.org/wiki/Json)) is our most commonly used format. JSON is a text-based open standard derived from the format used to represent simple data structures in JavaScript. Although it is rooted in JavaScript, it is language-agnostic and parsers exist for all popular (and many unpopular) languages.
 
-In this format, the response will come back in a JSON array, with each element being a result.  The key will be the column's `field name` and the value the result.
+When JSON is specified as the format, the response will be a JSON array, where each element in the array is a result.  The key will be the column's `field name` and the value will be the result. For example:
 
 {% highlight json %}    
 [ {
@@ -28,11 +28,15 @@ In this format, the response will come back in a JSON array, with each element b
 } ]
 {% endhighlight %}
 
-The format is designed to be easily human-readable, and should also be immediately parsable by all common JSON parsers. To be complete, we'll detail some of the specifics of our usage below.
+The format is designed to be easily human-readable, and should also be immediately parsable by all common JSON parsers. 
+
+Details on how data is respresented in the returned JSON are below.
 
 ## Numbers
 
-Numeric data in SODA can actually require a higher level of precision than IEEE doubles (which are specified by JSON) allow. To handle this case, numbers in SODA are returned as quoted strings. If you want to have numbers return as doubles in the JSON, you can cast them to doubles in the `$select` part of the SoQL.
+For numbers, JSON specifies the precision of IEEE doubles, but numeric data in SODA can sometimes require a higher level of precision.To handle this case, numbers in SODA are returned as quoted strings. If you want to have numbers return as doubles in the JSON, you can cast them to doubles in the `$select` part of the SoQL.
+
+Example:
 
 {% highlight json %}
 [ {
@@ -48,6 +52,8 @@ Numeric data in SODA can actually require a higher level of precision than IEEE 
 
 As specified in the JSON specification, timestamps are represented as [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601)-formatted strings. For [fixed timestamps](/docs/datatypes/fixed-timestamp.html), the time zone will be omitted, while for [floating timestamps](/docs/datatypes/floating-timestamp.html) the timezone will be included as an offset from UTC.
 
+Example:
+
 {% highlight json %}
 [ {
   "event" : "International Hackathon",
@@ -60,6 +66,8 @@ As specified in the JSON specification, timestamps are represented as [ISO 8601]
 ## Locations
 
 [Locations](/docs/datatypes/location.html) will be returned as JSON objects, with longitude, latitude and address members.
+
+Example:
 
 {% highlight json %}
 [ {
@@ -78,6 +86,8 @@ As specified in the JSON specification, timestamps are represented as [ISO 8601]
 
 Null values are indicated by not sending any value at all.
 
+The example below has null values for `confirmed` and `confirmation_vote`, so those keys are simply not included. When represented as a hash, most library implementations will return a `null` value or equivalent when accessing a key that doesn't exist.
+
 {% highlight json %}    
 {
   "position" : "Member",
@@ -88,5 +98,4 @@ Null values are indicated by not sending any value at all.
 }
 {% endhighlight %}
 
-Would have null values for `confirmed` and `confirmation_vote`. When represented as a hash, most library implementations will follow that behavior, returning a `null` value or equivalent when accessing a key that doesn't exist.
 
