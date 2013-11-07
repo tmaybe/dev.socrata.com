@@ -8,7 +8,7 @@ status: beta
 
 Sometimes Socrata API requests will return a large number of results. Rather than retrieve them all at once, which may affect your application's performance, you can use paging to retrieve the results in batches. Often an application will show the first few results, and then only load the next batch of results when the user has taken an action, such as clicking a **Next** button or scrolling to the bottom of a list.
 
-Paging is accomplished through two query parameters: _$limit_ and _$offset_.
+Paging is accomplished through two query parameters: `$limit` and `$offset`. Note that using paging is entirely optional: if you do not specify the `$limit` and `$offset` parameters, then the defaults will be used.
 
 |Query Parameter|Description|Default Value|
 |---|---|---|
