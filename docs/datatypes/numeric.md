@@ -6,7 +6,8 @@ audience: documentation
 status: beta
 ---
 
-##Numbers
+<a name="number">&nbsp;</a>
+##Number
 
 Numbers are arbitrary precision, arbitrary scale numbers.  They can represent any number exactly, except for numbers whose digits repeat infinitely.
 
@@ -27,7 +28,8 @@ The following table describes the operators that can be used with Numbers.
 |+|Adds two numbers|
 |-|subtracts one number from another|
 
-##Doubles
+<a name="double">&nbsp;</a>
+##Double
 A double is an IEEE floating point double. They are easy to use and are represented as numbers in
 all the response formats. However, they have less precision than the regular Number data type.
 

@@ -16,7 +16,9 @@ You can obtain an application token by [registering your application](http://ope
 
 ## Application Tokens and Throttling
 
-While it is possible to perform simple unauthenticated queries against the Socrata Open Data API without making use of an application token, you'll receive much higher throttling limits if you include an application token in your requests.
+While it is possible to perform simple unauthenticated queries against the Socrata Open Data API without making use of an application token, you'll receive much higher throttling limits if you include an application token in your requests. If you elect not to use an
+application token, you’ll be subjected to a much lower throttling limit for
+all requests originating from your IP address.
 
 There are two ways to include the application token in the request:
 * Use the `X-App-Token` HTTP header. 

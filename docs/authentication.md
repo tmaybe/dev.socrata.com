@@ -59,9 +59,13 @@ Once you have obtained an `access_token`, you should include it on requests whic
 
 ### Who am I?
 
-One quirk of authenticating via OAuth 2 is that the entire process happens without the 3rd party application (that's you!) having any knowledge of who, exactly, the user is that just authorized the application. To remedy this, we have set up an endpoint that simply returns the information of the current user:
+One quirk of authenticating via OAuth 2 is that the entire process happens without the 3rd party application (that's you!) having any knowledge of who, exactly, the user is that just authorized the application. To remedy this, we have set up an endpoint that simply returns the information of the current user. To return the data in JSON:
 
     https://sandbox.socrata.com/users/current.json
+
+To return the data in XML:
+
+    https://sandbox.socrata.com/users/current.xml
 
 ## Authenticating using HTTP Basic Authentication
 
