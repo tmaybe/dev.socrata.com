@@ -34,16 +34,4 @@ You can also find API endpoints in the "Developers" section of Socrata-powered d
 
 Output formats can also be selected by adding an "extension" to your API endpoints. For more details see the [Output Formats](/docs/formats/index.html) section.
 
-## Addressing Individual Rows
-
-In addition to having an endpoint for a dataset, each row also has an endpoint based on the row's unique identifier. By default, a
-row's identifier is provided automatically by Socrata, and it is typically a simple index. It is called `:id` and is not returned unless specifically requested. For example, this URL returns data in JSON format for the row with `:id` of 1:
-
-[https://sandbox.demo.socrata.com/resource/nominationsCopy/1.json](https://sandbox.demo.socrata.com/resource/nominationsCopy/1.json)
-
-**Note:**  If you want the `:id` values for each row as part of the response, you can put it in a select statement. For example:
-
-[https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$select=:id,name,agency_name](https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$select=:id,name,agency_name)
-
-As an alternative to the automatically-generated identifiers, a dataset
-can set a column as the unique identifier, in which case, each row's identifier has the value in that column. The column is specified in the dataset's metadata.
+{% include try.html %}

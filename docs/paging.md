@@ -28,3 +28,5 @@ If we were building a mobile application that only had room for 5 results on a p
 Then, if the user clicked **Next**, we would retrieve the next five results with this request:
 
 [http://soda.demo.socrata.com/resource/earthquakes.json?$limit=5&$offset=5](http://soda.demo.socrata.com/resource/earthquakes.json?$limit=5&$offset=5)
+
+{% include try.html %}

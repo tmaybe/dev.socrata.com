@@ -190,3 +190,4 @@ To aid in these clients, the Socrata API returns two custom headers that allow a
 |X-SODA2-Fields|A JSON array containing a list of fields returned in this response|
 |X-SODA2-Types|A JSON array containing a list of SODA2 types. This array will be in the same order as the fields in `X-SODA2-Fields`.
 
+{% include try.html %}

@@ -30,7 +30,6 @@ $('a[href*="/resource"]').click(function(event) {
       $('.tryit-link').show();
     });
 
-
     // Pretty print things to look nice
     $(".prettyprint").each(function(i, e) { hljs.highlightBlock(e); });
   }).fail(function(data){

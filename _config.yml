@@ -1,11 +1,14 @@
 destination: public
 exclude: [Gemfile, Gemfile.lock, .rvmrc, public, sample-code]
+# debug: true
+splash: true
 
 ga_tracking_code: "UA-9046230-3"
 
 subsite: dev
 title: SODA Developers
 icon: icon-code
+github_repo: https://github.com/socrata/dev.socrata.com
 
 local_js: ["/js/try.js"]
 local_css: ["/css/local.css"]

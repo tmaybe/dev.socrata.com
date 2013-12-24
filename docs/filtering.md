@@ -51,3 +51,5 @@ The following example returns only earthquakes with a magnitude greater than 5:
 The following example returns only earthquakes with a magnitude greater than or equal to 5 but less than 5.5:
 
 [http://soda.demo.socrata.com/resource/earthquakes.json?$where=magnitude &gt;= 5 AND magnitude &lt; 5.5](http://soda.demo.socrata.com/resource/earthquakes.json?$where=magnitude%3E5+AND+magnitude%3C5.5)
+
+{% include try.html %}
