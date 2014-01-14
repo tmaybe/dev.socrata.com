@@ -1,8 +1,0 @@
-destination: public
-exclude: [Gemfile, Gemfile.lock, .rvmrc, public, sample-code]
-
-ga_tracking_code: "UA-9046230-3"
-subsite: dev
-title: SODA Developers
-local_js: ["/js/try.js"]
-local_css: ["/css/local.css"]
