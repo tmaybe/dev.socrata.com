@@ -106,15 +106,19 @@ module Jekyll
                 end 
             end
 
-            # And now we dump the word_scores and page_index to a file in JSON format.
-            # This is the file our jquery script will grab. All the actual search happens
-            # in the web browser, since jekyll is static.
-            file = File.new(File.join(site.dest, "search.json"), "w")
-            file.write({"words"=>word_scores,"index"=>page_index}.to_json)
-            file.close
+            begin
+              # And now we dump the word_scores and page_index to a file in JSON format.
+              # This is the file our jquery script will grab. All the actual search happens
+              # in the web browser, since jekyll is static.
+              file = File.new(File.join(site.dest, "search.json"), "w")
+              file.write({"words"=>word_scores,"index"=>page_index}.to_json)
+              file.close
 
-            # Finally, add the json file to the static files list
-            site.static_files << Jekyll::SearchData.new(site, site.dest, "/", "search.json")
+              # Finally, add the json file to the static files list
+              site.static_files << Jekyll::SearchData.new(site, site.dest, "/", "search.json")
+            rescue Exception => e
+              puts "An error occurred when generating the search.json file, probably because the output directory doesn't exist yet.\nThis isn't the end of the world, you just won't be able to search"
+            end
         end
     end
 end
