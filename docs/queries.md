@@ -23,7 +23,7 @@ as a URL parameter or as a SoQL statement.  If a clause is not specified, then t
 |---|---|---|---|
 |[select](#select)|$select|Which columns to return | All columns|
 |[where](#where)|$where|Filter on results to return | All results, but no higher than the _limit_ parameter|
-|[order](#order)|$orderBy|Order to return the results|Unspecified order, but it will be consistent across paging|
+|[order](#order)|$order|Order to return the results|Unspecified order, but it will be consistent across paging|
 |[group](#group)|$group|Column to group results on, similar to [SQL Grouping](http://www.w3schools.com/sql/sql_groupby.asp)|No grouping|
 |[limit](#limitoffset)|$limit|Maximum number of results to return|1000|
 |[offset](#limitoffset)|$offset|Offset count into the results to start at|0|
