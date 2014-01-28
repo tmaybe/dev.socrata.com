@@ -7,8 +7,8 @@ title: Getting Started
 
 You should fall into one of the two categories below. Pick one, and we'll walk you through getting started.
 
-<div class="horiz-columns row-fluid">
-  <div class="consumers span6">
+<div class="horiz-columns row">
+  <div class="consumers col-md-6">
     <h2>Consumers</h2>
 
     <div class="left">
@@ -20,7 +20,7 @@ You should fall into one of the two categories below. Pick one, and we'll walk y
 
     <a class="btn btn-large" href="/consumers/getting-started">Start consuming data now</a>
   </div>
-  <div class="publishers span6">
+  <div class="publishers col-md-6">
     <h2>Publishers</h2>
     <div class="left">
       <a href="/publishers/getting-started"><img src="/img/publishers.png" alt="Publishers" /></a>

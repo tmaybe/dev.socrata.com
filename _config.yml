@@ -7,7 +7,7 @@ ga_tracking_code: "UA-9046230-3"
 
 subsite: dev
 title: SODA Developers
-icon: icon-code
+icon: fa fa-code
 github_repo: https://github.com/socrata/dev.socrata.com
 
 local_js: ["/js/try.js"]
