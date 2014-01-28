@@ -16,7 +16,7 @@ audience: libraries
           <iframe src="http://ghbtns.com/github-btn.html?user={{ sdk.github_user }}&repo={{ sdk.github_repo }}&type=watch&count=true&size=large" allowtransparency frameborder="0" scrolling="0" width="170" height="30"> </iframe>
         </div>
 
-        <h3 class="name"><a href="{{ sdk.external_url }}"><i class="icon-cogs"></i> {{ sdk.title }}</a></h3>
+        <h3 class="name"><a href="{{ sdk.external_url }}"><i class="fa fa-cogs"></i> {{ sdk.title }}</a></h3>
 
         <ul class="contributors"></ul>
 
@@ -29,9 +29,9 @@ audience: libraries
           </ul>
 
           <div class="links btn-group">
-            {% if sdk.github_repo %}<button class="btn"><a href="http://github.com/{{ sdk.github_user}}/{{ sdk.github_repo }}" class="github"><i class="icon-github alt"></i> Github Repository</a></button>{% endif %}
-            {% if sdk.docs_url %}<button class="btn"><a href="{{ sdk.docs_url }}" class="docs"><i class="icon-book"></i> Documentation</a></button>{% endif %}
-            {% if sdk.bugs_url %}<button class="btn"><a href="{{ sdk.bugs_url }}" class="issues"><i class="icon-exclamation-sign"></i> Issues</a></button>{% endif %}
+            {% if sdk.github_repo %}<button class="btn btn-default"><a href="http://github.com/{{ sdk.github_user}}/{{ sdk.github_repo }}" class="github"><i class="fa fa-github alt"></i> Github Repository</a></button>{% endif %}
+            {% if sdk.docs_url %}<button class="btn btn-default"><a href="{{ sdk.docs_url }}" class="docs"><i class="fa fa-book"></i> Documentation</a></button>{% endif %}
+            {% if sdk.bugs_url %}<button class="btn btn-default"><a href="{{ sdk.bugs_url }}" class="issues"><i class="fa fa-exclamation-sign"></i> Issues</a></button>{% endif %}
           </div>
 
         </div>

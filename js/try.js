@@ -1,5 +1,5 @@
 // LiveDocs
-$('a[href*="/resource"]').prepend("<i class=\"icon-cog\"></i> ").wrap('<code class="tryit-link">').addClass("exec");
+$('a[href*="/resource"]').prepend("<i class=\"fa fa-cog\"></i> ").wrap('<code class="tryit-link">').addClass("exec");
 $('a[href*="/resource"]').click(function(event) {
   event.preventDefault();
 
@@ -10,7 +10,7 @@ $('a[href*="/resource"]').click(function(event) {
     url: $(this).attr('href')
   }).done(function(data){
     // Create a results block after the link with the output
-    tryit_block = '<div class="results"><a class="remove" href="#"><i class="icon-remove-sign"></i> close</a><code class="request"><span class="verb">GET</span> ' + the_href + '</code><pre class="response prettyprint">' + JSON.stringify(data, undefined, 2) + '</pre></div>';
+    tryit_block = '<div class="results"><a class="remove" href="#"><i class="fa fa-times"></i> close</a><code class="request"><span class="verb">GET</span> ' + the_href + '</code><pre class="response prettyprint">' + JSON.stringify(data, undefined, 2) + '</pre></div>';
 
 
     // Hide any existing code blocks on the page
