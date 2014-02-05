@@ -1,9 +1,8 @@
 ---
-layout: default
+layout: with-sidebar 
+sidebar: documentation
 title: Analyzing Socrata data in Microsoft Excel via OData
 ---
-
-# {{ page.title }} 
 
 Microsoft Excel is a very popular tool for analyzing and visualizing data. Follow these instructions to create an Excel workbook with a link to data from any Socrata-powered website. 
 
@@ -31,19 +30,21 @@ For example, the endpoint for the [White House Visitors Record](http://replaceme
 
 Note: OData connections are supported starting in the 2010 version of Microsoft Excel.
 
-Step 1: Select the "Data" ribbon. Choose to "Get External Data" "From Other Sources" "From OData Data Feed" 
+#### Step 1: Select the "Data" ribbon
+
+Choose to "Get External Data" "From Other Sources" "From OData Data Feed" 
 
 ![Excel's From OData Data Feed button](../img/odata/Excel1.png)
-<br /><br /><br />
-Step 2: Paste the OData endpoint link into the dialog box that appears and click "Next"
+
+#### Step 2: Paste the OData endpoint link into the dialog box that appears and click "Next"
 
 ![Excel's Data Connection Wizard](../img/odata/Excel2.png)
-<br /><br /><br />
-Step 3: Check the box next to the dataset's ID and click "Finish"
+
+#### Step 3: Check the box next to the dataset's ID and click "Finish"
 
 ![Excel's Data Connection Wizard](../img/odata/Excel3.png)
-<br /><br /><br />
-Result: Your data will appear in a table in Excel
+
+*Result:* Your data will appear in a table in Excel
 
 ![Socrata data in Excel](../img/odata/Excel4.png)
 
@@ -51,21 +52,27 @@ Result: Your data will appear in a table in Excel
 
 Power Query for Microsoft Excel provides more querying capabilities than Excel's default Data tab. Here's how you can use Power Query to create a link to a Socrata dataset. 
 
-Step 1: Install the Power Query add-in. 
+#### Step 1: Install the Power Query add-in
 
-Step 2: Select the "Power Query" ribbon. Choose to "Get External Data" "From Other Sources" "From OData Feed" 
+As of the publication date of this guide (2014-02-05), Microsoft Power Query is not generally available, but you can [find preview builds of Power Query](http://www.bing.com/search?q=download+power+query) provided by Microsoft.
+
+#### Step 2: Select the "Power Query" ribbon
+
+Choose to "Get External Data" "From Other Sources" "From OData Feed" 
 
 ![Power Query's From OData Data Feed button](../img/odata/PQ1.png)
-<br /><br /><br />
-Step 3: Paste the OData endpoint link into the dialog box that appears and click "Ok"
+
+#### Step 3: Paste the OData endpoint link into the dialog box that appears and click "Ok"
 
 ![Power Query's From OData Feed dialog box](../img/odata/PQ2.png)
-<br /><br /><br />
-Step 4: Shape the data using Power Query. Note that you will want to use the column header to expand complex types like Locations and Website URLs. When finished, click Apply and Close. 
+
+#### Step 4: Shape the data using Power Query
+
+Note that you will want to use the column header to expand complex types like Locations and Website URLs. When finished, click Apply and Close. 
 
 ![Power Query's Query Editor](../img/odata/PQ3.png)
-<br /><br /><br />
-Result: Your data will appear in a table in Excel
+
+*Result:* Your data will appear in a table in Excel
 
 ![Socrata data in Excel](../img/odata/PQ4.png)
 
@@ -141,5 +148,5 @@ Four datatypes are not exposed via OData. These are: Star, Flag, Nested Table an
 
 ### Release Notes - February 2014
 
- * DateTimeZone filters using "before", "after", "between" in the Power Query editor will yield an error.
- * Pulling the entire opendata.socrata.com catalog is not supported because this domain has too many datasets. Linking to a dataset directly using the Data ribbon in Excel will work.  
+* `DateTimeZone` filters using "before", "after", "between" in the Power Query editor will yield an error.
+* Pulling the entire opendata.socrata.com catalog is not supported because this domain has too many datasets. Linking to a dataset directly using the Data ribbon in Excel will work.  
