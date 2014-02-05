@@ -54,7 +54,7 @@ Power Query for Microsoft Excel provides more querying capabilities than Excel's
 
 #### Step 1: Install the Power Query add-in
 
-As of the publication date of this guide (2014-02-05), Microsoft Power Query is not generally available, but you can [find preview builds of Power Query](http://www.bing.com/search?q=download+power+query) provided by Microsoft.
+Download and install the [latest version of Microsoft Power Query](http://www.microsoft.com/en-us/download/details.aspx?id=39379). You'll need an installed version of Office 2010 Professional Plus, 2013 Professional Plus, Office 365 ProPlus, or a standalone edition of Excel 2013.
 
 #### Step 2: Select the "Power Query" ribbon
 
