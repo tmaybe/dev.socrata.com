@@ -1,10 +1,10 @@
 ---
 layout: with-sidebar 
 sidebar: documentation
-title: Analyzing Socrata data in Microsoft Excel via OData
+title: Analyzing Socrata data in Microsoft Excel&reg; via OData
 ---
 
-Microsoft Excel is a very popular tool for analyzing and visualizing data. Follow these instructions to create an Excel workbook with a link to data from any Socrata-powered website. 
+Microsoft Excel&reg; is a very popular tool for analyzing and visualizing data. Follow these instructions to create an Excel workbook with a link to data from any Socrata-powered website. 
 
 Because Excel maintains an active link to the data, all you need to do to refresh your workbook with the latest data is click the "Refresh All" button in the Excel ribbon. 
 
@@ -48,7 +48,7 @@ Choose to "Get External Data" "From Other Sources" "From OData Data Feed"
 
 ![Socrata data in Excel](../img/odata/Excel4.png)
 
-### Accessing Socrata data using Power Query for Microsoft Excel
+### Accessing Socrata data using Microsoft Power Query
 
 Power Query for Microsoft Excel provides more querying capabilities than Excel's default Data tab. Here's how you can use Power Query to create a link to a Socrata dataset. 
 
