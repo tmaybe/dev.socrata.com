@@ -1,6 +1,6 @@
 ---
 layout: with-sidebar
-sidebar: documentation 
+sidebar: documentation
 title: Numeric Datatypes
 audience: documentation
 status: beta
@@ -13,20 +13,20 @@ Numbers are arbitrary precision, arbitrary scale numbers.  They can represent an
 
 Since Numbers can be either larger or more precise than what doubles allow, many formats need to serialize them as strings.
 
-The following table describes the operators that can be used with Numbers. 
+The following table describes the operators that can be used with Numbers.
 
 |Operation|Description|
 |---|---|
-|<|True for numbers less than this one.|
-|<=|True for numbers that are less than or equal to this one.|
-|=|True for numbers that are equal to this one.|
-|!=|True for numbers that are not equal to this one.|
-|>|True for numbers that are greater than this one.|
-|>=|True for numbers that are greater than or equal to this one.|
-|\*|Multiplies two numbers|
-|/|Divides one number by another|
-|+|Adds two numbers|
-|-|subtracts one number from another|
+|`<`|True for numbers less than this one.|
+|`<=`|True for numbers that are less than or equal to this one.|
+|`=`|True for numbers that are equal to this one.|
+|`!=`|True for numbers that are not equal to this one.|
+|`>`|True for numbers that are greater than this one.|
+|`>=`|True for numbers that are greater than or equal to this one.|
+|`*`|Multiplies two numbers|
+|`/`|Divides one number by another|
+|`+`|Adds two numbers|
+|`-`|subtracts one number from another|
 
 <a name="double">&nbsp;</a>
 ##Double
@@ -38,17 +38,17 @@ the caller wants results that are easier to parse and can potentially give up pr
 
 **Note:** In earlier versions of Socrata, doubles were referred to as "numbers".
 
-The following table describes the operators that can be used with doubles. 
+The following table describes the operators that can be used with doubles.
 
 |Operation|Description|
 |---|---|
-|<|True for numbers less than this one.|
-|<=|True for numbers that are less than or equal to this one.|
-|=|True for numbers that are equal to this one.|
-|!=|True for numbers that are not equal to this one.|
-|>|True for numbers that are greater than this one.|
-|>=|True for numbers that are greater than or equal to this one.|
-|\*|Multiplies two numbers|
-|/|Divides one number by another|
-|+|Adds two numbers|
-|-|subtracts one number from another|
+|`<`|True for numbers less than this one.|
+|`<=`|True for numbers that are less than or equal to this one.|
+|`=`|True for numbers that are equal to this one.|
+|`!=`|True for numbers that are not equal to this one.|
+|`>`|True for numbers that are greater than this one.|
+|`>=`|True for numbers that are greater than or equal to this one.|
+|`*`|Multiplies two numbers|
+|`/`|Divides one number by another|
+|`+`|Adds two numbers|
+|`-`|subtracts one number from another|
