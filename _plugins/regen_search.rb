@@ -34,7 +34,8 @@ module Jekyll
         def write(dest)
             begin
                 super(dest)
-            rescue
+            rescue ArgumentError
+              # For some strange reason this always throws an error, yet continues to work. I'm as confused as you are.
             end
             true
         end
