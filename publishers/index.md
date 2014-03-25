@@ -1,10 +1,49 @@
 ---
 layout: with-sidebar
-title: Data Publishers
 sidebar: publisher
+title: Getting Started with Data Publishing
+audience: publisher
 ---
 
-## Socrata API Overview
+## About the Publisher APIs
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictum augue ac lorem malesuada at rhoncus turpis condimentum. Maecenas commodo sem ac magna posuere ultrices. Proin ut felis ac odio consectetur rutrum vel quis sem.
+The Socrata Open Data Publisher API is strictly a superset of the features provided in the Consumer API -- in fact, they are one and the same. For details on how to *access* information, please refer to the [Consumer API](/consumers/getting-started/) documentation. For those of you who wish to publish data, however, venture bravely onwards!
+
+### Start with our friendly web tools first
+
+Regardless of how you plan to keep your dataset up to date, we recommend uploading your data file and creating your initial dataset through our web interface, rather than using the API. This will give you a chance to review how our systems will import your dataset, what datatypes will be selected, and what it will look like and how it will be behave once it's in our platform.
+
+If you've never imported a dataset before, this [helpful guide on importing datasets](http://go.socrata.com/importing) should get you started.
+
+## Publishing Strategies
+
+Before embarking on a project to automate data publishing, it's important to take a step back and think about the nature of your dataset in order to pick the best way to integrate with Socrata. Here are a few of the most common use cases and our recommendations.
+
+### Infrequently (or never!) updated datasets
+
+If your dataset is rarely or never updated - for example, the final results of an election or a census - our web-based user interface is likely sufficient to keep your data up to date. You can edit, update, or append data to a dataset entirely through your web browser, using our simple web user interface.
+
+For more information about how to update a dataset via the Socrata web interface, read [this how-to guide](http://go.socrata.com/append-replace).
+
+### Socrata DataSync
+
+[Socrata DataSync](http://socrata.github.io/datasync) is a cross-platform [Java](http://en.wikipedia.org/wiki/Java_(programming_language) application that makes it easy to set up an automatic process to keep a Socrata dataset up to date. It also uses an intelligent update method to efficiently update datasets even when performing what would otherwise be a full replace.
+
+For more information about [DataSync](http://socrata.github.io/datasync), check out it's [documentation and getting started guide](http://socrata.github.io/datasync).
+
+### Safe FME
+
+[Safe Software](http://www.safe.com) has partnered with Socrata to build an FME "writer" for Socrata. Using the Socrata Writer, you can easily create workflows to extract data from source systems using [Safe FME](http://www.safe.com/fme/fme-technology/), perform cleanup and transformation, and publish that data to Socrata.
+
+For more information about the Socrata Writer for FME, see this [helpful writeup on Safe's website](http://www.safe.com/solutions/for-applications/socrata/), as well as [this demo tutorial](http://www.youtube.com/watch?v=X5lr6qw20-s). We have also produced a [support article on how to set up a simple FME workflow for Socrata](http://support.socrata.com/entries/24459198-Setting-up-a-simple-Socrata-integration-with-FME).
+
+### Socrata Publisher API
+
+For the tightest possible integration between your source system and your Socrata platform, you'll want to integrate directly with the Socrata Publisher API. The Publisher API allows you to programatically:
+
+- Add, update, and delete records within a Socrata dataset
+- Maintain dataset metadata and privacy settings
+- Create and import Socrata datasets
+
+To learn more about the Socrata Publisher API, see the [getting started guide](/publishers/getting-started/) or check out the [API documentation](/docs/) above.
 
