@@ -2,58 +2,69 @@
 {% when 'consumer' %}
   <li><a href="/consumers/getting-started/">Getting Started</a></li>
 
-<!--
-  <li class="nav-header dropdown-header">Cookbooks</li>
-  {% for page in site.pages %}
-    {% if page.type == 'cookbook' and page.audience == 'consumer' and page.featured == 'true' and page.status == 'final' %}
-      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-    {% endif %}
-  {% endfor %}
--->
-
   <li class="nav-header dropdown-header">Examples</li>
   {% for page in site.pages %}
-    {% if page.type == 'example' and page.audience == 'consumer' and page.status == 'final' %}
-      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+    {% if page.type == 'example' and page.audience == 'consumer' %}
+      {% if page.external_url %}
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+      {% else %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+      {% endif %}
     {% endif %}
   {% endfor %}
 
   <li class="nav-header dropdown-header">SDKs &amp; Libraries</li>
   {% for page in site.pages %}
     {% if page.type == 'sdk' and (page.audience == 'consumer' or page.audience == 'all') %}
-      <li><a href="{{ page.external_url }}">{{ page.title }} &raquo;</a></li>
+      {% if page.external_url %}
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+      {% else %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+      {% endif %}
     {% endif %}
   {% endfor %}
 
 {% when 'publisher' %}
-  <li class="nav-header dropdown-header">Coming Soon</li>
-<!--
-  <li class="nav-header dropdown-header">Getting Started</li>
-  <li><a href="/publishers/getting-started/">Getting Started</a></li>
+  <li><a href="/publishers/">Overview</a></li>
+  <li class="nav-header dropdown-header">The Publisher API</li>
+  <li><a href="/publishers/getting-started.html">Getting Started</a></li>
   <li><a href="/authentication/">Authentication</a></li>
   <li><a href="/throttling/">App Tokens &amp; Throttling</a></li>
+  <li><a href="/publishers/upsert.html">Updating via "Upsert"</a></li>
 
   <li class="nav-header dropdown-header">Examples</li>
   {% for page in site.pages %}
-    {% if page.type == 'example' and page.audience == 'publisher' and page.status == 'final' %}
-      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+    {% if page.type == 'example' and page.audience == 'publisher' %}
+      {% if page.external_url %}
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+      {% else %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+      {% endif %}
     {% endif %}
   {% endfor %}
-  
-  <li class="nav-header dropdown-header">Off-the-Shelf Integrations</li>
+
+  <li class="nav-header dropdown-header">Tools &amp; Integrations</li>
   {% for page in site.pages %}
-    {% if page.type == 'integration' and page.status == 'final' %}
-      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+    {% if page.type == 'integration' %}
+      {% if page.external_url %}
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+      {% else %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+      {% endif %}
     {% endif %}
   {% endfor %}
-  
+
   <li class="nav-header dropdown-header">SDKs &amp; Libraries</li>
   {% for page in site.pages %}
     {% if page.type == 'sdk' and (page.audience == 'publisher' or page.audience == 'all') %}
-      <li><a href="{{ page.external_url }}">{{ page.title }} &raquo;</a></li>
+      {% if page.external_url %}
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+      {% else %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+      {% endif %}
     {% endif %}
   {% endfor %}
--->
+
 {% when 'documentation' %}
   <li class="nav-header dropdown-header">Overview</li>
   <li><a href="/docs/endpoints.html">API Endpoints</a></li>
@@ -64,7 +75,7 @@
   <li><a href="/docs/paging.html">Paging Through Data</a></li>
   <li><a href="/docs/app-tokens.html">Application Tokens</a></li>
   <li><a href="/docs/authentication.html">Authentication</a></li>
-  <!--<li><a href="/docs/throttling.html">Request Throttling</a></li>-->
+  <li><a href="/docs/throttling.html">Request Throttling</a></li>
 
   <li class="nav-header dropdown-header">Data Formats</li>
   <li><a href="/docs/formats/json.html">JSON</a></li>
@@ -81,5 +92,5 @@
   <li><a href="/docs/datatypes/converting.html">Conversions</a></li>
 
 {% else %}
-  <li>Please pass a "type" variable</li>
+  <li>Whoever created this page messed something up. Please <a href="/contributing.html">file an issue</a> and ask them to pass a "type" variable.</li>
 {% endcase %}
