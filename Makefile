@@ -1,2 +1,10 @@
+link_dir := $(shell mktemp -d /tmp/linkdoc.XXXX)
+
 all:
-	/Users/metcalf/.rvm/gems/ruby-2.0.0-p0@dev-socrata-com/bin/jekyll
+	sass sass/local.sass:css/local.css common/sass/common.sass:common/css/common.css
+	jekyll build
+	terminal-notifier -title "Jekyll" -message "Build complete."
+
+test: all
+	linklint -doc ${link_dir} -root public /@
+	open ${link_dir}/index.html
