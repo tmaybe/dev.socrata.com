@@ -25,7 +25,7 @@ To ensure the security of your updates, all requests to the Publisher APIs are r
 
 Since these are standard functionalities provided by nearly all HTTP libraries, authentication is easy to set up in almost every popular contemporary programming language.
 
-<ul class="more-info">
+<ul class="well">
   <li>Learn how to <a href="/docs/authentication.html">authenticate via HTTP Basic or OAuth 2.0</a></li>
   <li>Learn about <a href="/docs/app-tokens.html">application tokens</a></li>
 </ul>
@@ -34,7 +34,7 @@ Since these are standard functionalities provided by nearly all HTTP libraries, 
 
 One of the most important concepts to establish before you get started with the Publisher API is that of dataset row identifiers. Row identifiers allow both consumers and publishers to uniquely identify individual unique rows within your dataset, and they allow Socrata to intelligently update your dataset based on those row identifiers.
 
-<ul class="more-info">
+<ul class="well">
   <li>Learn more about <a href="/docs/row-identifiers.html">Row Identifiers</a></li>
   <li>Learn how to <a href="/publishers/configuring-row-identifiers.html">Configure Row Identifiers</a></li>
 </ul>
@@ -49,7 +49,7 @@ The Socrata Publisher API provides several primary methods by which you can upda
 
 All of these operations take advantage of the [row identifiers](/docs/row-identifiers.html) described above.
 
-<ul class="more-info">
+<ul class="well">
   <li>Learn how to <a href="/publishers/direct-row-manipulation.html">manipulate rows directly</a></li>
   <li>Set up a smart update via <a href="/publishers/upsert.html">upsert <code>POST</code></a></li>
   <li>Replace a dataset entirely using a <a href="/publishers/replace.html">bulk <code>PUT</code></a></li>
@@ -59,7 +59,7 @@ All of these operations take advantage of the [row identifiers](/docs/row-identi
 
 The Socrata Publisher API also allows you to modify the metadata for a dataset, such as its name, description, and tags. You can also change a dataset's permissions to make it public or private.
 
-<ul class="more-info">
+<ul class="well">
   <li>Learn how to modify a <a href="/publishers/modifying-metadata.html">dataset&#8217;s metadata</a></li>
   <li>Change a dataset&#8217;s <a href="/publishers/permisisons.html">permissions</a></li>
 </ul>

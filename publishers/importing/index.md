@@ -215,7 +215,7 @@ This ticket can be used by `GET` requesting the same URL that was used to either
 
 We've made several references to `translations` so far, with very little explanation. They are an advanced feature that most people will never need to make use of, but are an incredibly cool and powerful way to **transform** your data as it is imported.
 
-<div class="more-info">
+<div class="well">
   For more information on how to use translations, please see the <a href="/publishers/import-translations">import translations section</a>.
 </div>
 

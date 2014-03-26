@@ -26,7 +26,7 @@ If you're viewing an [API Foundry](http://www.socrata.com/api-foundry/) customiz
 
 If you're on a Socrata dataset, identifiable by the colorful buttons at the upper right, don't fret. Every Socrata dataset has a built-in open data API, so you'll be just fine. Click on `Export` and then `API` and you'll find the API endpoint under `API Access Endpoint`. Copy that and save it for later.
 
-<div class="more-info">
+<div class="well">
   Read the detailed documentation on <a href="/docs/endpoints.html">API Endpoints</a> for more info.
 </div>
 
@@ -47,7 +47,7 @@ Filtering data is very straightforward. SODA APIs are self-describing - the sche
 
 Additional filters can be added, and the filters will be `AND`ed together.
 
-<div class="more-info">
+<div class="well">
   Read the detailed documentation on <a href="/docs/filtering.html">Filtering Datasets</a> for more info.
 </div>
 
@@ -57,7 +57,7 @@ The "**So**crata **Q**uery **L**anguage" (SoQL) is a simple, SQL-like query lang
 
 <a href="https://data.cityofchicago.org/resource/alternative-fuel-locations.json?%24where=within_circle(location%2C%2041.88383%2C%20-87.63198%2C%20500)">https://data.cityofchicago.org/resource/alternative-fuel-locations.json?$where=within_circle(location, 41.88383, 87.63198, 500)</a>
 
-<div class="more-info">
+<div class="well">
   Many different functions are available via SoQL. Read the detailed documentation on <a href="/docs/queries.html">SoQL Queries</a> for more info.
 </div>
 
@@ -68,7 +68,7 @@ For performance, SODA APIs are paged, and return a maximum of 1000 records per p
 So, to request page two, at 100 records per page, of our fuel locations API:
 <a href="https://data.cityofchicago.org/resource/alternative-fuel-locations.json?$limit=100&amp;$offset=50">https://data.cityofchicago.org/resource/alternative-fuel-locations.json?$limit=100&amp;$offset=50</a>
 
-<div class="more-info">
+<div class="well">
   Read the detailed documentation on <a href="/docs/paging.html">Paging</a> for more info.
 </div>
 
@@ -78,7 +78,7 @@ Hold on a second! Before you go storming off to make the next great open data ap
 
 If you want more requests, [register for an application token](/register) and your application will be granted up to 1000 requests per rolling hour period. If you need even more than that, special exceptions are made by request. Use the `Help!` tab on the right of this page to file a trouble ticket.
 
-<div class="more-info">
+<div class="well">
   Read the detailed documentation on <a href="/docs/paging.html">Paging</a> for more info.
 </div>
 
