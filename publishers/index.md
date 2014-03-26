@@ -7,7 +7,7 @@ audience: publisher
 
 ## About the Publisher APIs
 
-The Socrata Open Data Publisher API is strictly a superset of the features provided in the Consumer API -- in fact, they are one and the same. For details on how to *access* information, please refer to the [Consumer API](/consumers/getting-started/) documentation. For those of you who wish to publish data, however, venture bravely onwards!
+The Socrata Open Data Publisher API is strictly a superset of the features provided in the Consumer API -- in fact, they are one and the same. For details on how to *access* information, please refer to the [Consumer API](/consumers/getting-started.html) documentation. For those of you who wish to publish data, however, venture bravely onwards!
 
 ### Start with our friendly web tools first
 
@@ -45,5 +45,5 @@ For the tightest possible integration between your source system and your Socrat
 - Maintain dataset metadata and privacy settings
 - Create and import Socrata datasets
 
-To learn more about the Socrata Publisher API, see the [getting started guide](/publishers/getting-started/) or check out the [API documentation](/docs/) above.
+To learn more about the Socrata Publisher API, see the [getting started guide](/publishers/getting-started.html) or check out the [API documentation](/docs/) above.
 
