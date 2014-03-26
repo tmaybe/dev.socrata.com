@@ -27,7 +27,7 @@
 {% when 'publisher' %}
   <li><a href="/publishers/">Overview</a></li>
   <li class="nav-header dropdown-header">The Publisher API</li>
-  <li><a href="/publishers/getting-started.html">Getting Started</a></li>
+  <li><a href="/publishers/getting-started/">Getting Started</a></li>
   <li><a href="/authentication/">Authentication</a></li>
   <li><a href="/throttling/">App Tokens &amp; Throttling</a></li>
   <li><a href="/publishers/upsert.html">Updating via "Upsert"</a></li>
@@ -43,9 +43,9 @@
     {% endif %}
   {% endfor %}
 
-  <li class="nav-header dropdown-header">Tools &amp; Integrations</li>
+  <li class="nav-header dropdown-header">Tools &amp; Connectors</li>
   {% for page in site.pages %}
-    {% if page.type == 'integration' %}
+    {% if page.type == 'connector' %}
       {% if page.external_url %}
         <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
       {% else %}

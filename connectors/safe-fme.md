@@ -2,7 +2,7 @@
 layout: with-sidebar
 title: Safe FME
 sidebar: publisher
-type: integration
+type: connector
 audience: publisher
 status: final 
 ---
