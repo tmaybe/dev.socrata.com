@@ -9,7 +9,7 @@ audience: publisher
 
 For the tightest possible integration between your source system and your Socrata platform, you'll want to integrate directly with the Socrata Publisher API. The Publisher API allows you to programatically:
 
-- Add, update, and delete records within a Socrata dataset
+- Add, update, and delete rows within a Socrata dataset
 - Maintain dataset metadata and privacy settings
 - Create and import Socrata datasets
 
@@ -30,27 +30,27 @@ Since these are standard functionalities provided by nearly all HTTP libraries, 
   <li>Learn about <a href="/docs/app-tokens.html">application tokens</a></li>
 </ul>
 
-## Dataset Record Identifiers
+## Row Identifiers
 
-One of the most important concepts to establish before you get started with the Publisher API is that of dataset record identifiers. Record identifiers allow both consumers and publishers to uniquely identify individual unique records within your dataset, and they allow Socrata to intelligently update your dataset based on those record identifiers.
+One of the most important concepts to establish before you get started with the Publisher API is that of dataset row identifiers. Row identifiers allow both consumers and publishers to uniquely identify individual unique rows within your dataset, and they allow Socrata to intelligently update your dataset based on those row identifiers.
 
 <ul class="more-info">
-  <li>Learn more about <a href="/docs/record-identifiers.html">record identifiers</a></li>
-  <li>Learn how to <a href="/publishers/configuring-record-identifiers.html">configure record identifiers</a></li>
+  <li>Learn more about <a href="/docs/row-identifiers.html">Row Identifiers</a></li>
+  <li>Learn how to <a href="/publishers/configuring-row-identifiers.html">Configure Cow Identifiers</a></li>
 </ul>
 
 ## Modifying Socrata Datasets
 
 The Socrata Publisher API provides several primary methods by which you can update Socrata datasets:
 
-- Direct manipulation of records via `PUT`, `POST`, and `DELETE` operations
+- Direct manipulation of rows via `PUT`, `POST`, and `DELETE` operations
 - Bulk update via an "upsert" `POST` operation
 - Full replacement via a bulk `PUT` operation
 
-All of these operations take advantage of the [record identifiers](/docs/record-identifiers.html) described above.
+All of these operations take advantage of the [row identifiers](/docs/row-identifiers.html) described above.
 
 <ul class="more-info">
-  <li>Learn how to <a href="/publishers/direct-record-manipulation.html">manipulate records directly</a></li>
+  <li>Learn how to <a href="/publishers/direct-row-manipulation.html">manipulate rows directly</a></li>
   <li>Set up a smart update via <a href="/publishers/upsert.html">upsert <code>POST</code></a></li>
   <li>Replace a dataset entirely using a <a href="/publishers/replace.html">bulk <code>PUT</code></a></li>
 </ul>
