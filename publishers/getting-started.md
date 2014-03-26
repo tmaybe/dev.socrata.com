@@ -5,6 +5,8 @@ title: Getting Started with The Socrata Publisher API
 audience: publisher
 ---
 
+{% include publisher-note.html %}
+
 ## Introduction
 
 For the tightest possible integration between your source system and your Socrata platform, you'll want to integrate directly with the Socrata Publisher API. The Publisher API allows you to programatically:
