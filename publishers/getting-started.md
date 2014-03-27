@@ -1,7 +1,7 @@
 ---
 layout: with-sidebar
 sidebar: publisher
-title: Getting Started with The Socrata Publisher API
+title: Getting Started with the Socrata Publisher API
 audience: publisher
 ---
 
