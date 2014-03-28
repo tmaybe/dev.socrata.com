@@ -7,6 +7,9 @@ iframe.live-docs {
   border: none;
   margin-top: 5px; }
 
+.navbar input.search {
+  width: 130px; }
+
 .homepage .content {
   max-width: 100%;
   padding-top: 30px;
@@ -22,12 +25,12 @@ iframe.live-docs {
     height: 404px; }
     .homepage .content .fat-header h1.hello-dolly {
       color: white;
-      font-size: 10em;
-      padding-top: 180px; }
+      font-size: 8em;
+      padding-top: 140px; }
   .homepage .content .build-something {
     margin-left: auto;
     margin-right: auto;
-    max-width: 1050px;
+    max-width: 950px;
     padding-top: 1.5em;
     padding-bottom: 2em px; }
     .homepage .content .build-something .tryit-link {
