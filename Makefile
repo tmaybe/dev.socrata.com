@@ -10,3 +10,7 @@ all:
 test: all
 	linklint -doc ${link_dir} -root public /@
 	open ${link_dir}/index.html
+
+# Builds sass locally directly to ./public so you con't have to run a full jekyll build when hacking sass
+sasslocal:
+	sass --watch sass/local.sass:css/local.css common/sass/common.sass:common/css/common.css
