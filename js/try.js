@@ -1,9 +1,30 @@
 // LiveDocs
-$('a[href*="/resource"]').prepend("<i class=\"fa fa-cog\"></i> ").wrap('<code class="tryit-link">').addClass("exec");
+
+// Make it a tryit link and add the gear
+$('a[href*="/resource"]').after(function(idx, element) {
+  // Parse our URL
+  var url = $.url(element.replace(/&amp;/, "&"));
+
+  var params = {};
+  $.each(url.param(), function(k, v) {
+    params[k] = [v]; 
+  });
+  // Create the query string for hurl.it
+  var query = $.param({
+    "method" : "GET",
+    "url" : url.attr("protocol") + "://" + url.attr("host") + url.attr("path"),
+    "headers" : JSON.stringify({
+      "X-App-Token" : ["bjp8KrRvAPtuf809u1UXnI0Z8"]
+    }),
+    "args" : JSON.stringify(params)
+  });
+
+  return "<a target=\"_blank\" href=\"http://hurl.it/?" + query + "\"><i class=\"fa fa-pencil\"></i></a>"; 
+}).prepend("<i class=\"fa fa-cog\"></i> ").wrap('<code class="tryit-link">').addClass("exec");
+
 $('a[href*="/resource"]').click(function(event) {
   event.preventDefault();
 
-  // JSONP the response for this bad boy
   var the_href = $(this).attr('href');
   var the_link = $(this).closest('.tryit-link');
   $.ajax({
