@@ -1,15 +1,14 @@
 // LiveDocs
 
 // Make it a tryit link and add the gear
-$('a[href*="/resource"]').after(function(idx, element) {
-  // Parse our URL
-  var url = $.url(element.replace(/&amp;/, "&"));
-
+$('a[href*="/resource"]').replaceWith(function() {
+  var target = this;
+  // Parse our URL and create the query string for hurl.it
+  var url = $.url(target.href.replace(/&amp;/, "&"));
   var params = {};
   $.each(url.param(), function(k, v) {
     params[k] = [v]; 
   });
-  // Create the query string for hurl.it
   var query = $.param({
     "method" : "GET",
     "url" : url.attr("protocol") + "://" + url.attr("host") + url.attr("path"),
@@ -19,8 +18,13 @@ $('a[href*="/resource"]').after(function(idx, element) {
     "args" : JSON.stringify(params)
   });
 
-  return "<a target=\"_blank\" href=\"http://hurl.it/?" + query + "\"><i class=\"fa fa-pencil\"></i></a>"; 
-}).prepend("<i class=\"fa fa-cog\"></i> ").wrap('<code class="tryit-link">').addClass("exec");
+  return '<code class="tryit-link">'
+            + '<i class="fa fa-cog"></i> <a class="exec" href="' + target.href + '">' 
+              + target.href
+            + '</a> '
+            + '<a title="Try this request on Hurl.it" target="_blank" href="http://hurl.it/?' + query + '"><i class="fa fa-pencil"></i></a>'
+          + '</code>';
+});
 
 $('a[href*="/resource"]').click(function(event) {
   event.preventDefault();
@@ -52,7 +56,7 @@ $('a[href*="/resource"]').click(function(event) {
     });
 
     // Pretty print things to look nice
-    $(".prettyprint").each(function(i, e) { hljs.highlightBlock(e); });
+    // $(".prettyprint").each(function(i, e) { hljs.highlightBlock(e); });
   }).fail(function(data){
     alert("Something went wrong with your query... Please try again later.");
   });
