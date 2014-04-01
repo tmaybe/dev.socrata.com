@@ -5,6 +5,8 @@ title: Getting Started with the Socrata Publisher API
 audience: publisher
 ---
 
+<!-- open("data", O_CREAT|O_RDWR); -->
+
 {% include publisher-note.html %}
 
 ## Introduction

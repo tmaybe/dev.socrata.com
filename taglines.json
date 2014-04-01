@@ -1,0 +1,16 @@
+[ {
+  "tagline" : "GET /opendata.json",
+  "size" : "6"
+}, {
+  "tagline" : "Hello Data!",
+  "size" : "8"
+}, {
+  "tagline" : "10 PRINT &quot;OPEN DATA!&quot;<br/>20 GOTO 10",
+  "size" : "4"
+}, {
+  "tagline" : "gov = Government.new<br/>gov.open()",
+  "size" : "4"
+}, {
+  "tagline" : "cities.each do |city|<br/>&nbsp;&nbsp;city.data.open()<br/>end",
+  "size" : "4"
+} ]

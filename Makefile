@@ -19,3 +19,8 @@ sasslocal:
 jslocal:
 	cp js/* public/js/
 	cp common/js/* public/common/js/
+
+# Pushes updated taglines file
+taglines:
+	curl --user chris.metcalf@socrata.com -X PUT --data @taglines.json --header "Content-type: application/json" --header "X-App-Token: bjp8KrRvAPtuf809u1UXnI0Z8" https://soda.demo.socrata.com/resource/etih-7ix2.json
+
