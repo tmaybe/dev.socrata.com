@@ -6,6 +6,8 @@ audience: consumer
 status: draft
 ---
 
+<!-- open("data", O_RDONLY); -->
+
 So you want to win that hackathon or build the next hot open data app? Follow this guide to get yourself started. Make sure you check out the more detailed resources under the "API Docs" section when it's time to get in deep.
 
 ## Locating Open Data and APIs
