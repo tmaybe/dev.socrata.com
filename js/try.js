@@ -2,9 +2,9 @@
 
 // Make it a tryit link and add the gear
 $('a[href*="/resource"]').replaceWith(function() {
-  var target = this;
+  var target_link = decodeURI(this.href).replace(/&amp;/, "&");
   // Parse our URL and create the query string for hurl.it
-  var url = $.url(target.href.replace(/&amp;/, "&"));
+  var url = $.url(target_link);
   var params = {};
   $.each(url.param(), function(k, v) {
     params[k] = [v]; 
@@ -19,10 +19,11 @@ $('a[href*="/resource"]').replaceWith(function() {
   });
 
   return '<code class="tryit-link">'
-            + '<i class="fa fa-cog"></i> <a class="exec" href="' + target.href + '">' 
-              + target.href
+            + '<i class="fa fa-cog"></i> '
+            + '<a class="exec has-tooltip" data-toggle="tooltip" title="View the output of this query" href="' + target_link + '">' 
+              + target_link
             + '</a> '
-            + '<a title="Try this request on Hurl.it" target="_blank" href="http://hurl.it/?' + query + '"><i class="fa fa-pencil"></i></a>'
+            + '<a class="has-tooltip" data-toggle="tooltip" title="Edit this request on Hurl.it" target="_blank" href="http://hurl.it/?' + query + '"><i class="fa fa-pencil"></i></a>'
           + '</code>';
 });
 
