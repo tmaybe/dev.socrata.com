@@ -20,9 +20,9 @@ Row identifiers come in two flavors:
 
 ## Retrieving Internal Identifiers
 
-By default, internal metadata is not returned with requests. You can override this option by passing `$$exclude_system_fields=false` along with your request. Here's an example using the [White House Visitor Records](http://explore.data.gov/d/644b-gaut):
+By default, internal metadata is not returned with requests. You can override this option by passing a `$select` parameter that includes `:*` along with your request. For example, if you wanted to get all of the fields, you could use `$select=:*,*`.
 
-<a href="https://explore.data.gov/resource/644b-gaut.json?$$exclude_system_fields=false&amp;$limit=5">https://explore.data.gov/resource/644b-gaut.json?$$exclude_system_fields=false</a>
+<!-- <a href="https://explore.data.gov/resource/644b-gaut.json?$select=:*,*">https://explore.data.gov/resource/644b-gaut.json?$select=:*,*</a> -->
 
 Notable system fields:
 
