@@ -13,7 +13,7 @@ test: all
 
 # Builds sass locally directly to ./public so you con't have to run a full jekyll build when hacking sass
 sasslocal:
-	sass --watch sass/local.sass:css/local.css common/sass/common.sass:common/css/common.css
+	sass --watch sass/local.sass:public/css/local.css common/sass/common.sass:public/common/css/common.css
 
 # Copies JS resources locally so you don't have to do a full jekyll build when hacking JS
 jslocal:
