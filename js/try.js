@@ -7,7 +7,7 @@ $('a.hurl-it').attr("href", function(idx, href) {
   var url = $.url(target_link);
   var params = {};
   $.each(url.param(), function(k, v) {
-    params[k] = [v]; 
+    params[k] = [v];
   });
   var query = $.param({
     "method" : "GET",
@@ -26,9 +26,16 @@ $('a.exec').click(function(event) {
 
   var the_href = $(this).attr('href');
   var the_link = $(this).closest('.tryit-link');
+
+  // Progress indication
+  var the_gear = $(this).siblings('i.fa-cog');
+  the_gear.addClass("fa-spin");
+
   $.ajax({
     url: $(this).attr('href')
   }).done(function(data){
+    the_gear.removeClass("fa-spin");
+
     // Create a results block after the link with the output
     tryit_block = '<div class="results"><a class="remove" href="#"><i class="fa fa-times"></i> close</a><code class="request"><span class="verb">GET</span> ' + the_href + '</code><pre class="response prettyprint">' + JSON.stringify(data, undefined, 2) + '</pre></div>';
 
@@ -52,6 +59,7 @@ $('a.exec').click(function(event) {
     // Pretty print things to look nice
     // $(".prettyprint").each(function(i, e) { hljs.highlightBlock(e); });
   }).fail(function(data){
+    the_gear.attr("class", "fa fa-warning");
     alert("Something went wrong with your query... Please try again later.");
   });
 });
