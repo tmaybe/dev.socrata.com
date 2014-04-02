@@ -1,8 +1,8 @@
 // LiveDocs
 
 // Make it a tryit link and add the gear
-$('a[href*="/resource"]').replaceWith(function() {
-  var target_link = decodeURI(this.href).replace(/&amp;/, "&");
+$('a.hurl-it').attr("href", function(idx, href) {
+  var target_link = decodeURI($(this).attr("data-hurl-full-url"));
   // Parse our URL and create the query string for hurl.it
   var url = $.url(target_link);
   var params = {};
@@ -18,16 +18,10 @@ $('a[href*="/resource"]').replaceWith(function() {
     "args" : JSON.stringify(params)
   });
 
-  return '<code class="tryit-link">'
-            + '<i class="fa fa-cog"></i> '
-            + '<a class="exec has-tooltip" data-toggle="tooltip" title="View the output of this query" href="' + target_link + '">' 
-              + target_link
-            + '</a> '
-            + '<a class="has-tooltip" data-toggle="tooltip" title="Edit this request on Hurl.it" target="_blank" href="http://hurl.it/?' + query + '"><i class="fa fa-pencil"></i></a>'
-          + '</code>';
+  return 'http://hurl.it/?' + query;
 });
 
-$('a[href*="/resource"]').click(function(event) {
+$('a.exec').click(function(event) {
   event.preventDefault();
 
   var the_href = $(this).attr('href');
@@ -37,7 +31,6 @@ $('a[href*="/resource"]').click(function(event) {
   }).done(function(data){
     // Create a results block after the link with the output
     tryit_block = '<div class="results"><a class="remove" href="#"><i class="fa fa-times"></i> close</a><code class="request"><span class="verb">GET</span> ' + the_href + '</code><pre class="response prettyprint">' + JSON.stringify(data, undefined, 2) + '</pre></div>';
-
 
     // Hide any existing code blocks on the page
     $('.results').remove();
