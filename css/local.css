@@ -1,7 +1,6 @@
 a.exec {
   font-size: 1em;
-  color: #1b1b1b;
-  padding: 0.2em; }
+  color: #1b1b1b; }
 
 iframe.live-docs {
   border: none;
@@ -34,7 +33,7 @@ iframe.live-docs {
     padding-top: 1.5em;
     padding-bottom: 2em px; }
     .homepage .content .build-something .tryit-link {
-      font-size: 1.5em; }
+      font-size: 1.2em; }
     .homepage .content .build-something .trailhead {
       padding-top: 1em; }
   .homepage .content footer {
