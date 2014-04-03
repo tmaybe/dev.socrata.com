@@ -8,7 +8,7 @@ comment: This just needs a few content tweaks and it's probably good to go.
 
 <div class="fat-header hidden-sm hidden-xs">
   <img src="/img/soda.png" alt="Socrata APIs" class="pull-left" />
-  <h1 class="hello-dolly"><noscript>Hello Data!</noscript></h1>
+  <h1 class="hello-dolly"><noscript>puts "Hello Data!";</noscript></h1>
 </div>
 
 <div class="build-something">
@@ -43,8 +43,12 @@ comment: This just needs a few content tweaks and it's probably good to go.
 <!-- ERMAHGERD!!! The dev site uses the Socrata API -->
 <script class="text/javacript">
 $.ajax("https://soda.demo.socrata.com/resource/etih-7ix2.json").done(function(data) {
-  var pick = data[Math.floor(Math.random() * data.length)];
-  $(".hello-dolly").html(pick["tagline"]);
-  $(".hello-dolly").attr("style", "font-size: " + pick["size"] + "em");
+  function update() {
+    var pick = data[Math.floor(Math.random() * data.length)];
+    $(".hello-dolly").html(pick["tagline"]);
+    $(".hello-dolly").attr("style", "font-size: " + pick["size"] + "em");
+  }
+  update();
+  window.setInterval(update, 8000);
 });
 </script>
