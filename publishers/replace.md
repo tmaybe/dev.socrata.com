@@ -95,7 +95,7 @@ You can use properly-formatted "Comma Separated Value" ([CSV](http://en.wikipedi
   - Fields can be optionally wrapped in double quotes (`"`)
   - You can embed a newline within a field by wrapping it in quotes. Newlines will be ignored until the field is terminated by another double quote
   - If a double quote occurs within a quoted field, the quote can be escaped by doubling it (i.e., `Marc "Dr. Complainingstone" Millstone` would become `"Marc ""Dr. Complainingstone"" Millstone"` )
-- The first line in your file must be a "header row" that contains the API field names or human-readable display names for each of the fields in your data file. That header will be used to determine the order of the fields in the records below
+- The first line in your file must be a "header row" that contains the API field names for each of the fields in your data file. That header will be used to determine the order of the fields in the records below
 
 Here's an example:
 
