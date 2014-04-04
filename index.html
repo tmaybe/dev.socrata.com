@@ -45,8 +45,7 @@ comment: This just needs a few content tweaks and it's probably good to go.
 $.ajax("https://soda.demo.socrata.com/resource/etih-7ix2.json").done(function(data) {
   function update() {
     var pick = data[Math.floor(Math.random() * data.length)];
-    $(".hello-dolly").html(pick["tagline"]);
-    $(".hello-dolly").attr("style", "font-size: " + pick["size"] + "em");
+    $(".hello-dolly").html(pick["tagline"]).attr("style", "font-size: " + pick["size"] + "em");
   }
   update();
   window.setInterval(update, 8000);
