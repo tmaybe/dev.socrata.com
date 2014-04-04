@@ -6,6 +6,7 @@ all:
 	jekyll build
 	cp public/search.json search.json
 	-terminal-notifier -title "Jekyll" -message "Build complete."
+	-tput bel
 
 test: all
 	linklint -doc ${link_dir} -root public /@
