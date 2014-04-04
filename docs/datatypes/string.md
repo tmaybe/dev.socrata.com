@@ -16,15 +16,15 @@ When using SoQL, string literals are created using the single quote (`'`). For e
 
 The following table shows what operations can be used on strings:
 
-| Operation    | Description                                              |
-| ---          | ---                                                      |
-| <            | True for strings that are before this string             |
-| <=           | True for strings that are before or equal to this string |
-| =            | True for strings that are equal to this string           |
-| !=           | True for strings that are not equal to this string       |
-| >            | True for strings that are after this string              |
-| >=           | True for strings that are after or equal to this string  |
-| &#124;&#124; | Concatenate two strings together                         |
-| upper(x)     | Returns the uppercase version of this string             |
-| lower(x)     | Returns the lowercase version of this string             |
+| Operation                 | Description                                              |
+| ---                       | ---                                                      |
+| `<`                       | True for strings that are before this string             |
+| `<=`                      | True for strings that are before or equal to this string |
+| `=`                       | True for strings that are equal to this string           |
+| `!=`                      | True for strings that are not equal to this string       |
+| `>`                       | True for strings that are after this string              |
+| `>=`                      | True for strings that are after or equal to this string  |
+| <code>&#124;&#124;</code> | Concatenate two strings together                         |
+| `upper(x)`                | Returns the uppercase version of this string             |
+| `lower(x)`                | Returns the lowercase version of this string             |
 
