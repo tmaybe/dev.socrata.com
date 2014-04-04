@@ -4,6 +4,9 @@ sidebar: documentation
 title: Queries using SODA2
 status: draft
 comment: This one is very draft...
+redirect_from:
+  - /docs/queries
+  - /deprecated/querying-datasets
 ---
 
 SODA2 provides a new rich API for querying against data on the Socrata Platform, borrowing concepts from SQL to

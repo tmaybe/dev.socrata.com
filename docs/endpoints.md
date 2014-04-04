@@ -4,6 +4,8 @@ sidebar: documentation
 title: API Endpoints
 status: draft
 audience: docs
+redirect_from:
+  - /docs/endpoints
 ---
 
 ## What is an API Endpoint?

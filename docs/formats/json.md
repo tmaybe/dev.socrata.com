@@ -4,6 +4,8 @@ sidebar: documentation
 title: JSON Format
 audience: documentation
 status: beta
+redirect_from:
+  - /docs/formats/json
 ---
 
 JSON ([JavaScript Object Notation](http://en.wikipedia.org/wiki/Json)) is our most commonly used format. JSON is a text-based open standard derived from the format used to represent simple data structures in JavaScript. Although it is rooted in JavaScript, it is language-agnostic and parsers exist for all popular (and many unpopular) languages.

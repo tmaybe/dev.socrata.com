@@ -3,6 +3,11 @@ layout: with-sidebar
 sidebar: publisher
 title: Getting Started with Data Publishing
 audience: publisher
+redirect_from:
+  - /publishers/workflow/
+  - /publishers/importing/
+  - /publishers/import-data-types/
+  - /publishers/import-translations/
 ---
 
 ## About the Publisher APIs

@@ -2,6 +2,8 @@
 layout: with-sidebar
 sidebar: documentation
 title: Authentication
+redirect_from:
+  - /authentication
 ---
 
 Authentication is only necessary when accessing datasets that have been marked as _private_ or when making write requests (`PUT`, `POST`, and `DELETE`). For reading datasets that have not been marked as private, simply use an [application token](/docs/app-tokens.html).

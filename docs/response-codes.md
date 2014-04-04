@@ -1,4 +1,11 @@
-## Errors
+---
+layout: with-sidebar
+sidebar: documentation
+title: Response Codes
+status: draft
+redirect_from:
+  - /long-running-requests
+---
 
 SODA 2.0 follows the HTTP and REST standards for returning error codes, and in addition has a standard structure to return
 additional error responses. The breakdown of error codes is:
