@@ -3,33 +3,31 @@ layout: with-sidebar
 sidebar: documentation
 title: Numeric Datatypes
 audience: documentation
-status: beta
 ---
 
-<a name="number">&nbsp;</a>
-##Number
+## Numbers
 
 Numbers are arbitrary precision, arbitrary scale numbers.  They can represent any number exactly, except for numbers whose digits repeat infinitely.
 
-Since Numbers can be either larger or more precise than what doubles allow, many formats need to serialize them as strings.
+Since Numbers can be either larger or more precise than what doubles allow, many formats, such as [JSON](/docs/formats/json.html), serialize them as strings.
 
 The following table describes the operators that can be used with Numbers.
 
-|Operation|Description|
-|---|---|
-|`<`|True for numbers less than this one.|
-|`<=`|True for numbers that are less than or equal to this one.|
-|`=`|True for numbers that are equal to this one.|
-|`!=`|True for numbers that are not equal to this one.|
-|`>`|True for numbers that are greater than this one.|
-|`>=`|True for numbers that are greater than or equal to this one.|
-|`*`|Multiplies two numbers|
-|`/`|Divides one number by another|
-|`+`|Adds two numbers|
-|`-`|subtracts one number from another|
+| Operation | Description                                                  |
+| ---       | ---                                                          |
+| `<`       | True for numbers less than this one.                         |
+| `<=`      | True for numbers that are less than or equal to this one.    |
+| `=`       | True for numbers that are equal to this one.                 |
+| `!=`      | True for numbers that are not equal to this one.             |
+| `>`       | True for numbers that are greater than this one.             |
+| `>=`      | True for numbers that are greater than or equal to this one. |
+| `*`       | Multiplies two numbers                                       |
+| `/`       | Divides one number by another                                |
+| `+`       | Adds two numbers                                             |
+| `-`       | subtracts one number from another                            |
 
-<a name="double">&nbsp;</a>
-##Double
+{% comment %}
+## Double
 A double is an IEEE floating point double. They are easy to use and are represented as numbers in
 all the response formats. However, they have less precision than the regular Number data type.
 
@@ -52,3 +50,4 @@ The following table describes the operators that can be used with doubles.
 |`/`|Divides one number by another|
 |`+`|Adds two numbers|
 |`-`|subtracts one number from another|
+{% endcomment %}
