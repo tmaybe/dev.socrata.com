@@ -10,7 +10,7 @@ The site is a fairly standard [Jekyll](http://jekyllrb.com/) site, but there are
 
 1. Make sure you have the `gh-pages` branch checked out: `git checkout -b gh-pages origin/gh-pages`
 2. Pull in the site templates and CSS/SASS, which come from submodules: `git submodule update --init`
-3. Make sure you have Ruby version 2.0.0 installed.
+3. Make sure you have Ruby version 2.0.0-p353 installed. (`rbenv install 2.0.0-p353` if RBEnv is your thing).
 4. Make sure you have the `jekyll` RubyGem installed
   * A `.rvmrc` [RVM](http://rvm.io/) configuration file is included if that's your thing
   * Install the `bundler gem` and then install the gems from the Gemfile: `gem install bundler && bundle`
