@@ -22,9 +22,9 @@ application token, you’ll be subjected to a much lower throttling limit for
 all requests originating from your IP address.
 
 There are two ways to include the application token in the request:
-- Use the `X-App-Token` HTTP header. 
-- Use the `$$app_token` parameter in your request (`app_token` if you're using old SODA 1.0 APIs)
- 
+- Use the `X-App-Token` HTTP header.
+- Use the `$$app_token` parameter in your request (`app_token` if you're using old SODA 1.0 APIs).
+
 Using the header is the preferred method.
 
 <div class="alert alert-info"><em>Note:</em> Application tokens are not necessarily used for authentication, but you should still preserve the security of your application token by always using <code>HTTPS</code> requests. If your application token is duplicated by another developer, their requests will count against your quota.</div>
