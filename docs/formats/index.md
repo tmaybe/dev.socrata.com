@@ -1,7 +1,7 @@
 ---
 layout: with-sidebar
-sidebar: documentation 
-title: Response Formats
+sidebar: documentation
+title: Selecting Output Formats
 audience: documentation
 ---
 
@@ -19,7 +19,7 @@ The simplest way to specify the response format is by appending an response type
 
 Simply add the extension to the endpoint. For example, if your resource endpoint is `/resource/earthquakes`:
 
-* `/resource/earthquakes.json` returns [JSON](/docs/formats/json.html) 
+* `/resource/earthquakes.json` returns [JSON](/docs/formats/json.html)
 * `/resource/earthquakes.csv` returns [CSV](/docs/formats/csv.html)
 * `/resource/earthquakes.rdf` returns [RDF-XML](/docs/formats/rdf-xml.html)
 
@@ -29,7 +29,7 @@ Simply add the extension to the endpoint. For example, if your resource endpoint
 
 Simply send an `Accept`header along with the desired [mimetype](http://en.wikipedia.org/wiki/Internet_media_type) for the desired response type. Use the following headers:
 
-* `Accept: application/json` for [JSON](/docs/formats/json.html) 
+* `Accept: application/json` for [JSON](/docs/formats/json.html)
 * `Accept: text/csv` for [CSV](/docs/formats/csv.html)
 * `Accept: application/rdf+xml` for [RDF-XML](/docs/formats/rdf-xml.html)
 
