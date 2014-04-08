@@ -22,7 +22,7 @@ Bulk updates are also possible via our `upsert` update method.
 <ul class="well">
   <li>Learn how to <a href="/docs/authentication.html">authenticate via HTTP Basic or OAuth 2.0</a></li>
   <li>Learn about <a href="/docs/app-tokens.html">application tokens</a></li>
-  <li>Learn how to perform an <a href="/publishers/upsert.html">`upsert` operation</a></li>
+  <li>Learn how to perform an <a href="/publishers/upsert.html">upsert operation</a></li>
 </ul>
 
 ## Creating an Individual Row
@@ -129,7 +129,7 @@ In the next step, we'll update that row.
 
 ## Updating An Individual Row
 
-To update our individual row, we're going to do a "mini-`upsert`" like we did to create a row, except this time we're going to include an ID. For this example, we're using the internal Socrata identifier for the row. If you have a row identifier custom-configured from your dataset, you can use that field instead of including the "`:id`" field.  
+To update our individual row, we're going to do a "mini-`upsert`" like we did to create a row, except this time we're going to include an ID. For this example, we're using the internal Socrata identifier for the row. If you have a row identifier custom-configured from your dataset, you can use that field instead of including the "`:id`" field.
 
 Our payload will look similar, but this time we're going to include the `:id` and change his status to "ACTIVE":
 
