@@ -66,7 +66,7 @@ var svg = d3.select("#chart").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 {% endhighlight %}
 
-Then we'll pull in our data using the SODA CSV output type and D3's [`d3.csv`](https://github.com/mbostock/d3/wiki/CSV) function. We don't need the `total` column that the dataset uses, so we'll use the [`$select`](/docs/params/$select.html) parameter to filter down to the four columns we really care about. We'll also use the `$$app_token` parameter to pass our [application token](/docs/app-tokens.html). In this case we've "redacted" it - you should register and supply your own:
+Then we'll pull in our data using the SODA CSV output type and D3's [`d3.csv`](https://github.com/mbostock/d3/wiki/CSV) function. We don't need the `total` column that the dataset uses, so we'll use the [`$select`](/docs/queries.html#the_select_parameter) parameter to filter down to the four columns we really care about. We'll also use the `$$app_token` parameter to pass our [application token](/docs/app-tokens.html). In this case we've "redacted" it - you should register and supply your own:
 
 {% highlight javascript %}
 d3.csv("https://data.cityofchicago.org/resource/w8km-9pzd.csv?"
@@ -198,5 +198,5 @@ legend.append("text")
 });
 {% endhighlight %}
 
-That's it! Got a great example of your own? Please [contribute it](/contribute/) to our sample gallery.
+That's it! Got a great example of your own? Please [contribute]({{ site.github_repo }}) to our community-maintained documentation.
 
