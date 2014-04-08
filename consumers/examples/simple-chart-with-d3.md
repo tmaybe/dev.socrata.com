@@ -4,6 +4,8 @@ title: Simple column chart with D3
 sidebar: consumer
 type: example
 audience: consumer
+custom_js:
+  - /js/simple-chart-with-d3.js
 ---
 
 [Michael Bostock](http://bost.ocks.org/mike/)'s [D3](http://d3js.org/) is a brilliantly powerful visualization framework. It can be used to generate [beautiful and diverse visualizations](https://github.com/mbostock/d3/wiki/Gallery), but most of them would be impossible without data backing them up. So how can you get data from [Socrata](http://www.socrata.com) data sites quickly and easily into D3?
@@ -18,7 +20,7 @@ This example pulls data live from [this Chicago Transit Authority ridership data
 
 To start, we'll need to initialize some of our margins and scales for D3. This is mostly just boilerplate:
 
-{% highlight js %}    
+{% highlight javascript %}    
 // Set our margins
 var margin = {
     top: 20,
@@ -55,7 +57,7 @@ var yAxis = d3.svg.axis()
 
 Next we'll create the SVG container that we'll add our chart components to:
 
-{% highlight js %}    
+{% highlight javascript %}    
 // Add our chart to the #chart div
 var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -66,7 +68,7 @@ var svg = d3.select("#chart").append("svg")
 
 Then we'll pull in our data using the SODA CSV output type and D3's [`d3.csv`](https://github.com/mbostock/d3/wiki/CSV) function. We don't need the `total` column that the dataset uses, so we'll use the [`$select`](/docs/params/$select.html) parameter to filter down to the four columns we really care about. We'll also use the `$$app_token` parameter to pass our [application token](/docs/app-tokens.html). In this case we've "redacted" it - you should register and supply your own:
 
-{% highlight js %}
+{% highlight javascript %}
 d3.csv("https://data.cityofchicago.org/resource/w8km-9pzd.csv?"
   + "$select=year,bus,paratransit,rail"
   + "&$$app_token=[REDACTED]", function (error, data) {
@@ -78,7 +80,7 @@ d3.csv("https://data.cityofchicago.org/resource/w8km-9pzd.csv?"
 
 First we'll make sure that D3 has properly interpreted our numbers as actual numbers. CSV doesn't convey typing very well.
 
-{% highlight js %}
+{% highlight javascript %}
 // Make sure our numbers are really numbers
 data.forEach(function (d) {
     d.year = +d.year;
@@ -90,7 +92,7 @@ data.forEach(function (d) {
 
 Next we'll associate our data with our color bands:
 
-{% highlight js %}
+{% highlight javascript %}
 // Map our columns to our colors
 color.domain(d3.keys(data[0]).filter(function (key) {
     return key !== "year";
@@ -111,7 +113,7 @@ data.forEach(function (d) {
 
 We want our columns sorted by year, so let's make sure that's the case:
 
-{% highlight js %}
+{% highlight javascript %}
 // Sort by year
 data.sort(function (a, b) {
     return a.year - b.year;
@@ -120,7 +122,7 @@ data.sort(function (a, b) {
 
 Set up our axes:
 
-{% highlight js %}
+{% highlight javascript %}
 // Our X domain is our set of years
 x.domain(data.map(function (d) {
     return d.year;
@@ -143,7 +145,7 @@ svg.append("g")
 
 Now we actually generate rectangles for all of our data values:
 
-{% highlight js %}
+{% highlight javascript %}
 var year = svg.selectAll(".year")
     .data(data)
     .enter().append("g")
@@ -171,7 +173,7 @@ year.selectAll("rect")
 
 Finally, we add a legend:
 
-{% highlight js %}
+{% highlight javascript %}
 var legend = svg.selectAll(".legend")
     .data(color.domain().slice().reverse())
     .enter().append("g")
@@ -198,146 +200,3 @@ legend.append("text")
 
 That's it! Got a great example of your own? Please [contribute it](/contribute/) to our sample gallery.
 
-<script>
-  // Set our margins
-  var margin = {
-      top: 20,
-      right: 20,
-      bottom: 30,
-      left: 60
-  },
-  width = 960 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
-
-  // Our X scale
-  var x = d3.scale.ordinal()
-      .rangeRoundBands([0, width], .1);
-
-  // Our Y scale
-  var y = d3.scale.linear()
-      .rangeRound([height, 0]);
-
-  // Our color bands
-  var color = d3.scale.ordinal()
-      .range(["#308fef", "#5fa9f3", "#1176db"]);
-
-  // Use our X scale to set a bottom axis
-  var xAxis = d3.svg.axis()
-      .scale(x)
-      .orient("bottom");
-
-  // Same for our left axis
-  var yAxis = d3.svg.axis()
-      .scale(y)
-      .orient("left")
-      .tickFormat(d3.format(".2s"));
-
-  // Add our chart to the #chart div
-  var svg = d3.select("#chart").append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  // Fetch data via SODA from the Chicago data site. We don't want to graph the "total", so we'll $select that out
-  d3.csv("https://data.cityofchicago.org/resource/w8km-9pzd.csv?$select=year,bus,paratransit,rail", function (error, data) {
-      // Make sure our numbers are really numbers
-      data.forEach(function (d) {
-          d.year = +d.year;
-          d.bus = +d.bus;
-          d.paratransit = +d.paratransit;
-          d.rail = +d.rail;
-      });
-
-      // Map our columns to our colors
-      color.domain(d3.keys(data[0]).filter(function (key) {
-          return key !== "year";
-      }));
-
-      data.forEach(function (d) {
-          var y0 = 0;
-          d.types = color.domain().map(function (name) {
-              return {
-                  name: name,
-                  y0: y0,
-                  y1: y0 += +d[name]
-              };
-          });
-          d.total = d.types[d.types.length - 1].y1;
-      });
-
-      // Sort by year
-      data.sort(function (a, b) {
-          return a.year - b.year;
-      });
-
-      // Our X domain is our set of years
-      x.domain(data.map(function (d) {
-          return d.year;
-      }));
-
-      // Our Y domain is from zero to our highest total
-      y.domain([0, d3.max(data, function (d) {
-          return d.total;
-      })]);
-
-      svg.append("g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + height + ")")
-          .call(xAxis);
-
-      svg.append("g")
-          .attr("class", "y axis")
-          .call(yAxis);
-
-      var year = svg.selectAll(".year")
-          .data(data)
-          .enter().append("g")
-          .attr("class", "g")
-          .attr("transform", function (d) {
-          return "translate(" + x(d.year) + ",0)";
-      });
-
-      year.selectAll("rect")
-          .data(function (d) {
-          return d.types;
-      })
-          .enter().append("rect")
-          .attr("width", x.rangeBand())
-          .attr("y", function (d) {
-          return y(d.y1);
-      })
-          .attr("height", function (d) {
-          return y(d.y0) - y(d.y1);
-      })
-          .style("fill", function (d) {
-          return color(d.name);
-      });
-
-      svg.selectAll("path.domain")
-        .style("display", "none");
-
-      var legend = svg.selectAll(".legend")
-          .data(color.domain().slice().reverse())
-          .enter().append("g")
-          .attr("class", "legend")
-          .attr("transform", function (d, i) {
-          return "translate(0," + i * 20 + ")";
-      });
-
-      legend.append("rect")
-          .attr("x", width - 18)
-          .attr("width", 18)
-          .attr("height", 18)
-          .style("fill", color);
-
-      legend.append("text")
-          .attr("x", width - 24)
-          .attr("y", 9)
-          .attr("dy", ".35em")
-          .style("text-anchor", "end")
-          .text(function (d) {
-          return d;
-      });
-  });
-</script>
