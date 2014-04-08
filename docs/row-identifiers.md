@@ -22,7 +22,7 @@ Row identifiers come in two flavors:
 
 By default, internal metadata is not returned with requests. You can override this option by passing a `$select` parameter that includes `:*` along with your request. For example, if you wanted to get all of the fields, you could use `$select=:*,*`.
 
-<!-- <a href="https://explore.data.gov/resource/644b-gaut.json?$select=:*,*">https://explore.data.gov/resource/644b-gaut.json?$select=:*,*</a> -->
+{% comment %} {% include tryit.html domain='explore.data.gov' path='/resource/644b-gaut.json' args='$select=:&#42;,&#42;' %} {% endcomment %}
 
 Notable system fields:
 
@@ -34,10 +34,10 @@ Notable system fields:
 
 To use a row identifier to look up a row, simply append it to the resource endpoint for that dataset. For example, to look up row `1` from the Visitor Records dataset using its row identifier:
 
-<a href="https://explore.data.gov/resource/644b-gaut/1.json">https://explore.data.gov/resource/644b-gaut/1.json</a>
+{% include tryit.html domain='explore.data.gov' path='/resource/644b-gaut/1.json' %}
 
 In contrast, the [USGS Earthquakes](https://soda.demo.socrata.com/dataset/USGS-Earthquake-Reports/4tka-6guv) dataset is configured to use a publisher-specified identifier. To look up the earthquake with the ID `00388610`:
 
-<a href="https://soda.demo.socrata.com/resource/4tka-6guv/00388610.json">https://soda.demo.socrata.com/resource/4tka-6guv/00388610.json</a>
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv/00388610.json' %}
 
 {% include try.html %}
