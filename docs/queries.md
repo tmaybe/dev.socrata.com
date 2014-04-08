@@ -21,7 +21,7 @@ as a URL parameter or as a SoQL statement. If a parameter is not specified, then
 | [`$order`](#the_order_parameter)   | Specifies the order of results                                                                      | Unspecified order, but it will be consistent across paging |
 | [`$group`](#the_group_parameter)   | Column to group results on, similar to [SQL Grouping](http://www.w3schools.com/sql/sql_groupby.asp) | No grouping                                                |
 | [`$limit`](#the_limit_parameter)   | Maximum number of results to return                                                                 | 1000 (and a maximum of 1000)                               |
-| [`$offset`](#the_offset_patameter) | Offset count into the results to start at, used for paging                                          | 0                                                          |
+| [`$offset`](#the_offset_parameter) | Offset count into the results to start at, used for paging                                          | 0                                                          |
 | [`$q`](#search_with_q)             | Performs a full text search for a value.                                                            | No search                                                  |
 
 Note that for equality comparisons, the `$where` clause can be replaced with using the column name as the query parameter. See 
@@ -120,6 +120,9 @@ The `$limit` parameter controls the total number of rows returned. It can be use
 For example, if you wanted to only return the top ten strongest earthquakes, you could use `$limit` in conjunction with `$order`:
 
 {% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$order=magnitude DESC&amp;$limit=10' %}
+
+<div class="alert alert-info"><em>Note:</em> The maximum you can request with `$limit` is 1000 records. If you request greater than 1000, you'll get a {% include status-code.html code='400' %} 
+response.</div>
 
 ### The $offset Parameter
 

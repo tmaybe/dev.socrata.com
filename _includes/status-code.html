@@ -1,0 +1,61 @@
+{% capture dogs_url %}http://httpstatusdogs.com/{{ include.code }}{% endcapture %}
+{% case include.code %}
+{% when '100' %}<a href="{{ dogs_url }}" target="_blank"><code>100 Continue</code></a>
+{% when '101' %}<a href="{{ dogs_url }}" target="_blank"><code>101 Switching Protocols</code></a>
+{% when '102' %}<a href="{{ dogs_url }}" target="_blank"><code>102 Processing</code></a>
+{% when '200' %}<a href="{{ dogs_url }}" target="_blank"><code>200 OK</code></a>
+{% when '201' %}<a href="{{ dogs_url }}" target="_blank"><code>201 Created</code></a>
+{% when '202' %}<a href="{{ dogs_url }}" target="_blank"><code>202 Accepted</code></a>
+{% when '203' %}<a href="{{ dogs_url }}" target="_blank"><code>203 Non-Authoritative Information</code></a>
+{% when '204' %}<a href="{{ dogs_url }}" target="_blank"><code>204 No Content</code></a>
+{% when '205' %}<a href="{{ dogs_url }}" target="_blank"><code>205 Reset Content</code></a>
+{% when '206' %}<a href="{{ dogs_url }}" target="_blank"><code>206 Partial Content</code></a>
+{% when '207' %}<a href="{{ dogs_url }}" target="_blank"><code>207 Multi-Status</code></a>
+{% when '208' %}<a href="{{ dogs_url }}" target="_blank"><code>208 Already Reported</code></a>
+{% when '226' %}<a href="{{ dogs_url }}" target="_blank"><code>226 IM Used</code></a>
+{% when '300' %}<a href="{{ dogs_url }}" target="_blank"><code>300 Multiple Choices</code></a>
+{% when '301' %}<a href="{{ dogs_url }}" target="_blank"><code>301 Moved Permanently</code></a>
+{% when '302' %}<a href="{{ dogs_url }}" target="_blank"><code>302 Found</code></a>
+{% when '303' %}<a href="{{ dogs_url }}" target="_blank"><code>303 See Other</code></a>
+{% when '304' %}<a href="{{ dogs_url }}" target="_blank"><code>304 Not Modified</code></a>
+{% when '305' %}<a href="{{ dogs_url }}" target="_blank"><code>305 Use Proxy</code></a>
+{% when '306' %}<a href="{{ dogs_url }}" target="_blank"><code>306 (Unused)</code></a>
+{% when '307' %}<a href="{{ dogs_url }}" target="_blank"><code>307 Temporary Redirect</code></a>
+{% when '308' %}<a href="{{ dogs_url }}" target="_blank"><code>308 Permanent Redirect</code></a>
+{% when '400' %}<a href="{{ dogs_url }}" target="_blank"><code>400 Bad Request</code></a>
+{% when '401' %}<a href="{{ dogs_url }}" target="_blank"><code>401 Unauthorized</code></a>
+{% when '402' %}<a href="{{ dogs_url }}" target="_blank"><code>402 Payment Required</code></a>
+{% when '403' %}<a href="{{ dogs_url }}" target="_blank"><code>403 Forbidden</code></a>
+{% when '404' %}<a href="{{ dogs_url }}" target="_blank"><code>404 Not Found</code></a>
+{% when '405' %}<a href="{{ dogs_url }}" target="_blank"><code>405 Method Not Allowed</code></a>
+{% when '406' %}<a href="{{ dogs_url }}" target="_blank"><code>406 Not Acceptable</code></a>
+{% when '407' %}<a href="{{ dogs_url }}" target="_blank"><code>407 Proxy Authentication Required</code></a>
+{% when '408' %}<a href="{{ dogs_url }}" target="_blank"><code>408 Request Timeout</code></a>
+{% when '409' %}<a href="{{ dogs_url }}" target="_blank"><code>409 Conflict</code></a>
+{% when '410' %}<a href="{{ dogs_url }}" target="_blank"><code>410 Gone</code></a>
+{% when '411' %}<a href="{{ dogs_url }}" target="_blank"><code>411 Length Required</code></a>
+{% when '412' %}<a href="{{ dogs_url }}" target="_blank"><code>412 Precondition Failed</code></a>
+{% when '413' %}<a href="{{ dogs_url }}" target="_blank"><code>413 Payload Too Large</code></a>
+{% when '414' %}<a href="{{ dogs_url }}" target="_blank"><code>414 URI Too Long</code></a>
+{% when '415' %}<a href="{{ dogs_url }}" target="_blank"><code>415 Unsupported Media Type</code></a>
+{% when '416' %}<a href="{{ dogs_url }}" target="_blank"><code>416 Requested Range Not Satisfiable</code></a>
+{% when '417' %}<a href="{{ dogs_url }}" target="_blank"><code>417 Expectation Failed</code></a>
+{% when '422' %}<a href="{{ dogs_url }}" target="_blank"><code>422 Unprocessable Entity</code></a>
+{% when '423' %}<a href="{{ dogs_url }}" target="_blank"><code>423 Locked</code></a>
+{% when '424' %}<a href="{{ dogs_url }}" target="_blank"><code>424 Failed Dependency</code></a>
+{% when '426' %}<a href="{{ dogs_url }}" target="_blank"><code>426 Upgrade Required</code></a>
+{% when '428' %}<a href="{{ dogs_url }}" target="_blank"><code>428 Precondition Required</code></a>
+{% when '429' %}<a href="{{ dogs_url }}" target="_blank"><code>429 Too Many Requests</code></a>
+{% when '431' %}<a href="{{ dogs_url }}" target="_blank"><code>431 Request Header Fields Too Large</code></a>
+{% when '500' %}<a href="{{ dogs_url }}" target="_blank"><code>500 Internal Server Error</code></a>
+{% when '501' %}<a href="{{ dogs_url }}" target="_blank"><code>501 Not Implemented</code></a>
+{% when '502' %}<a href="{{ dogs_url }}" target="_blank"><code>502 Bad Gateway</code></a>
+{% when '503' %}<a href="{{ dogs_url }}" target="_blank"><code>503 Service Unavailable</code></a>
+{% when '504' %}<a href="{{ dogs_url }}" target="_blank"><code>504 Gateway Timeout</code></a>
+{% when '505' %}<a href="{{ dogs_url }}" target="_blank"><code>505 HTTP Version Not Supported</code></a>
+{% when '506' %}<a href="{{ dogs_url }}" target="_blank"><code>506 Variant Also Negotiates (Experimental)</code></a>
+{% when '507' %}<a href="{{ dogs_url }}" target="_blank"><code>507 Insufficient Storage</code></a>
+{% when '508' %}<a href="{{ dogs_url }}" target="_blank"><code>508 Loop Detected</code></a>
+{% when '510' %}<a href="{{ dogs_url }}" target="_blank"><code>510 Not Extended</code></a>
+{% when '511' %}<a href="{{ dogs_url }}" target="_blank"><code>511 Network Authentication Required</code></a>
+{% endcase %}
