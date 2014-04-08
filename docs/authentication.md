@@ -38,7 +38,7 @@ X-App-Token: [REDACTED]
 
 ### Workflow
 
-We support a subset of [OAuth 2.0](http://oauth.net/2/mechanism) -- the server-based flow with a callback URL -- which we believe is more secure than the other flows in the specification. This OAuth flow is used by several other popular API services on the web. We have made the authentication flow similar to [Google AuthSub](http://code.google.com/apis/gdata/docs/auth/authsub.html).
+We support a subset of [OAuth 2.0](http://en.wikipedia.org/wiki/Oauth) -- the server-based flow with a callback URL -- which we believe is more secure than the other flows in the specification. This OAuth flow is used by several other popular API services on the web. We have made the authentication flow similar to [Google AuthSub](http://code.google.com/apis/gdata/docs/auth/authsub.html).
 
 To authenticate with OAuth 2.0, you will first need to [register your application](http://opendata.socrata.com/profile/app_tokens), which will create an app token and a secret token. When registering your application, you must preregister your server by filling out the `Callback Prefix` field), so that we can be sure that access through your application is secure even if both your tokens are stolen. The `Callback Prefix` is the beginning of the URL that you will use as your redirect URI. Generally, you'll want to provide as much of your callback URL as you can. For example, if your authentication callback is `http://my-website.com/socrata-app/auth/callback`, you might want to specify `http://my-website.com/socrata-app` as your callback URL.
 
