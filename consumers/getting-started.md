@@ -14,7 +14,7 @@ So you want to win that hackathon or build the next hot open data app? Follow th
 
 ## Locating Open Data and APIs
 
-[Socrata](https://www.socrata.com) hosts over one hundred different data catalogs for governments, non-profits, and NGOs around the world, so finding an open data catalog to work with generally isn't hard:
+[Socrata](http://www.socrata.com) hosts over one hundred different data catalogs for governments, non-profits, and NGOs around the world, so finding an open data catalog to work with generally isn't hard:
 
 - Check to see if your local government or state already has an open data site. Check your city or state website or even just Google "open data" and your government's name. You'll probably find something pretty quickly.
 - Peruse our [online listing of Socrata-powered open data sites](https://opendata.socrata.com/dataset/Socrata-Customer-Spotlights/6wk3-4ija). There's probably one near you! (Hint: that listing has an API of it's own. See if you can find it!)
