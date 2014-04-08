@@ -3,6 +3,10 @@ layout: with-sidebar
 sidebar: documentation 
 title: Timestamp Datatypes
 audience: documentation
+redirect_from:
+  - /docs/datatypes/timestamps.html
+  - /docs/datatypes/floating-timestamp.html
+  - /docs/datatypes/fixed-timestamp.html
 ---
 
 ## Fixed Timestamps
