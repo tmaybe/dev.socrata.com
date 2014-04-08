@@ -6,6 +6,9 @@ iframe.live-docs {
   border: none;
   margin-top: 5px; }
 
+.tooltip {
+  font-size: 10px !important; }
+
 .navbar input.search {
   width: 130px; }
 
