@@ -8,9 +8,9 @@ redirect_from:
 
 Authentication is only necessary when accessing datasets that have been marked as _private_ or when making write requests (`PUT`, `POST`, and `DELETE`). For reading datasets that have not been marked as private, simply use an [application token](/docs/app-tokens.html).
 
-There are two methods available for authentication: HTTP Basic and OAuth 2.0. 
-- HTTP Basic authentication may be used in cases where you are authenticating from an update script that runs without interaction with the user and without a web front-end
-- OAuth 2.0 is preferred for cases where you are building a web application that needs to authenticate on behalf of another user
+There are two methods available for authentication: HTTP Basic and OAuth 2.0.
+- HTTP Basic authentication may be used in cases where you are authenticating from an update script that runs without interaction with the user and without a web front-end.
+- OAuth 2.0 is preferred for cases where you are building a web application that needs to authenticate on behalf of another user.
 
 ## Authenticating using HTTP Basic Authentication
 
@@ -38,15 +38,15 @@ X-App-Token: [REDACTED]
 
 ### Workflow
 
-We support a subset of [OAuth 2.0](http://oauth.net/2/mechanism) -- the server-based flow with a callback URL -- which we believe is more secure than the other flows in the specification. This OAuth flow is used by several other popular API services on the web. We have made the authentication flow similar to [Google AuthSub](http://code.google.com/apis/gdata/docs/auth/authsub.html). 
+We support a subset of [OAuth 2.0](http://oauth.net/2/mechanism) -- the server-based flow with a callback URL -- which we believe is more secure than the other flows in the specification. This OAuth flow is used by several other popular API services on the web. We have made the authentication flow similar to [Google AuthSub](http://code.google.com/apis/gdata/docs/auth/authsub.html).
 
-To authenticate with OAuth 2.0, you will first need to [register your application](http://opendata.socrata.com/profile/app_tokens), which will create an app token and a secret token. When registering your application, you must preregister your server by filling out the `Callback Prefix` field), so that we can be sure that access through your application is secure even if both your tokens are stolen. The `Callback Prefix` is the beginning of the URL that you will use as your redirect URI. Generally, you'll want to provide as much of your callback URL as you can. For example, if your authentication callback is `http://my-website.com/socrata-app/auth/callback`, you might want to specify `http://my-website.com/socrata-app` as your callback URL. 
+To authenticate with OAuth 2.0, you will first need to [register your application](http://opendata.socrata.com/profile/app_tokens), which will create an app token and a secret token. When registering your application, you must preregister your server by filling out the `Callback Prefix` field), so that we can be sure that access through your application is secure even if both your tokens are stolen. The `Callback Prefix` is the beginning of the URL that you will use as your redirect URI. Generally, you'll want to provide as much of your callback URL as you can. For example, if your authentication callback is `http://my-website.com/socrata-app/auth/callback`, you might want to specify `http://my-website.com/socrata-app` as your callback URL.
 
 Once you have an application and a secret token, you'll be able to authenticate with the SODA OAuth 2.0 endpoint. You'll first need to redirect the user to the Socrata-powered site you wish to access so that they may log in and approve your application. For example:
 
     https://sandbox.socrata.com/oauth/authorize?client_id=YOUR_AUTH_TOKEN&response_type=code &redirect_uri=YOUR_REDIRECT_URI
 
-Note that the `redirect_uri` here must be an absolute, secure (`https:`) URI which starts with the `Callback Prefix` you specified when you registered your application. If any of these cases fail, the user will be shown an error indicating as much. 
+Note that the `redirect_uri` here must be an absolute, secure (`https:`) URI which starts with the `Callback Prefix` you specified when you registered your application. If any of these cases fail, the user will be shown an error indicating as much.
 
 Should the user authorize your application, they will be redirected back to the your `redirect_uri`. For example, if I provide `https://my-website.com/socrata-app/auth/callback` as my `redirect_uri`, the user will be redirected to this URL:
 
