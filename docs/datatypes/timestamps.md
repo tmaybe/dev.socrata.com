@@ -25,15 +25,11 @@ Floating timestamps are represented as [ISO 8601 formatted date strings](http://
 
 The following functions can be used to compare and manipulate timestamp columns: 
 
-| Operation | Description                                                  |
-| ---       | ---                                                          |
-| `<`       | True for numbers less than this one.                         |
-| `<=`      | True for numbers that are less than or equal to this one.    |
-| `=`       | True for numbers that are equal to this one.                 |
-| `!=`      | True for numbers that are not equal to this one.             |
-| `>`       | True for numbers that are greater than this one.             |
-| `>=`      | True for numbers that are greater than or equal to this one. |
-| `*`       | Multiplies two numbers                                       |
-| `/`       | Divides one number by another                                |
-| `+`       | Adds two numbers                                             |
-| `-`       | subtracts one number from another                            |
+| Operation | Description                                                     |
+| ---       | ---                                                             |
+| `<`       | True for timestamps less than this one.                         |
+| `<=`      | True for timestamps that are less than or equal to this one.    |
+| `=`       | True for timestamps that are equal to this one.                 |
+| `!=`      | True for timestamps that are not equal to this one.             |
+| `>`       | True for timestamps that are greater than this one.             |
+| `>=`      | True for timestamps that are greater than or equal to this one. |
