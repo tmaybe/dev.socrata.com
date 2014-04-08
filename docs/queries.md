@@ -2,195 +2,129 @@
 layout: with-sidebar
 sidebar: documentation
 title: Queries using SODA2
-status: draft
-comment: This one is very draft...
 redirect_from:
   - /docs/queries
   - /deprecated/querying-datasets
 ---
 
-SODA2 provides a new rich API for querying against data on the Socrata Platform, borrowing concepts from SQL to
-provide a generic ability to query data.  Using the querying capability allows web and mobile applications
-to quickly and easily retrieve data.
-
-At the root of the query API is a language called SoQL, and the API provides multiple ways to express SoQL in a query, making it easier for different programming languages and uses.
-
-SoQl can then be used on any of the dataset [endpoints](/docs/endpoints.html).
+The Socrata APIs provide rich query functionality through a query language we call the "Socrata Query Language" or "SoQL". As its name might suggest, it borrows heavily from [Structured Query Language (SQL)](http://en.wikipedia.org/wiki/Sql), used by many relational database systems. Its paradigms should be familiar to most developers who have previously worked with SQL, and are easy to learn for those who are new to it.
 
 ## SoQL Clauses
 
-SoQL statements are broken into "clauses" similar to clauses in SQL statements.  Each clause can be expressed either directly
-as a URL parameter or as a SoQL statement.  If a clause is not specified, then the default is used. The clauses for SoQL are:
+SoQL statements are broken into "parameters" similar to clauses in SQL statements. Each clause can be expressed either directly
+as a URL parameter or as a SoQL statement. If a parameter is not specified, then the default is used:
 
-|Clause|Query Parameter|Description|Default|
-|---|---|---|---|
-|[select](#select)|$select|Which columns to return | All columns|
-|[where](#where)|$where|Filter on results to return | All results, but no higher than the _limit_ parameter|
-|[order](#order)|$order|Order to return the results|Unspecified order, but it will be consistent across paging|
-|[group](#group)|$group|Column to group results on, similar to [SQL Grouping](http://www.w3schools.com/sql/sql_groupby.asp)|No grouping|
-|[limit](#limitoffset)|$limit|Maximum number of results to return|1000|
-|[offset](#limitoffset)|$offset|Offset count into the results to start at|0|
-|[search](#search)|$q|Resultins in a full text search for a value.|No search|
+| Parameter                          | Description                                                                                         | Default                                                    |
+| ---                                | ---                                                                                                 | ---                                                        |
+| [`$select`](#the_select_parameter) | The set of columns to be returned                                                                   | All columns, equivalent to `$select=*`                     |
+| [`$where`](#the_where_parameter)   | Filters the rows to be returned                                                                     | No filter, and returning a max of `$limit` values          |
+| [`$order`](#the_order_parameter)   | Specifies the order of results                                                                      | Unspecified order, but it will be consistent across paging |
+| [`$group`](#the_group_parameter)   | Column to group results on, similar to [SQL Grouping](http://www.w3schools.com/sql/sql_groupby.asp) | No grouping                                                |
+| [`$limit`](#the_limit_parameter)   | Maximum number of results to return                                                                 | 1000 (and a maximum of 1000)                               |
+| [`$offset`](#the_offset_patameter) | Offset count into the results to start at, used for paging                                          | 0                                                          |
+| [`$q`](#search_with_q)             | Performs a full text search for a value.                                                            | No search                                                  |
 
-Note that for equality comparisions, the _$where_ clause can be replaced with using the column name as the query parameter. See 
+Note that for equality comparisons, the `$where` clause can be replaced with using the column name as the query parameter. See 
 [filtering](/docs/filtering.html) for more details.
 
-Any clause can be specified either directly in a SoQL statement, or as part of the URI.  For example, a SoQL query would look like:
+These parameters can then be directly added to the API endpoint. For example, here is how you would query the USGS Earthquakes datasets for quakes of greater than 3.0 on the Richter scale: 
 
-    select agency_name
-    where position='Member'
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$where=magnitude > 3.0' %}
 
-This can either be directly added to a URL, or added in pieces. The following three requests are equivalent SoQL queries:
+In these examples, we will leave the parameters as is, but it is best to [URL Encode](http://en.wikipedia.org/wiki/Url_encode) your parameters to ensure they are parsed correctly.
 
-    https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$query=select+agency_name+where+position='Member'
-    https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$select=agency_name&$where=position='Member'
-    https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$select=agency_name&position=Member
+### The $select Parameter
 
-<a name="select">&nbsp;</a>
-### Select Clause
+The `$select` parameter is similar to a `SELECT` in SQL. It allows expressions and aliases, as well as aggregations when using
+`$group`.
 
-A `select` clause is similar to a select in SQL.  It allows expressions and aliases, as well as aggregations when using a
-`group` clause.
+For example, to retrieve only the `location` and `magnitude` fields for our earthquakes, set `$select` equal to their field names, separated by a comma (`,`):
 
-#### Listing Columns
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$select=location, magnitude' %}
 
-The most basic use of a `select` clause is simply listing the columns you are returning.  To do this, list the columns
-you are interested in, separated by a `','`. For example:
+You can also create column aliases just like you could do in SQL. For example, to alias `magnitude` to `richter`, provide a select of `magnitude AS 'richter'`:
 
-    select agency_name,position
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$select=location, magnitude AS richter' %}
 
+You can also use SoQL functions and operators to modify the output of a SODA query. For example, to convert the `depth` from meters to feet, by multiplying it by 3.28:
 
-#### Aliasing Columns
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$select=location, depth * 3.28 AS depth_feet' %}
 
-In SoQL, you can create column aliases in the `select` clause.  There are two main reasons for doing this:
+For a full listing of the functions available by datatype, check out the [datatype-specific documentation](/docs/datatypes/).
 
-*  It makes it easier to access computed values elsewhere in the expression
-*  It allows the query to rename the columns for the response
+### The $where Parameter
 
-The syntax for aliases is the "as" keyword.  Currently, aliases need to be lower case and cannot have white space.  These
-restrictions may be relaxed in the future.
+The `$where` parameter allows you to filter your results using boolean operators. For example, to retrieve only quakes with a `magnitude` of greater than 3.0:
 
-The following example returns the column `agency_name`, but it is named `myalias` in the response: 
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$where=magnitude > 3.0' %}
 
-[https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$select=agency_name **as myalias**&position=Member](https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$select=agency_name+as+myalias&position=Member)
+You can also combine multiple filters together using boolean operators to chain filters together. If we also only wanted only quakes from the `pr` source:
 
-#### Column Expressions
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$where=magnitude > 3.0 AND source = \'pr\'' %}
 
-In SoQL we provide the ability to create expressions in the `select` clause as well.  This provides a way to have the responses converted into more readily usable
-values.  Look at the [datatypes](/soda2/datatypes) section to get a list of all the expressions supported per datatype.
+Multiple boolean operators are available to combine filters:
 
-The following example converts the `agency_name` column to upper case:
+| Operator      | Description                                            | Example                                                       |
+| ---           | ---                                                    | ---                                                           |
+| `AND`         | The logical **and** of two expressions.                | `a AND b` will return true ONLY if `a` and `b` are both true. |
+| `OR`          | The logical **or** of two expressions.                 | `a or b` will return true if either `a` or `b` are true.      |
+| `NOT`         | The logical **not** of an expression.                  | `NOT a` will return true, ONLY if a is false.                 |
+| `IS NULL`     | Whether a value is null or not.                        | `a IS NULL` will return true, ONLY if `a` is null.            |
+| `IS NOT NULL` | Whether a values is not null.                          | `a IS NOT NULL` will return true, ONLY if `a` is not null     |
+| `( ... )`     | Parentheses are used for defining order of operations. | `b>3 AND (a=1 OR a=2)`                                        |
 
-[https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$select=**upper(agency_name)**&position=Member](https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$select=upper%28agency_name%29&position=Member)
+Note that using [simple filtering](/docs/filtering.html), equality clauses can be simplified. And since multiple parameters are implicitly `AND`ed together, the above query can be simplified to:
 
-#### Grouping Expresssions
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$where=magnitude > 3.0&amp;source=pr' %}
 
-In addition to transforms and data conversions on returned values, SoQL provides a set of grouping expressions that can
-be used in concert with the `group` clause.  The currently supported grouping expressions are:
+Multiple equality clauses can be even simpler:
 
-|Function|DataTypes|Description|
-|---|---|---|
-|sum|Number|Sums up all the values in a grouping|
-|count|All|Counts the number of values.  null values are not counted.|
-|avg|Number|Finds the average value of numbers in this column|
-|min|Number|Finds the minimum value of numbers in this column.|
-|max|Number|Finds the maximum value of numbers in this column.|
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='region=Virgin Islands region&amp;source=pr' %}
 
-The following example returns how many rows have the same `agency_name` value for each agency_name:
+### The $order Parameter
 
-[https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$select=agency_name,count(agency_name)&amp;$group=agency_name](https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$select=agency_name,count%28agency_name%29&$group=agency_name)
+The `$order` parameter determines how the results should be sorted, using the values from the specified columns, similar to a SQL `ORDER BY`. Sorting can be performed in either ascending or descending order, the default being ascending. For example, to sort our earthquakes by `magnitude`, in descending order:
 
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$order=magnitude DESC' %}
 
-#### Names with spaces and capital letters
+We could sort them in ascending order by replacing `DESC` with `ASC`, or by simply omitting it.
 
-It is important to note, that the column names in a SoQL query are not always exactly the same as the column names in the user interface.
-For example, if you go to the [NominationsCopy](https://sandbox.demo.socrata.com/resource/nominationsCopy) dataset, you will see the
-name of the `agency_name` column is really "Agency Name".  There is a simple conversion from the user names to the query langauges name:
+### The $group Parameter
 
-1.  Convert string to lower case
-2.  Replace white space (spaces, tabs, etc) with `_`
+SoQL also provides a limited amount of aggregation functionality through its `$group` parameter. `$group` must be used in conjunction with `$select` to provide the aggregation functions you wish to use. For example, to find the strongest earthquake by region, we want to `$group` by `region` and provide a `$select` of `region, MAX(magnitude)`:
 
-So, "Agency Name" becomes `agency_name`.
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$select=region,MAX(magnitude)&amp;$group=region' %}
 
-<a name="where">&nbsp;</a>
-### Where Clause
+The currently supported grouping expressions are:
 
-The `where` clause contains any filtering for the request by only returning results that meet the specified criteria.  See the [filtering](/soda2/filtering) section for more information.
+| Function | Datatypes Supported | Description                                                |
+| ---      | ---                 | ---                                                        |
+| `sum`    | Number              | Sums up all the values in a grouping                       |
+| `count`  | All                 | Counts the number of values. `null` values are not counted |
+| `avg`    | Number              | Finds the average value of numbers in this column          |
+| `min`    | Number              | Finds the minimum value of numbers in this column          |
+| `max`    | Number              | Finds the maximum value of numbers in this column          |
 
-`where` clauses
-support a variety of different comparison operations.  See the [datatypes](/soda2/datatypes) section for the full
-list of operations.
+### Search with $q
 
-In addition to the data type specific operations, the `where` clause supports:
+The `$q` parameter is used to access a special full-text index that searches within the dataset. The full-text index spans all of the fields of the dataset, so think of it more like using a search engine than performing a SQL query.
 
-|Operator|Description|Example|
-|---|---|---|
-|AND|The logical **and** of two expressions.|`a AND b` will return true ONLY if `a` and `b` are both true.|
-|OR|The logical **or** of two expressions.|`a or b` will return true if either `a` or `b` are true.|
-|NOT|The logical **not** of an expression.|`NOT a` will return true, ONLY if a is false.|
-|IS NULL|Whether a value is null or not.|`a IS NULL` will return true, ONLY if `a` is null.|
-|IS NOT NULL|Whether a values is not null.|`a IS NOT NULL` will return true, ONLY if `a` is not null|
-|()|Parentheses are used for defining order of operations.|`b>3 AND (a=1 OR a=2)`|
+For example, to search for the string "Islands" inside our earthquakes dataset:
 
-For example, using the following query parameter returns results where the `position` value is equal to "Member":
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$q=Islands' %}
 
-[?$where=**position='Member'**](https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$where=position=%27Member%27)
+### The $limit Parameter
 
-Using this query parameter returns the same results, but only where the `confirmation_vote` value is `null`:
+The `$limit` parameter controls the total number of rows returned. It can be used either alone, or with `$offset` in order to page through a dataset.
 
-[?$where=position='Member' **AND confirmation_vote IS NULL**](https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$where=position=%27Member%27%20AND%20confirmation_vote%20IS%20NULL)
+For example, if you wanted to only return the top ten strongest earthquakes, you could use `$limit` in conjunction with `$order`:
 
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$order=magnitude DESC&amp;$limit=10' %}
 
-<a name="order">&nbsp;</a>
-### Order Clause
+### The $offset Parameter
 
-The `order` clause determines how the results should be sorted, using the values from the specified columns, and sorting in either ascending or descending order. The default is ascending order.
+The `$offset` parameter is most often used in conjunction with `$limit` to page through a dataset. The `$offset` is the number of records into a dataset that you want to start. For example, to retrieve "page 3" of a dataset where you are using `$limit` to page 50 records at a time, you'd ask for an `$offset` of 150:
 
-For example, the following query parameter orders by `nomination_date`, in ascending order:
-
-[**?$order=nomination_date**](https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$order=nomination_date)
-
-Using this query parameter also orders by `nomination_date`, but in descending order:
-
-[$order=nomination_date **desc**](https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$order=nomination_date%20desc)
-
-<a name="group">&nbsp;</a>
-### Group Clause
-
-The `group` clause works similarly to the Group By feature in SQL.  It will group results based on the specified column, allowing the `select`
-clause to use the *Grouping Expressions*.
-
-The following example returns how many rows have the same `agency_name` value for each agency_name:
-
-[https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$select=agency_name,count(agency_name)&amp;$group=agency_name](https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$select=agency_name,count%28agency_name%29&$group=agency_name)
-
-<a name="limitoffset">&nbsp;</a>
-### Limit and Offset Clauses
-
-`limit` and `offset` are both used for [paging](/docs/paging.html) results.  `limit` will determine the maximum number of rows to return.
-`offset` will return the count into the result set to start returning results from.
-
-The following example returns 5 results, starting at the 11th result (offset = 10):
-
-[https://sandbox.demo.socrata.com/resource/nominationsCopy.json**?$limit=5&$offset=10**](https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$limit=5&$offset=10)
-
-<a name="search">&nbsp;</a>
-### Search Clause
-
-In addition to traditional database searches, SODA2 also allows for full text search. The following example returns results that have the string "National":
-
-[https://sandbox.demo.socrata.com/resource/nominationsCopy.json**?$q=National**](https://sandbox.demo.socrata.com/resource/nominationsCopy.json?$q=National)
-
-## Returning type information
-
-In many of the returned formats, the original type information of the columns can be lost.  For example, in JSON a Number may look like a String, and a String will also
-look like a String.  Some consumers may want to operate in a more type-safe manner, to make sure their language bindings are in line with the original dataset's types.
-
-To aid in these clients, the Socrata API returns two custom headers that allow a caller to determine the original Socrata types.
-
-|Header|Description|
-|---|---|
-|X-SODA2-Fields|A JSON array containing a list of fields returned in this response|
-|X-SODA2-Types|A JSON array containing a list of SODA2 types. This array will be in the same order as the fields in `X-SODA2-Fields`.
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$limit=50&amp;$offset=150' %}
 
 {% include try.html %}
