@@ -104,7 +104,7 @@ Host: soda.demo.socrata.com
 X-App-Token: [REDACTED]
 {% endhighlight %}
 
-The server will will respond with a single row:
+The server will respond with a single row:
 
 {% highlight http %}
 HTTP/1.1 200 OK
