@@ -25,7 +25,7 @@ The endpoint URL for any SODA API can be created via this simple rule:
 	<span class="transport">http://</span><span class="domain">$domain</span><span class="path">/resource/</span><span class="identifier">$dataset_identifier</span>
 </code>
 
-For example, the endpoint for the [White House Visitors Record](http://replaceme.com/url) dataset would be:
+For example, the endpoint for the [White House Visitors Record](http://explore.data.gov/d/644b-gaut) dataset would be:
 
 <code class="url">
 	<span class="transport">http://</span><span class="domain">explore.data.gov</span><span class="path">/resource/</span><span class="identifier">644b-gaut</span>
