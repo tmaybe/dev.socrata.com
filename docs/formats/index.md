@@ -3,7 +3,6 @@ layout: with-sidebar
 sidebar: documentation 
 title: Response Formats
 audience: documentation
-status: beta
 ---
 
 The Socrata Open Data API supports a number of different response formats that can be specified either via response type extensions on the API endpoint or HTTP `Accept` headers.

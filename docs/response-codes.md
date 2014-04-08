@@ -2,7 +2,6 @@
 layout: with-sidebar
 sidebar: documentation
 title: Response Codes
-status: draft
 redirect_from:
   - /long-running-requests
 ---

@@ -3,7 +3,6 @@ layout: external-link
 title: Ruby
 type: sdk 
 audience: all
-status: final
 
 language: Ruby
 

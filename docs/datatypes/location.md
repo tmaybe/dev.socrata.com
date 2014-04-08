@@ -3,7 +3,6 @@ layout: with-sidebar
 sidebar: documentation 
 title: Location Datatype
 audience: documentation
-status: beta
 ---
 
 Location is a type that contains latitude, longitude and address. Location is accessed as an array with 3 elements in it.  These elements are:

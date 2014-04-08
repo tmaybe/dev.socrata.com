@@ -2,7 +2,6 @@
 layout: with-sidebar
 sidebar: documentation
 title: Application Tokens
-status: draft
 ---
 
 The Socrata Open Data API uses application tokens for two purposes:

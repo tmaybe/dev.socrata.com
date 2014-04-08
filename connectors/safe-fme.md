@@ -4,7 +4,6 @@ title: Safe FME
 sidebar: publisher
 type: connector
 audience: publisher
-status: final 
 ---
 
 [Safe Software](http://www.safe.com) has partnered with Socrata to build an FME "writer" for Socrata. Using the Socrata Writer, you can easily create workflows to extract data from source systems using [Safe FME](http://www.safe.com/fme/fme-technology/), perform cleanup and transformation, and publish that data to Socrata.

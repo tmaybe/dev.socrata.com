@@ -3,7 +3,6 @@ layout: with-sidebar
 sidebar: documentation 
 title: Filtering
 audience: documentation
-status: beta
 ---
 
 If you perform a GET request on an API endpoint using an HTTP client (such as a web browser, a simple utility like cURL, or a REST client like Postman), you will automatically get the first 1000, unfiltered records. However, to narrow down what's returned, you can use SODA 2.0's filtering capability.

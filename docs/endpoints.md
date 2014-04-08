@@ -2,7 +2,6 @@
 layout: with-sidebar
 sidebar: documentation
 title: API Endpoints
-status: draft
 audience: docs
 redirect_from:
   - /docs/endpoints

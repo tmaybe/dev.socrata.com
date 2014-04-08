@@ -3,7 +3,6 @@ layout: external-link
 title: Java
 type: sdk 
 audience: all
-status: final
 
 language: Java
 

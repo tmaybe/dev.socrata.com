@@ -3,7 +3,6 @@ layout: with-sidebar
 sidebar: documentation 
 title: Converting Between Datatypes
 audience: documentation
-status: beta
 ---
 
 In SODA2, there is no automatic type conversion.  Instead, all type conversion has to be done explicitly through conversion functions.  The

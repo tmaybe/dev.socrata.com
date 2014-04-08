@@ -3,7 +3,6 @@ layout: external-link
 title: R
 type: sdk 
 audience: all
-status: final
 
 language: R
 

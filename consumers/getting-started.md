@@ -3,7 +3,6 @@ layout: with-sidebar
 sidebar: consumer
 title: Getting started with the SODA Consumer API
 audience: consumer
-status: draft
 redirect_from:
   - /consumers/
   - /consumers/getting-started

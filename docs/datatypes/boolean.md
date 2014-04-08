@@ -3,7 +3,6 @@ layout: with-sidebar
 sidebar: documentation 
 title: Boolean Datatype
 audience: documentation
-status: beta
 ---
 
 Booleans can be either `true` or `false`.

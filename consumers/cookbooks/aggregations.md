@@ -5,7 +5,6 @@ sidebar: consumer
 type: cookbook
 audience: consumer
 featured: true
-status: placeholder
 ---
 
 This is a sample cookbook

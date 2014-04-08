@@ -3,7 +3,6 @@ layout: with-sidebar
 sidebar: documentation 
 title: Checkbox Datatype
 audience: documentation
-status: beta
 ---
 
 The checkbox datatype is similar to the [Boolean](/docs/datatypes/boolean.html) datatype, but it treats `null` and `false` as identical. It is built for front-end Web user interfaces, where `null` and `false` are handled the same way. This means that:

@@ -2,7 +2,6 @@
 layout: with-sidebar
 sidebar: documentation
 title: Datatypes
-status: placeholder
 ---
 
 There are five core datatypes in SODA:

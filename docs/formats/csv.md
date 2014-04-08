@@ -3,7 +3,6 @@ layout: with-sidebar
 sidebar: documentation
 title: CSV Format
 audience: documentation
-status: beta
 redirect_from:
   - /docs/formats/csv
 ---

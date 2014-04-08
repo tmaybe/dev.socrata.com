@@ -3,7 +3,6 @@ layout: with-sidebar
 sidebar: documentation
 title: XML-RDF Format
 audience: documentation
-status: draft
 redirect_from:
   - /docs/formats/rdf
   - /docs/formats/xml

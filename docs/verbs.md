@@ -3,7 +3,6 @@ layout: with-sidebar
 sidebar: documentation 
 title: RESTful Verbs
 audience: documentation
-status: beta
 ---
 
 The Socrata API follows the [REST](http://en.wikipedia.org/wiki/Representational_state_transfer) (REpresentational State Transfer) design pattern. This means that the CRUD (Create, Read, Update, and Delete) operations are specified by using HTTP methods. These are referred to as RESTful verbs.
