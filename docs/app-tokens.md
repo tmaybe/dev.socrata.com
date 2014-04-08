@@ -6,14 +6,15 @@ status: draft
 ---
 
 The Socrata Open Data API uses application tokens for two purposes:
-* Using an application token reduces the [throttling](/docs/throttling.html), resulting in more API requests allowed per unit of time.
-* Authentication using OAuth
 
-**Note:** The Socrata Open Data API has two concepts around API access: authentication and application tokens. You only need to authenticate if you wish to add, delete, or modify data that is attached to your account, or if you wish to read data you own that you have marked as private. Read-only requests only require the application token. See the [publisher API documentation](/publisher/getting-started/) for more details on changing data.
+- Using an application token reduces the [throttling](/docs/throttling.html), resulting in more API requests allowed per unit of time.
+- Authentication using OAuth
+
+<div class="alert alert-info"><strong>Note:</strong> The Socrata Open Data API has two concepts around API access: authentication and application tokens. You only need to authenticate if you wish to add, delete, or modify data that is attached to your account, or if you wish to read data you own that you have marked as private. Read-only requests only require the application token. See the <a href="/publisher/getting-started/">publisher API documentation</a> for more details on changing data.</div>
 
 ## Obtaining an Application Token
 
-You can obtain an application token by [registering your application](http://opendata.socrata.com/profile/app_tokens) in your Socrata profile. After creating the application, click on **App Tokens** in the left-hand navigation bar. The app token will be visible.
+You can obtain an application token by [registering your application](/register) in your Socrata profile. After creating the application, click on **App Tokens** in the left-hand navigation bar. The application token will be visible.
 
 ## Application Tokens and Throttling
 
@@ -22,22 +23,26 @@ application token, you’ll be subjected to a much lower throttling limit for
 all requests originating from your IP address.
 
 There are two ways to include the application token in the request:
-* Use the `X-App-Token` HTTP header. 
-* Use the `$$app_token` parameter in your request (`app_token` if you're using the old SODA1 API)
+- Use the `X-App-Token` HTTP header. 
+- Use the `$$app_token` parameter in your request (`app_token` if you're using old SODA 1.0 APIs)
  
 Using the header is the preferred method.
 
-**Note:** Application tokens are not necessarily used for authentication, but you should still preserve the security of your application token by always using `HTTPS` requests.
+<div class="alert alert-info"><em>Note:</em> Application tokens are not necessarily used for authentication, but you should still preserve the security of your application token by always using <code>HTTPS</code> requests. If your application token is duplicated by another developer, their requests will count against your quota.</div>
 
-The following curl command makes a request using an application token as an HTTP header:
+The following is an example of using the `X-App-Token` HTTP header to pass an application token:
 
-    > curl --header "X-App-Token: b6bThWI6I3dJfulFek8JRizjo" https://sandbox.socrata.com/resources/earthquakes.json
+{% highlight http %}
+GET /resource/4tka-6guv.json HTTP/1.1
+Host: soda.demo.socrata.com
+Accept: application/json
+X-App-Token: [REDACTED]
+{% endhighlight %}
 
-The following curl command makes a request using an application token as a parameter:
+The same application token could also be passed as a URL parameter:
 
-    > curl https://sandbox.socrata.com/resources/earthquakes.json?$$app_token=b6bThWI6I3dJfulFek8JRizjo
-
-By using an application token, data can be more effectively collected on API usage.
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$$app_token=APP_TOKEN' %}
 
 ## Using the Application Token for Authentication
+
 Application tokens can also be used for authentication, using OAuth2.0 or HTTP Basic Authentication. For more information, see the [authentication](/docs/authentication.html) section.
