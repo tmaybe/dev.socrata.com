@@ -19,14 +19,14 @@ For the tightest possible integration between your source system and your Socrat
 - Maintain dataset metadata and privacy settings
 - Create and import Socrata datasets
 
-All these operations are provided via our [REST](https://en.wikipedia.org/wiki/Representational_state_transfer)ful APIs. 
+All these operations are provided via our [REST](https://en.wikipedia.org/wiki/Representational_state_transfer)ful APIs.
 
 ## Authentication, Application Tokens, and Throttling
 
 To ensure the security of your updates, all requests to the Publisher APIs are required to be:
 
 - Performed over a secure [HTTPS](http://en.wikipedia.org/wiki/Https) connection
-- Authenticated via [HTTP Basic](https://en.wikipedia.org/wiki/Basic_access_authentication) or [OAuth 2.0](http://en.wikipedia.org/wiki/OAuth#OAuth_2.0). 
+- Authenticated via [HTTP Basic](https://en.wikipedia.org/wiki/Basic_access_authentication) or [OAuth 2.0](http://en.wikipedia.org/wiki/OAuth#OAuth_2.0)
 - Accompanied by a Socrata [Application Token](/docs/app-tokens.html)
 
 Since these are standard functionalities provided by nearly all HTTP libraries, authentication is easy to set up in almost every popular contemporary programming language.
