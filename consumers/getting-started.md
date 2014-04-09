@@ -57,9 +57,9 @@ Additional filters can be added, and the filters will be `AND`ed together.
 
 ### SoQL Queries
 
-The "**So**crata **Q**uery **L**anguage" (SoQL) is a simple, SQL-like query language specifically designed for making it easy to work with data on the web. The language is both powerful and easy to learn, and everything works via `GET` parameters. For example, to search for fuel stations within 500 meters of Chicago City Hall:
+The "**So**crata **Q**uery **L**anguage" (SoQL) is a simple, SQL-like query language specifically designed for making it easy to work with data on the web. The language is both powerful and easy to learn, and everything works via `GET` parameters. For example, to search for fuel stations in downtown Chicago:
 
-{% include tryit.html domain='data.cityofchicago.org' path='/resource/alternative-fuel-locations.json' args='$where=within_circle(location, 41.88383, 87.63198, 500)' %}
+{% include tryit.html domain='data.cityofchicago.org' path='/resource/alternative-fuel-locations.json' args='$where=within_box(location, 41.885001, -87.645939, 41.867011, -87.618516)' %}
 
 <div class="well">
   Many different functions are available via SoQL. Read the detailed documentation on <a href="/docs/queries.html">SoQL Queries</a> for more info.
