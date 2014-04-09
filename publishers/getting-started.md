@@ -42,7 +42,7 @@ One of the most important concepts to establish before you get started with the 
 
 <ul class="well">
   <li>Learn more about <a href="/docs/row-identifiers.html">Row Identifiers</a></li>
-  <li>Learn how to <a href="/publishers/configuring-row-identifiers.html">Configure Row Identifiers</a></li>
+  {% comment %}<li>Learn how to <a href="/publishers/configuring-row-identifiers.html">Configure Row Identifiers</a></li>{% endcomment %}
 </ul>
 
 ## Modifying Socrata Datasets

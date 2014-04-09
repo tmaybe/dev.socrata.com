@@ -18,7 +18,7 @@ The Socrata Open Data Publisher API is strictly a superset of the features provi
 
 Regardless of how you plan to keep your dataset up to date, we recommend uploading your data file and creating your initial dataset through our web interface, rather than using the API. This will give you a chance to review how our systems will import your dataset, what datatypes will be selected, and what it will look like and how it will be behave once it's in our platform.
 
-If you've never imported a dataset before, this [helpful guide on importing datasets](http://go.socrata.com/importing) should get you started.
+If you've never imported a dataset before, this [helpful guide on importing datasets](http://support.socrata.com/entries/42238523-Publishing-Workflow-Accessing-the-Import-User-Interface) should get you started.
 
 ## Publishing Strategies
 

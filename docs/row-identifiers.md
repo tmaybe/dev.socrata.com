@@ -18,6 +18,7 @@ Row identifiers come in two flavors:
 
 <p class="alert alert-info">Depending on what dataset you're accessing, internal row identifiers may be simple integers, or alphanumeric strings. There's no difference between the two in how you use them.</p>
 
+{% comment %}
 ## Retrieving Internal Identifiers
 
 By default, internal metadata is not returned with requests. You can override this option by passing a `$select` parameter that includes `:*` along with your request. For example, if you wanted to get all of the fields, you could use `$select=:*,*`.
@@ -29,6 +30,7 @@ Notable system fields:
 - `:id` - The internal identifier for each row
 - `:created_at` - An integer representing the [Unix epoch date](http://en.wikipedia.org/wiki/Unix_time) at which this row was created
 - `:updated_at` - An integer representing the [Unix epoch date](http://en.wikipedia.org/wiki/Unix_time) at which this row was last updated 
+{% endcomment %}
 
 ## Retrieving Rows By Their Identifiers
 
