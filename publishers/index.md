@@ -1,4 +1,4 @@
-  ---
+---
 layout: with-sidebar
 sidebar: publisher
 title: Getting Started with Data Publishing
