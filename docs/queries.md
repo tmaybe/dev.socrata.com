@@ -121,7 +121,7 @@ For example, if you wanted to only return the top ten strongest earthquakes, you
 
 {% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$order=magnitude DESC&amp;$limit=10' %}
 
-<div class="alert alert-info"><em>Note:</em> The maximum you can request with `$limit` is 1000 records. If you request greater than 1000, you'll get a {% include status-code.html code='400' %} 
+<div class="alert alert-info"><strong>Note:</strong> The maximum you can request with <code>$limit</code> is 1000 records. If you request greater than 1000, you'll get a {% include status-code.html code='400' %} 
 response.</div>
 
 ### The $offset Parameter

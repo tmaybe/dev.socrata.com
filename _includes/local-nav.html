@@ -1,21 +1,21 @@
 <li class="dropdown {% if page.audience == "consumer" %} active {% endif %}">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cogs"></i> App Developers <i class="fa fa-caret-down"></i></a>
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-cogs"></i> App Developers <i class="fa fa-caret-down"></i></a>
   <ul class="dropdown-menu">
     {% include sidebar.html type="consumer" %}
   </ul>
 </li>
 <li class="dropdown {% if page.audience == "publisher" %} active {% endif %}">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cloud-upload"></i> Data Publishers <i class="fa fa-caret-down"></i></a>
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-cloud-upload"></i> Data Publishers <i class="fa fa-caret-down"></i></a>
   <ul class="dropdown-menu">
     {% include sidebar.html type="publisher" %}
   </ul>
 </li> 
 <li class="dropdown {% if page.audience == "documentation" %} active {% endif %}">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-book"></i> API Docs <i class="fa fa-caret-down"></i></a>
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-book"></i> API Docs <i class="fa fa-caret-down"></i></a>
   <ul class="dropdown-menu">
     {% include sidebar.html type="documentation" %}
   </ul>
 </li> 
 <li class="{% if page.audience == "libraries" %} active {% endif %}">
-  <a href="/libraries/"><i class="fa fa-github-alt"></i> Libraries &amp; SDKs</a>
+  <a href="/libraries/"><i class="fa fa-fw fa-github-alt"></i> Libraries &amp; SDKs</a>
 </li> 

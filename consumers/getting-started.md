@@ -20,7 +20,7 @@ So you want to win that hackathon or build the next hot open data app? Follow th
 - Peruse our [online listing of Socrata-powered open data sites](https://opendata.socrata.com/dataset/Socrata-Customer-Spotlights/6wk3-4ija). There's probably one near you! (Hint: that listing has an API of it's own. See if you can find it!)
 - Check to see if there's a community group in your area with their own catalog hosted on [communities.socrata.com](https://communities.socrata.com/). Got a community group or event of your own and want free hosting for your data and APIs? [Sign up!](http://hackathon-in-a-box.org/open-data-apis/community-groups.html)
 
-Once you're on your local open data site, scroll down to the data catalog and use the search box and browse filters to find datasets that interest you. If your data site has custom [API Foundry](http://www.socrata.com/api-foundry/)-managed APIs, you can use the "API" filter on the left-hand side to show only those custom APIs. But if your dataset doesn't have the red API icon, don't fret - every dataset is accessible via the SODA API.
+Once you're on your local open data site, scroll down to the data catalog and use the search box and browse filters to find datasets that interest you. If your data site has custom [API Foundry](http://www.socrata.com/api-foundry/)-managed APIs, you can use the "API" filter on the left-hand side to show only those custom APIs. But if your dataset doesn't have the red API icon, don't fret&mdash;every dataset is accessible via the SODA API.
 
 ## Finding your API endpoint
 
