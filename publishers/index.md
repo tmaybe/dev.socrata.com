@@ -4,7 +4,6 @@ sidebar: publisher
 title: Getting Started with Data Publishing
 audience: publisher
 redirect_from:
-  - /publishers/
   - /publishers/workflow/
   - /publishers/importing/
   - /publishers/import-data-types/
