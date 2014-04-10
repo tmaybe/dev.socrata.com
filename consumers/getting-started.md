@@ -14,13 +14,13 @@ So you want to win that hackathon or build the next hot open data app? Follow th
 
 ## Locating Open Data and APIs
 
-[Socrata](http://www.socrata.com) hosts over one hundred different data catalogs for governments, non-profits, and NGOs around the world, so finding an open data catalog to work with generally isn't hard:
+[Socrata](http://www.socrata.com) hosts over one hundred different data catalogs for governments, non-profits, and NGOs around the world, so finding an open data catalog to work with is easy:
 
 - Check to see if your local government or state already has an open data site. Check your city or state website or even just Google "open data" and your government's name. You'll probably find something pretty quickly.
 - Peruse our [online listing of Socrata-powered open data sites](https://opendata.socrata.com/dataset/Socrata-Customer-Spotlights/6wk3-4ija). There's probably one near you! (Hint: that listing has an API of it's own. See if you can find it!)
 - Check to see if there's a community group in your area with their own catalog hosted on [communities.socrata.com](https://communities.socrata.com/). Got a community group or event of your own and want free hosting for your data and APIs? [Sign up!](http://hackathon-in-a-box.org/open-data-apis/community-groups.html)
 
-Once you're on your local open data site, scroll down to the data catalog and use the search box and browse filters to find datasets that interest you. If your data site has custom [API Foundry](http://www.socrata.com/api-foundry/)-managed APIs, you can use the "API" filter on the left-hand side to show only those custom APIs. But if your dataset doesn't have the red API icon, don't fret - every dataset is accessible via the SODA API.
+Once you're on your local open data site, scroll down to the data catalog and use the search box and browse filters to find datasets that interest you. If your data site has custom [API Foundry](http://www.socrata.com/api-foundry/)-managed APIs, you can use the "API" filter on the left-hand side to show only those custom APIs. But if your dataset doesn't have the red API icon, don't fret &mdash; every dataset is accessible via the SODA API.
 
 ## Finding your API endpoint
 
@@ -45,7 +45,7 @@ Filtering data via a SODA API is fairly straightforward. There are two primary m
 
 ### Simple Filters
 
-Filtering data is very straightforward. SODA APIs are self-describing - the schema and contents of the dataset itself determines how you can query it. Any field within the data can be used as a filter, simply by appending it to the API endpoint as a GET parameter. For example, to query for only fuel locations that provide [Liquefied Petroleum Gas](https://data.cityofchicago.org/developers/docs/alternative-fuel-locations), simply append `?fuel_type_code=LPG` to the URL:
+Filtering data is very straightforward. SODA APIs are self-describing &mdash; the schema and contents of the dataset itself determines how you can query it. Any field within the data can be used as a filter, simply by appending it to the API endpoint as a GET parameter. For example, to query for only fuel locations that provide [Liquefied Petroleum Gas](https://data.cityofchicago.org/developers/docs/alternative-fuel-locations), simply append `?fuel_type_code=LPG` to the URL:
 
 {% include tryit.html domain='data.cityofchicago.org' path='/resource/alternative-fuel-locations.json' args='fuel_type_code=LPG' %}
 
