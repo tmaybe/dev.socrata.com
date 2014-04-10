@@ -12,7 +12,7 @@ redirect_from:
 
 ## About the Publisher APIs
 
-The Socrata Open Data Publisher API is strictly a superset of the features provided in the Consumer API -- in fact, they are one and the same. For details on how to *access* information, please refer to the [Consumer API](/consumers/getting-started.html) documentation. For those of you who wish to publish data, however, venture bravely onwards!
+The Socrata Open Data Publisher API is strictly a superset of the features provided in the Consumer API &mdash; in fact, they are one and the same. For details on how to *access* information, please refer to the [Consumer API](/consumers/getting-started.html) documentation. For those of you who wish to publish data, however, venture bravely onwards!
 
 ### Start with our friendly web tools first
 
@@ -26,13 +26,13 @@ Before embarking on a project to automate data publishing, it's important to tak
 
 ### Infrequently (or never!) updated datasets
 
-If your dataset is rarely or never updated - for example, the final results of an election or a census - our web-based user interface is likely sufficient to keep your data up to date. You can edit, update, or append data to a dataset entirely through your web browser, using our simple web user interface.
+If your dataset is rarely or never updated &mdash; for example, the final results of an election or a census &mdash; our web-based user interface is likely sufficient to keep your data up to date. You can edit, update, or append data to a dataset entirely through your web browser, using our simple web user interface.
 
 For more information about how to update a dataset via the Socrata web interface, read [this how-to guide](http://go.socrata.com/append-replace).
 
 ### Socrata DataSync
 
-[Socrata DataSync](http://socrata.github.io/datasync) is a cross-platform [Java](http://en.wikipedia.org/wiki/Java_(programming_language) application that makes it easy to set up an automatic process to keep a Socrata dataset up to date. It also uses an intelligent update method to efficiently update datasets even when performing what would otherwise be a full replace.
+[Socrata DataSync](http://socrata.github.io/datasync) is a cross-platform [Java](http://en.wikipedia.org/wiki/Java_(programming_language)) application that makes it easy to set up an automatic process to keep a Socrata dataset up to date. It also uses an intelligent update method to efficiently update datasets even when performing what would otherwise be a full replace.
 
 For more information about [DataSync](http://socrata.github.io/datasync), check out it's [documentation and getting started guide](http://socrata.github.io/datasync).
 
