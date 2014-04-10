@@ -27,7 +27,7 @@ There are two ways to include the application token in the request:
 
 Using the header is the preferred method.
 
-<div class="alert alert-info"><em>Note:</em> Application tokens are not necessarily used for authentication, but you should still preserve the security of your application token by always using <code>HTTPS</code> requests. If your application token is duplicated by another developer, their requests will count against your quota.</div>
+<div class="alert alert-info"><strong>Note:</strong> Application tokens are not necessarily used for authentication, but you should still preserve the security of your application token by always using <code>HTTPS</code> requests. If your application token is duplicated by another developer, their requests will count against your quota.</div>
 
 The following is an example of using the `X-App-Token` HTTP header to pass an application token:
 
