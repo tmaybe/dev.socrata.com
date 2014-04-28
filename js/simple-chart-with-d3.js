@@ -5,8 +5,8 @@ var margin = {
     bottom: 30,
     left: 60
 },
-width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+width = 700 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
 
 // Our X scale
 var x = d3.scale.ordinal()
@@ -39,7 +39,7 @@ var svg = d3.select("#chart").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // Fetch data via SODA from the Chicago data site. We don't want to graph the "total", so we'll $select that out
-d3.csv("https://data.cityofchicago.org/resource/w8km-9pzd.csv?$select=year,bus,paratransit,rail", function (error, data) {
+d3.csv("https://data.cityofchicago.org/resource/w8km-9pzd.csv?$select=year,bus,paratransit,rail&$where=year>1999", function (error, data) {
     // Make sure our numbers are really numbers
     data.forEach(function (d) {
         d.year = +d.year;

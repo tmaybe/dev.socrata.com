@@ -232,15 +232,12 @@ ul.pages {
     bottom: 0;
     line-height: 3em;
     background-color: transparent;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden; }
   .tryit-link .hurl-it {
     position: absolute;
     right: 1em;
     background-color: inherit; }
-
-#chart {
-  overflow-x: scroll; }
 
 /* Bootstrap overrides */
 h1, .h1, h2, .h2, h3, .h3 {

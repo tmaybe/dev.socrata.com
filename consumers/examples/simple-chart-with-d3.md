@@ -28,8 +28,8 @@ var margin = {
     bottom: 30,
     left: 60
 },
-width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+width = 700 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
 
 // Our X scale
 var x = d3.scale.ordinal()
@@ -66,11 +66,12 @@ var svg = d3.select("#chart").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 {% endhighlight %}
 
-Then we'll pull in our data using the SODA CSV output type and D3's [`d3.csv`](https://github.com/mbostock/d3/wiki/CSV) function. We don't need the `total` column that the dataset uses, so we'll use the [`$select`](/docs/queries.html#the_select_parameter) parameter to filter down to the four columns we really care about. We'll also use the `$$app_token` parameter to pass our [application token](/docs/app-tokens.html). In this case we've "redacted" it - you should register and supply your own:
+Then we'll pull in our data using the SODA CSV output type and D3's [`d3.csv`](https://github.com/mbostock/d3/wiki/CSV) function. We don't need the `total` column that the dataset uses, so we'll use the [`$select`](/docs/queries.html#the_select_parameter) parameter to filter down to the four columns we really care about. We'll also use the `$where` parameter to only get ridership after 1999, and the `$$app_token` parameter to pass our [application token](/docs/app-tokens.html). In this case we've "redacted" out the application token - you should register and supply your own:
 
 {% highlight javascript %}
 d3.csv("https://data.cityofchicago.org/resource/w8km-9pzd.csv?"
   + "$select=year,bus,paratransit,rail"
+  + "&$where=year>1999"
   + "&$$app_token=[REDACTED]", function (error, data) {
   ...
 });
