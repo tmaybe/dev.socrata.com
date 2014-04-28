@@ -20,7 +20,7 @@ This example pulls data live from [this Chicago Transit Authority ridership data
 
 To start, we'll need to initialize some of our margins and scales for D3. This is mostly just boilerplate:
 
-{% highlight javascript %}    
+{% highlight javascript %}
 // Set our margins
 var margin = {
     top: 20,
@@ -57,7 +57,7 @@ var yAxis = d3.svg.axis()
 
 Next we'll create the SVG container that we'll add our chart components to:
 
-{% highlight javascript %}    
+{% highlight javascript %}
 // Add our chart to the #chart div
 var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)

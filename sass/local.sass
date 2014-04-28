@@ -1,3 +1,8 @@
+/* Media query widths */
+$screen-sm-max: 767px
+$screen-mid-min: 768px
+$screen-mid-max: 991px
+
 a.exec
   font-size: 1.0em
   color: #1b1b1b
@@ -9,9 +14,49 @@ iframe.live-docs
 .tooltip
   font-size: 10px !important
 
+.fa-external-link
+  margin-left: 4px
+  opacity: 0.75
+  font-size: 0.80em
+
 .navbar
   input.search
-    width: 130px
+    width: 200px
+  .dropdown-header
+    display: block
+    padding: 6px 20px 0
+    font-size: 12px
+    line-height: 1.7em
+    color: #888
+    margin-top: 6px
+    &:not(:first-child) 
+      border-top: 1px solid #f1f1f1
+  .dropdown-menu
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    cursor: default
+    .fa-external-link
+      opacity: 0.50
+  .dropdown-toggle
+    &:hover
+      background-color: rgba(255,255,255,0.25)
+    .fa-caret-down
+      margin-left: 4px
+
+@media screen and (max-width: $screen-sm-max)
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header
+    border-color: #333
+    color: #777
+
+/* Force navigation bar to fit on one line at medium screen widths */
+@media screen and (min-width: $screen-mid-min) and (max-width: $screen-mid-max)
+  .navbar-nav
+    & > li
+      font-size: 1em
+      & > a > .fa:not(.fa-caret-down)
+        display: none
 
 .homepage
   .content
@@ -33,7 +78,7 @@ iframe.live-docs
       h1.hello-dolly
         color: white
         font-size: 8em
-        padding-top: 140px
+        padding-top: 100px
 
     .build-something
       margin:
@@ -42,27 +87,45 @@ iframe.live-docs
       max-width: 950px
       padding:
         top: 1.5em
-        bottom: 2em px
+        bottom: 2em
+      @media screen and (max-width: $screen-mid-max)
+        padding:
+          left: 15px
+          right: 15px
+
+      .tagline + p
+        font-size: 1.2em
 
       .tryit-link
         font-size: 1.2em
 
       .trailhead
-        padding-top: 1em
-
-    footer
-      margin:
-        left: auto
-        right: auto
-      max-width: 1050px
+        ul.fa-ul
+          margin-left: 3.5em
+          i.fa
+            margin-top: -0.2em
 
   .publishers
     border-top: 1px solid #eee
     font-size: 1.2em
-    padding:
-      right: 2em
-      left: 2em
-    margin-top: 0.5em
+    margin-top: 1em
+    padding-top: 1em
+    .fa
+      margin-top: 20px
+    a
+      white-space: nowrap
+
+footer
+  position: relative
+  line-height: 1.7em
+  min-height: 4em
+  .footer-cc-logo
+    position: absolute
+  .footer-cc-text
+    position: absolute
+    left: 90px
+    right: 10px
+    padding-bottom: 1em
 
 .url
   font-size: 1.5em
@@ -88,7 +151,7 @@ iframe.live-docs
 
 .results
   position: relative
-  background: #f5f5f5
+  background-color: #f9f2f4
   height: 400px
   overflow-x: hidden
   overflow-y: scroll
@@ -96,12 +159,14 @@ iframe.live-docs
   margin:
     left: auto
     right: auto
+    bottom: 20px
   padding:
     top: 10px
     left: 10px
     right: 10px
     bottom: 10px
   border: 1px solid #cecece
+  border-radius: 4px
 
   .request, .response
     border: none
@@ -116,14 +181,23 @@ iframe.live-docs
 
   .remove
     position: absolute
-    top: 10px
-    right: 10px
+    top: 0
+    right: 0
     text-decoration: none
     color: #000
     font-size: 0.9em
+    padding: 10px
+    background-color: whitesmoke
+    border-left: 1px solid #cecece
+    border-bottom: 1px solid #cecece
+    border-bottom-left-radius: 4px
+
+  pre
+    background-color: transparent   /* Overrides bootstrap for try-it code response */
 
 .repositories
   padding-top: 10px
+  padding-left: 0
 
   li
     list-style: none
@@ -131,13 +205,12 @@ iframe.live-docs
   .repo
     position: relative
     min-height: 66px
-    padding-left: 35px
     padding-bottom: 20px
     margin: 0 0 20px
     overflow: hidden
     font-size: 1.2em
     line-height: 1.6em
-    border-bottom: 1px solid #eee
+    border-top: 1px solid #eee
 
     .meta
       font-size: 0.8em
@@ -156,6 +229,9 @@ iframe.live-docs
         display: inline-block
         padding-right: 5px
         float: right
+
+  .buttons
+    margin-top: 20px
 
 .homepage
   .tagline
@@ -186,3 +262,57 @@ ul.pages
       list-style: none
       font-size: 0.8em
 
+.tryit-link
+  position: relative
+  margin-bottom: 20px
+  padding: 0.8em
+  border-radius: 4px
+  color: #c7254e
+  background-color: #f9f2f4
+  i.fa
+    margin-top: 0.3em
+  code
+    position: absolute
+    left: 2.5em
+    right: 3em
+    top: 0
+    bottom: 0
+    line-height: 3em
+    background-color: transparent
+    overflow-x: scroll
+    overflow-y: hidden
+  .hurl-it
+    position: absolute
+    right: 1em
+    background-color: inherit
+
+#chart
+  overflow-x: scroll
+
+/* Bootstrap overrides */
+h1, .h1, h2, .h2, h3, .h3
+  margin-bottom: 14px
+
+button.close
+  opacity: 0.8
+  color: inherit
+
+/* common.css overrides */
+p, li
+  font-size: 1.1em
+
+.splash
+  margin-top: 10px
+  padding: 0.8em
+  padding-top: 1em
+  background-color: #dff0d8
+  border-color: #d6e9c6
+  color: #3c763d
+  ul
+    margin-bottom: 0
+  .fa-li
+    top: 0.2em
+
+.sidebar-nav
+  .nav-header
+    color: #777

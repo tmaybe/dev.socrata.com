@@ -13,7 +13,7 @@ redirect_from:
 
 <div class="fat-header hidden-sm hidden-xs">
   <img src="/img/soda.png" alt="Socrata APIs" class="pull-left" />
-  <h1 class="hello-dolly"><noscript>puts "Hello Data!";</noscript></h1>
+  <h1 class="hello-dolly"><noscript>puts “Hello Data!”;</noscript></h1>
 </div>
 
 <div class="build-something">
@@ -24,27 +24,32 @@ redirect_from:
 
   <div class="row trailhead">
     <div class="col-md-4">
-      <h2><a href="/consumers/getting-started.html"><i class="fa fa-cogs"></i> App Developers</a></h2>
+      <ul class="fa-ul"><li><h2><a href="/consumers/getting-started.html"><i class="fa fa-li fa-cogs"></i>App Developers</a></h2></li></ul>
       <p>Looking to use open data as part of your application or your business? Learn how to <a href="/consumers/getting-started.html">get started</a>.</p>
     </div>
     <div class="col-md-4">
-      <h2><a href="/libraries/"><i class="fa fa-mobile-phone"></i> Libraries and SDKs</a></h2>
+      <ul class="fa-ul"><li><h2><a href="/libraries/"><i class="fa fa-li fa-mobile-phone"></i>Libraries and SDKs</a></h2></li></ul>
       <p>Support for most popular programming languages and platforms.</p>
     </div>
     {% comment %}<div class="col-md-4">
-      <h2><a href="/abcs-of-apis/"><i class="fa fa-question-circle"></i> What's an API?!?</a></h2>
+      <ul class="fa-ul"><li><h2><a href="/abcs-of-apis/"><i class="fa fa-li fa-question-circle"></i>What's an API?!?</a></h2></li></ul>
       <p>Don't know the difference between an HTTP, SDK, and JSON? Check out the <a href="/abcs-of-apis/">ABCs of APIs</a> and get smart fast!</p>
     </div>{% endcomment %}
     <div class="col-md-4">
-      <h2><a href="/support.html"><i class="fa fa-question-circle"></i> Need Help?</a></h2>
+      <ul class="fa-ul"><li><h2><a href="/support.html"><i class="fa fa-li fa-question-circle"></i>Need Help?</a></h2></li></ul>
       <p>Struggling with a problem you can't figure out? <a href="/support.html">Get help fast!</a></p>
     </div>
   </div>
 
   <div class="row publishers">
-    <h2>Data Publishers</h2>
-    <p><i class="fa fa-cloud-upload fa-3x pull-left"></i> Are you a Socrata customer or data publisher? Want to learn more about how to automate the maintenance of your open data? Check out our <a href="/publishers/">data publishing guide &raquo;</a></p>
-  </div>
+    <div class="col-xs-2 text-center">
+      <i class="fa fa-cloud-upload fa-4x"></i> 
+    </div>
+    <div class="col-xs-10">
+      <h2>Data Publishers</h2>
+
+      <p>Are you a Socrata customer or data publisher? Want to learn more about how to automate the maintenance of your open data? Check out our <a href="/publishers/">data publishing guide &raquo;</a></p>
+    </div>
 </div>
 
 {% include try.html %}
