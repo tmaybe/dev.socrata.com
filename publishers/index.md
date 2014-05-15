@@ -50,5 +50,5 @@ For the tightest possible integration between your source system and your Socrat
 - Maintain dataset metadata and privacy settings
 - Create and import Socrata datasets
 
-To learn more about the Socrata Publisher API, see the [getting started guide](/publishers/getting-started.html) or check out the [API documentation](/docs/) above.
+To learn more about the Socrata Publisher API, see the [getting started guide](/publishers/getting-started.html) or check out the API documentation above.
 
