@@ -43,3 +43,17 @@ In contrast, the [USGS Earthquakes](https://soda.demo.socrata.com/dataset/USGS-E
 {% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv/00388610.json' %}
 
 {% include try.html %}
+
+## Establishing a Publisher-Specified Identifier
+
+A publisher-specified row identifier can be established for any Socrata dataset (requires a Socrata account with Publisher/Owner permissions on the dataset). A common column to use as a row identifier is an 'ID' column with some kind of number or code that uniquely identifies that row of data. For example, the '*Inspection ID*' column of [Chicago's Food Inspections dataset](https://data.cityofchicago.org/Health-Human-Services/Food-Inspections/4ijn-s7e5) is a Publisher-specified row identifier.
+
+### How to set a row identifier
+**Step 1:** When viewing a dataset click the "About" button in the upper right which is a dark red button.
+
+**Step 2:** In the side menu that appears click "Edit metadata" (if you do not see this link ensure you are logged in).
+
+**Step 3:** Scroll to the subheader called "API Endpoint" and below that you can select the row identifier from the drop down menu that contains all the columns within the dataset.
+
+**Step 4:** After selecting the appropriate column. Click "Save" at the bottom.
+
