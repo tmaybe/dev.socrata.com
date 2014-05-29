@@ -20,7 +20,7 @@ The following table describes the operators that can be used with locations.
 | Operator      | Description                                                                               |
 | ---           | ---                                                                                       |
 | within_box    | Returns the rows that have locations within the specified box.                            |
-{% comment %} | within_circle | Returns the rows that have locations within the specified circle with a radius in meters. | {% endcomment %}
+| within_circle | Returns the rows that have locations within the specified circle with a radius in meters. |
 
 
 Below are examples using the above operator in SoQL queries:
@@ -33,10 +33,12 @@ For example, to get all earthquakes in the Seattle area:
 
 {% include tryit.html domain='soda.demo.socrata.com' path='/resource/earthquakes.json' args='$where=within_box(location, 48.317908, -122.995119, 47.309034, -121.630497)' %}
 
-{% comment %} **within_circle**: {% endcomment %}
+## within_circle:
 
-{% comment %}     ?$where=within_circle(location_col_identifier, latitude, longitude, radius) {% endcomment %}
+    ?$where=within_circle(location_col_identifier, latitude, longitude, radius)
 
-{% comment %} For example, to get all earthquakes within a 50,000 meter radius circle around Seattle: {% endcomment %} 
-{% comment %} <http://soda.demo.socrata.com/resource/earthquakes.json?$where=within_circle(location, 47.616810, -122.328064, 50000)> {% endcomment %}
+For example, to get all earthquakes within a 50,000 meter radius circle around Seattle: 
 
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/earthquakes.json' args='$where=within_circle(location, 47.616810, -122.328064, 50000)' %}
+
+{% include try.html %}
