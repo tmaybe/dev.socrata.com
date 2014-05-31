@@ -251,17 +251,5 @@ button.close {
 p, li {
   font-size: 1.1em; }
 
-.splash {
-  margin-top: 10px;
-  padding: 0.8em;
-  padding-top: 1em;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #3c763d; }
-  .splash ul {
-    margin-bottom: 0; }
-  .splash .fa-li {
-    top: 0.2em; }
-
 .sidebar-nav .nav-header {
   color: #777777; }
