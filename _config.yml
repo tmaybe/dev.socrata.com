@@ -11,7 +11,10 @@ icon: fa fa-code
 github_repo: https://github.com/socrata/dev.socrata.com
 contribute: /contributing.html
 
-local_js: ["/js/try.js"]
+local_js: 
+  - /js/try.js
+  - /js/snufflupadata.js
+
 local_css: ["/css/local.css"]
 
 gems:
