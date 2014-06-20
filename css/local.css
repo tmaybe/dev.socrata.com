@@ -253,3 +253,14 @@ p, li {
 
 .sidebar-nav .nav-header {
   color: #777777; }
+
+.response-codes li {
+  line-height: 1.8em; }
+  .response-codes li code {
+    display: inline-block;
+    width: 40px;
+    height: 1.2em;
+    line-height: 1.4em;
+    text-align: center;
+    font-size: 1.2em;
+    margin-right: 0.5em; }

@@ -24,6 +24,7 @@ sasslocal:
 jslocal:
 	cp js/* public/js/
 	cp common/js/* public/common/js/
+	cp foundry/template.mst public/foundry/
 
 # Pushes updated taglines file. Since this requires my password, you (probably) can't run it...
 taglines:

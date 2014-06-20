@@ -1,0 +1,50 @@
+<h1 id="title">{{ metadata.name }}</h1>
+
+<p>{{ metadata.description }}</p>
+
+<h2>Getting Started</h2>
+
+<p>All communication with the API is done through HTTPS, and errors are communicated through HTTP response codes. Available response types include JSON, XML, and CSV, which are selectable by the "extension" on API requests or by HTTP <code>Accepts</code> headers.</p>
+
+<p>This documentation also includes inline, runable examples. Click on any link that contains a <code>gear symbol</code> next to it to run that example live against the {{ metadata.name }} API.</p>
+
+<h2>App Tokens</h2>
+
+<p>All requests should include an app token that identifies your application, and each application should have its own unique app token. A limited number of requests can be made without an app token, but they are subject to much lower throttling limits than request that do include one. If you don't have an app token yet, click the button to the right to sign up for one.</p>
+
+<p>Once you have an app token, you can include it with your request either by using the <code>X-App-Token</code> HTTP header, or by passing it via the <code>$$app_token</code> parameter on your URL.</p>
+
+<h2>Response Codes</h2>
+
+<div class="content-wrapper  response-codes"><p>One of the following response codes will be returned with every request:</p><ol>
+    <li><code>200</code>Successful request.</li>
+    <li><code>202</code>Request processing. You can retry your request, and when it's complete, you'll get a 200 instead.</li>
+    <li><code>400</code>Bad request</li>
+    <li><code>401</code>Unauthorized. You're not authorized to access this resource.</li>
+    <li><code>404</code>Not found. The resource requested doesn't exist.</li>
+    <li><code>429</code>Too Many Requests. The client has made too many requests and is currently being rate limited.</li>
+    <li><code>500</code>Server errors. Our bad!</li>
+</ol></div>
+
+<h2>Fields</h2>
+{{#metadata.columns}}
+<div class="column">
+  <h3>{{ fieldName }}</h3>
+
+  <ul class="meta">
+    <li><em>Human Name:</em> {{ name }}</li>
+    <li><em>Datatype:</em> {{ dataTypeName }}</li>
+  </ul>
+
+  <p>{{ description }}</p>
+
+  <h4>Examples</h4>
+  <div class="tryit-link">
+    <i class="fa fa-fw fa-cog"><!-- This Space Left Blank --></i>
+    <code>
+      <a class="exec has-tooltip" data-toggle="tooltip" title="" href="{{ full_url }}" data-original-title="View the output of this query" data-container="body">{{ full_url }}</a>
+    </code>
+    <a class="hurl-it has-tooltip" data-toggle="tooltip" title="" target="_blank" href="http://hurl.it" data-original-title="Edit this request on Hurl.it" data-hurl-full-url="{{ full_url }}" data-placement="left" data-container="body"><i class="fa fa-pencil"><!-- This Space Left Blank --></i></a>
+  </div>
+</div>
+{{/metadata.columns}}
