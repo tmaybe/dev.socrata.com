@@ -40,7 +40,7 @@ For this example, we'll use this listing of [Alternative Fuel Locations](https:/
 
 ## Building simple filters and queries
 
-Filtering data via a SODA API is fairly straightforward. There are two primary mechanisms you can use to filter data: [Simple Filters](/docs/filtering.html) and [SoQL Queries](http://dev.socrata.com.dev/docs/queries.html)
+Filtering data via a SODA API is fairly straightforward. There are two primary mechanisms you can use to filter data: [Simple Filters](/docs/filtering.html) and [SoQL Queries](/docs/queries.html)
 
 
 ### Simple Filters
