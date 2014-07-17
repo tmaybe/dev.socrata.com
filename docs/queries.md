@@ -89,6 +89,8 @@ The `$order` parameter determines how the results should be sorted, using the va
 
 We could sort them in ascending order by replacing `DESC` with `ASC`, or by simply omitting it.
 
+{% include ordering-note.html %}
+
 ### The $group Parameter
 
 SoQL also provides a limited amount of aggregation functionality through its `$group` parameter. `$group` must be used in conjunction with `$select` to provide the aggregation functions you wish to use. For example, to find the strongest earthquake by region, we want to `$group` by `region` and provide a `$select` of `region, MAX(magnitude)`:

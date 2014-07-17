@@ -1,6 +1,6 @@
 ---
 layout: with-sidebar
-sidebar: documentation 
+sidebar: documentation
 title: Paging through Data
 audience: documentation
 ---
@@ -13,6 +13,8 @@ Paging is accomplished through two query parameters: `$limit` and `$offset`. Not
 | ---             | ---                                                                        | ---           |
 | `$limit`        | The number of results to return                                            | 1000          |
 | `$offset`       | The index of the result array where to start the returned list of results. | 0             |
+
+{% include ordering-note.html %}
 
 ## Example
 
