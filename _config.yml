@@ -1,7 +1,7 @@
 destination: public
 exclude: [Gemfile, Gemfile.lock, .rvmrc, public, sample-code]
-splash: true
-splash_homepage: true
+splash: false
+splash_homepage: false
 
 ga_tracking_code: "UA-9046230-3"
 
