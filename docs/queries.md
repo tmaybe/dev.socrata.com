@@ -83,7 +83,7 @@ Multiple equality clauses can be even simpler:
 
 ### The $order Parameter
 
-The `$order` parameter determines how the results should be sorted, using the values from the specified columns, similar to a SQL `ORDER BY`. Sorting can be performed in either ascending or descending order, the default being ascending. The default order is ascending, or `ASC`, but you can also reverse the order with `DESC`.
+The `$order` parameter determines how the results should be sorted, using the values from the specified columns, similar to a SQL `ORDER BY`. Sorting can be performed in either ascending or descending order, the default being ascending, but you can also reverse the order with `DESC`.
 
 For example, to sort our earthquakes by `magnitude`, in descending order:
 
