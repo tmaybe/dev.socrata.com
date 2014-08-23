@@ -1,12 +1,38 @@
-<h1 id="title">{{ metadata.name }}</h1>
+<h2>About This Dataset</h2>
 
-<p>{{ metadata.description }}</p>
+{{#metadata.description}}
+  <p>{{metadata.description}}</p>
+{{/metadata.description}}
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Metadata</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <li><em>Source Domain:</em> <a href="http://{{domain}}">{{domain}}</a></li>
+      <li><em>Created:</em> {{metadata.createdAt}}</li>
+      <li><em>Last Updated:</em> {{metadata.rowsUpdatedAt}}</li>
+      <li><em>Category:</em> {{metadata.category}}</li>
+      {{#metadata.attribution}}
+        <li><em>Attribution:</em> {{metadata.attribution}}</li>
+      {{/metadata.attribution}}
+      {{#metadata.license}}
+        <li><em>License:</em> <a href="{{termsLink}}" target="_blank">{{name}}</a></li>
+      {{/metadata.license}}
+      {{#metadata.owner}}
+        <li><em>Owner:</em> <a href="http://{{domain}}/profile/{{id}}">{{displayName}}</a></li>
+      {{/metadata.owner}}
+    </ul>
+  </div>
+  <div class="panel-footer"><a href="http://{{domain}}/d/{{metadata.id}}">Return to the dataset &raquo;</a></div>
+</div>
 
 <h2>Getting Started</h2>
 
 <p>All communication with the API is done through HTTPS, and errors are communicated through HTTP response codes. Available response types include JSON, XML, and CSV, which are selectable by the "extension" on API requests or by HTTP <code>Accepts</code> headers.</p>
 
-<p>This documentation also includes inline, runable examples. Click on any link that contains a <code>gear symbol</code> next to it to run that example live against the {{ metadata.name }} API.</p>
+<p>This documentation also includes inline, runable examples. Click on any link that contains a <code>gear symbol</code> next to it to run that example live against the {{metadata.name}} API.</p>
 
 <h2>App Tokens</h2>
 
@@ -14,37 +40,79 @@
 
 <p>Once you have an app token, you can include it with your request either by using the <code>X-App-Token</code> HTTP header, or by passing it via the <code>$$app_token</code> parameter on your URL.</p>
 
-<h2>Response Codes</h2>
+<h2>Response Codes &amp; Errors</h2>
 
-<div class="content-wrapper  response-codes"><p>One of the following response codes will be returned with every request:</p><ol>
-    <li><code>200</code>Successful request.</li>
-    <li><code>202</code>Request processing. You can retry your request, and when it's complete, you'll get a 200 instead.</li>
-    <li><code>400</code>Bad request</li>
-    <li><code>401</code>Unauthorized. You're not authorized to access this resource.</li>
-    <li><code>404</code>Not found. The resource requested doesn't exist.</li>
-    <li><code>429</code>Too Many Requests. The client has made too many requests and is currently being rate limited.</li>
-    <li><code>500</code>Server errors. Our bad!</li>
-</ol></div>
+<div class="response-codes">
+  <p>One of the following response codes will be returned with every request:</p>
+  <ul>
+    <li><a href="http://httpstatusdogs.com/200-ok"><code class="good">200</code></a> OK. Your request was successful.</li>
+    <li><a href="http://httpstatusdogs.com/202-accepted"><code class="good">202</code></a> Request processing. You can retry your request, and when it's complete, you'll get a 200 instead.</li>
+    <li><a href="http://httpstatusdogs.com/400-bad-request"><code class="bad">400</code></a> Bad request. Probably your request was malformed. See the error message in the body for details.</li>
+    <li><a href="http://httpstatusdogs.com/401-unauthorized"><code class="bad">401</code></a> Unauthorized. You attempted to authenticate but something went wrong. Make sure follow the instructions to <a href="/docs/authentication.html">authenticate</a> properly.</li>
+    <li><a href="http://httpstatusdogs.com/403-forbidden"><code class="bad">403</code></a> Forbidden. You're not authorized to access this resource. Make sure you <a href="/docs/authentication.html">authenticate</a> to access private datasets.</li>
+    <li><a href="http://httpstatusdogs.com/404-not-found"><code class="bad">404</code></a> Not found. The resource requested doesn't exist.</li>
+    <li><a href="http://httpstatusdogs.com/429-too-many-requests"><code class="bad">429</code></a> Too Many Requests. Your client is currently being rate limited. Make sure you're using an <a href="/docs/app-tokens.html">app token</a>.</li>
+    <li><a href="http://httpstatusdogs.com/"><code class="ugly">500</code></a> Server errors. Our bad!</li>
+  </ul>
+</div>
+
+<p>For any variety of error, we return a standard error message format that looks like the following:<p>
+
+<pre><code>
+{
+  "error": true,
+  "message": "Unrecognized arguments [column_which_doesnt_exist]"
+}
+</code></pre>
 
 <h2>Fields</h2>
-{{#metadata.columns}}
-<div class="column">
-  <h3>{{ fieldName }}</h3>
 
-  <ul class="meta">
-    <li><em>Human Name:</em> {{ name }}</li>
-    <li><em>Datatype:</em> {{ dataTypeName }}</li>
-  </ul>
+<p>Each column in <a href="http://{{domain}}/d/{{metadata.id}}">the dataset</a> is represented by a single <code>field</code> in its SODA API. Using <a href="/docs/filters.html">filters</a> and <a href="/docs/queries.html">SoQL queries</a>, you can search for records, limit your results, and change the way the data is output. For example, you could filter this dataset by its <code>{{metadata.columns.0.fieldName}}</code> field using a query like the following:</p>
 
-  <p>{{ description }}</p>
+{{#metadata.columns.0.filter_url}}
+  {{>tryit}}
+{{/metadata.columns.0.filter_url}}
 
-  <h4>Examples</h4>
-  <div class="tryit-link">
-    <i class="fa fa-fw fa-cog"><!-- This Space Left Blank --></i>
-    <code>
-      <a class="exec has-tooltip" data-toggle="tooltip" title="" href="{{ full_url }}" data-original-title="View the output of this query" data-container="body">{{ full_url }}</a>
-    </code>
-    <a class="hurl-it has-tooltip" data-toggle="tooltip" title="" target="_blank" href="http://hurl.it" data-original-title="Edit this request on Hurl.it" data-hurl-full-url="{{ full_url }}" data-placement="left" data-container="body"><i class="fa fa-pencil"><!-- This Space Left Blank --></i></a>
-  </div>
-</div>
-{{/metadata.columns}}
+<p>For richer filtering, you can combine filters together by stacking parameters on your URL or by using <a href="/docs/queries.html">SoQL</a> queries. Learn more about about each of the fields in this dataset by clicking the headers below, or read more about the SODA API using the navigation at the top of the page.</p>
+
+<ul class="fields panel-group" id="accordion">
+  {{#metadata.columns}}
+    <li class="field panel panel-default">
+      <div class="heading panel-heading {{dataTypeName}}" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{fieldName}}">
+        <h3 class="panel-title">
+          <code class="field-name {{dataTypeName}}">{{fieldName}}</code>
+          <code class="datatype">{{dataTypeName}}</code>
+        </h3>
+        <span class="human-name">{{name}}</span>
+      </div>
+      <div id="collapse-{{fieldName}}" class="panel-collapse collapse">
+        <div class="panel-body">
+          {{#description}}
+            <p class="description">{{description}}</p>
+          {{/description}}
+
+          <p class="overview">The <code>{{fieldName}}</code> column is a {{dataTypeName}} column.</p>
+
+          <h4>Simple Filters</h4>
+
+          <p>To filter the dataset to only return records containing a specified value for <code>{{fieldName}}</code> simply add a URL parameter to your URL with {{fieldName}} as the key and your specified value. For example:</p>
+          {{#filter_url}}
+            {{>tryit}}
+          {{/filter_url}}
+
+          <h4>Query Options</h4>
+
+          <p>You can also use <a href="/docs/queries.html">SoQL queries</a> with this column. Since it is a <code>{{dataTypeName}}</code> column, the following query options are available:
+
+          <ul>
+            {{#available_functions}}
+              <li>{{function_template}}</li>
+            {{/available_functions}}
+          </ul>
+
+          <p>For more details on what query options you have for this column, see the <a href="/docs/datatypes/{{dataTypeName}}.html">detailed docs on the <code>{{dataTypeName}}</code> datatype</a></p>
+        </div>
+      </div>
+    </li>
+  {{/metadata.columns}}
+</ul>

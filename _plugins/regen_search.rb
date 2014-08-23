@@ -70,6 +70,7 @@ module Jekyll
                   :title => page.data['title'],
                   :url => page.url,
                   :content => page.content,
+                  :related => page.data["related"]
                 }
 
                 # lump the title into the content just to make sure
@@ -90,6 +91,13 @@ module Jekyll
                         all_words << word
                         word_scores[word] = []
                     end
+                end
+
+                # Add in the related keys to the word list so we can search for them too
+                (page.data['related'] || []).each do |related|
+                    related = related.gsub(/\.html$/, '')
+                    all_words << related
+                    word_scores[related] = []
                 end
             end
 

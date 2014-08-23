@@ -1,15 +1,29 @@
 ---
 layout: default
 title: Socrata API Foundry
+sidebar: foundry
 ---
+
+<h1 class="title">Socrata API Foundry</h1>
 
 <div id="branding"></div>
 
-<div id="docs"></div>
+<div id="foundry-docs"></div>
+
+<h3>Related Pages</h3>
+<div class="search-container"></div>
 
 <script src="/js/purl.js"></script>
 <script src="/js/try.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
 <script src="/js/foundry.js"></script>
 
+<!-- Fetch related pages -->
+<script src="{{ site.root }}/common/js/search.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+// Load our search results
+$(function() {
+  fetch_results(location.pathname + location.hash);
+});
+</script>
 
