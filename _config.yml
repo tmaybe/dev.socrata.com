@@ -1,5 +1,5 @@
 destination: public
-exclude: [Gemfile, Gemfile.lock, .rvmrc, public, sample-code]
+exclude: [Makefile, Gemfile, Gemfile.lock, .rvmrc, public, sample-code]
 splash: false
 splash_homepage: false
 
