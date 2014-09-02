@@ -30,14 +30,6 @@ module Jekyll
         attr_reader :dir
     end
 
-    # The file class we'll be generating
-    class SearchData < StaticFile
-        def write(dest)
-          super(dest)
-          true
-        end
-    end
-
     class SearchGenerator < Generator
         # This does nothing for github unfortunately...
         safe true
