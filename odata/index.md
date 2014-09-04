@@ -126,24 +126,24 @@ The InlineCount Query Option
 
 This table lists the OData types used to represent Socrata data.  
 
-|Socrata Datatype|ODataDatatype|
-|---|---|
-|Checkbox|Edm.Boolean|
-|Date & Time|Edm.DateTime|
-|Date & Time (with timezone)|Edm.DateTimeOffset|
-|Document|Complext type with Edm.String listing the URL to the document and Edm.String listing the name of the document|
-|Email|Edm.String|
-|Location|Complex type with Edm.Decimal for latitude/longitude and Edm.String for Address, City, State and Zip|
-|Money|Edm.Decimal|
-|Multiple Choice|Edm.String|
-|Number|Edm.Decimal|
-|Percent|Edm.Decimal|
-|Phone|Complext type with Edm.String listing the phone number and Edm.String listing the phone type|
-|Photo|Edm.String listing the URL to the photo|
-|Text (Formatted)|Edm.String with HTML tags|
-|Text (Plain)|Edm.String|
-|Website URL|Complex type with Edm.String listing the URL and Edm.String listing the description|
-<br />
+| Socrata Datatype            | ODataDatatype                                                                                                 |
+| ---                         | ---                                                                                                           |
+| Checkbox                    | Edm.Boolean                                                                                                   |
+| Date & Time                 | Edm.DateTime                                                                                                  |
+| Date & Time (with timezone) | Edm.DateTimeOffset                                                                                            |
+| Document                    | Complext type with Edm.String listing the URL to the document and Edm.String listing the name of the document |
+| Email                       | Edm.String                                                                                                    |
+| Location                    | Complex type with Edm.Decimal for latitude/longitude and Edm.String for Address, City, State and Zip          |
+| Money                       | Edm.Decimal                                                                                                   |
+| Multiple Choice             | Edm.String                                                                                                    |
+| Number                      | Edm.Decimal                                                                                                   |
+| Percent                     | Edm.Decimal                                                                                                   |
+| Phone                       | Complext type with Edm.String listing the phone number and Edm.String listing the phone type                  |
+| Photo                       | Edm.String listing the URL to the photo                                                                       |
+| Text (Formatted)            | Edm.String with HTML tags                                                                                     |
+| Text (Plain)                | Edm.String                                                                                                    |
+| Website URL                 | Complex type with Edm.String listing the URL and Edm.String listing the description                           |
+
 Four datatypes are not exposed via OData. These are: Star, Flag, Nested Table and Dataset Link.
 
 ### Release Notes - February 2014
