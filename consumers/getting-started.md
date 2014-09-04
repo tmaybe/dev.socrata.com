@@ -83,8 +83,4 @@ Hold on a second! Before you go storming off to make the next great open data ap
 
 If you want more requests, [register for an application token](/register) and your application will be granted up to 1000 requests per rolling hour period. If you need even more than that, special exceptions are made by request. Use the `Help!` tab on the right of this page to file a trouble ticket.
 
-<div class="well">
-  Read the detailed documentation on <a href="/docs/paging.html">Paging</a> for more info.
-</div>
-
 {% include try.html %}
