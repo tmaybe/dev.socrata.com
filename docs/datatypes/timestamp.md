@@ -29,11 +29,15 @@ Floating timestamps are represented as [ISO 8601 formatted date strings](http://
 
 The following functions can be used to compare and manipulate timestamp columns: 
 
-| Operation | Description                                                     |
-| ---       | ---                                                             |
-| `<`       | True for timestamps less than this one.                         |
-| `<=`      | True for timestamps that are less than or equal to this one.    |
-| `=`       | True for timestamps that are equal to this one.                 |
-| `!=`      | True for timestamps that are not equal to this one.             |
-| `>`       | True for timestamps that are greater than this one.             |
-| `>=`      | True for timestamps that are greater than or equal to this one. |
+| Operation        | Description                                                                                  |
+| ---              | ---                                                                                          |
+| `<`              | True for timestamps less than this one.                                                      |
+| `<=`             | True for timestamps that are less than or equal to this one.                                 |
+| `=`              | True for timestamps that are equal to this one.                                              |
+| `!=`             | True for timestamps that are not equal to this one.                                          |
+| `>`              | True for timestamps that are greater than this one.                                          |
+| `>=`             | True for timestamps that are greater than or equal to this one.                              |
+| `date_trunc_y`   | Truncates timestamps at the year level. `2014-09-06T13:21:45` becomes `2014-01-01T00:00:00`  |
+| `date_trunc_ym`  | Truncates timestamps at the month level. `2014-09-06T13:21:45` becomes `2014-09-01T00:00:00` |
+| `date_trunc_ymd` | Truncates timestamps at the year level. `2014-09-06T13:21:45` becomes `2014-09-06T00:00:00`  |
+
