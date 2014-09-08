@@ -11,4 +11,6 @@ bugs_url: https://github.com/socrata/soda-ios-sdk/issues
 
 github_user: socrata
 github_repo: soda-ios-sdk
+
+official: true
 ---

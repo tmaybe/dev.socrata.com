@@ -1,0 +1,25 @@
+<li class="component repo" data-organization="{{ include.sdk.github_user }}" data-repo="{{ include.sdk.github_repo }}">
+  <div class="buttons pull-right">
+    <iframe src="http://ghbtns.com/github-btn.html?user={{ include.sdk.github_user }}&repo={{ include.sdk.github_repo }}&type=watch&count=true&size=large" allowtransparency frameborder="0" scrolling="0" width="170" height="30"> </iframe>
+  </div>
+
+  <h3 class="name"><a href="{{ include.sdk.external_url }}"><i class="fa fa-fw fa-cogs"></i>{{ include.sdk.title }}</a></h3>
+
+  <ul class="contributors"></ul>
+
+  <div class="body">
+    <p class="github description">&nbsp;</p>
+
+    <ul class="meta">
+      <li><em>Language:</em> <span class="github language"></span</li>
+      <li><em>Last updated:</em> <span class="github pushed_at date"></li>
+    </ul>
+
+    <div class="links btn-group">
+      {% if include.sdk.github_repo %}<button class="btn btn-default"><a href="http://github.com/{{ include.sdk.github_user}}/{{ include.sdk.github_repo }}" class="github"><i class="fa fa-github alt"></i> Github Repository</a></button>{% endif %}
+      {% if include.sdk.docs_url %}<button class="btn btn-default"><a href="{{ include.sdk.docs_url }}" class="docs"><i class="fa fa-book"></i> Documentation</a></button>{% endif %}
+      {% if include.sdk.bugs_url %}<button class="btn btn-default"><a href="{{ include.sdk.bugs_url }}" class="issues"><i class="fa fa-exclamation-circle"></i> Issues</a></button>{% endif %}
+    </div>
+
+  </div>
+</li>

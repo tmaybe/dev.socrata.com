@@ -11,4 +11,6 @@ bugs_url: https://github.com/socrata/soda-android-sdk/issues
 
 github_user: socrata
 github_repo: soda-android-sdk
+
+official: true
 ---

@@ -12,4 +12,6 @@ bugs_url: https://github.com/Chicago/RSocrata/issues
 
 github_user: Chicago
 github_repo: RSocrata
+
+official: false
 ---

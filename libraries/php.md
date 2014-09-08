@@ -12,4 +12,6 @@ bugs_url: http://github.com/socrata/soda-php/issues
 
 github_user: socrata
 github_repo: soda-php
+
+official: true
 ---

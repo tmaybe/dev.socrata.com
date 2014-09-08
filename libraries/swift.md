@@ -11,4 +11,6 @@ bugs_url: https://github.com/socrata/soda-swift/issues
 
 github_user: socrata
 github_repo: soda-swift
+
+official: true
 ---

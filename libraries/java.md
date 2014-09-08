@@ -12,4 +12,6 @@ bugs_url: http://github.com/socrata/soda-java/issues
 
 github_user: socrata
 github_repo: soda-java
+
+official: true
 ---

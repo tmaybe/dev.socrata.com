@@ -12,4 +12,6 @@ bugs_url: https://github.com/socrata/soda-ruby/issues
 
 github_user: socrata
 github_repo: soda-ruby
+
+official: true
 ---
