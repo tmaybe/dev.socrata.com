@@ -4,9 +4,10 @@ link_dir := $(shell mktemp -d /tmp/linkdoc.XXXX)
 # If you've changed content, always commit search.json
 all:
 	-rm search.json
+	-rm related.json
 	jekyll build
-	cp public/search.json search.json
-	-git add search.json
+	cp public/search.json public/related.json .
+	-git add search.json related.json
 	-terminal-notifier -title "Jekyll" -message "Build complete."
 	-tput bel
 
