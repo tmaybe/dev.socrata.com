@@ -9,13 +9,15 @@ redirect_from:
   - /deprecated/retrieving-row-data
   - /console
   - /gallery
+custom_js:
+  - /js/snuffleupadata.js
+  - /js/homepage.js
 ---
 
 <div class="fat-header hidden-sm hidden-xs">
   <img src="/img/soda.png" alt="Socrata APIs" class="pull-left" />
   <h1 class="hello-dolly"><noscript>puts “Hello Data!”;</noscript></h1>
 </div>
-
 
 <div class="build-something">
   <h1 class="tagline">Build something awesome with Open Data!</h1>
@@ -54,25 +56,3 @@ redirect_from:
 </div>
 
 {% include try.html %}
-
-<!-- ERMAHGERD!!! The dev site uses the Socrata API -->
-<script class="text/javacript">
-$.ajax("https://soda.demo.socrata.com/resource/etih-7ix2.json").done(function(data) {
-  function update() {
-    var pick = data[Math.floor(Math.random() * data.length)];
-    $(".hello-dolly").html(pick["tagline"]).attr("style", "font-size: " + pick["size"] + "em");
-  }
-  update();
-  window.setInterval(update, 8000);
-});
-
-// Bling.
-$(".trailhead h2").mouseenter(function(){
-    $(this).find("i").addClass("fa-spin");    
-});
-$(".trailhead h2").mouseleave(function(){
-    $(this).find("i").removeClass("fa-spin");    
-});
-</script>
-
-<script src="/js/snuffleupadata.js"></script>
