@@ -92,8 +92,23 @@
   <li><a href="/docs/datatypes/boolean.html">Boolean</a></li>
   <li><a href="/docs/datatypes/timestamp.html">Timestamp</a></li>
   <li><a href="/docs/datatypes/location.html">Location</a></li>
-  <li><a href="/docs/datatypes/checkbox.html">Checkbox</a></li>
   {% comment %} <li><a href="/docs/datatypes/converting.html">Conversions</a></li> {% endcomment %}
+
+{% when 'foundry' %}
+  <li class="nav-header dropdown-header">Overview</li>
+  <li><a href="">API Endpoints</a></li>
+  <li><a href="">Row Identifiers</a></li>
+
+  <li class="nav-header dropdown-header">Filtering &amp; Querying</li>
+  <li><a href="/docs/filtering.html">Simple Filters</a></li>
+  <li><a href="/docs/queries.html">SoQL Queries</a></li>
+  <li><a href="/docs/paging.html">Paging Through Data</a></li>
+
+  <li class="nav-header dropdown-header">Data Formats</li>
+  <li><a href="/docs/formats/index.html">Selecting Output Formats</a></li>
+
+  <li class="nav-header dropdown-header">Datatypes</li>
+  <li><a href="/docs/datatypes/string.html">String</a></li>
 
 {% else %}
   <li>Whoever created this page messed something up. Please <a href="/contributing.html">file an issue</a> and ask them to pass a "type" variable.</li>
