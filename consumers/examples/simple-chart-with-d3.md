@@ -6,6 +6,7 @@ type: example
 audience: consumer
 custom_js:
   - /js/simple-chart-with-d3.js
+author: chrismetcalf
 ---
 
 [Michael Bostock](http://bost.ocks.org/mike/)'s [D3](http://d3js.org/) is a brilliantly powerful visualization framework. It can be used to generate [beautiful and diverse visualizations](https://github.com/mbostock/d3/wiki/Gallery), but most of them would be impossible without data backing them up. So how can you get data from [Socrata](http://www.socrata.com) data sites quickly and easily into D3?

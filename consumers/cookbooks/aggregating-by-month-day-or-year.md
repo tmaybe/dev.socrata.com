@@ -8,6 +8,7 @@ featured: false
 related: 
   - /docs/datatypes/timestamp.html
   - /docs/queries.html
+author: alaurenz
 ---
 
 When analyzing time series, data, it's often useful to aggregate data to discover trends. Take, for example, this dataset from the [City of Chicago](https://data.cityofchicago.org) reporting [every towed car in the city](https://data.cityofchicago.org/Transportation/Towed-Vehicles/ygr5-vcbg). What if we wanted to aggregate it by month to see how many cars are towed in Chicago by month?

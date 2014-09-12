@@ -14,6 +14,7 @@ contribute: /contributing.html
 local_js: 
   - /js/try.js
   - /js/snufflupadata.js
+  - /js/github.js
 
 local_css: ["/css/local.css"]
 

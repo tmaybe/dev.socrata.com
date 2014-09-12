@@ -7,6 +7,7 @@ audience: consumer
 custom_js:
   - https://maps.googleapis.com/maps/api/js?sensor=true
   - /js/google-kml.js
+author: chrismetcalf
 ---
 
 The [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial) makes it easy to pull in geospatial data from KML files, which works great with our KML export functionality for geospatial datasets. This sample will walk you through the process of using Socrata's KML support to display polygon boundaries on a Google Map. If you'd like to follow along at home, you can fork [this jsFiddle sample project](http://jsfiddle.net/chrismetcalf/MZA62/).
@@ -27,7 +28,7 @@ var kml_url = "https://controllerdata.lacity.org/api/geospatial/3mvs-psab?method
 Then we initialize our map and center it on Los Angeles:
 
 {% highlight javascript %}
-// Intialize our map
+// Initialize our map
 var center = new google.maps.LatLng(4.0204989,-118.4117325);
 var mapOptions = {
   zoom: 8,

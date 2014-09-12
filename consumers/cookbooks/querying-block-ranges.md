@@ -9,6 +9,7 @@ related:
   - /foundry/#/data.cityofboston.gov/8sq6-p7et
   - /docs/datatypes/numeric.html
   - /docs/queries.html
+author: chrismetcalf
 ---
 
 Some datasets, like this [Code Enforcement - Building and Property Violations](https://data.cityofboston.gov/Permitting/Code-Enforcement-Building-and-Property-Violations/8sq6-p7et) dataset from the [City of Boston](http://data.cityofboston.gov), represent data that can be either at a specific address or within a block of addresses. This dataset has three fields that are used for the address:
