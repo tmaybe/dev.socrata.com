@@ -22,13 +22,15 @@ $(".repo").each(function(index, repo) {
 
   $.getJSON("https://api.github.com/repos/" + org + "/" + repo_name + "/stats/contributors", function(contributors) {
     $.each(contributors, function(idx, contributor) { 
-      var li = "<li>"
-        + "<a href=\"" + contributor["author"]["html_url"] + "\" target=\"_blank\">"
-        + "<img height=\"80\" width=\"80\" src=\"" + contributor["author"]["avatar_url"] + "\" alt=\"" + contributor["author"]["login"] + "\"/>"
-        + "</a></li>";
+      var li = '<li>'
+        + '<a class="contributor" href="' + contributor['author']['html_url'] + '" target="_blank" data-toggle="tooltip" title="' + contributor['author']["login"] + '">'
+        + '<img height="40" width="40" src="' + contributor['author']['avatar_url'] + '" alt="' + contributor['author']['login'] + '"/>'
+        + '</a></li>';
 
       $(repo).find(".contributors").append(li);
     });
+
+    $(".contributor").tooltip();
   }).fail(function(jqxhr, text_status, error) {
     if(error == "Not Found") {
       $(repo).find(".contributors").remove();
