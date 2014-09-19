@@ -14,6 +14,7 @@ An `endpoint` in a SODA API is simply a unique URL that represents an object or 
 All resources are accessed through a common base path of `/resource/` along with their `dataset identifier`. This paradigm holds true for every dataset in every SODA API.
 
 There are two types of dataset identifiers:
+
 * Simple Socrata datasets have a unique "4x4" identifier - eight alphanumeric characters split into two four-character phrases by a dash. For example, `644b-gaut` is the identifier for the White House Visitors: [https://explore.data.gov/resource/644b-gaut.json](https://explore.data.gov/resource/644b-gaut.json) dataset.
 * Customized API Foundry endpoints have a human-readable alias that can be used as an identifier in addition to the 4x4 identifier. For example, this URL is equivalent to the one above: [https://explore.data.gov/resource/white-house-visitor-records.json](https://explore.data.gov/resource/white-house-visitor-records.json)
 
