@@ -77,7 +77,7 @@ So, to request page two, at 100 records per page, of our fuel locations API:
   Read the detailed documentation on <a href="/docs/paging.html">Paging</a> for more info.
 </div>
 
-## Throttling and Applications Tokens
+## Throttling and Application Tokens
 
 Hold on a second! Before you go storming off to make the next great open data app, you should understand how SODA handles throttling. You can make a certain number of requests without an application token, but they come from a shared pool and you're eventually going to get cut off.
 
