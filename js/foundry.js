@@ -59,8 +59,9 @@ $(document).ready(function(){
     // Parallellize our data and metadata requests
     $.when(
       $.getJSON("https://" + domain + "/api/views/" + components[2] + ".json"),
-      $.getJSON("https://" + domain + "/resource/" + components[2] + ".json?$limit=1")
-    ).done(function(metadata, data) {
+      $.getJSON("https://" + domain + "/resource/" + components[2] + ".json?$limit=1"),
+      $.getJSON("https://" + domain + "/resource/" + components[2] + ".json?$select=count(*)")
+    ).done(function(metadata, data, count) {
       // Modify metadata to include trial URLs
       $.each(metadata[0].columns, function(idx, col) {
         col.filter_url = "https://" + domain + "/resource/" + metadata[0].id + ".json?"
@@ -73,7 +74,7 @@ $(document).ready(function(){
       });
 
       // Update our page header
-      $("h1#title").html(metadata[0].name)
+      $("h1.title").html(metadata[0].name);
 
       //  Load our docs from our metadata
       $.when(
@@ -84,13 +85,17 @@ $(document).ready(function(){
           domain: domain,
           metadata: metadata[0],
           row: data[0][0],
+          count: count[0][0].count.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
           full_url: function() { return "https://" + domain + "/resource/" + components[2] + ".json"; },
         }, {
           tryit: tryit[0]
         }));
 
-        // Reactivate our livedocs links
+        // Set up our livedocs links
         setup_livedocs();
+
+        // Set up our clipboard buttons
+        $.each($("pre"), clipbutton);
       }).fail(function() {
         console.log("Something went wrong fetching templates...");
       });

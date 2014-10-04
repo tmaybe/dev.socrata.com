@@ -12,6 +12,8 @@ github_repo: https://github.com/socrata/dev.socrata.com
 contribute: /contributing.html
 
 local_js: 
+  - //cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js
+  - /js/purl.js
   - /js/try.js
   - /js/snufflupadata.js
   - /js/github.js
