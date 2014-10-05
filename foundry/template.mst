@@ -41,6 +41,8 @@
   <a class="tryit" href="{{full_url}}">{{full_url}}</a>
 </div>
 
+<div class="clearfix"></div>
+
 <div class="well">
   <p>Learn more about:</p>
   <ul>
