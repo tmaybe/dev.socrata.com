@@ -1,15 +1,15 @@
 ---
 layout: with-sidebar
-title: Data Consumer Cookbooks
-audience: consumer
-sidebar: consumer
+title: Data Publisher Cookbooks
+audience: publisher
+sidebar: publisher
 ---
 
 <p>To help you get started, peruse the following quick-start cookbooks for different tasks.</p>
 
 <ul class="cookbooks">
   {% for cookbook in site.pages %}
-    {% if cookbook.type == 'cookbook' and cookbook.audience == 'consumer' %}
+    {% if cookbook.type == 'cookbook' and cookbook.audience == 'publisher' %}
       <li class="cookbook"><a href="{{ cookbook.url }}">{{ cookbook.title }}</li>
     {% endif %}
   {% endfor %}
