@@ -16,13 +16,13 @@ as a URL parameter or as a SoQL statement. If a parameter is not specified, then
 
 | Parameter                          | Description                                                                                         | Default                                                    |
 | ---                                | ---                                                                                                 | ---                                                        |
-| [`$select`](#the_select_parameter) | The set of columns to be returned                                                                   | All columns, equivalent to `$select=*`                     |
-| [`$where`](#the_where_parameter)   | Filters the rows to be returned                                                                     | No filter, and returning a max of `$limit` values          |
-| [`$order`](#the_order_parameter)   | Specifies the order of results                                                                      | Unspecified order, but it will be consistent across paging |
-| [`$group`](#the_group_parameter)   | Column to group results on, similar to [SQL Grouping](http://www.w3schools.com/sql/sql_groupby.asp) | No grouping                                                |
-| [`$limit`](#the_limit_parameter)   | Maximum number of results to return                                                                 | 1000 (and a maximum of 1000)                               |
-| [`$offset`](#the_offset_parameter) | Offset count into the results to start at, used for paging                                          | 0                                                          |
-| [`$q`](#search_with_q)             | Performs a full text search for a value.                                                            | No search                                                  |
+| [`$select`](#the-select-parameter) | The set of columns to be returned                                                                   | All columns, equivalent to `$select=*`                     |
+| [`$where`](#the-where-parameter)   | Filters the rows to be returned                                                                     | No filter, and returning a max of `$limit` values          |
+| [`$order`](#the-order-parameter)   | Specifies the order of results                                                                      | Unspecified order, but it will be consistent across paging |
+| [`$group`](#the-group-parameter)   | Column to group results on, similar to [SQL Grouping](http://www.w3schools.com/sql/sql-groupby.asp) | No grouping                                                |
+| [`$limit`](#the-limit-parameter)   | Maximum number of results to return                                                                 | 1000 (and a maximum of 1000)                               |
+| [`$offset`](#the-offset-parameter) | Offset count into the results to start at, used for paging                                          | 0                                                          |
+| [`$q`](#search-with-q)             | Performs a full text search for a value.                                                            | No search                                                  |
 
 Note that for equality comparisons, the `$where` clause can be replaced with using the column name as the query parameter. See 
 [filtering](/docs/filtering.html) for more details.
