@@ -1,4 +1,4 @@
-This is the [Github Pages](http://pages.github.com/) source code for the [Socrata Developer Portal](http://dev.socrata.com) (currently deployed to <http://beta.dev.socrata.com>.
+This is the [Github Pages](http://pages.github.com/) source code for the [Socrata Developer Portal](http://dev.socrata.com) (currently deployed to <http://dev.socrata.com>.
 
 ## Contributing
 
@@ -14,7 +14,7 @@ The site is a fairly standard [Jekyll](http://jekyllrb.com/) site, but there are
 4. Make sure you have the `jekyll` RubyGem installed
   * A `.rvmrc` [RVM](http://rvm.io/) configuration file is included if that's your thing
   * Install the `bundler gem` and then install the gems from the Gemfile: `gem install bundler && bundle`
-5. Build the site and run the local server: `jekyll serve --watch`
+5. Build the site and run the local server: `jekyll serve --watch`. To speed up page re-building you can disable plugins by running `jekyll serve --watch --safe`
 
 You can now view your local server at <http://localhost:4000> (unless you changed the port number).
 
