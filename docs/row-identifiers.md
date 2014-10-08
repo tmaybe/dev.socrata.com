@@ -38,9 +38,9 @@ To use a row identifier to look up a row, simply append it to the resource endpo
 
 {% include tryit.html domain='explore.data.gov' path='/resource/644b-gaut/1.json' %}
 
-In contrast, the [USGS Earthquakes](https://soda.demo.socrata.com/dataset/USGS-Earthquake-Reports/4tka-6guv) dataset is configured to use a publisher-specified identifier. To look up the earthquake with the ID `00388610`:
+In contrast, the [USGS Earthquakes](https://soda.demo.socrata.com/dataset/USGS-Earthquake-Reports/4tka-6guv) dataset is configured to use a publisher-specified identifier. To look up the earthquake with the ID `00388609`:
 
-{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv/00388610.json' %}
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv/00388609.json' %}
 
 {% include try.html %}
 
