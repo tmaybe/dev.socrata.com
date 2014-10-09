@@ -1,5 +1,5 @@
 ---
-layout: default-with-title
+layout: default
 title: Changes to the handling of NULLs in Upsert operations 
 type: change 
 date: 2014-02-11
