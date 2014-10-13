@@ -25,5 +25,3 @@ It's important to alias the results of `date_trunc_ym(tow_date)` in order to mak
 {% include tryit.html domain='data.cityofchicago.org' path='/resource/ygr5-vcbg.json' args='$select=date_trunc_ym(tow_date) AS month, count(*) AS total&$group=month' %}
 
 Try `date_trunc_ymd` and `date_trunc_y` to see what happens!
-
-{% include try.html %}
