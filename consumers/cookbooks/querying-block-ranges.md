@@ -28,5 +28,3 @@ With [SoQL](/docs/queries.html), this is fairly straightforward. By using the bo
 For example, here's the query for "228 Market":
 
 {% include tryit.html domain='data.cityofboston.gov' path='/resource/8sq6-p7et.json' args="$where=street%20=%20'Market'%20AND%20(stno%20=%20'228'%20OR%20(stno%20%3C=%20'228'%20AND%20sthigh%20%3E=%20'228'))" %}
-
-{% include try.html %}

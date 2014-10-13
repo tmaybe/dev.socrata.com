@@ -29,5 +29,3 @@ If we were building a mobile application that only had room for 5 results on a p
 Then, if the user clicked **Next**, we would retrieve the next five results with this request:
 
 {% include tryit.html domain='soda.demo.socrata.com' path='/resource/earthquakes.json' args='$limit=5&amp;$offset=5' %}
-
-{% include try.html %}

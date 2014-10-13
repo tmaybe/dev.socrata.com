@@ -35,5 +35,3 @@ For example, the endpoint for the [White House Visitors Record](http://explore.d
 You can also find API endpoints in the "Developers" section of Socrata-powered data sites, or under "Export" then "API" on any Socrata dataset page.
 
 Output formats can also be selected by adding an "extension" to your API endpoints. For more details see the [Output Formats](/docs/formats/index.html) section.
-
-{% include try.html %}

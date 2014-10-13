@@ -222,5 +222,3 @@ Got a lot of changes to make? All of these operations can be performed within a 
 <ul class="well">
   <li>Learn more about <a href="/publishers/upsert.html">bulk updates using upsert</a></li>
 </ul>
-
-{% include try.html %}

@@ -42,8 +42,6 @@ In contrast, the [USGS Earthquakes](https://soda.demo.socrata.com/dataset/USGS-E
 
 {% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv/00388609.json' %}
 
-{% include try.html %}
-
 ## Establishing a Publisher-Specified Identifier
 
 <p class="alert alert-info">Setting a row identifier requires that you are either the owner of a dataset, or that you've been granted a role of Publisher or Administrator on a Socrata customer site. Basically, if you can't modify the dataset, you can't set a row identifier.</p>
