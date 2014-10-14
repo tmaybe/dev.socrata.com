@@ -9,10 +9,10 @@ Sometimes Socrata API requests will return a large number of results. Rather tha
 
 Paging is accomplished through two query parameters: `$limit` and `$offset`. Note that using paging is entirely optional: if you do not specify the `$limit` and `$offset` parameters, then the defaults will be used.
 
-| Query Parameter | Description                                                                | Default Value |
-| ---             | ---                                                                        | ---           |
-| `$limit`        | The number of results to return                                            | 1000          |
-| `$offset`       | The index of the result array where to start the returned list of results. | 0             |
+| Query Parameter | Description                                                                | Default Value | Maximum Value |
+| ---             | ---                                                                        | ---           | ---           |
+| `$limit`        | The number of results to return                                            | 1000          | 50000         |
+| `$offset`       | The index of the result array where to start the returned list of results. | 0             | N/A           |
 
 {% include ordering-note.html %}
 
