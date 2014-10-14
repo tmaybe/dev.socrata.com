@@ -5,33 +5,7 @@ $(document).ready(function(){
     $("#foundry-docs").html("<p>No parameters passed!</p>");
     return;
   }
-
   var domain = components[1];
-
-  // // We've got at least one parameter, so we know we've at least got a domain
-  // // Fetch config and do a little styling
-  // $.getJSON("http://" + domain + "/api/configurations.json?type=site_theme")
-  // .done(function(config) {
-  //   console.log(config);
-  //   var logo_slug = $.grep(config[0].properties, function(p, idx) { return p.name === "theme_v2b" })[0].value
-  //     .images.logo_header.href;
-
-  //   // If there's no logo configured for this domain
-  //   if(!logo_slug) {
-  //     console.log("No logo found for " + domain)
-  //   }
-
-  //   // Slap a logo in there
-  //   if(logo_slug.indexOf("/") >= 0) {
-  //     $("#branding").append('<img src="https://' + domain + logo_slug + '" alt="' + domain + '" />');
-  //   } else {
-  //     $("#branding").append('<img src="https://' + domain + '/api/assets/' + logo_slug + '" alt="' + domain + '" />');
-  //   }
-  // })
-  // .fail(function() {
-  //   console.log("Error getting configuration for domain " + domain);
-  //   return;
-  // });
 
   // Deal with generating the docs or catalog
   if(components.length == 2) {
@@ -100,7 +74,7 @@ $(document).ready(function(){
         console.log("Something went wrong fetching templates...");
       });
     }).fail(function() {
-      console.log("Something wnet wrong retrieving metadata...");
+      console.log("Something went wrong retrieving metadata...");
     });
   }
 });

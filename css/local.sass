@@ -334,7 +334,7 @@ p, li
             border: 1px solid lighten(nth($code, 2), 20%)
 
 #foundry-docs
-  $datatypes: "text" #0074D9, "number" #39CCCC, "location" #3D9970, "calendar_date" #FF851B, "email" #FFFF00
+  $datatypes: "text" #0074D9, "number" #39CCCC, "location" #3D9970, "calendar_date" #FF851B, "date" #FF851B, "deprecated" #AAAAAA
 
   .getting-started
     width: 67%
@@ -357,9 +357,11 @@ p, li
       display: block
       margin: 0 0 10px
       padding: 0
+      cursor: pointer
 
       .panel-body
         border-top: none
+        cursor: default
 
         h4
           font-weight: bold
@@ -382,6 +384,7 @@ p, li
             -ms-border-radius: 2px
             -khtml-border-radius: 2px
             border-radius: 2px
+            margin: 0
 
         h3
           display: block
@@ -408,6 +411,7 @@ p, li
             @each $type in $datatypes
               &.#{nth($type, 1)}
                 background-color: nth($type, 2)
+                margin: 0
 
           .datatype
             padding-left: 4px

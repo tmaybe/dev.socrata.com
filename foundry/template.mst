@@ -36,7 +36,7 @@
 
   <p>Following <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>-ful paradigms, we return standard <a href="/docs/response-codes.html">HTTP Status Codes</a> to denote success or failure. For example, a successful request will get a <code>200 OK</code>, while a bad query will get a <code>400 Bad Request</code>. Errors are also accompanied by an <a href="/docs/response-codes.html">error response</a> including human-readble error message.</p>
 
-  <p>This documentation also includes inline, runable examples. Click on any link that contains a <code><i class="fa fa-fw fa-cog" style="color: #c7254e"></i> gear symbol</code> next to it to run that example live against the {{metadata.name}} API. If you just want to grab the API endpoint and go, you'll find it below.</p>
+  <p>This documentation also includes inline, runable examples. Click on any link that contains a <code><i class="fa fa-fw fa-cog" style="color: #c7254e"></i> gear symbol</code> next to it to run that example live against the <code>{{metadata.name}}</code> API. If you just want to grab the API endpoint and go, you'll find it below.</p>
 
   <div class="endpoint">
     <a class="tryit" href="{{full_url}}">{{full_url}}</a>
