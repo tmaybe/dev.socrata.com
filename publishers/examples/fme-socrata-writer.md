@@ -13,10 +13,9 @@ This guide describes how to use FME Desktop to setup a basic workspace to publis
 
 Before you begin this tutorial, you should have the following:
 
-- An installed copy of FME Desktop 2014 SP4 or FME Desktop 2015 (Windows, Mac, or Linux)
- - You can download [Service Pack 4 for FME 2013](http://www.safe.com/support/support-resources/fme-downloads/)
+- An installed copy of FME Desktop 2015 (Windows, Mac, or Linux)
  - You can download [FME 2015 Beta](http://www.safe.com/support/support-resources/fme-downloads/beta/)
- - If you are using FME 2013, we strongly recommend updating to the latest version of FME to make use of the newest Socrata Writer.
+ - If you are using FME 2013 or FME 2014, we strongly recommend updating to the latest version of FME to make use of the newest Socrata Writer.
 - Socrata account with a Publisher role or Owner rights to at least one *existing* dataset
 
 If you do not have a license of FME, you can [apply for a free trial license](http://www.safe.com/fme/fme-desktop/trial-download/) that will last for 14 days.
