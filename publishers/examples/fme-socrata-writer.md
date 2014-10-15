@@ -47,7 +47,7 @@ Now add a writer by clicking the Add new writer button in the toolbar or going t
 
 ![Add Socrata Writer](/img/fme/add_writer.png)
 
-Click OK and when it asks you if you would like to "add a new feature type to the reader" click Yes which will bring up a new window. In the "Dataset Name" field enter the dataset ID of your Socrata dataset. Refer to Step 3b below if you do not know how to obtain the dataset ID. After entering the dataset ID press OK and you should see the Writer Object appear in the workspace area.
+Click OK which will bring up a new window (if it asks you if you would like to "add a new feature type to the writer" click Yes). In the "Dataset Name" field enter the dataset ID of your Socrata dataset. Refer to Step 3b below if you do not know how to obtain the dataset ID. After entering the dataset ID press OK and you should see the Writer Object appear in the workspace area.
 
 ![Set feature type](/img/fme/set_feature_type.png)
 
@@ -55,7 +55,7 @@ Click OK and when it asks you if you would like to "add a new feature type to th
 
 ### Step 3b: Obtain the Dataset ID
 
-You will need the dataset ID of the Socrata dataset you wish to publish to using FME. To obtain the dataset ID, navigate to the dataset in your web browser. In the address bar the dataset ID is the code at the end of the URL in the form `xxxx-xxxx`. For example, for the dataset <https://data.seattle.gov/Public-Safety/Fire-911/m985-ywaw>, it"s identifier would be `m985-ywaw`.
+You will need the dataset ID of the Socrata dataset you wish to publish to using FME. To obtain the dataset ID, navigate to the dataset in your web browser. In the address bar the dataset ID is the code at the end of the URL in the form `xxxx-xxxx`. For example, for the dataset <https://data.seattle.gov/Public-Safety/Fire-911/m985-ywaw>, it's identifier would be `m985-ywaw`.
 
 ### Step 4: Configure the update method
 
