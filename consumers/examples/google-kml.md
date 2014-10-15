@@ -12,7 +12,7 @@ author: chrismetcalf
 
 The [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial) makes it easy to pull in geospatial data from KML files, which works great with our KML export functionality for geospatial datasets. This sample will walk you through the process of using Socrata's KML support to display polygon boundaries on a Google Map. If you'd like to follow along at home, you can fork [this jsFiddle sample project](http://jsfiddle.net/chrismetcalf/MZA62/).
 
-This example would go great with our [Google Maps Mashup](/consumers/examples/google-maps-mashup.html) tutorial, allowing you to map points and boundaries together.
+This example would go great with our [Google Maps Mashup](/consumers/examples/google-maps.html) tutorial, allowing you to map points and boundaries together.
 
 <div id="map" style="height: 480px; width: 640px"><!-- This space intentionally left blank --></div>
 
