@@ -43,11 +43,11 @@ Data readers are used to read data from some data source into FME. Add a new Rea
 
 ### Step 3a: Add a Writer
 
-Now add a writer by clicking the Add new writer button in the toolbar or going to Writers -> Add Writer... In the dialog box that appears type "Socrata" as the format (it should come up as you are typing). Next click the Parameters button and in the dialog box that appears enter the domain of your datasite as the host (i.e. data.cityofchicago.org) and then enter your Socrata username and password. 
+Now add a writer by clicking the Add new writer button in the toolbar or going to Writers -> Add Writer... In the dialog box that appears type "Socrata" as the format (it should come up as you are typing). Next click the Parameters button and in the dialog box that appears enter the domain of your datasite (i.e. data.cityofchicago.org) and your Socrata username and password. 
 
 ![Add Socrata Writer](/img/fme/add_writer.png)
 
-Click OK and when it asks you if you would like to "add a new feature type to the reader" click Yes which will bring up a new window. In the "Feature Type Name" field enter the dataset ID of your Socrata dataset. Refer to Step 3b below if you do not know how to obtain the dataset ID. After entering the dataset ID press OK and you should see the Writer Object appear in the workspace area.
+Click OK and when it asks you if you would like to "add a new feature type to the reader" click Yes which will bring up a new window. In the "Dataset Name" field enter the dataset ID of your Socrata dataset. Refer to Step 3b below if you do not know how to obtain the dataset ID. After entering the dataset ID press OK and you should see the Writer Object appear in the workspace area.
 
 ![Set feature type](/img/fme/set_feature_type.png)
 
