@@ -23,7 +23,7 @@ Row identifiers come in two flavors:
 
 By default, internal metadata is not returned with requests. You can override this option by passing a `$select` parameter that includes `:*` along with your request. For example, if you wanted to get all of the fields, you could use `$select=:*,*`.
 
-{% comment %} {% include tryit.html domain='explore.data.gov' path='/resource/644b-gaut.json' args='$select=:&#42;,&#42;' %} {% endcomment %}
+{% comment %} {% include tryit.html domain='open.whitehouse.gov' path='/resource/p86s-ychb.json' args='$select=:&#42;,&#42;' %} {% endcomment %}
 
 Notable system fields:
 
@@ -34,9 +34,9 @@ Notable system fields:
 
 ## Retrieving Rows By Their Identifiers
 
-To use a row identifier to look up a row, simply append it to the resource endpoint for that dataset. For example, to look up row `1` from the Visitor Records dataset using its row identifier:
+To use a row identifier to look up a row, simply append it to the resource endpoint for that dataset. For example, to look up row `1` from the [White House Visitor Records](https://open.whitehouse.gov/dataset/White-House-Visitor-Records-Requests/p86s-ychb) dataset using its row identifier:
 
-{% include tryit.html domain='explore.data.gov' path='/resource/644b-gaut/1.json' %}
+{% include tryit.html domain='open.whitehouse.gov' path='/resource/p86s-ychb/1.json' %}
 
 In contrast, the [USGS Earthquakes](https://soda.demo.socrata.com/dataset/USGS-Earthquake-Reports/4tka-6guv) dataset is configured to use a publisher-specified identifier. To look up the earthquake with the ID `00388609`:
 
