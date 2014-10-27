@@ -23,7 +23,7 @@ To query this dataset, we want to:
 - Match the exact street address if there's only `stno`
 - Match the range between `stno` and `sthigh` if there is a range
 
-With [SoQL](/docs/queries.html), this is fairly straightforward. By using the boolean `AND` and `OR` operators, we can set up a `$where` query like `street = '$street_name' AND (stno = '$street_name' OR (stno <= '$street_name' AND sthigh >= '$street_name'))` (where `$street_name` and `$street_name` represent our input street name and number).
+With [SoQL](/docs/queries.html), this is fairly straightforward. By using the boolean `AND` and `OR` operators, we can set up a `$where` query like `street = '$street_name' AND (stno = '$street_number' OR (stno <= '$street_number' AND sthigh >= '$street_number'))` (where `$street_name` and `$street_number` represent our input street name and number).
 
 For example, here's the query for "228 Market":
 
