@@ -4,7 +4,7 @@ sidebar: documentation
 title: CORS & JSONP
 ---
 
-For security reasons, web browsers prevent what are called "cross-origin" or "cross-site" requests from one domain to another. JavaScript [`XMLHTTPRequest`](http://www.w3schools.com/xml/xml_http.asp)s (commonly called "AJAX" requests) inherit all of the authentication context of the currently logged in user, so a malicious web page could attempt to make malicious requests that cross domain contexts and cause trouble. Historically, that has made it difficult for web developers to build web applications making use of third-party APIs.
+For security reasons, web browsers prevent what are called "cross-origin" or "cross-site" requests from one domain to another. JavaScript [`XMLHTTPRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)s (commonly called "AJAX" requests) inherit all of the authentication context of the currently logged in user, so a malicious web page could attempt to make malicious requests that cross domain contexts and cause trouble. Historically, that has made it difficult for web developers to build web applications making use of third-party APIs.
 
 Fortunately, techniques have since been developed that allow developers to securely access APIs cross-domain. The two most popular ones, and the techniques that Socrata supports, are [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) and [JSONP](http://en.wikipedia.org/wiki/JSONP).
 
