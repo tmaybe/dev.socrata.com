@@ -34,7 +34,7 @@ $.getJSON(
 
 ## "JavaScript with Padding" (JSONP)
 
-If you're developing for older browsers, or you just feel like being nostalgic, you can also make use of our support for [JSONP](http://en.wikipedia.org/wiki/JSONP). JSONP, or "JSON with Padding", is a technique for fooling a web browser into performing cross-origin requests using a special `<script>` tag that uses the`src` attribute that to make a special API request. Instead of responding with just a JSON object, the server responds with JavaScript code that calls a client-declared callback function, passing the data as that function's first parameter. With the Socrata API, the name of that callback function is declared using the `$jsonp` parameter.
+If you're developing for older browsers, or you just feel like being nostalgic, you can also make use of our support for [JSONP](http://en.wikipedia.org/wiki/JSONP). "JSON with Padding", it is a technique for fooling a web browser into performing cross-origin requests using a special `<script>` tag that uses the`src` attribute that to make a special API request. Instead of responding with just a JSON object, the server responds with JavaScript code that calls a client-declared callback function, passing the data as that function's first parameter. With the Socrata API, the name of that callback function is declared using the `$jsonp` parameter.
 
 Sounds hacky, huh? Fortunately, tools like jQuery make it easy to use JSONP:
 
