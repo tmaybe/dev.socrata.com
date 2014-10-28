@@ -102,6 +102,7 @@ In general there are two approaches you can take to schedule an FME Workflow:
 
 ## Related Pages
 
+- [Getting Started with FME](http://www.safe.com/fme/getting-started/)
 - [FMEpedia](http://fmepedia.safe.com)
 - [FME write-up on Socrata Writer](http://www.safe.com/solutions/for-applications/socrata)
 
