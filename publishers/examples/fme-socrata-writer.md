@@ -41,23 +41,37 @@ Data readers are used to read data from some data source into FME. Add a new Rea
 
 ![Add XLSX Reader](/img/fme/add_reader.png)
 
-### Step 3a: Add a Writer
+### Step 3a: Add the Socrata Writer
 
 Now add a writer by clicking the Add new writer button in the toolbar or going to Writers -> Add Writer... In the dialog box that appears type "Socrata" as the format (it should come up as you are typing). Next click the Parameters button and in the dialog box that appears enter the domain of your datasite (i.e. data.cityofchicago.org) and your Socrata username and password. 
 
 ![Add Socrata Writer](/img/fme/add_writer.png)
 
-Click OK which will bring up a new window (if it asks you if you would like to "add a new feature type to the writer" click Yes). In the "Dataset Name" field enter the dataset ID of your Socrata dataset. Refer to Step 3b below if you do not know how to obtain the dataset ID. After entering the dataset ID press OK and you should see the Writer Object appear in the workspace area.
+Click OK which will bring up a new window (if it asks you if you would like to "add a new feature type to the writer" click Yes). 
 
 ![Set feature type](/img/fme/set_feature_type.png)
 
 
+### Step 3b: Configure dataset to publish to
 
-### Step 3b: Obtain the Dataset ID
+#### Option 1 - Publish to existing dataset
 
-You will need the dataset ID of the Socrata dataset you wish to publish to using FME. To obtain the dataset ID, navigate to the dataset in your web browser. In the address bar the dataset ID is the code at the end of the URL in the form `xxxx-xxxx`. For example, for the dataset <https://data.seattle.gov/Public-Safety/Fire-911/m985-ywaw>, it's identifier would be `m985-ywaw`.
+In the "Dataset Name" field enter the dataset ID of the Socrata dataset you wish to publish to. To obtain the dataset ID, navigate to the dataset in your web browser. In the address bar the dataset ID is the code at the end of the URL in the form `xxxx-xxxx`. For example, for the dataset <https://data.seattle.gov/Public-Safety/Fire-911/m985-ywaw>, it's identifier would be `m985-ywaw`. 
+
+#### Option 2 - Create a new dataset
+
+FME can also create a new Socrata dataset automatically. Simply enter the name you would like the dataset to have in the "Dataset Name" field. After finshing the workflow configuration (detailed in Step 4 and 5 below) and running the workflow look in the FME log entry that outputs the dataset ID of the newly created dataset, for example:
+
+```
+Socrata Writer: 'TEMP.csv' was successfully imported as a new Socrata dataset. The dataset ID is 'k5ad-vnv2'
+```
+
+To have the workflow update the dataset you should set the "Dataset Name" to the dataset ID.
+
 
 ### Step 4: Configure the update method
+
+![Configure update method](/img/fme/format_parameters.png)
 
 By default the Socrata Writer will perform an [UPSERT](http://dev.socrata.com/publishers/upsert.html) on the dataset. However, you can also configure it to perform [REPLACE](http://dev.socrata.com/publishers/replace.html) or DELETE using the "Format Parameters" tab within the Feature Type Properties of the Socrata Writer Object. 
 
@@ -69,20 +83,15 @@ By default the Socrata Writer will perform an [UPSERT](http://dev.socrata.com/pu
 <em>Important Note</em>: For updating with `UPSERT` or `DELETE` to work properly you must set a "Row Identifier" for the dataset. If a Row Identifier is not set, all records being published will be appended to the dataset. Learn more about <a href="http://dev.socrata.com/docs/row-identifiers.html">Row Identifiers and how to establish them</a>.
 </div>
 
-![Configure update method](/img/fme/format_parameters.png)
-
 ### Step 5: Complete workflow and run translation
 
-Now drag the yellow arrowhead on the Reader Object over to the Writer Object.The two Objects should connect and the arrowheads should turn green. Be sure the column names of your .xlsx/.xls file (which are read into FME as Attribute Name) exactly match those of your Socrata dataset. NOTE: the attribute names are *case-sensitive*.
+After configuring the Writer press OK and you should see the Writer object appear in the workspace area. Now drag the yellow arrowhead on the Reader Object over to the Writer Object. The two Objects should connect and the arrowheads should turn green. Be sure the column names of your .xlsx/.xls file (which are read into FME as Attribute Name) exactly match those of your Socrata dataset. NOTE: the attribute names are *case-sensitive*. However, you can always use an [AttributeRenamer](http://docs.safe.com/fme/html/FME_Transformers/Default.htm#Transformers/attributerenamer.htm) if you need to rename attributes to match the column names of the Socrata dataset.
 
 Click the Run Translation button in the toolbar or go to "File" -> "Run Translation". The log will display messages on the status of the translation. After the translation completes the last line output in the log should say "Translation was SUCCESSFUL".
 
-## Example FME workflow to download
+## Example FME template workflow to download
 
-You can download an example .fmw file of [this workflow here](/data/excel2socrata.fmw). To get it to work make the following changes in the "Navigator" panel to the left of the workspace:
-
-- Point the "Source Microsoft Excel File" under the XLSX reader to the .xlsx file you can [download here](/data/Food_Inspections_small.xlsx). You can use this file to create the dataset to publish to in FME.
-- Update the "Host", "User", and "Password" fields with your credentials under the Socrata Writer feature
+You can download an example [template of this workflow here](/data/excel2socrata_simple.fmwt). To get it to work update the "Host", "User", and "Password" fields with your credentials under the Socrata Writer feature in the "Navigator" panel to the left of the workspace. 
 
 ![FME Navigator](/img/fme/navigator.png)
 
