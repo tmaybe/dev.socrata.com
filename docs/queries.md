@@ -20,7 +20,7 @@ as a URL parameter or as a SoQL statement. If a parameter is not specified, then
 | [`$where`](#the-where-parameter)   | Filters the rows to be returned                                                                     | No filter, and returning a max of `$limit` values          |
 | [`$order`](#the-order-parameter)   | Specifies the order of results                                                                      | Unspecified order, but it will be consistent across paging |
 | [`$group`](#the-group-parameter)   | Column to group results on, similar to [SQL Grouping](http://www.w3schools.com/sql/sql-groupby.asp) | No grouping                                                |
-| [`$limit`](#the-limit-parameter)   | Maximum number of results to return                                                                 | 1000 (and a maximum of 1000)                               |
+| [`$limit`](#the-limit-parameter)   | Maximum number of results to return                                                                 | 1000 (with a maximum of 5000)                               |
 | [`$offset`](#the-offset-parameter) | Offset count into the results to start at, used for paging                                          | 0                                                          |
 | [`$q`](#search-with-q)             | Performs a full text search for a value.                                                            | No search                                                  |
 
@@ -126,7 +126,7 @@ For example, if you wanted to only return the top ten strongest earthquakes, you
 {% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$order=magnitude DESC&amp;$limit=10' %}
 
 <div class="alert alert-info"><strong>Note:</strong> The maximum you can request with <code>$limit</code> is 1000 records. If you request greater than 1000, you'll get a {% include status-code.html code='400' %} 
-response.</div>
+response. You can also expand the page size up to a <code>$limit</code> of 50,000.</div>
 
 ### The $offset Parameter
 
