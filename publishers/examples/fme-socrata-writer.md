@@ -13,17 +13,17 @@ This guide describes how to use FME Desktop to setup a basic workspace to publis
 
 Before you begin this tutorial, you should have the following:
 
-- An installed copy of FME Desktop 2015 (Windows, Mac, or Linux)
- - You can download [FME 2015 Beta](http://www.safe.com/support/support-resources/fme-downloads/beta/)
+- An installed copy of FME Desktop 2015 or 2014 SP4 (Windows, Mac, or Linux)
+ - Download [FME 2015 Beta](http://www.safe.com/support/support-resources/fme-downloads/beta/) (recommended) or [FME 2014 SP4](http://www.safe.com/support/support-resources/fme-downloads/)
  - If you are using FME 2013 or FME 2014, we strongly recommend updating to the latest version of FME to make use of the newest Socrata Writer.
 - Socrata account with a Publisher role or Owner rights to at least one *existing* dataset
 
-If you do not have a license of FME, you can [apply for a free trial license](http://www.safe.com/fme/fme-desktop/trial-download/) that will last for 14 days.
+If you do not have a license of FME, as a Socrata user you can get a [30 day free trial here](http://www.safe.com/solutions/for-applications/socrata/).
  
 ## Contents
 
 1. [Setting up the workflow in FME Desktop](#setting-up-the-workflow-in-fme-desktop)
-2. [Example FME workflow to download](#example-fme-workflow-to-download)
+2. [Example FME workflow to download](#example-fme-template-workflow-to-download)
 3. [Proxy configuration](#proxy-configuration)
 4. [Scheduling FME transformations](#scheduling-fme-transformations)
 
@@ -114,5 +114,5 @@ In general there are two approaches you can take to schedule an FME Workflow:
 - [Getting Started with FME](http://www.safe.com/fme/getting-started/)
 - [FMEpedia](http://fmepedia.safe.com)
 - [FME write-up on Socrata Writer](http://www.safe.com/solutions/for-applications/socrata)
-
+- [Safe FME Support](http://www.safe.com/support/support-resources/)
 
