@@ -67,7 +67,7 @@ The "**So**crata **Q**uery **L**anguage" (SoQL) is a simple, SQL-like query lang
 
 ### Paging
 
-For performance, SODA APIs are paged, and return a maximum of 1000 records per page. So, to request subsequent pages, you'll need to use the `$limit` and `$offset` parameters to request more data. The `$limit` parameter chooses how many records to return per page, and `$offset` tells the API on what record to start returning data.
+For performance, SODA APIs are paged, and return a maximum of 50,000 records per page. So, to request subsequent pages, you'll need to use the `$limit` and `$offset` parameters to request more data. The `$limit` parameter chooses how many records to return per page, and `$offset` tells the API on what record to start returning data.
 
 So, to request page two, at 100 records per page, of our fuel locations API:
 
