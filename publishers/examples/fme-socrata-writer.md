@@ -18,7 +18,7 @@ Before you begin this tutorial, you should have the following:
  - If you are using FME 2013 or FME 2014, we strongly recommend updating to the latest version of FME to make use of the newest Socrata Writer.
 - Socrata account with a Publisher role or Owner rights to at least one *existing* dataset
 
-If you do not have a license of FME, as a Socrata user you can get a [30 day free trial here](http://www.safe.com/solutions/for-applications/socrata/).
+<p class="alert alert-info">If you do not have a license of FME, as a Socrata user you can get a <a href="http://www.safe.com/solutions/for-applications/socrata/">30 day free trial here</a>.</p>
  
 ## Contents
 
@@ -115,4 +115,5 @@ In general there are two approaches you can take to schedule an FME Workflow:
 - [FMEpedia](http://fmepedia.safe.com)
 - [FME write-up on Socrata Writer](http://www.safe.com/solutions/for-applications/socrata)
 - [Safe FME Support](http://www.safe.com/support/support-resources/)
+- List of [350+ formats/systems supported by FME](http://www.safe.com/fme/format-search/)
 
