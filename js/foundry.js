@@ -1,4 +1,8 @@
 $(document).ready(function(){
+  // Throw up a loading screen while we work
+  $('#branding').hide();
+  $('#foundry-docs').hide();
+
   // Split up our hash components
   var components = window.location.hash.split("/");
   if(components.length != 3) {
@@ -55,20 +59,19 @@ $(document).ready(function(){
             console.log("Something went wrong loading logo image: " + $(this).attr("src"));
             $(this).remove();
           });
+
+          // Show ourselves!
+          $("#branding").show();
         })
         .fail(function(xhr) {
           console.log("An error occurred loading the branding template:" + xhr); 
         });
-
-
     })
     .fail(function(xhr) {
       console.log("Something went wrong loading branding configuration: " + xhr);
     });
 
 
-  // Deal with generating the docs or catalog
-  $('#foundry-docs').html("<p>Generating API documentation...</p>");
   // Parallelize our data and metadata requests
   $.when(
     $.getJSON("https://" + domain + "/api/views/" + uid + ".json"),
@@ -110,19 +113,27 @@ $(document).ready(function(){
 
       // Set up our clipboard buttons
       $.each($("pre"), clipbutton);
+
+      // Show ourselves!
+      $("#loading").fadeOut();
+      $("#foundry-docs").fadeIn();
     }).fail(function() {
-      $('#foundry-docs').html("<p>Something went wrong fetching templates.</p>");
+      $("#loading").hide();
+      $('#foundry-docs').html("<p>Something went wrong fetching templates.</p>").show();
     });
   }).fail(function(xhr) {
     switch(xhr.status) {
       case 403:
-        $('#foundry-docs').html("<p>Unfortunately, this dataset is private, and API Foundry does not support private datasets at this time.</p>");
+        $("#loading").hide();
+        $('#foundry-docs').html("<p>Unfortunately, this dataset is private, and API Foundry does not support private datasets at this time.</p>").show();
         break;
       case 404:
-        $('#foundry-docs').html("<p>This dataset cannot be found or has been deleted.</p>");
+        $("#loading").hide();
+        $('#foundry-docs').html("<p>This dataset cannot be found or has been deleted.</p>").show();
         break;
       default:
-        $('#foundry-docs').html("<p>Something went wrong fetching metadata</p>");
+        $("#loading").hide();
+        $('#foundry-docs').html("<p>Something went wrong fetching metadata</p>").show();
         break;
     }
   });;
