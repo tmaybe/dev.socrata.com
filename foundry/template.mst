@@ -1,3 +1,5 @@
+<h1 class="title">{{ metadata.name }}</h1>
+
 <div class="panel panel-info metadata pull-right">
   <div class="panel-heading">
     <h3 class="panel-title">About this dataset</h3>
