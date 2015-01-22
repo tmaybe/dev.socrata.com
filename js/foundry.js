@@ -12,6 +12,19 @@ $(document).ready(function(){
   var domain = components[1];
   var uid = components[2];
 
+  // Check to make sure we're on the right doc
+  $.getJSON("https://" + domain + "/api/views.json?method=getDefaultView&id=" + uid)
+    .done(function(data) {
+      if(data["id"] != uid) {
+        console.log("Redirecting user to the API for the default dataset");
+        window.location = "/foundry/#/" + domain + "/" + data["id"];
+        window.location.reload();
+      }
+    })
+    .fail(function(err) {
+      console.log("Something went wrong checking the default view. Hopefully we didn't need that.");
+    });
+
   // Fetch branding details
   $.getJSON("https://" + domain + "/api/configurations.json?type=site_theme&defaultOnly=true&merge=true")
     .done(function(data) {
@@ -70,7 +83,6 @@ $(document).ready(function(){
     .fail(function(xhr) {
       console.log("Something went wrong loading branding configuration: " + xhr);
     });
-
 
   // Parallelize our data and metadata requests
   $.when(
