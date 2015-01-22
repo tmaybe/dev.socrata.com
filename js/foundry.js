@@ -17,6 +17,7 @@ $(document).ready(function(){
     .done(function(data) {
       if(data["id"] != uid) {
         console.log("Redirecting user to the API for the default dataset");
+        $('#foundry-docs').html("<p>Redirecting you to the default dataset for this view...</p>").show();
         window.location = "/foundry/#/" + domain + "/" + data["id"];
         window.location.reload();
       }
