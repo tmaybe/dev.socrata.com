@@ -28,7 +28,7 @@ Before embarking on a project to automate data publishing, it's important to tak
 
 If your dataset is rarely or never updated &mdash; for example, the final results of an election or a census &mdash; our web-based user interface is likely sufficient to keep your data up to date. You can edit, update, or append data to a dataset entirely through your web browser, using our simple web user interface.
 
-For more information about how to update a dataset via the Socrata web interface, read [this how-to guide](http://go.socrata.com/append-replace).
+For more information about how to update a dataset via the Socrata web interface, read [this how-to guide](http://support.socrata.com/hc/en-us/articles/202949708-Append-and-replace-dataset-rows-wizard).
 
 ### Socrata DataSync
 
