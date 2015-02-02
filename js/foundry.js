@@ -87,13 +87,13 @@ $(document).ready(function(){
 
   // Parallelize our data and metadata requests
   $.when(
-    $.getJSON("https://" + domain + "/api/views/" + uid + ".json"),
+    $.getJSON("https://" + domain + "/api/views.json?method=getByResourceName&name=" + uid),
     $.getJSON("https://" + domain + "/resource/" + uid + ".json?$limit=1"),
     $.getJSON("https://" + domain + "/resource/" + uid + ".json?$select=count(*)")
   ).done(function(metadata, data, count) {
     // Modify metadata to include trial URLs
     $.each(metadata[0].columns, function(idx, col) {
-      col.filter_url = "https://" + domain + "/resource/" + metadata[0].id + ".json?"
+      col.filter_url = "https://" + domain + "/resource/" + uid + ".json?"
         + col.fieldName + "=" + data[0][0][col.fieldName];
     });
 
@@ -112,6 +112,7 @@ $(document).ready(function(){
       $.ajax("/foundry/tryit.mst")
     ).done(function(template, tryit) {
       $('#foundry-docs').html(Mustache.render(template[0], {
+        uid: uid,
         domain: domain,
         metadata: metadata[0],
         row: data[0][0],

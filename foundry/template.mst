@@ -28,7 +28,7 @@
       {{/metadata.owner}}
     </ul>
   </div>
-  <div class="panel-footer"><a target="_blank" href="http://{{domain}}/d/{{metadata.id}}">View dataset &raquo;</a></div>
+  <div class="panel-footer"><a target="_blank" href="http://{{domain}}/d/{{uid}}">View dataset &raquo;</a></div>
 </div>
 
 <div class="getting-started">
@@ -70,7 +70,7 @@
 
 <h2>Fields</h2>
 
-<p>Each column in <a href="http://{{domain}}/d/{{metadata.id}}">the dataset</a> is represented by a single <code>field</code> in its SODA API. Using <a href="/docs/filters.html">filters</a> and <a href="/docs/queries.html">SoQL queries</a>, you can search for records, limit your results, and change the way the data is output. For example, you could filter this dataset by its <code>{{metadata.columns.0.fieldName}}</code> field using a query like the following:</p>
+<p>Each column in <a href="http://{{domain}}/d/{{uid}}">the dataset</a> is represented by a single <code>field</code> in its SODA API. Using <a href="/docs/filters.html">filters</a> and <a href="/docs/queries.html">SoQL queries</a>, you can search for records, limit your results, and change the way the data is output. For example, you could filter this dataset by its <code>{{metadata.columns.0.fieldName}}</code> field using a query like the following:</p>
 
 {{#metadata.columns.0.filter_url}}
   <a class="tryit" href="{{metadata.columns.0.filter_url}}">{{metadata.columns.0.filter_url}}</a>
