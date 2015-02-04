@@ -6,7 +6,7 @@
   </div>
   <div class="panel-body">
     {{#metadata.description}}
-      <p>{{metadata.description}}</p>
+      <p class="description">{{metadata.description}}</p>
     {{/metadata.description}}
 
     <ul>

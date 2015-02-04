@@ -143,9 +143,16 @@ $(document).ready(function(){
         });
       });
 
+
       // Show ourselves!
       $("#loading").fadeOut();
       $("#foundry-docs").fadeIn();
+
+      // Use readmore.js to shorten descriptions to something more reasonable.
+      $(".metadata .description").readmore({
+        moreLink: '<a href="#">Show more <i class="fa fa-angle-double-down"></i></a>',
+        lessLink: '<a href="#">Show less <i class="fa fa-angle-double-up"></i></a>'
+      });
     }).fail(function() {
       $("#loading").hide();
       $('#foundry-docs').html("<p>Something went wrong fetching templates.</p>").show();
