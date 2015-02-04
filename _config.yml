@@ -17,6 +17,7 @@ local_js:
   - /js/try.js
   - /js/snuffleupadata.js
   - /js/github.js
+  - /js/external-link.js
 
 gems:
   - jekyll-redirect-from

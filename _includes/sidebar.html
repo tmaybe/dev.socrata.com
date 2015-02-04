@@ -8,7 +8,7 @@
   {% for page in site.pages %}
     {% if page.type == 'example' and page.audience == 'consumer' %}
       {% if page.external_url %}
-        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
       {% else %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
       {% endif %}
@@ -19,7 +19,7 @@
   {% for page in site.pages %}
     {% if page.type == 'sdk' and (page.audience == 'consumer' or page.audience == 'all') %}
       {% if page.external_url %}
-        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
       {% else %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
       {% endif %}
@@ -40,7 +40,7 @@
   {% for page in site.pages %}
     {% if page.type == 'example' and page.audience == 'publisher' %}
       {% if page.external_url %}
-        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
       {% else %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
       {% endif %}
@@ -51,7 +51,7 @@
   {% for page in site.pages %}
     {% if page.type == 'connector' %}
       {% if page.external_url %}
-        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
       {% else %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
       {% endif %}
@@ -62,7 +62,7 @@
   {% for page in site.pages %}
     {% if page.type == 'sdk' and (page.audience == 'publisher' or page.audience == 'all') %}
       {% if page.external_url %}
-        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
       {% else %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
       {% endif %}

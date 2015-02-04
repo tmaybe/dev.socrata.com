@@ -73,14 +73,14 @@ To have the workflow update the dataset you should set the "Dataset Name" to the
 
 ![Configure update method](/img/fme/format_parameters.png)
 
-By default the Socrata Writer will perform an [UPSERT](http://dev.socrata.com/publishers/upsert.html) on the dataset. However, you can also configure it to perform [REPLACE](http://dev.socrata.com/publishers/replace.html) or DELETE using the "Format Parameters" tab within the Feature Type Properties of the Socrata Writer Object. 
+By default the Socrata Writer will perform an [UPSERT](/publishers/upsert.html) on the dataset. However, you can also configure it to perform [REPLACE](/publishers/replace.html) or DELETE using the "Format Parameters" tab within the Feature Type Properties of the Socrata Writer Object. 
 
 - `UPSERT`: Select "UPSERT" from the "Writer Mode" dropdown and set "Truncate Dataset First" to "No"
 - `REPLACE`: Select "UPSERT" from the "Writer Mode" dropdown and set "Truncate Dataset First" to "Yes"
 - `DELETE`: Select "DELETE" from the "Writer Mode" dropdown and set "Truncate Dataset First" to "No"
 
 <div class="well">
-<em>Important Note</em>: For updating with `UPSERT` or `DELETE` to work properly you must set a "Row Identifier" for the dataset. If a Row Identifier is not set, all records being published will be appended to the dataset. Learn more about <a href="http://dev.socrata.com/docs/row-identifiers.html">Row Identifiers and how to establish them</a>.
+<em>Important Note</em>: For updating with `UPSERT` or `DELETE` to work properly you must set a "Row Identifier" for the dataset. If a Row Identifier is not set, all records being published will be appended to the dataset. Learn more about <a href="/docs/row-identifiers.html">Row Identifiers and how to establish them</a>.
 </div>
 
 ### Step 5: Complete workflow and run translation
