@@ -92,6 +92,7 @@
     <li class="field panel panel-default">
       <div class="heading panel-heading {{dataTypeName}}" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{fieldName}}">
         <h3 class="panel-title">
+          <i class="collapse-icon fa fa-fw fa-plus-square-o"></i>
           <code class="field-name {{dataTypeName}}">{{fieldName}}</code>
           <code class="datatype">{{dataTypeName}}</code>
         </h3>

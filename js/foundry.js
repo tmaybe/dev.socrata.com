@@ -78,7 +78,7 @@ $(document).ready(function(){
           $("#branding").show();
         })
         .fail(function(xhr) {
-          console.log("An error occurred loading the branding template:" + xhr); 
+          console.log("An error occurred loading the branding template:" + xhr);
         });
     })
     .fail(function(xhr) {
@@ -128,6 +128,21 @@ $(document).ready(function(){
       // Set up our clipboard buttons
       $.each($("pre"), clipbutton);
 
+      // Set up handlers for our collapse-o icons. Unfortunately events only seem
+      // to fire on IDs, so we need to be a bit more long winded.
+      $("#accordion .panel-collapse").each(function() {
+        $(this).on("shown.bs.collapse", function() {
+          $(this).parent().find(".collapse-icon")
+            .removeClass("fa-plus-square-o")
+            .addClass("fa-minus-square-o");
+        });
+        $(this).on("hidden.bs.collapse", function() {
+          $(this).parent().find(".collapse-icon")
+            .removeClass("fa-minus-square-o")
+            .addClass("fa-plus-square-o");
+        });
+      });
+
       // Show ourselves!
       $("#loading").fadeOut();
       $("#foundry-docs").fadeIn();
@@ -152,4 +167,3 @@ $(document).ready(function(){
     }
   });;
 });
-
