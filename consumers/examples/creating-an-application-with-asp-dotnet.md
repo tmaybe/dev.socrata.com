@@ -11,4 +11,4 @@ Looking to build an open data web application using [ASP.NET](https://en.wikiped
 
 You can also [download the whitepaper](/whitepapers/Getting_Started_with_Open_Data_and_ASP_NET_MVC.pdf) for offline reading.
 
-<iframe src="//docs.google.com/gview?url=https://dev.socrata.com/whitepapers/Getting_Started_with_Open_Data_and_ASP_NET_MVC.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
+<iframe src="http://docs.google.com/gview?url=http://dev.socrata.com/whitepapers/Getting_Started_with_Open_Data_and_ASP_NET_MVC.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
