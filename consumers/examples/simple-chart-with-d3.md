@@ -6,6 +6,7 @@ type: example
 audience: consumer
 custom_js:
   - /js/simple-chart-with-d3.js
+include_d3_js: true
 author: chrismetcalf
 ---
 
