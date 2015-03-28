@@ -9,7 +9,7 @@ custom_js:
 author: marks
 ---
 
-**TLDR** - This page contains example code to get a grouped column chart working with Socrata Open Data APIs plus Highcharts, a javascript charting library. If you are looking for the code and want to get tinkering right away, you can visit [this example's jsFiddle page here](http://jsfiddle.net/marksskram/ed42ghw5/). 
+**TLDR** - This page contains example code to get a grouped column chart working with Socrata Open Data APIs plus Highcharts, a javascript charting library. If you are looking for the code and want to get tinkering right away, you can visit [this example's jsFiddle page here](http://jsfiddle.net/marksskram/ed42ghw5/1/). 
 
 Previously, [we wrote about how to create a simple column chart](/consumers/examples/simple-chart-with-d3) with [Michael Bostock](http://bost.ocks.org/mike/)'s [d3](http://d3js.org/). D3 is great for visualizing data but it can be quite complicated for some users.
 
@@ -84,5 +84,7 @@ In the Javascript snippet, we:
 
 1. Set some configuration vairables including the domain the dataset lives on, the dataset's unique ID (aka "four by four"), the query string, and finallyt the title for the chart.
 2. Inside jQuery's `.ready()` callback, which is called once the HTML page and dependencies are fully loaded, we form a URL to query the dataset for the data we want and use the response to create the chart in the specified `#chart-container` div. [You can learn more about how to create a chart using Highcharts and find links to their documentation here](http://www.highcharts.com/docs/getting-started/your-first-chart).
+
+I hope this was helpful! I encourage you to tinker with this on your own page web page or fork the [jsFiddle](http://jsfiddle.net/marksskram/ed42ghw5/1/). If you have any questions, feel free to reach out directly over email (my first dot last name at Socrata dot com) or through [our numerous support channels](http://dev.socrata.com/support.html).
 
 Have a great example of your own? Please [contribute]({{ site.github_repo }}) to our community-maintained documentation!
