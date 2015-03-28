@@ -1,6 +1,6 @@
 ---
 layout: external-link
-title: Swift (Beta)
+title: Swift
 type: sdk 
 audience: consumer
 

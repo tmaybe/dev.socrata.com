@@ -28,7 +28,7 @@ Before embarking on a project to automate data publishing, it's important to tak
 
 If your dataset is rarely or never updated &mdash; for example, the final results of an election or a census &mdash; our web-based user interface is likely sufficient to keep your data up to date. You can edit, update, or append data to a dataset entirely through your web browser, using our simple web user interface.
 
-For more information about how to update a dataset via the Socrata web interface, read [this how-to guide](http://go.socrata.com/append-replace).
+For more information about how to update a dataset via the Socrata web interface, read [this how-to guide](http://support.socrata.com/hc/en-us/articles/202949708-Append-and-replace-dataset-rows-wizard).
 
 ### Socrata DataSync
 
@@ -42,7 +42,7 @@ For more information about [DataSync](http://socrata.github.io/datasync), check 
 
 For more information about the Socrata Writer for FME, see this [helpful writeup on Safe's website](http://www.safe.com/solutions/for-applications/socrata/), as well as [this demo tutorial](http://www.youtube.com/watch?v=X5lr6qw20-s). We have also produced a [support article on how to set up a simple FME workflow for Socrata](http://support.socrata.com/entries/24459198-Setting-up-a-simple-Socrata-integration-with-FME).
 
-### Socrata Publisher API
+### Socrata Publisher API/SDKs
 
 For the tightest possible integration between your source system and your Socrata platform, you'll want to integrate directly with the Socrata Publisher API. The Publisher API allows you to programatically:
 
@@ -50,5 +50,18 @@ For the tightest possible integration between your source system and your Socrat
 - Maintain dataset metadata and privacy settings
 - Create and import Socrata datasets
 
+#### RESTful API
+
 To learn more about the Socrata Publisher API, see the [getting started guide](/publishers/getting-started.html) or check out the API documentation above.
+
+#### SDKs
+
+[Libraries &amp; SDKs](/libraries/) that have Publisher API support include:
+
+- [DataSync SDK](http://socrata.github.io/datasync/guides/datasync-library-sdk.html) (recommended Java library)
+- [Ruby](https://github.com/socrata/soda-ruby)
+- [PHP](http://github.com/socrata/soda-php)
+- [.NET](https://github.com/CityofSantaMonica/SODA.NET)
+
+
 

@@ -1,5 +1,6 @@
 {% case include.type %}
 {% when 'consumer' %}
+  <li class="nav-header dropdown-header">App Developers</li>
   <li><a href="/consumers/getting-started.html">Getting Started</a></li>
   <li><a href="/consumers/cookbooks/">Cookbooks</a></li>
 
@@ -7,7 +8,7 @@
   {% for page in site.pages %}
     {% if page.type == 'example' and page.audience == 'consumer' %}
       {% if page.external_url %}
-        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
       {% else %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
       {% endif %}
@@ -18,7 +19,7 @@
   {% for page in site.pages %}
     {% if page.type == 'sdk' and (page.audience == 'consumer' or page.audience == 'all') %}
       {% if page.external_url %}
-        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
       {% else %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
       {% endif %}
@@ -26,7 +27,9 @@
   {% endfor %}
 
 {% when 'publisher' %}
+  <li class="nav-header dropdown-header">Data Publishers</li>
   <li><a href="/publishers/">Publisher Guide</a></li>
+  <li><a href="/publishers/cookbooks/">Cookbooks</a></li>
   <li class="nav-header dropdown-header">The Publisher API</li>
   <li><a href="/publishers/getting-started.html">Getting Started</a></li>
   <li><a href="/publishers/direct-row-manipulation.html">Direct Row Manipulation</a></li>
@@ -37,7 +40,7 @@
   {% for page in site.pages %}
     {% if page.type == 'example' and page.audience == 'publisher' %}
       {% if page.external_url %}
-        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
       {% else %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
       {% endif %}
@@ -48,7 +51,7 @@
   {% for page in site.pages %}
     {% if page.type == 'connector' %}
       {% if page.external_url %}
-        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
       {% else %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
       {% endif %}
@@ -59,7 +62,7 @@
   {% for page in site.pages %}
     {% if page.type == 'sdk' and (page.audience == 'publisher' or page.audience == 'all') %}
       {% if page.external_url %}
-        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }} <i class="fa fa-external-link"></i></a></li>
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
       {% else %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
       {% endif %}
@@ -73,6 +76,9 @@
   <li><a href="/docs/verbs.html">RESTful Verbs</a></li>
   <li><a href="/docs/app-tokens.html">Application Tokens</a></li>
   <li><a href="/docs/authentication.html">Authentication</a></li>
+  <li><a href="/docs/response-codes.html">Response Codes &amp; Errors</a></li>
+  <li><a href="/docs/system-fields.html">System Fields</a></li>
+  <li><a href="/docs/cors-and-jsonp.html">CORS &amp; JSONP</a></li>
   {% comment %} <li><a href="/docs/throttling.html">Request Throttling</a></li> {% endcomment %}
 
   <li class="nav-header dropdown-header">Filtering &amp; Querying</li>
@@ -85,6 +91,7 @@
   <li><a href="/docs/formats/json.html">JSON</a></li>
   <li><a href="/docs/formats/csv.html">CSV</a></li>
   <li><a href="/docs/formats/rdf-xml.html">RDF-XML</a></li>
+  <li><a href="/odata/">OData</a></li>
 
   <li class="nav-header dropdown-header">Datatypes</li>
   <li><a href="/docs/datatypes/string.html">String</a></li>
@@ -93,22 +100,6 @@
   <li><a href="/docs/datatypes/timestamp.html">Timestamp</a></li>
   <li><a href="/docs/datatypes/location.html">Location</a></li>
   {% comment %} <li><a href="/docs/datatypes/converting.html">Conversions</a></li> {% endcomment %}
-
-{% when 'foundry' %}
-  <li class="nav-header dropdown-header">Overview</li>
-  <li><a href="">API Endpoints</a></li>
-  <li><a href="">Row Identifiers</a></li>
-
-  <li class="nav-header dropdown-header">Filtering &amp; Querying</li>
-  <li><a href="/docs/filtering.html">Simple Filters</a></li>
-  <li><a href="/docs/queries.html">SoQL Queries</a></li>
-  <li><a href="/docs/paging.html">Paging Through Data</a></li>
-
-  <li class="nav-header dropdown-header">Data Formats</li>
-  <li><a href="/docs/formats/index.html">Selecting Output Formats</a></li>
-
-  <li class="nav-header dropdown-header">Datatypes</li>
-  <li><a href="/docs/datatypes/string.html">String</a></li>
 
 {% else %}
   <li>Whoever created this page messed something up. Please <a href="/contributing.html">file an issue</a> and ask them to pass a "type" variable.</li>

@@ -9,10 +9,10 @@ Sometimes Socrata API requests will return a large number of results. Rather tha
 
 Paging is accomplished through two query parameters: `$limit` and `$offset`. Note that using paging is entirely optional: if you do not specify the `$limit` and `$offset` parameters, then the defaults will be used.
 
-| Query Parameter | Description                                                                | Default Value |
-| ---             | ---                                                                        | ---           |
-| `$limit`        | The number of results to return                                            | 1000          |
-| `$offset`       | The index of the result array where to start the returned list of results. | 0             |
+| Query Parameter | Description                                                                | Default Value | Maximum Value |
+| ---             | ---                                                                        | ---           | ---           |
+| `$limit`        | The number of results to return                                            | 1000          | 50000         |
+| `$offset`       | The index of the result array where to start the returned list of results. | 0             | N/A           |
 
 {% include ordering-note.html %}
 
@@ -29,5 +29,3 @@ If we were building a mobile application that only had room for 5 results on a p
 Then, if the user clicked **Next**, we would retrieve the next five results with this request:
 
 {% include tryit.html domain='soda.demo.socrata.com' path='/resource/earthquakes.json' args='$limit=5&amp;$offset=5' %}
-
-{% include try.html %}

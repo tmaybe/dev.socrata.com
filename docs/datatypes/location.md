@@ -40,5 +40,3 @@ For example, to get all earthquakes in the Seattle area:
 For example, to get all earthquakes within a 50,000 meter radius circle around Seattle: 
 
 {% include tryit.html domain='soda.demo.socrata.com' path='/resource/earthquakes.json' args='$where=within_circle(location, 47.616810, -122.328064, 50000)' %}
-
-{% include try.html %}

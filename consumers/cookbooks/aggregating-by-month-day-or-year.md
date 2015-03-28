@@ -8,6 +8,7 @@ featured: false
 related: 
   - /docs/datatypes/timestamp.html
   - /docs/queries.html
+author: alaurenz
 ---
 
 When analyzing time series, data, it's often useful to aggregate data to discover trends. Take, for example, this dataset from the [City of Chicago](https://data.cityofchicago.org) reporting [every towed car in the city](https://data.cityofchicago.org/Transportation/Towed-Vehicles/ygr5-vcbg). What if we wanted to aggregate it by month to see how many cars are towed in Chicago by month?
@@ -24,5 +25,3 @@ It's important to alias the results of `date_trunc_ym(tow_date)` in order to mak
 {% include tryit.html domain='data.cityofchicago.org' path='/resource/ygr5-vcbg.json' args='$select=date_trunc_ym(tow_date) AS month, count(*) AS total&$group=month' %}
 
 Try `date_trunc_ymd` and `date_trunc_y` to see what happens!
-
-{% include try.html %}

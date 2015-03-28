@@ -7,6 +7,7 @@ audience: consumer
 custom_js:
   - https://maps.googleapis.com/maps/api/js?sensor=true
   - /js/google-maps-mashup.js
+author: chrismetcalf
 ---
 
 Everybody loves the [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial), but it can be a bit of a bear to get started with sometimes. This sample will walk you through the process of querying a Socrata dataset API with JavaScript and visualizing the results in a Google Map. If you'd like to follow along at home, you can fork [this jsFiddle sample project](http://jsfiddle.net/chrismetcalf/8m2Cs/).

@@ -1,7 +1,7 @@
 ---
 layout: with-sidebar
 title: Data Consumer Cookbooks
-audience: consumers
+audience: consumer
 sidebar: consumer
 ---
 
@@ -9,7 +9,7 @@ sidebar: consumer
 
 <ul class="cookbooks">
   {% for cookbook in site.pages %}
-    {% if cookbook.type == 'cookbook' %}
+    {% if cookbook.type == 'cookbook' and cookbook.audience == 'consumer' %}
       <li class="cookbook"><a href="{{ cookbook.url }}">{{ cookbook.title }}</li>
     {% endif %}
   {% endfor %}

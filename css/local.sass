@@ -110,9 +110,12 @@ iframe.live-docs
 
   .publishers
     border-top: 1px solid #eee
+    border-bottom: 1px solid #eee
     font-size: 1.2em
     margin-top: 1em
-    padding-top: 1em
+    padding:
+      top: 1em
+      bottom: 1em
     .fa
       margin-top: 20px
     a
@@ -130,7 +133,7 @@ footer
     right: 10px
     padding-bottom: 1em
 
-.url
+.sample-url
   font-size: 1.5em
   font-weight: bold
   display: inline-block
@@ -300,38 +303,77 @@ p, li
   .nav-header
     color: #777
 
-#foundry-docs
-  $datatypes: "text" #0074D9, "number" #39CCCC, "location" #3D9970, "calendar_date" #FF851B
+.response-codes
+  ul
+    padding-left: 0
 
-  .response-codes
+    $response_codes: "good" #0074D9, "bad" #FF851B, "ugly" #FF4136
+    li
+      line-height: 1.2em
+      list-style: none
+      margin-bottom: 0.3em
+
+      code
+        color: white
+        display: inline-block
+        width: 50px
+        text-align: center
+        padding: 7px 0 4px
+        -moz-border-radius: 2px
+        -webkit-border-radius: 2px
+        -o-border-radius: 2px
+        -ms-border-radius: 2px
+        -khtml-border-radius: 2px
+        border-radius: 2px
+        margin:
+          right: 0.4em
+
+        @each $code in $response_codes
+          &.#{nth($code, 1)}
+            background-color: nth($code, 2)
+            border: 1px solid lighten(nth($code, 2), 20%)
+
+.branding
+  -moz-border-radius: 4px
+  -webkit-border-radius: 4px
+  -o-border-radius: 4px
+  -ms-border-radius: 4px
+  -khtml-border-radius: 4px
+  position: relative
+  overflow: hidden
+
+  img.logo
+    -moz-border-radius: 4px
+    -webkit-border-radius: 4px
+    -o-border-radius: 4px
+    -ms-border-radius: 4px
+    -khtml-border-radius: 4px
+    border-radius: 4px
+    margin-right: 1em
+    height: auto
+    display: block
+
+  .welcome
+    font-weight: bold
+    font-size: 1.2em
+
+  // .more-info
+  //   font-size: 1.0em
+
+#foundry-docs
+  $datatypes: "text" #0074D9, "html" #0074D9, "url" #AAAAAA, "email" #AAAAAA,  "number" #39CCCC, "money" #39CCCC, "percent" #39CCCC, "location" #3D9970, "calendar_date" #FF851B, "date" #FF851B, "deprecated" #AAAAAA, "checkbox" #AAAAAA, "drop_down_list" #AAAAAA, "flag" #AAAAAA, "stars" #AAAAAA, "photo" #B10DC9, "document" #B10DC9, "phone" #AAAAAA
+
+  .getting-started
+    width: 67%
+
+
+  .metadata
+    margin: 1em
+    width: 30%
+
     ul
       padding-left: 0
-
-      $response_codes: "good" #0074D9, "bad" #FF851B, "ugly" #FF4136
-      li
-        line-height: 1.2em
-        list-style: none
-        margin-bottom: 0.3em
-
-        code
-          color: white
-          display: inline-block
-          width: 50px
-          text-align: center
-          padding: 7px 0 4px
-          -moz-border-radius: 2px
-          -webkit-border-radius: 2px
-          -o-border-radius: 2px
-          -ms-border-radius: 2px
-          -khtml-border-radius: 2px
-          border-radius: 2px
-          margin:
-            right: 0.4em
-
-          @each $code in $response_codes
-            &.#{nth($code, 1)}
-              background-color: nth($code, 2)
-              border: 1px solid lighten(nth($code, 2), 20%)
+      list-style-type: none
 
   .fields
     padding-left: 0
@@ -343,9 +385,11 @@ p, li
       display: block
       margin: 0 0 10px
       padding: 0
+      cursor: pointer
 
       .panel-body
         border-top: none
+        cursor: default
 
         h4
           font-weight: bold
@@ -368,6 +412,7 @@ p, li
             -ms-border-radius: 2px
             -khtml-border-radius: 2px
             border-radius: 2px
+            margin: 0
 
         h3
           display: block
@@ -394,6 +439,7 @@ p, li
             @each $type in $datatypes
               &.#{nth($type, 1)}
                 background-color: nth($type, 2)
+                margin: 0
 
           .datatype
             padding-left: 4px
@@ -406,3 +452,25 @@ p, li
           font-size: 1.0em
           line-height: 1.1em
 
+.vertical-center
+  position: relative
+  top: 50%
+  transform: translateY(-50%)
+
+.author
+  margin-bottom: 1.0em
+
+  h3, h4
+    margin-bottom: 0.1em
+
+  hr
+    margin-top: 0.2em
+    margin-bottom: 0.2em
+
+  ul.meta
+    list-style: none
+    padding-left: 0
+    margin-top: 0.5em
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis

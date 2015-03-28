@@ -8,7 +8,6 @@ all:
 	jekyll build
 	cp public/search.json public/related.json .
 	-git add search.json related.json
-	-terminal-notifier -title "Jekyll" -message "Build complete."
 	-tput bel
 
 # Builds the site and runs linklint to check for bad links

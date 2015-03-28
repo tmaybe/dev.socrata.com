@@ -1,6 +1,9 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 
 gem 'github-pages'
 
 gem 'ferret'
-gem 'rb-gsl'
+gem 'nokogiri'
+gem 'pry'
+gem 'mime-types'
+#gem 'rb-gsl'

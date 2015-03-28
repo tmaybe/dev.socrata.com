@@ -67,7 +67,7 @@ The "**So**crata **Q**uery **L**anguage" (SoQL) is a simple, SQL-like query lang
 
 ### Paging
 
-For performance, SODA APIs are paged, and return a maximum of 1000 records per page. So, to request subsequent pages, you'll need to use the `$limit` and `$offset` parameters to request more data. The `$limit` parameter chooses how many records to return per page, and `$offset` tells the API on what record to start returning data.
+For performance, SODA APIs are paged, and return a maximum of 50,000 records per page. So, to request subsequent pages, you'll need to use the `$limit` and `$offset` parameters to request more data. The `$limit` parameter chooses how many records to return per page, and `$offset` tells the API on what record to start returning data.
 
 So, to request page two, at 100 records per page, of our fuel locations API:
 
@@ -77,10 +77,8 @@ So, to request page two, at 100 records per page, of our fuel locations API:
   Read the detailed documentation on <a href="/docs/paging.html">Paging</a> for more info.
 </div>
 
-## Throttling and Applications Tokens
+## Throttling and Application Tokens
 
-Hold on a second! Before you go storming off to make the next great open data app, you should understand how SODA handles throttling. You can make a certain certain number of requests without an application token, but they come from a shared pool and you're eventually going to get cut off.
+Hold on a second! Before you go storming off to make the next great open data app, you should understand how SODA handles throttling. You can make a certain number of requests without an application token, but they come from a shared pool and you're eventually going to get cut off.
 
 If you want more requests, [register for an application token](/register) and your application will be granted up to 1000 requests per rolling hour period. If you need even more than that, special exceptions are made by request. Use the `Help!` tab on the right of this page to file a trouble ticket.
-
-{% include try.html %}
