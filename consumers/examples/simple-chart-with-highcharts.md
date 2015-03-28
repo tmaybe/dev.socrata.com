@@ -9,10 +9,6 @@ custom_js:
 author: marks
 ---
 
-<script src='http://code.highcharts.com/highcharts.js'></script>
-<script src='http://code.highcharts.com/modules/data.js'></script>
-
-
 *TLDR* - If you are looking for the code and want to get tinkering right away, you can visit [this example's jsFiddle page here](http://jsfiddle.net/marksskram/ed42ghw5/). 
 
 Previously, [we wrote about how to create a simple column chart](/consumers/examples/simple-chart-with-d3) with [Michael Bostock](http://bost.ocks.org/mike/)'s [d3](http://d3js.org/). D3 is great for visualizing data but it can be quite complicated for some users.
@@ -21,8 +17,22 @@ Today, I want to share some simple sample code to create a grouped bar chart usi
 
 For this example, I am going to use the [Inpatient Prospective Payment System (IPPS) Provider Summary for the Top 100 Diagnosis-Related Groups (DRG) - FY2012](https://data.cms.gov/Public-Use-Files/Inpatient-Prospective-Payment-System-IPPS-Provider/xpsg-6hup?) dataset from the HHS/CMS (the United States Department of Health and Human Services Center for Medicare and Medicaid Services) open data portal, [data.cms.gov](https://data.cms.gov). Essentially, this dataset has up to 100 rows for each Medicare-participating hospital and their pricing, reimbursement, and discharge volume for the most common diagnosis groups. 
 
+<!-- include Highcharts Javascript -->
+<script src='http://code.highcharts.com/highcharts.js'></script>
+<script src='http://code.highcharts.com/modules/data.js'></script>
 <div id="chart-container" style="width: 100%; height: 400px; margin: 20px auto"><!-- This space intentionally left blank --></div>
 
+Skeleton HTML you'll need:
+{% highlight html %}
+<!-- Load Highcharts javascript -->
+<script src='http://code.highcharts.com/highcharts.js'></script>
+<script src='http://code.highcharts.com/modules/data.js'></script>
+
+<!-- Set up HTML div where we'll place the chart -->
+<div id="chart-container" style="width: 100%; height: 400px; margin: 20px auto"><!-- This space intentionally left blank --></div>
+{% endhighlight %}
+
+Javascript code to include on your page:
 {% highlight javascript %}
 // START CONFIGURATION
 var dataDomain = 'data.cms.gov'
