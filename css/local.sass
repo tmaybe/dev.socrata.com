@@ -360,12 +360,86 @@ p, li
   // .more-info
   //   font-size: 1.0em
 
+#catalog
+  // API Catalog
+  .catalog
+    $base_color: #7FDBFF
+    padding-left: 0
+
+    li.catalog-entry
+      list-style: none
+      float: none
+      clear: none
+      display: block
+      margin: 0 0 10px
+      padding: 0
+      cursor: pointer
+
+      .panel-body
+        border-top: none
+        cursor: default
+
+        h4
+          font-weight: bold
+
+      .heading
+        float: none
+        clear: both
+        overflow: hidden
+        display: block
+        margin: 0
+        padding: 0
+
+        &.catalog-entry
+          background-color: lighten($base_color, 10%)
+          border: 1px solid lighten($base_color, 20%)
+          -moz-border-radius: 2px
+          -webkit-border-radius: 2px
+          -o-border-radius: 2px
+          -ms-border-radius: 2px
+          -khtml-border-radius: 2px
+          border-radius: 2px
+          margin: 0
+
+        h3
+          display: block
+          clear: none
+          float: left
+          margin: 0
+          padding: 0
+          font-size: 1.0em
+          line-height: 1.1em
+
+          .name
+            background-color: $base_color
+            margin: 0
+
+          .summary
+            float: right
+            color: white
+            display: inline-block
+            width: 300px
+            text-align: center
+            padding: 7px 0 4px
+            -moz-border-radius: 2px
+            -webkit-border-radius: 2px
+            -o-border-radius: 2px
+            -ms-border-radius: 2px
+            -khtml-border-radius: 2px
+            border-radius: 2px
+
+
+        .name
+          display: block
+          float: right
+          margin: 6px 10px 0 0
+          font-size: 1.0em
+          line-height: 1.1em
 #foundry-docs
   $datatypes: "text" #0074D9, "html" #0074D9, "url" #AAAAAA, "email" #AAAAAA,  "number" #39CCCC, "money" #39CCCC, "percent" #39CCCC, "location" #3D9970, "calendar_date" #FF851B, "date" #FF851B, "deprecated" #AAAAAA, "checkbox" #AAAAAA, "drop_down_list" #AAAAAA, "flag" #AAAAAA, "stars" #AAAAAA, "photo" #B10DC9, "document" #B10DC9, "phone" #AAAAAA
 
   .getting-started
     width: 67%
-
 
   .metadata
     margin: 1em
@@ -375,6 +449,7 @@ p, li
       padding-left: 0
       list-style-type: none
 
+  // API Documentation
   .fields
     padding-left: 0
 

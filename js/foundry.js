@@ -1,31 +1,4 @@
-$(document).ready(function(){
-  // Throw up a loading screen while we work
-  $('#branding').hide();
-  $('#foundry-docs').hide();
-
-  // Split up our hash components
-  var components = window.location.hash.split("/");
-  if(components.length != 3) {
-    $("#foundry-docs").html("<p>No parameters passed!</p>");
-    return;
-  }
-  var domain = components[1];
-  var uid = components[2];
-
-  // Check to make sure we're on the right doc
-  $.getJSON("https://" + domain + "/api/views.json?method=getDefaultView&id=" + uid)
-    .done(function(data) {
-      if(data["id"] != uid) {
-        console.log("Redirecting user to the API for the default dataset");
-        $('#foundry-docs').html("<p>Redirecting you to the default dataset for this view...</p>").show();
-        window.location = "/foundry/#/" + domain + "/" + data["id"];
-        window.location.reload();
-      }
-    })
-    .fail(function(err) {
-      console.log("Something went wrong checking the default view. Hopefully we didn't need that.");
-    });
-
+var branding = function(domain) {
   // Fetch branding details
   $.getJSON("https://" + domain + "/api/configurations.json?type=site_theme&defaultOnly=true&merge=true")
     .done(function(data) {
@@ -83,6 +56,23 @@ $(document).ready(function(){
     })
     .fail(function(xhr) {
       console.log("Something went wrong loading branding configuration: " + xhr);
+    });
+}
+
+// Dataset
+var dataset = function(domain, uid) {
+  // Check to make sure we're on the right doc
+  $.getJSON("https://" + domain + "/api/views.json?method=getDefaultView&id=" + uid)
+    .done(function(data) {
+      if(data["id"] != uid) {
+        console.log("Redirecting user to the API for the default dataset");
+        $('#foundry-docs').html("<p>Redirecting you to the default dataset for this view...</p>").show();
+        window.location = "/foundry/#/" + domain + "/" + data["id"];
+        window.location.reload();
+      }
+    })
+    .fail(function(err) {
+      console.log("Something went wrong checking the default view. Hopefully we didn't need that.");
     });
 
   // Parallelize our data and metadata requests
@@ -173,4 +163,96 @@ $(document).ready(function(){
         break;
     }
   });;
+};
+
+// Domain
+var domain = function(domain) {
+  // $.getJSON("https:///api.us.test-socrata.com/api/catalog/v1?domains=" + domain)
+  $.when(
+      $.getJSON("https://api-us-test--socrata-com-mimg5bu70ujy.runscope.net/api/catalog/v1?domains=" + domain),
+      $.ajax("/foundry/catalog.mst")
+  ).done(function(datasets, template) {
+    // Update our page header
+    var title = "Dataset and API Listing for " + domain;
+    $("h1.title").html(title);
+    document.title = title + " | Socrata API Foundry";
+
+    $.each(datasets[0].results, function(i, ds) {
+      // ONCALL-2162: Link should include the protocol
+      if(!ds.link.match(/^https:/)) {
+        datasets[0].results[i].link = "https://" + ds.link;
+      }
+
+      // Add in a resource_link
+      datasets[0].results[i].resource_link = "https://" + ds.resource.domain + "/resource/" + ds.resource.id;
+
+      // Add some flags for different cool stuff
+      $.each(ds.resource.columns, function(k, v) {
+        switch(v.physicalDatatype) {
+          case "number":
+            datasets[0].results[i].has_number = true;
+          case "fixed_datetime":
+            datasets[0].results[i].has_datetime = true;
+          case "floating_datetime":
+            datasets[0].results[i].has_datetime = true;
+          case "geospatial":
+            datasets[0].results[i].has_geospatial = true;
+        }
+      });
+    });
+
+    $('#foundry-docs').html(Mustache.render(template[0], {
+      domain: domain,
+      datasets: datasets[0].results
+    }));
+
+    // Set up our clipboard buttons
+    $.each($("pre"), clipbutton);
+
+    // Set up handlers for our collapse-o icons. Unfortunately events only seem
+    // to fire on IDs, so we need to be a bit more long winded.
+    $("#accordion .panel-collapse").each(function() {
+      $(this).on("shown.bs.collapse", function() {
+        $(this).parent().find(".collapse-icon")
+          .removeClass("fa-plus-square-o")
+          .addClass("fa-minus-square-o");
+      });
+      $(this).on("hidden.bs.collapse", function() {
+        $(this).parent().find(".collapse-icon")
+          .removeClass("fa-minus-square-o")
+          .addClass("fa-plus-square-o");
+      });
+    });
+
+
+    // Show ourselves!
+    $("#loading").fadeOut();
+    $("#foundry-docs").fadeIn();
+  });
+};
+
+$(document).ready(function(){
+  // Throw up a loading screen while we work
+  $('#branding').hide();
+  $('#foundry-docs').hide();
+
+  // Split up our hash components
+  var components = window.location.hash.split("/");
+
+  // Load branding
+  if(components.length >= 2) {
+    branding(components[1]);
+  }
+
+  // Load docs or catalog
+  if(components.length == 3) {
+    // Load for a particular dataset
+    dataset(components[1], components[2]);
+  } if(components.length == 2) {
+    // Load the catalog for a particular domain
+    domain(components[1]);
+  } else {
+    $("#foundry-docs").html("<p>No parameters passed!</p>");
+    return;
+  }
 });
