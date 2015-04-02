@@ -12,22 +12,25 @@ This example is pulling a dataset in from the [City of Austin Open Data Portal](
 
 Two dependencies you will need are:
 
-{% highlight javascript %}
+```
 install(RSocrata)
 library(forecast)
+```
 
 The first step is to import the dataset as an R dataframe. 
 
-{% highlight javascript %}
-##API Endpoint for EMS-Ambulence Responses by Month## 
+```
+##API Endpoint for EMS-Ambulence Responses by Month
 read.socrata("https://data.austintexas.gov/resource/bptg-ndvw.json") 
+```
 
 The next step is to create a time series variable based off of the response column in the dataset. 
 
-{% highlight javascript %}
+```
 ##Create Time Series Variable based off of count_responses_all## 
 myts <- ts(EMSIncidents$count_responses_all, start=c(2010, 1), end=c(2015,2), frequency=12)
 plot(myts)
+```
 
 [Time Series Graph](/desktop/timeseries.png)
 
