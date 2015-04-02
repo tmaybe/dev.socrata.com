@@ -35,6 +35,7 @@ plot(myts)
 ![timeseries](https://cloud.githubusercontent.com/assets/8115246/6975325/c20fe318-d94f-11e4-8404-378f113da721.png)
 
 
+The next component is to control for seasonality that exists within the data. 
 
 ```
 ##Seasonal Decomposition##
@@ -43,6 +44,8 @@ plot(fit)
 ```
 
 ![seasonaly](https://cloud.githubusercontent.com/assets/8115246/6975328/cf2b8a84-d94f-11e4-9812-83d5ceee1a42.png)
+
+Finaly we can forecast the dataset out a number of periods. 
 
 ```
 ##Projected Forecast##
