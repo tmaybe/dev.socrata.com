@@ -32,7 +32,8 @@ myts <- ts(EMSIncidents$count_responses_all, start=c(2010, 1), end=c(2015,2), fr
 plot(myts)
 ```
 
-![Time Series Graph](/desktop/timeseries.png)
+![timeseries](https://cloud.githubusercontent.com/assets/8115246/6975325/c20fe318-d94f-11e4-8404-378f113da721.png)
+
 
 
 ```
@@ -41,8 +42,7 @@ fit <- stl(myts, s.window = "period")
 plot(fit)
 ```
 
-![Seasonal Decomposition](/desktop/seasonal.png)
-
+![seasonaly](https://cloud.githubusercontent.com/assets/8115246/6975328/cf2b8a84-d94f-11e4-9812-83d5ceee1a42.png)
 
 ```
 ##Projected Forecast##
@@ -51,7 +51,8 @@ plot(forecast(fit))
 
 ```
 
-![Forecast](/desktop/forecast.png)
+![forecast](https://cloud.githubusercontent.com/assets/8115246/6975316/ae494252-d94f-11e4-8059-7aaf34d99c07.png)
+
 
 You can also export your predicted values as a .csv file so that you can perform further analysis upon them.  
 
