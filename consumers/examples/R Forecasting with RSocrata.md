@@ -1,6 +1,6 @@
 ---
 layout: with-sidebar
-title: Build a physical "Traffic Light"
+title: R Forecasting with RSocrata
 sidebar: consumer
 type: example
 audience: consumer
@@ -57,5 +57,7 @@ plot(forecast(fit))
 ![forecast](https://cloud.githubusercontent.com/assets/8115246/6975316/ae494252-d94f-11e4-8059-7aaf34d99c07.png)
 
 
-You can also export your predicted values as a .csv file so that you can perform further analysis upon them.  
+You can also export your predicted values as a .csv file so that you can perform further analysis upon them.
+
+There you have it.  You have now taken a dataset and loaded it into R and began to forecast values based on the data.  
 
