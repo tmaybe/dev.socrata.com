@@ -1,64 +1,3 @@
-var branding = function(domain) {
-  // Fetch branding details
-  $.getJSON("https://" + domain + "/api/configurations.json?type=site_theme&defaultOnly=true&merge=true")
-    .done(function(data) {
-      // Grep out the stuff that we care about
-      var org_name = $.grep(data[0].properties, function(n) { return n["name"] == "strings.company" })[0].value;
-      var theme = $.grep(data[0].properties, function(n) { return n["name"] == "theme_v2b" })[0].value;
-
-      // Determine what kind of logo we have
-      var logo_href = null;
-      var logo_config = theme.images.logo_header;
-      if(logo_config != null && logo_config.href != null && logo_config.href.length > 0) {
-        var matches = logo_config.href.match(/^\w+-\w+-\w+-\w+-\w+$/);
-        if(logo_config.href != null && matches) {
-          // Looks like we have an asset tag
-          logo_href = "https://" + domain + "/api/assets/" + logo_config.href;
-
-        } else if(logo_config.href.match(/^http/)) {
-          // They appear to have provided a full URL
-          logo_href = logo_config.href;
-
-        } else if(logo_config.href != null) {
-          // Assume that this is just a relative path
-          logo_href = "https://" + domain + logo_config.href;
-        }
-
-        // Double check we're not using the default Socrata logo...
-        if(logo_href.match(/socrata_logo.png$/)) {
-          console.log("This site is still using the default Socrata logo, hiding the logo from branding.");
-          logo_href = null;
-        }
-      } else {
-        console.log("No header logo configuration provided for this domain.");
-      }
-
-      $.ajax("/foundry/branding.mst")
-        .done(function(template) {
-          $('#branding').html(Mustache.render(template, {
-            org_name: org_name,
-            logo_href: logo_href,
-            org_homepage: "http://" + domain + "/"
-          }));
-
-          // Clean up bad logos...
-          $("img.logo").error(function() {
-            console.log("Something went wrong loading logo image: " + $(this).attr("src"));
-            $(this).remove();
-          });
-
-          // Show ourselves!
-          $("#branding").show();
-        })
-        .fail(function(xhr) {
-          console.log("An error occurred loading the branding template:" + xhr);
-        });
-    })
-    .fail(function(xhr) {
-      console.log("Something went wrong loading branding configuration: " + xhr);
-    });
-}
-
 // Dataset
 var dataset = function(domain, uid) {
   // Check to make sure we're on the right doc
@@ -165,72 +104,6 @@ var dataset = function(domain, uid) {
   });;
 };
 
-// Domain
-var domain = function(domain) {
-  // $.getJSON("https:///api.us.test-socrata.com/api/catalog/v1?domains=" + domain)
-  $.when(
-      $.getJSON("https://api-us-test--socrata-com-mimg5bu70ujy.runscope.net/api/catalog/v1?domains=" + domain),
-      $.ajax("/foundry/catalog.mst")
-  ).done(function(datasets, template) {
-    // Update our page header
-    var title = "Dataset and API Listing for " + domain;
-    $("h1.title").html(title);
-    document.title = title + " | Socrata API Foundry";
-
-    $.each(datasets[0].results, function(i, ds) {
-      // ONCALL-2162: Link should include the protocol
-      if(!ds.link.match(/^https:/)) {
-        datasets[0].results[i].link = "https://" + ds.link;
-      }
-
-      // Add in a resource_link
-      datasets[0].results[i].resource_link = "https://" + ds.resource.domain + "/resource/" + ds.resource.id;
-
-      // Add some flags for different cool stuff
-      $.each(ds.resource.columns, function(k, v) {
-        switch(v.physicalDatatype) {
-          case "number":
-            datasets[0].results[i].has_number = true;
-          case "fixed_datetime":
-            datasets[0].results[i].has_datetime = true;
-          case "floating_datetime":
-            datasets[0].results[i].has_datetime = true;
-          case "geospatial":
-            datasets[0].results[i].has_geospatial = true;
-        }
-      });
-    });
-
-    $('#foundry-docs').html(Mustache.render(template[0], {
-      domain: domain,
-      datasets: datasets[0].results
-    }));
-
-    // Set up our clipboard buttons
-    $.each($("pre"), clipbutton);
-
-    // Set up handlers for our collapse-o icons. Unfortunately events only seem
-    // to fire on IDs, so we need to be a bit more long winded.
-    $("#accordion .panel-collapse").each(function() {
-      $(this).on("shown.bs.collapse", function() {
-        $(this).parent().find(".collapse-icon")
-          .removeClass("fa-plus-square-o")
-          .addClass("fa-minus-square-o");
-      });
-      $(this).on("hidden.bs.collapse", function() {
-        $(this).parent().find(".collapse-icon")
-          .removeClass("fa-minus-square-o")
-          .addClass("fa-plus-square-o");
-      });
-    });
-
-
-    // Show ourselves!
-    $("#loading").fadeOut();
-    $("#foundry-docs").fadeIn();
-  });
-};
-
 $(document).ready(function(){
   // Throw up a loading screen while we work
   $('#branding').hide();
@@ -241,16 +114,13 @@ $(document).ready(function(){
 
   // Load branding
   if(components.length >= 2) {
-    branding(components[1]);
+    branding(components[1], $('#branding'));
   }
 
   // Load docs or catalog
   if(components.length == 3) {
     // Load for a particular dataset
     dataset(components[1], components[2]);
-  } if(components.length == 2) {
-    // Load the catalog for a particular domain
-    domain(components[1]);
   } else {
     $("#foundry-docs").html("<p>No parameters passed!</p>");
     return;
