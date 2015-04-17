@@ -2,7 +2,7 @@
 var catalog = function(params, div) {
   // $.getJSON("https:///api.us.test-socrata.com/api/catalog/v1?domains=" + domain)
   $.when(
-      $.getJSON("https://api-us-test--socrata-com-mimg5bu70ujy.runscope.net/api/catalog/v1?only=datasets&" + $.param(params)),
+      $.getJSON("https://api.us.socrata.com/api/catalog/v1?only=datasets&" + $.param(params)),
       $.ajax("/catalog/catalog.mst")
   ).done(function(datasets, template) {
     // Update our page header
