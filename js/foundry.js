@@ -101,12 +101,6 @@ var dataset = function(domain, uid) {
           break;
 
       };
-
-      if(migration_mapping) {
-        // Column mapping
-        col.equivalent = migration_mapping.nameShortening[col.fieldName];
-        col.flattening = migration_mapping.flatten[col.fieldName];
-      }
     });
 
     // Roll up our changes so we can use them in our mustache template
