@@ -1,17 +1,25 @@
-$(document).ready(function(){
-  // Throw up a loading screen while we work
-  $('#branding').hide();
-  $('#foundry-docs').hide();
+// In some cases we're OK with 404s
+(function ($) {
+  $.getJSONForgiving404 = function(url, data, success) {
+    var dfrd = $.Deferred(),
+    promise = dfrd.promise(),
+    jqXHR;
 
-  // Split up our hash components
-  var components = window.location.hash.split("/");
-  if(components.length != 3) {
-    $("#foundry-docs").html("<p>No parameters passed!</p>");
-    return;
-  }
-  var domain = components[1];
-  var uid = components[2];
+    jqXHR = $.getJSON(url, data, success)
+      .fail(function(xhr) {
+        if(xhr.status == 404) {
+          dfrd.resolve(null);
+        } else {
+          dfrd.reject(xhr);
+        }
+      })
+      .then(dfrd.resolve, dfrd.reject);
+    return promise;
+  };
+}(jQuery));
 
+// Dataset
+var dataset = function(domain, uid) {
   // Check to make sure we're on the right doc
   $.getJSON("https://" + domain + "/api/views.json?method=getDefaultView&id=" + uid)
     .done(function(data) {
@@ -26,76 +34,134 @@ $(document).ready(function(){
       console.log("Something went wrong checking the default view. Hopefully we didn't need that.");
     });
 
-  // Fetch branding details
-  $.getJSON("https://" + domain + "/api/configurations.json?type=site_theme&defaultOnly=true&merge=true")
-    .done(function(data) {
-      // Grep out the stuff that we care about
-      var org_name = $.grep(data[0].properties, function(n) { return n["name"] == "strings.company" })[0].value;
-      var theme = $.grep(data[0].properties, function(n) { return n["name"] == "theme_v2b" })[0].value;
-
-      // Determine what kind of logo we have
-      var logo_href = null;
-      var logo_config = theme.images.logo_header;
-      if(logo_config != null && logo_config.href != null && logo_config.href.length > 0) {
-        var matches = logo_config.href.match(/^\w+-\w+-\w+-\w+-\w+$/);
-        if(logo_config.href != null && matches) {
-          // Looks like we have an asset tag
-          logo_href = "https://" + domain + "/api/assets/" + logo_config.href;
-
-        } else if(logo_config.href.match(/^http/)) {
-          // They appear to have provided a full URL
-          logo_href = logo_config.href;
-
-        } else if(logo_config.href != null) {
-          // Assume that this is just a relative path
-          logo_href = "https://" + domain + logo_config.href;
-        }
-
-        // Double check we're not using the default Socrata logo...
-        if(logo_href.match(/socrata_logo.png$/)) {
-          console.log("This site is still using the default Socrata logo, hiding the logo from branding.");
-          logo_href = null;
-        }
-      } else {
-        console.log("No header logo configuration provided for this domain.");
-      }
-
-      $.ajax("/foundry/branding.mst")
-        .done(function(template) {
-          $('#branding').html(Mustache.render(template, {
-            org_name: org_name,
-            logo_href: logo_href,
-            org_homepage: "http://" + domain + "/"
-          }));
-
-          // Clean up bad logos...
-          $("img.logo").error(function() {
-            console.log("Something went wrong loading logo image: " + $(this).attr("src"));
-            $(this).remove();
-          });
-
-          // Show ourselves!
-          $("#branding").show();
-        })
-        .fail(function(xhr) {
-          console.log("An error occurred loading the branding template:" + xhr);
-        });
-    })
-    .fail(function(xhr) {
-      console.log("Something went wrong loading branding configuration: " + xhr);
-    });
-
   // Parallelize our data and metadata requests
   $.when(
-    $.getJSON("https://" + domain + "/api/views.json?method=getByResourceName&name=" + uid),
-    $.getJSON("https://" + domain + "/resource/" + uid + ".json?$limit=1"),
-    $.getJSON("https://" + domain + "/resource/" + uid + ".json?$select=count(*)")
-  ).done(function(metadata, data, count) {
-    // Modify metadata to include trial URLs
+    $.getJSON("https://" + domain + "/api/views.json?method=getByResourceName&name=" + uid), // Metadata
+    $.getJSONForgiving404("https://" + domain + "/api/migrations/" + uid + ".json"), // Migrations API
+    $.getJSON("https://" + domain + "/resource/" + uid + ".json?$limit=1"), // Sample data row
+    $.getJSON("https://" + domain + "/resource/" + uid + ".json?$select=count(*)") // Count
+  ).done(function(metadata, migration, data, count) {
+    // We got migration details, let's parse the mapping too
+    var flattenings = {};
+    var name_shortenings = {}
+    var nbe_uid = null;
+    var obe_uid = null;
+    var last_synced = 0;
+    var is_obe = false;
+
+    if(migration != null && migration[1] == "success") {
+      var mapping = JSON.parse(migration[0].controlMapping);
+      flattenings = mapping.flatten;
+      name_shortenings = mapping.nameShortening;
+      nbe_uid = migration[0].nbeId;
+      obe_uid = migration[0].obeId;
+      last_synced = (new Date(migration[0].syncedAt*1000).toLocaleString());
+      is_obe = (obe_uid == uid);
+    }
+
+    // Modify column metadata
     $.each(metadata[0].columns, function(idx, col) {
-      col.filter_url = "https://" + domain + "/resource/" + uid + ".json?"
-        + col.fieldName + "=" + data[0][0][col.fieldName];
+      // Include trial URLs
+      var val = data[0][0][col.fieldName];
+
+      // Custom trial URLs for rich datatypes
+      switch(col.dataTypeName) {
+        case "text":
+          col.filter = col.fieldName + "=" + val;
+          break;
+
+        case "number":
+          col.filter = col.fieldName + "=" + val;
+          col.query = col.fieldName + " > " + val;
+          break;
+
+        case "money":
+          col.filter = col.fieldName + "=" + val;
+          col.query = col.fieldName + " < " + val;
+          break;
+
+        case "calendar_date":
+          col.filter = col.fieldName + "=" + val;
+          col.query = col.fieldName + " <= '" + val + "'";
+          break;
+
+        case "checkbox":
+          col.filter = col.fieldName + "=" + val;
+          break;
+
+        case "point":
+          var lat = 47.59;
+          var lon = -122.33;
+
+          try {
+            lat = Math.round(val.coordinates[1]*100)/100;
+            lon = Math.round(val.coordinates[0]*100)/100;
+          } catch(err) { }
+
+          col.query = "within_circle("
+            + col.fieldName + ", "
+            + lat + ", "
+            + lon + ", 1000)";
+          break;
+
+        case "location":
+          var lat = 47.59;
+          var lon = -122.33;
+
+          try {
+            lat = Math.round(val.latitude*100)/100;
+            lon = Math.round(val.longitude*100)/100;
+          } catch(err) { }
+
+          col.query = "within_circle("
+            + col.fieldName + ", "
+            + lat + ", "
+            + lon + ", 1000)";
+          break;
+
+        case "document":
+          // Nom nom nom
+          break;
+
+        case "photo":
+          // Nom nom nom
+          break;
+
+        case "email":
+          // Nom nom nom
+          break;
+
+        case "url":
+          // Nom nom nom
+          break;
+
+        default:
+          col.filter = col.fieldName + "=" + val;
+          break;
+      };
+
+      // Computed columns need a little more love, since they're hidden...
+      if(col.fieldName.match(/^:@/)) {
+        col.query += "&$select=*," + col.fieldName;
+      }
     });
+
+    // Roll up our changes so we can use them in our mustache template
+    var splits = _.collect(flattenings, function(mapping, key) {
+      return {
+        from_col: key,
+        to_cols: _.collect(mapping, function(val, key) {
+          return "<code>" + val.fieldname + "</code>";
+        }).join(", ")
+      };
+    });
+    var renames = _.chain(name_shortenings)
+      .collect(function(to, from) {
+        return { from: from, to: to };
+      })
+      .filter(function(obj) {
+        return obj.from != obj.to;
+      }).value();
 
     // Convert our timestamps into printable times
     $.each(["createdAt", "rowsUpdatedAt"], function(idx, name){
@@ -115,6 +181,15 @@ $(document).ready(function(){
         uid: uid,
         domain: domain,
         metadata: metadata[0],
+        nbe_uid: nbe_uid,
+        obe_uid: obe_uid,
+        is_obe: is_obe,
+        show_migration: flags.show_migration && is_obe,
+        has_structural_changes: splits.length > 0,
+        splits: splits,
+        has_renames: renames.length > 0,
+        renames: renames,
+        last_synced: last_synced,
         row: data[0][0],
         count: count[0][0].count.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
         full_url: function() { return "https://" + domain + "/resource/" + uid + ".json"; },
@@ -142,7 +217,6 @@ $(document).ready(function(){
             .addClass("fa-plus-square-o");
         });
       });
-
 
       // Show ourselves!
       $("#loading").fadeOut();
@@ -173,4 +247,34 @@ $(document).ready(function(){
         break;
     }
   });;
+};
+
+var load = function() {
+  // Throw up a loading screen while we work
+  $('#branding').hide();
+  $('#foundry-docs').hide();
+
+  // Split up our hash components
+  var components = window.location.hash.split("/");
+
+  // Load branding
+  if(components.length >= 2) {
+    branding(components[1], $('#branding'));
+  }
+
+  // Load docs or catalog
+  if(components.length == 3) {
+    // Load for a particular dataset
+    dataset(components[1], components[2]);
+  } else {
+    $("#foundry-docs").html("<p>No parameters passed!</p>");
+    return;
+  }
+}
+
+// Initial load
+$(document).ready(function() {
+  load();
+  window.onhashchange = load();
 });
+
