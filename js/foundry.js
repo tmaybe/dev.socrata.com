@@ -1,3 +1,23 @@
+// In some cases we're OK with 404s
+(function ($) {
+  $.getJSONForgiving404 = function(url, data, success) {
+    var dfrd = $.Deferred(),
+    promise = dfrd.promise(),
+    jqXHR;
+
+    jqXHR = $.getJSON(url, data, success)
+      .fail(function(xhr) {
+        if(xhr.status == 404) {
+          dfrd.resolve(null);
+        } else {
+          dfrd.reject(xhr);
+        }
+      })
+      .then(dfrd.resolve, dfrd.reject);
+    return promise;
+  };
+}(jQuery));
+
 // Dataset
 var dataset = function(domain, uid) {
   // Check to make sure we're on the right doc
@@ -17,19 +37,22 @@ var dataset = function(domain, uid) {
   // Parallelize our data and metadata requests
   $.when(
     $.getJSON("https://" + domain + "/api/views.json?method=getByResourceName&name=" + uid), // Metadata
-    $.getJSON("https://" + domain + "/api/migrations/" + uid + ".json"), // Migrations API
+    $.getJSONForgiving404("https://" + domain + "/api/migrations/" + uid + ".json"), // Migrations API
     $.getJSON("https://" + domain + "/resource/" + uid + ".json?$limit=1"), // Sample data row
     $.getJSON("https://" + domain + "/resource/" + uid + ".json?$select=count(*)") // Count
   ).done(function(metadata, migration, data, count) {
     // We got migration details, let's parse the mapping too
-    var migration_mapping = null;
+    var flattenings = {};
+    var name_shortenings = {}
     var nbe_uid = null;
     var obe_uid = null;
     var last_synced = 0;
-    var is_obe = true;
+    var is_obe = false;
 
-    if(migration[1] == "success") {
-      migration_mapping = JSON.parse(migration[0].controlMapping);
+    if(migration != null && migration[1] == "success") {
+      var mapping = JSON.parse(migration[0].controlMapping);
+      flattenings = mapping.flatten;
+      name_shortenings = mapping.nameShortening;
       nbe_uid = migration[0].nbeId;
       obe_uid = migration[0].obeId;
       last_synced = (new Date(migration[0].syncedAt*1000).toLocaleString());
@@ -67,17 +90,33 @@ var dataset = function(domain, uid) {
           break;
 
         case "point":
+          var lat = 47.59;
+          var lon = -122.33;
+
+          try {
+            lat = Math.round(val.coordinates[1]*100)/100;
+            lon = Math.round(val.coordinates[0]*100)/100;
+          } catch(err) { }
+
           col.query = "within_circle("
             + col.fieldName + ", "
-            + Math.round(val.coordinates[1]*100)/100 + ", "
-            + Math.round(val.coordinates[0]*100)/100 + ", 1000)";
+            + lat + ", "
+            + lon + ", 1000)";
           break;
 
         case "location":
+          var lat = 47.59;
+          var lon = -122.33;
+
+          try {
+            lat = Math.round(val.latitude*100)/100;
+            lon = Math.round(val.longitude*100)/100;
+          } catch(err) { }
+
           col.query = "within_circle("
             + col.fieldName + ", "
-            + Math.round(val.latitude*100)/100 + ", "
-            + Math.round(val.longitude*100)/100 + ", 1000)";
+            + lat + ", "
+            + lon + ", 1000)";
           break;
 
         case "document":
@@ -99,12 +138,16 @@ var dataset = function(domain, uid) {
         default:
           col.filter = col.fieldName + "=" + val;
           break;
-
       };
+
+      // Computed columns need a little more love, since they're hidden...
+      if(col.fieldName.match(/^:@/)) {
+        col.query += "&$select=*," + col.fieldName;
+      }
     });
 
     // Roll up our changes so we can use them in our mustache template
-    var splits = _.collect(migration_mapping.flatten, function(mapping, key) {
+    var splits = _.collect(flattenings, function(mapping, key) {
       return {
         from_col: key,
         to_cols: _.collect(mapping, function(val, key) {
@@ -112,7 +155,7 @@ var dataset = function(domain, uid) {
         }).join(", ")
       };
     });
-    var renames = _.chain(migration_mapping.nameShortening)
+    var renames = _.chain(name_shortenings)
       .collect(function(to, from) {
         return { from: from, to: to };
       })
@@ -140,7 +183,6 @@ var dataset = function(domain, uid) {
         metadata: metadata[0],
         nbe_uid: nbe_uid,
         obe_uid: obe_uid,
-        migration_mapping: migration_mapping,
         is_obe: is_obe,
         show_migration: flags.show_migration && is_obe,
         has_structural_changes: splits.length > 0,

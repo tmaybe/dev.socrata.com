@@ -507,6 +507,7 @@ p, li
             width: 300px
             text-align: center
             padding: 7px 0 4px
+            margin: 0
             -moz-border-radius: 2px
             -webkit-border-radius: 2px
             -o-border-radius: 2px
@@ -519,7 +520,6 @@ p, li
             @each $type in $datatypes
               &.#{nth($type, 1)}
                 background-color: nth($type, 2)
-                margin: 0
 
           .datatype
             padding-left: 4px

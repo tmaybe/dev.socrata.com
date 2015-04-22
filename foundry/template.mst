@@ -78,7 +78,7 @@
 <p>Each column in <a href="http://{{domain}}/d/{{uid}}">the dataset</a> is represented by a single <code>field</code> in its SODA API. Using <a href="/docs/filters.html">filters</a> and <a href="/docs/queries.html">SoQL queries</a>, you can search for records, limit your results, and change the way the data is output. For example, you could filter this dataset by its <code>{{metadata.columns.0.fieldName}}</code> field using a query like the following:</p>
 
 {{#metadata.columns.0.filter}}
-<a class="tryit" href="{{full_url}}{{metadata.columns.0.filter}}">{{full_url}}{{metadata.columns.0.filter}}</a>
+  <a class="tryit" href="{{full_url}}?{{metadata.columns.0.filter}}">{{full_url}}?{{metadata.columns.0.filter}}</a>
 {{/metadata.columns.0.filter}}
 
 <p>For richer filtering, you can combine filters together by stacking parameters on your URL or by using <a href="/docs/queries.html">SoQL</a> queries. Learn more about about each of the fields in this dataset by clicking the headers below, or read more about the SODA API using the navigation at the top of the page.</p>
@@ -156,12 +156,7 @@
 
           <h4>Query Options</h4>
 
-          <p>You can also use <a href="/docs/queries.html">SoQL queries</a> with this column. Since it is a <code>{{dataTypeName}}</code> column, the following query options are available:
-          <ul>
-            {{#available_functions}}
-              <li>{{function_template}}</li>
-            {{/available_functions}}
-          </ul>
+          <p>You can also use <a href="/docs/queries.html">SoQL queries</a> with this column. Since it is a <code>{{dataTypeName}}</code> column, <a href="/docs/datatypes/{{dataTypeName}}.html">many different query functions</a> are available.</p>
 
           {{#query}}
             <p>For example:</p>
