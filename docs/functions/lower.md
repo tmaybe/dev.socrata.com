@@ -1,12 +1,12 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: sum(...)
+title: lower(...)
 
 type: function
 datatypes:
-- number
-description: Returns the sum of a given set of numbers 
+- text 
+description: Returns the lowercase equivalent of a string of text
 ---
 
 Include content here

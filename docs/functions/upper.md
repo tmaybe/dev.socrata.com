@@ -1,12 +1,12 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: sum(...)
+title: upper(...)
 
 type: function
 datatypes:
-- number
-description: Returns the sum of a given set of numbers 
+- text 
+description: Returns the uppercase equivalent of a string of text
 ---
 
 Include content here

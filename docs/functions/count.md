@@ -1,7 +1,17 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: avg
+title: count(...)
+
+type: function
+datatypes:
+- text 
+- number
+- boolean
+- timestamp
+- location
+- point
+description: Returns a count of a given set of records
 ---
 
-Content goes here.
+Include content here

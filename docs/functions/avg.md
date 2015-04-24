@@ -1,7 +1,14 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: avg
+title: avg(...)
+
+type: function
+datatypes:
+- number
+- double
+- money
+description: Returns the average of a given set of numbers 
 ---
 
-Content goes here.
+Include content here

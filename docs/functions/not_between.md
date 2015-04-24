@@ -1,14 +1,15 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: max(...)
+title: not between ... and ...
 
 type: function
 datatypes:
 - number
 - double
 - money
-description: Returns the maximum of a given set of numbers 
+- floating_timestamp
+description: Returns TRUE for values not in a given range 
 ---
 
 Include content here

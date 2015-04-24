@@ -1,12 +1,12 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: sum(...)
+title: like '%...%'
 
 type: function
 datatypes:
-- number
-description: Returns the sum of a given set of numbers 
+- text 
+description: Allows for substring searches in text strings
 ---
 
 Include content here

@@ -1,14 +1,13 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: max(...)
+title: not in(...)
 
 type: function
 datatypes:
+- text 
 - number
-- double
-- money
-description: Returns the maximum of a given set of numbers 
+description: Matches values not in a given set of options
 ---
 
 Include content here

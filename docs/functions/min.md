@@ -1,7 +1,14 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: avg
+title: min(...)
+
+type: function
+datatypes:
+- number
+- double
+- money
+description: Returns the minimum of a given set of numbers 
 ---
 
-Content goes here.
+Include content here

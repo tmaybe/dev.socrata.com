@@ -94,12 +94,11 @@
   <li><a href="/odata/">OData</a></li>
 
   <li class="nav-header dropdown-header">Datatypes</li>
-  <li><a href="/docs/datatypes/string.html">String</a></li>
-  <li><a href="/docs/datatypes/numeric.html">Numeric</a></li>
-  <li><a href="/docs/datatypes/boolean.html">Boolean</a></li>
-  <li><a href="/docs/datatypes/timestamp.html">Timestamp</a></li>
-  <li><a href="/docs/datatypes/location.html">Location</a></li>
-  <li><a href="/docs/datatypes/point.html">Point</a></li>
+  {% for page in site.pages %}
+    {% if page.type == 'datatype' %}
+      <li><a href="{{ page.url }}">{{ page.title | replace: ' Datatype', '' }}</a></li>
+    {% endif %}
+  {% endfor %}
   {% comment %} <li><a href="/docs/datatypes/converting.html">Conversions</a></li> {% endcomment %}
 
 {% else %}
