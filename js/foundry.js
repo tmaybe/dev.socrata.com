@@ -18,75 +18,49 @@
   };
 }(jQuery));
 
-// Dataset
-var dataset = function(domain, uid) {
-  // Check to make sure we're on the right doc
-  $.getJSON("https://" + domain + "/api/views.json?method=getDefaultView&id=" + uid)
-    .done(function(data) {
-      if(data["id"] != uid) {
-        console.log("Redirecting user to the API for the default dataset");
-        $('#foundry-docs').html("<p>Redirecting you to the default dataset for this view...</p>").show();
-        window.location = "/foundry/#/" + domain + "/" + data["id"];
-        window.location.reload();
-      }
-    })
-    .fail(function(err) {
-      console.log("Something went wrong checking the default view. Hopefully we didn't need that.");
-    });
-
-  // Parallelize our data and metadata requests
+// Generates sample URLs for a given column and datatype
+var load_query_suggestions = function(base_url, field_name, datatype, div) {
+  // Fetch sample data & template at the same time
   $.when(
-    $.getJSON("https://" + domain + "/api/views.json?method=getByResourceName&name=" + uid), // Metadata
-    $.getJSONForgiving404("https://" + domain + "/api/migrations/" + uid + ".json"), // Migrations API
-    $.getJSON("https://" + domain + "/resource/" + uid + ".json?$limit=1"), // Sample data row
-    $.getJSON("https://" + domain + "/resource/" + uid + ".json?$select=count(*)") // Count
-  ).done(function(metadata, migration, data, count) {
-    // We got migration details, let's parse the mapping too
-    var flattenings = {};
-    var name_shortenings = {}
-    var nbe_uid = null;
-    var obe_uid = null;
-    var last_synced = 0;
-    var is_obe = false;
-
-    if(migration != null && migration[1] == "success") {
-      var mapping = JSON.parse(migration[0].controlMapping);
-      flattenings = mapping.flatten;
-      name_shortenings = mapping.nameShortening;
-      nbe_uid = migration[0].nbeId;
-      obe_uid = migration[0].obeId;
-      last_synced = (new Date(migration[0].syncedAt*1000).toLocaleString());
-      is_obe = (obe_uid == uid);
-    }
-
-    // Modify column metadata
-    $.each(metadata[0].columns, function(idx, col) {
-      // Include trial URLs
-      var val = data[0][0][col.fieldName];
+    $.getJSON(base_url + "?" + "$select=" + field_name 
+      + "&$limit=1&$where=" + field_name + " IS NOT NULL"),
+    $.ajax("/foundry/queries.mst")
+  ).done(function(data, template) {
+    try {
+      var val = null;
+      try {
+        val = data[0][0][field_name];
+      } catch(err) {
+        console.log("Despite our best efforts, we didn't get a value back. Because: " + err);
+      }
+      var suggestions = {};
 
       // Custom trial URLs for rich datatypes
-      switch(col.dataTypeName) {
+      switch(datatype) {
         case "text":
-          col.filter = col.fieldName + "=" + val;
+          suggestions.filter = field_name + "=" + (val || "FOO");
           break;
 
         case "number":
-          col.filter = col.fieldName + "=" + val;
-          col.query = col.fieldName + " > " + val;
+          val = val || 42;
+          suggestions.filter = field_name + "=" + val;
+          suggestions.query = field_name + " > " + val;
           break;
 
         case "money":
-          col.filter = col.fieldName + "=" + val;
-          col.query = col.fieldName + " < " + val;
+          val = val || 23.99;
+          suggestions.filter = field_name + "=" + val;
+          suggestions.query = field_name + " < " + val;
           break;
 
         case "calendar_date":
-          col.filter = col.fieldName + "=" + val;
-          col.query = col.fieldName + " <= '" + val + "'";
+          val = val || "2012-09-22"
+          suggestions.filter = field_name + "=" + val;
+          suggestions.query = field_name + " <= '" + val + "'";
           break;
 
         case "checkbox":
-          col.filter = col.fieldName + "=" + val;
+          suggestions.filter = field_name + "=" + (val || false);
           break;
 
         case "point":
@@ -98,8 +72,8 @@ var dataset = function(domain, uid) {
             lon = Math.round(val.coordinates[0]*100)/100;
           } catch(err) { }
 
-          col.query = "within_circle("
-            + col.fieldName + ", "
+          suggestions.query = "within_circle("
+            + field_name + ", "
             + lat + ", "
             + lon + ", 1000)";
           break;
@@ -113,8 +87,8 @@ var dataset = function(domain, uid) {
             lon = Math.round(val.longitude*100)/100;
           } catch(err) { }
 
-          col.query = "within_circle("
-            + col.fieldName + ", "
+          suggestions.query = "within_circle("
+            + field_name + ", "
             + lat + ", "
             + lon + ", 1000)";
           break;
@@ -136,15 +110,69 @@ var dataset = function(domain, uid) {
           break;
 
         default:
-          col.filter = col.fieldName + "=" + val;
+          suggestions.filter = field_name + "=" + val;
           break;
       };
 
       // Computed columns need a little more love, since they're hidden...
-      if(col.fieldName.match(/^:@/)) {
-        col.query += "&$select=*," + col.fieldName;
+      if(field_name.match(/^:@/)) {
+        suggestions.query += "&$select=*," + field_name;
       }
+
+      // Update our block
+      div.html(Mustache.render(template[0], {
+        full_url: base_url,
+        datatype: datatype,
+        suggestions: suggestions
+      }));
+
+      setup_livedocs(div);
+    } catch(err) {
+      console.log("Error loading sample data: " + err);
+    }
+  });
+};
+
+// Dataset
+var dataset = function(domain, uid) {
+  // Check to make sure we're on the right doc
+  $.getJSON("https://" + domain + "/api/views.json?method=getDefaultView&id=" + uid)
+    .done(function(data) {
+      if(data["id"] != uid) {
+        console.log("Redirecting user to the API for the default dataset");
+        $('#foundry-docs').html("<p>Redirecting you to the default dataset for this view...</p>").show();
+        window.location = "/foundry/#/" + domain + "/" + data["id"];
+        window.location.reload();
+      }
+    })
+    .fail(function(err) {
+      console.log("Something went wrong checking the default view. Hopefully we didn't need that.");
     });
+
+  // Parallelize our data and metadata requests
+  $.when(
+    $.getJSON("https://" + domain + "/api/views.json?method=getByResourceName&name=" + uid), // Metadata
+    $.getJSONForgiving404("https://" + domain + "/api/migrations/" + uid + ".json"), // Migrations API
+    $.getJSON("https://" + domain + "/resource/" + uid + ".json?$select=count(*)"), // Count
+    $.ajax("/foundry/template.mst")
+  ).done(function(metadata, migration, count, template) {
+    // We got migration details, let's parse the mapping too
+    var flattenings = {};
+    var name_shortenings = {}
+    var nbe_uid = null;
+    var obe_uid = null;
+    var last_synced = 0;
+    var is_obe = false;
+
+    if(migration != null && migration[1] == "success") {
+      var mapping = JSON.parse(migration[0].controlMapping);
+      flattenings = mapping.flatten;
+      name_shortenings = mapping.nameShortening;
+      nbe_uid = migration[0].nbeId;
+      obe_uid = migration[0].obeId;
+      last_synced = (new Date(migration[0].syncedAt*1000).toLocaleString());
+      is_obe = (obe_uid == uid);
+    }
 
     // Roll up our changes so we can use them in our mustache template
     var splits = _.collect(flattenings, function(mapping, key) {
@@ -173,63 +201,59 @@ var dataset = function(domain, uid) {
     document.title = metadata[0].name + " | Socrata API Foundry";
 
     //  Load our docs from our metadata
-    $.when(
-      $.ajax("/foundry/template.mst"),
-      $.ajax("/foundry/tryit.mst")
-    ).done(function(template, tryit) {
-      $('#foundry-docs').html(Mustache.render(template[0], {
-        uid: uid,
-        domain: domain,
-        metadata: metadata[0],
-        nbe_uid: nbe_uid,
-        obe_uid: obe_uid,
-        is_obe: is_obe,
-        show_migration: flags.show_migration && is_obe,
-        has_structural_changes: splits.length > 0,
-        splits: splits,
-        has_renames: renames.length > 0,
-        renames: renames,
-        last_synced: last_synced,
-        row: data[0][0],
-        count: count[0][0].count.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
-        full_url: function() { return "https://" + domain + "/resource/" + uid + ".json"; },
-      }, {
-        tryit: tryit[0]
-      }));
+    var full_url = "https://" + domain + "/resource/" + uid + ".json";
+    $('#foundry-docs').html(Mustache.render(template[0], {
+      uid: uid,
+      domain: domain,
+      metadata: metadata[0],
+      nbe_uid: nbe_uid,
+      obe_uid: obe_uid,
+      is_obe: is_obe,
+      show_migration: flags.show_migration && is_obe,
+      has_structural_changes: splits.length > 0,
+      splits: splits,
+      has_renames: renames.length > 0,
+      renames: renames,
+      last_synced: last_synced,
+      count: count[0][0].count.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
+      full_url: full_url,
+    }));
 
-      // Set up our livedocs links
-      setup_livedocs();
+    // Set up our livedocs links
+    setup_livedocs($("#foundry-docs"));
 
-      // Set up our clipboard buttons
-      $.each($("pre"), clipbutton);
+    // Set up our clipboard buttons
+    $.each($("pre"), clipbutton);
 
-      // Set up handlers for our collapse-o icons. Unfortunately events only seem
-      // to fire on IDs, so we need to be a bit more long winded.
-      $("#accordion .panel-collapse").each(function() {
-        $(this).on("shown.bs.collapse", function() {
-          $(this).parent().find(".collapse-icon")
-            .removeClass("fa-plus-square-o")
-            .addClass("fa-minus-square-o");
-        });
-        $(this).on("hidden.bs.collapse", function() {
-          $(this).parent().find(".collapse-icon")
-            .removeClass("fa-minus-square-o")
-            .addClass("fa-plus-square-o");
-        });
+    // Set up handlers for our collapse-o icons. Unfortunately events only seem
+    // to fire on IDs, so we need to be a bit more long winded.
+    $("#accordion .panel-collapse").each(function() {
+      $(this).on("shown.bs.collapse", function() {
+        $(this).parent().find(".collapse-icon")
+          .removeClass("fa-plus-square-o")
+          .addClass("fa-minus-square-o");
+
+        // Drop in our examples
+        load_query_suggestions(full_url,
+          $(this).attr("data-fieldname"),
+          $(this).attr("data-datatype"),
+          $(this).find(".tryit"));
       });
-
-      // Show ourselves!
-      $("#loading").fadeOut();
-      $("#foundry-docs").fadeIn();
-
-      // Use readmore.js to shorten descriptions to something more reasonable.
-      $(".metadata .description").readmore({
-        moreLink: '<a href="#">Show more <i class="fa fa-angle-double-down"></i></a>',
-        lessLink: '<a href="#">Show less <i class="fa fa-angle-double-up"></i></a>'
+      $(this).on("hidden.bs.collapse", function() {
+        $(this).parent().find(".collapse-icon")
+          .removeClass("fa-minus-square-o")
+          .addClass("fa-plus-square-o");
       });
-    }).fail(function() {
-      $("#loading").hide();
-      $('#foundry-docs').html("<p>Something went wrong fetching templates.</p>").show();
+    });
+
+    // Show ourselves!
+    $("#loading").fadeOut();
+    $("#foundry-docs").fadeIn();
+
+    // Use readmore.js to shorten descriptions to something more reasonable.
+    $(".metadata .description").readmore({
+      moreLink: '<a href="#">Show more <i class="fa fa-angle-double-down"></i></a>',
+      lessLink: '<a href="#">Show less <i class="fa fa-angle-double-up"></i></a>'
     });
   }).fail(function(xhr) {
     switch(xhr.status) {

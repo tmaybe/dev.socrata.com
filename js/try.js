@@ -1,9 +1,9 @@
 // LiveDocs
-var setup_livedocs = function() {
+var setup_livedocs = function(div) {
   $.when(
       $.ajax("/foundry/tryit.mst")
   ).done(function(template) {
-    $("a.tryit").each(function(idx, element) {
+    div.find("a.tryit").each(function(idx, element) {
       var target = $(element).attr("href");
 
       // Build up our Hurl link
@@ -77,4 +77,4 @@ var setup_livedocs = function() {
 };
 
 // Fire this sucker off
-$(document).ready(setup_livedocs());
+$(document).ready(setup_livedocs($("body")));

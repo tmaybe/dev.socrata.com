@@ -95,7 +95,7 @@
 {{#show_migration}}
   <h2>Migrating</h2>
 
-  <p>A new version of this dataset exists that you should migrate to as soon as you're ready. This now deprecated version of the dataset will continue to be available for some time, and will be automatically kept in sync with the new dataset. The last time this dataset was synchronized was {{ last_synced }}.</p>
+  <p>A new version of this dataset exists that you should migrate to as soon as you're ready. This now deprecated version of the dataset will continue to be available for some time, and will be automatically kept in sync with the new dataset. The last time this dataset was synchronized was {{ last_synced }}, and the dataset was last updated at {{metadata.rowsUpdatedAt}}.</p>
 
   <p>Most things will continue to function exactly the same, but the new dataset has great new features like <a href="/docs/georegions.html">georegion querying</a>, increased performance, and <a href="/docs/new-backend-migration.html">additional query options</a>. Those features <em>will not</em> be available on the legacy dataset.</p>
 
@@ -133,38 +133,17 @@
         </h3>
         <span class="human-name">{{name}}</span>
       </div>
-      <div id="collapse-{{id}}" class="panel-collapse collapse">
+      <div id="collapse-{{id}}" data-datatype="{{dataTypeName}}" data-fieldname="{{fieldName}}" class="panel-collapse collapse">
         <div class="panel-body">
-          <div class="alert alert-info">
-
           {{#description}}
             <p class="description">{{description}}</p>
           {{/description}}
 
           <p class="overview">The <code>{{fieldName}}</code> column is of the <a href="/docs/datatypes/{{dataTypeName}}.html"><code>{{dataTypeName}}</code></a> datatype.</p>
 
-
-          {{#filter}}
-            <h4>Simple Filters</h4>
-
-            <p>To filter the dataset to only return records containing a specified value for <code>{{fieldName}}</code> simply add a URL parameter to your URL with {{fieldName}} as the key and your specified value. For example:</p>
-
-            <div class="tryit-block">
-              <a class="tryit" href="{{full_url}}?{{filter}}">{{full_url}}?{{filter}}</a>
-            </div>
-          {{/filter}}
-
-          <h4>Query Options</h4>
-
-          <p>You can also use <a href="/docs/queries.html">SoQL queries</a> with this column. Since it is a <code>{{dataTypeName}}</code> column, <a href="/docs/datatypes/{{dataTypeName}}.html">many different query functions</a> are available.</p>
-
-          {{#query}}
-            <p>For example:</p>
-
-            <div class="tryit-block">
-              <a class="tryit" href="{{full_url}}?$where={{query}}">{{full_url}}?$where={{query}}</a>
-            </div>
-          {{/query}}
+          <div class="tryit">
+            <p><i class="fa fa-code fa-spin"></i> Please wait while we fetch an example for you...</p>
+          </div>
 
           <p>For more details on what query options you have for this column, see the <a href="/docs/datatypes/{{dataTypeName}}.html">detailed docs on the <code>{{dataTypeName}}</code> datatype</a></p>
         </div>
