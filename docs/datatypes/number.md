@@ -1,4 +1,5 @@
---- layout: with-sidebar
+---
+layout: with-sidebar
 sidebar: documentation
 title: Number Datatype
 audience: documentation
@@ -7,7 +8,7 @@ redirect_from:
   - /docs/datatypes/numeric.html
 ---
 
-## Numbers
+{% include numeric_types.html %}
 
 Numbers are arbitrary precision, arbitrary scale numbers.  They can represent any number exactly, except for numbers whose digits repeat infinitely.
 
@@ -40,3 +41,11 @@ The following table describes the operators that can be used with Numbers.
 The following table describes the functions that can be used with `text` strings. 
 
 {% include function_listing.html datatype="number" %}
+
+For example, to get all of the traffic sensors seeing more than 20,000 vehicles per day from the [Chicago Average Daily Traffic Counts](http://data.cityofchicago.org/d/u77m-8jgp):
+
+{% include tryit.html domain='data.cityofchicago.org' path='/resource/u77m-8jgp.json' args="$where=total_passing_vehicle_volume > 20000" %}
+
+You can also aggregate numbers, so you could also get the average daily count per sensor with `avg(...)`:
+
+{% include tryit.html domain='data.cityofchicago.org' path='/resource/u77m-8jgp.json' args="$select=avg(total_passing_vehicle_volume)" %}
