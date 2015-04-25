@@ -1,6 +1,6 @@
 ---
 layout: with-sidebar
-sidebar: documentation 
+sidebar: documentation
 title: Text Datatype
 audience: documentation
 type: datatype
@@ -12,9 +12,17 @@ A string of text is an arbitrary sequence of Unicode characters. How the charact
 
 Operations on strings are case insensitive. This includes sorting as well as comparison operations.
 
-When using SoQL, string literals are created using the single quote (`'`). For example: 
+When using SoQL, string literals are created using the single quote (`'`). For example:
 
-    myColumn='string literal'
+{% highlight javascript %}
+text_value='string literal'
+{% endhighlight %}
+
+To escape a single quote within a string, double it. For example:
+
+{% highlight javascript %}
+text_value='Bob''s string'
+{% endhighlight %}
 
 The following table shows what operations can be used on strings:
 
@@ -28,7 +36,14 @@ The following table shows what operations can be used on strings:
 | `!=`                      | `TRUE` for strings that are not equal to this string                        |
 | <code>&#124;&#124;</code> | Concatenate two strings together                                          |
 
-The following table describes the functions that can be used with `text` strings. 
+The following table describes the functions that can be used with `text` strings.
 
 {% include function_listing.html datatype="text" %}
 
+For example, to query the [White House Visitor Records](https://open.whitehouse.gov/dataset/White-House-Visitor-Records-Requests/p86s-ychb?) to get only those visits to the First Lady (`FLOTUS`):
+
+{% include tryit.html domain='open.whitehouse.gov' path='/resource/p86s-ychb.json' args="visitee_namelast=FLOTUS" %}
+
+You could also use the `starts_with(...)` function to find all state arrivals:
+
+{% include tryit.html domain='open.whitehouse.gov' path='/resource/5frf-sppk.json' args="$where=starts_with(description, 'STATE ARRIVAL')" %}
