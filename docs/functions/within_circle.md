@@ -9,12 +9,15 @@ datatypes:
 description: Returns the rows that have locations within a specified circle, measured in meters
 ---
 
-## within_circle:
+{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
 
-{% highlight sql %}
-?$where=within_circle(location_col_identifier, latitude, longitude, radius)
-{% endhighlight %}
+The `within_circle(...)` function is used in the `$where` parameter filter for [Point](/docs/datatypes/point.html) or [Location](/docs/datatypes/location.html) values within a given radius of a point. It accepts four parameters:
 
-For example, to get all earthquakes within a 50,000 meter radius circle around Seattle: 
+- The field name of a Location or Point
+- The latitude of your central point
+- The longitude of your central point
+- A range in meters
 
-{% include tryit.html domain='soda.demo.socrata.com' path='/resource/earthquakes.json' args='$where=within_circle(location, 47.616810, -122.328064, 50000)' %}
+For example, to query for all of the [Seattle Fire 911 Calls](https://data.seattle.gov/Public-Safety/Seattle-Police-Department-911-Incident-Response/3k2p-39jp) calls within 500 meters of the Socrata offices in Seattle:
+
+{% include tryit.html domain='data.seattle.gov' path='/resource/pu5n-trf4.json' args="$where=within_circle(incident_location, 47.59815, -122.334540, 500)" %}
