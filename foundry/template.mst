@@ -95,7 +95,7 @@
 {{#show_migration}}
   <h2>Migrating</h2>
 
-  <p>A new version of this dataset exists that you should migrate to as soon as you're ready. This now deprecated version of the dataset will continue to be available for some time, and will be automatically kept in sync with the new dataset. The last time this dataset was synchronized was {{ last_synced }}, and the dataset was last updated at {{metadata.rowsUpdatedAt}}.</p>
+  <p>A <a href="/foundry/#/{{domain}}/{{nbe_uid}}" target="_blank">new version of this dataset</a> exists that you should migrate to as soon as you're ready. This now deprecated version of the dataset will continue to be available for some time, and will be automatically kept in sync with the new dataset. The last time this dataset was synchronized was {{ last_synced }}, and the dataset was last updated at {{metadata.rowsUpdatedAt}}.</p>
 
   <p>Most things will continue to function exactly the same, but the new dataset has great new features like <a href="/docs/georegions.html">georegion querying</a>, increased performance, and <a href="/docs/new-backend-migration.html">additional query options</a>. Those features <em>will not</em> be available on the legacy dataset.</p>
 
