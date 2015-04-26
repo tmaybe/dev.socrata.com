@@ -7,8 +7,7 @@ var setup_livedocs = function(div) {
       var target = $(element).attr("href");
 
       // Build up our Hurl link
-      var target_link = decodeURI(target);
-      var url = $.url(target_link);
+      var url = $.url(target);
       var params = {};
       $.each(url.param(), function(k, v) {
         params[k] = [v];
