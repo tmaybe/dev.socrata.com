@@ -174,6 +174,14 @@ var dataset = function(domain, uid) {
       is_obe = (obe_uid == uid);
     }
 
+    // Clean up our columns a bit
+    $.each(metadata[0].columns, function(idx, col) {
+      if(col.dataTypeName == "calendar_date") {
+        // calendar_dates were replaced by floating_timestamps in NBE
+        col.dataTypeName = "floating_timestamp";
+      }
+    });
+
     // Roll up our changes so we can use them in our mustache template
     var splits = _.collect(flattenings, function(mapping, key) {
       return {
