@@ -13,7 +13,7 @@ author: marks
   <strong>TL;DR: </strong>This page contains example code to get a grouped column chart working with Socrata Open Data APIs plus Highcharts, a javascript charting library. If you are looking for the code and want to get tinkering right away, you can visit <a href="http://jsfiddle.net/marksskram/ed42ghw5/1/">this example&#8217;s jsFiddle page here</a>.
 </div>
 
-Previously, [we wrote about how to create a simple column chart](/consumers/examples/simple-chart-with-d3) with [Michael Bostock](http://bost.ocks.org/mike/)'s [d3](http://d3js.org/). D3 is great for visualizing data but it can be quite complicated for some users.
+Previously, [we wrote about how to create a simple column chart](/consumers/examples/simple-chart-with-d3.html) with [Michael Bostock](http://bost.ocks.org/mike/)'s [d3](http://d3js.org/). D3 is great for visualizing data but it can be quite complicated for some users.
 
 Today, I want to share some simple sample code to create a grouped bar chart using [Highcharts](http://highcharts.com), a simpler (but still very customizable) alternative to d3.
 
