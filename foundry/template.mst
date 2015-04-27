@@ -1,9 +1,15 @@
-<h1 class="title">{{ metadata.name }}</h1>
-
+<h1 class="title">{{ metadata.name }}</h1> 
 {{#show_migration}}
   <div class="alert alert-info">
-    <em><i class="fa fa-warning"></i> Heads up!</em> A <a target="_blank" href="/foundry/#/{{domain}}/{{nbe_uid}}">new, improved version of this API</a> is available for your use. <a target="_blank" href="/foundry/#/{{domain}}/{{nbe_uid}}">Go check it out</a>, or read on for details on how to migrate.</div>
+    <p><em><i class="fa fa-warning"></i> Heads up!</em> A <a target="_blank" href="/foundry/#/{{domain}}/{{nbe_uid}}">new, improved version of this API</a> is available for your use. <a target="_blank" href="/foundry/#/{{domain}}/{{nbe_uid}}">Go check it out</a>, or read on for details on how to migrate.</p>
+  </div>
 {{/show_migration}}
+
+{{#is_nbe}}
+  <div class="alert alert-success">
+    <p><em><i class="fa fa-thumbs-up"></i> Good to go!</em> You're already using the latest version of this dataset API.</p> 
+  </div>
+{{/is_nbe}}
 
 <div class="panel panel-info metadata pull-right">
   <div class="panel-heading">
@@ -97,7 +103,7 @@
 
   <p>A <a href="/foundry/#/{{domain}}/{{nbe_uid}}" target="_blank">new version of this dataset</a> exists that you should migrate to as soon as you're ready. This now deprecated version of the dataset will continue to be available for some time, and will be automatically kept in sync with the new dataset. The last time this dataset was synchronized was {{ last_synced }}, and the dataset was last updated at {{metadata.rowsUpdatedAt}}.</p>
 
-  <p>Most things will continue to function exactly the same, but the new dataset has great new features like <a href="/docs/georegions.html">georegion querying</a>, increased performance, and <a href="/docs/new-backend-migration.html">additional query options</a>. Those features <em>will not</em> be available on the legacy dataset.</p>
+  <p>Most things will continue to function exactly the same, but the new dataset has great new features like <a href="/docs/functions/index.html">new query functionality</a>, increased performance, and <a href="http://labs.socrata.com">access to new beta APIs</a>. Those features <em>will not</em> be available on the legacy dataset.</p>
 
   {{#has_structural_changes}}
     <p>For this dataset, the following complex columns will change structurally:</p>
@@ -118,7 +124,7 @@
   {{/has_renames}}
 
   <div class="well">
-    Learn more about <a href="/docs/new-backend-migration.html">the migration process</a>.
+    Learn more about <a href="/changelog/2015-04-27-new-higher-performance-apis.html">the migration process</a>.
   </div>
 {{/show_migration}}
 

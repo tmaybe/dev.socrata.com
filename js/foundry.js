@@ -217,6 +217,7 @@ var dataset = function(domain, uid) {
       nbe_uid: nbe_uid,
       obe_uid: obe_uid,
       is_obe: is_obe,
+      is_nbe: !is_obe,
       show_migration: flags.show_migration && is_obe,
       has_structural_changes: splits.length > 0,
       splits: splits,
