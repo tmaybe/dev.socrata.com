@@ -1,7 +1,8 @@
 ---
 layout: with-breadcrumbs
 title: Migration to new, high-performance Socrata Open Data APIs
-type: change
+short_title: New, high-perf APIs
+category: changelog
 date: 2015-04-27
 parent_paths: 
 - /changelog/

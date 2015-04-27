@@ -16,13 +16,11 @@ redirect_from:
     <th>Change</th>
   </thead>
   <tbody>
-    {% for change in site.pages reversed %}
-      {% if change.type == 'change' %}
-        <tr>
-          <td>{{ change.date }}</td>
-          <td><a href="{{change.url}}">{{ change.title }}</a></td>
-        </tr>
-      {% endif %}
+    {% for change in site.categories.changelog %}
+      <tr>
+        <td>{{ change.date | date: "%Y-%m-%d" }}</td>
+        <td><a href="{{change.url}}">{{ change.title }}</a></td>
+      </tr>
     {% endfor %}
   </tbody>
 </table>
