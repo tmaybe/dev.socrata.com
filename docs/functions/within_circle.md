@@ -6,6 +6,8 @@ type: function
 datatypes:
 - location
 - point
+- line
+- polygon
 description: Returns the rows that have locations within a specified circle, measured in meters
 ---
 
