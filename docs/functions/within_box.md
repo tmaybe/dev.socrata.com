@@ -7,6 +7,8 @@ type: function
 datatypes:
 - location
 - point
+- line
+- polygon
 description: Returns the rows that have locations within the specified box, defined by latitude, longitude corners
 ---
 
