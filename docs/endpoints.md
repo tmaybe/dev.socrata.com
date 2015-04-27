@@ -3,8 +3,6 @@ layout: with-sidebar
 sidebar: documentation
 title: API Endpoints
 audience: docs
-redirect_from:
-  - /docs/endpoints
 ---
 
 ## What is an API Endpoint?
