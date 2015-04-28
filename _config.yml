@@ -17,8 +17,8 @@ flags:
 
 local_js:
   - //cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js
-  - /js/purl.js
-  - /js/try.js
+  - /common/js/purl.js
+  - /common/js/try.js
   - /js/snuffleupadata.js
   - /js/github.js
   - /js/external-link.js
