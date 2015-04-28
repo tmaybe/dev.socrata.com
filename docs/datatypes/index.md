@@ -3,7 +3,7 @@ layout: with-sidebar
 sidebar: documentation
 title: Datatypes
 redirect_from:
-  - /publisher/import-data-types
+  - /publisher/import-data-types/
 ---
 
 There are five core datatypes in SODA:
