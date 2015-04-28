@@ -153,7 +153,7 @@ var dataset = function(domain, uid) {
   $.when(
     $.getJSON("https://" + domain + "/api/views.json?method=getByResourceName&name=" + uid), // Metadata
     $.getJSONForgiving404("https://" + domain + "/api/migrations/" + uid + ".json"), // Migrations API
-    $.getJSON("https://" + domain + "/resource/" + uid + ".json?$select=count(*)"), // Count
+    $.getJSON("https://" + domain + "/resource/" + uid + ".json?$select=count(*) as count"), // Count
     $.ajax("/foundry/template.mst")
   ).done(function(metadata, migration, count, template) {
     // We got migration details, let's parse the mapping too
