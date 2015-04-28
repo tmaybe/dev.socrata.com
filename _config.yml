@@ -1,6 +1,6 @@
 destination: public
 exclude: [Makefile, Gemfile, Gemfile.lock, .rvmrc, public, sample-code]
-permalink: pretty
+# permalink: pretty
 splash: false
 splash_homepage: false
 
