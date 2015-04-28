@@ -5,6 +5,7 @@ title: Getting started with the SODA Consumer API
 audience: consumer
 redirect_from:
   - /consumers/
+  - /consumers/getting-started/
 ---
 
 <!-- open("data", O_RDONLY); -->

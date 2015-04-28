@@ -3,6 +3,7 @@ layout: with-sidebar
 sidebar: documentation
 title: Queries using SODA2
 redirect_from:
+  - /docs/queries
   - /docs/aggregation.html
   - /deprecated/querying-datasets
 ---
