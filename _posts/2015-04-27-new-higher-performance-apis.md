@@ -12,7 +12,7 @@ parents:
 
 {% include newsletter.html %}
 
-In April and May 2015, as part of [a huge new set of product and platform releases](http://www.socrata.com/rethink/), we'll be releasing new, high-performance SODA dataset API endpoints that will replace the existing ones. Developers will be given ample time to migrate their code to the new APIs, but beginning in the summer old datasets may cease receiving updates.
+In April and May 2015, as part of [a huge new set of product and platform releases](http://www.socrata.com/rethink/), we'll be releasing new, high-performance SODA dataset API endpoints that will replace the existing ones. Developers will be given ample time to migrate their code to the new APIs, but starting later in the year the old SODA APIs for some datasets may stop receiving new data.
 
 In addition to improved performance, the new SODA APIs have a ton of new features that you'll love:
 
