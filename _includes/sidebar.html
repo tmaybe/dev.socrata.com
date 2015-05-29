@@ -2,7 +2,6 @@
 {% when 'consumer' %}
   <li class="nav-header dropdown-header">App Developers</li>
   <li><a href="/consumers/getting-started.html">Getting Started</a></li>
-  <li><a href="/consumers/cookbooks/">Cookbooks</a></li>
 
   <li class="nav-header dropdown-header">Examples</li>
   {% for page in site.pages %}
@@ -29,23 +28,11 @@
 {% when 'publisher' %}
   <li class="nav-header dropdown-header">Data Publishers</li>
   <li><a href="/publishers/">Publisher Guide</a></li>
-  <li><a href="/publishers/cookbooks/">Cookbooks</a></li>
   <li class="nav-header dropdown-header">The Publisher API</li>
   <li><a href="/publishers/getting-started.html">Getting Started</a></li>
   <li><a href="/publishers/direct-row-manipulation.html">Direct Row Manipulation</a></li>
   <li><a href="/publishers/upsert.html">Updating via "Upsert"</a></li>
   <li><a href="/publishers/replace.html">Full Replace</a></li>
-
-  <li class="nav-header dropdown-header">Examples</li>
-  {% for page in site.pages %}
-    {% if page.type == 'example' and page.audience == 'publisher' %}
-      {% if page.external_url %}
-        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
-      {% else %}
-        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-      {% endif %}
-    {% endif %}
-  {% endfor %}
 
   <li class="nav-header dropdown-header">Tools &amp; Connectors</li>
   {% for page in site.pages %}
@@ -61,6 +48,17 @@
   <li class="nav-header dropdown-header">SDKs &amp; Libraries</li>
   {% for page in site.pages %}
     {% if page.type == 'sdk' and (page.audience == 'publisher' or page.audience == 'all') %}
+      {% if page.external_url %}
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
+      {% else %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  <li class="nav-header dropdown-header">Examples</li>
+  {% for page in site.pages %}
+    {% if page.type == 'example' and page.audience == 'publisher' %}
       {% if page.external_url %}
         <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
       {% else %}
