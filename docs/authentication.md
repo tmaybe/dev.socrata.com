@@ -6,7 +6,7 @@ redirect_from:
   - /authentication
 ---
 
-Authentication is only necessary when accessing datasets that have been marked as _private_ or when making write requests (`PUT`, `POST`, and `DELETE`). For reading datasets that have not been marked as private, simply use an [application token](/docs/app-tokens.html).
+<div class="alert alert-info"><em>Note:</em> Authentication is only necessary when accessing datasets that have been marked as <em>private</em> or when making write requests (<code>PUT</code>, <code>POST</code>, and <code>DELETE</code>). For reading datasets that have not been marked as private, simply use an <a href="/docs/app-tokens.html">application token</a>.</div>
 
 There are two methods available for authentication: HTTP Basic and OAuth 2.0.
 - HTTP Basic authentication may be used in cases where you are authenticating from an update script that runs without interaction with the user and without a web front-end.
@@ -35,6 +35,8 @@ X-App-Token: [REDACTED]
 {% endhighlight %}
 
 ## OAuth 2.0
+
+<div class="alert alert-info"><em>Note:</em> When developing applications that make use of OAuth, you must provide a web-accessible callback URL when registering your application token. This can make it difficult to develop on a machine that isn't directly exposed to the Internet. One great option is to use a tool like <a href="http://ngrok.com">ngrok</a> to create a secure tunnel to expose your web application in a secure manner.</div>
 
 ### Workflow
 
