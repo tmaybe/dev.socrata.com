@@ -7,7 +7,9 @@ $(".repo").each(function(index, repo) {
   $.getJSON("https://api.github.com/repos/" + org + "/" + repo_name, function(repo_details) {
     // Update repository details based on content from Github
     $.each(repo_details, function(prop, value) {
-      $(repo).find(".github." + prop).text(value);
+      if($(repo).find(".github." + prop).text().trim().length == 0) {
+        $(repo).find(".github." + prop).text(value);
+      }
     });
 
     // Update date fields to pretty print them
