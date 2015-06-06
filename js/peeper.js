@@ -5,8 +5,8 @@ $(document).ready(function(){
   }
 
   var peeper = '<div id="peeper">'
-    + '<a href="/support.html">'
-    + '<img src="/img/peeper.png" alt="Need a hand?" />'
+    + '<a href="' + flags.peeper.link + '">'
+    + '<img src="' + flags.peeper.img + '" alt="Need a hand?" />'
     + '</a>'
     + '<a href="#" class="dismiss"><i class="fa fa-times"></i> go away</a>'
     + '</div>';
@@ -23,6 +23,6 @@ $(document).ready(function(){
     $("#peeper").animate({
       right: "-120px"
     }, 1000);
-  }, 4000);
+  }, flags.peeper.delay);
 });
 

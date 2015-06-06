@@ -14,6 +14,10 @@ contribute: /contributing.html
 
 flags:
   show_migration: true
+  peeper:
+    img: '/img/peeper.png'
+    link: '/support.html'
+    delay: 4000
 
 local_js:
   - //cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js
