@@ -22,6 +22,8 @@ local_js:
   - /js/snuffleupadata.js
   - /js/github.js
   - /js/external-link.js
+  - /js/js.cookie.js
+  - /js/peeper.js
 
 gems:
   - jekyll-redirect-from
