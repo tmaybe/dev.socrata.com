@@ -120,13 +120,13 @@ For example, to search for the string "Islands" inside our earthquakes dataset:
 
 ### The $limit Parameter
 
-The `$limit` parameter controls the total number of rows returned. It can be used either alone, or with `$offset` in order to page through a dataset.
+The `$limit` parameter controls the total number of rows returned, and it defaults to 1,000 records per request. It can be used either alone, or with `$offset` in order to page through a dataset.
 
 For example, if you wanted to only return the top ten strongest earthquakes, you could use `$limit` in conjunction with `$order`:
 
 {% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$order=magnitude DESC&amp;$limit=10' %}
 
-<div class="alert alert-info"><strong>Note:</strong> The maximum you can request with <code>$limit</code> is 1000 records. The maximum value for <code>$limit</code> is 50,000 records, and if you exceed that limit you'll get a {% include status-code.html code='400' %} 
+<div class="alert alert-info"><strong>Note:</strong> The maximum value for <code>$limit</code> is 50,000 records, and if you exceed that limit you'll get a {% include status-code.html code='400' %} 
 response.</div>
 
 ### The $offset Parameter
