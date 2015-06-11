@@ -14,14 +14,14 @@ $(document).ready(function(){
 
   $('#peeper .dismiss').click(function() {
     $('#peeper').animate({
-      right: "-270px"   
+      right: "-200px"   
     }, 500);
     Cookies.set('hide-peeper', true, { expires: 3 });
   });
 
   setTimeout(function() {
     $("#peeper").animate({
-      right: "-120px"
+      right: "-85px"
     }, 1000);
   }, flags.peeper.delay);
 });
