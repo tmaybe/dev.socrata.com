@@ -2,6 +2,7 @@
 layout: with-sidebar
 sidebar: documentation 
 title: Point Datatype
+type: datatype
 audience: documentation
 ---
 
@@ -18,30 +19,17 @@ The `Point` datatype is very similar to the [`Location`](/docs/datatypes/locatio
 {% endhighlight %}
 
 <div class="alert alert-info">
-  <em>Heads up!</em> Contrary to the normal convention of "latitude, longitude" ordering in the `coordinates` property, the GeoJSON orders the coordinates as "longitude, latitude" (X coordinate, Y coordinate), as other GIS coordiate systems are encoded. Note that the SoQL `within_box` and `within_circle` functions use the more conventional ordering, however.
+  <em>Heads up!</em> Contrary to the normal convention of "latitude, longitude" ordering in the <code>coordinates</code> property, the GeoJSON orders the coordinates as "longitude, latitude" (X coordinate, Y coordinate), as other GIS coordiate systems are encoded. Note that the SoQL <code>within_box</code> and <code>within_circle</code> functions use the more conventional ordering, however.
 </div>
 
-The following table describes the functions that can be used with locations. 
+The following table describes the functions that can be used with Points. 
 
-| Operator      | Description                                                                               |
-| ---           | ---                                                                                       |
-| within_box    | Returns the rows that have locations within the specified box.                            |
-| within_circle | Returns the rows that have locations within the specified circle with a radius in meters. |
+{% include function_listing.html datatype="point" %}
 
-Below are examples using the above functions in SoQL queries:
+Just like the [Location](/docs/datatypes/location.html) datatype, you can use the[`within_circle(...)`](/docs/functions/within_circle.html) function to look for points within a given range. For example, to get all of the [crimes](http://data.cityofchicago.org/d/6zsd-86xi) within 500 meters of Chicago City Hall:
 
-## within_box:
+{% include tryit.html domain='data.cityofchicago.org' path='/resource/6zsd-86xi.json' args="$where=within_circle(location, 41.883811, -87.631749, 500)" %}
 
-    ?$where=within_box(location_col_identifier, top_left_latitude, top_left_longitude, bottom_right_latitude, bottom_right_longitude)
+However, there are also a ton of additional geo query functions that come with the Point datatype. For example, to aggregate that same dataset by ward and return polygons surrounding each cluster, in [GeoJSON](/docs/formats/geojson.html):
 
-For example, to get all earthquakes in the Seattle area: 
-
-{% include tryit.html domain='soda.demo.socrata.com' path='/resource/earthquakes.json' args='$where=within_box(location, 48.317908, -122.995119, 47.309034, -121.630497)' %}
-
-## within_circle:
-
-    ?$where=within_circle(location_col_identifier, latitude, longitude, radius)
-
-For example, to get all earthquakes within a 50,000 meter radius circle around Seattle: 
-
-{% include tryit.html domain='soda.demo.socrata.com' path='/resource/earthquakes.json' args='$where=within_circle(location, 47.616810, -122.328064, 50000)' %}
+{% include tryit.html domain='data.cityofchicago.org' path='/resource/6zsd-86xi.geojson' args="$select=ward, count(*), convex_hull(location)&$group=ward" %}

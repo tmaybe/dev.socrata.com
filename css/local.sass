@@ -6,6 +6,13 @@ $screen-sm-max: 767px
 $screen-mid-min: 768px
 $screen-mid-max: 991px
 
+p, table
+  img
+    border: 1px solid #ddd
+    border-radius: 4px
+    background-color: #fff
+    padding: 4px
+
 a.exec
   font-size: 1.0em
   color: #1b1b1b
@@ -155,52 +162,6 @@ footer
   .extension
     color: #ffca14
 
-.results
-  position: relative
-  background-color: #f9f2f4
-  height: 400px
-  overflow-x: hidden
-  overflow-y: scroll
-  width: 100%
-  margin:
-    left: auto
-    right: auto
-    bottom: 20px
-  padding:
-    top: 10px
-    left: 10px
-    right: 10px
-    bottom: 10px
-  border: 1px solid #cecece
-  border-radius: 4px
-
-  .request, .response
-    border: none
-
-  .request
-    padding:
-      top: 3px
-      left: 3px
-    .verb
-      font-weight: bold
-      color: #008080
-
-  .remove
-    position: absolute
-    top: 0
-    right: 0
-    text-decoration: none
-    color: #000
-    font-size: 0.9em
-    padding: 10px
-    background-color: whitesmoke
-    border-left: 1px solid #cecece
-    border-bottom: 1px solid #cecece
-    border-bottom-left-radius: 4px
-
-  pre
-    background-color: transparent   /* Overrides bootstrap for try-it code response */
-
 .repositories
   padding-top: 10px
   padding-left: 0
@@ -228,6 +189,9 @@ footer
         margin: 0
         font-size: 0.9em
         color: #999999
+
+    .description
+      max-width: 80%
 
     ul.contributors
       list-style: none
@@ -267,25 +231,6 @@ ul.pages
     ul.meta
       list-style: none
       font-size: 0.8em
-
-.tryit-link
-  position: relative
-  margin-bottom: 20px
-  padding: 0.8em
-  border-radius: 4px
-  color: #c7254e
-  background-color: #f9f2f4
-  i.fa
-    margin-top: 0.3em
-  code
-    position: relative
-    top: 50%
-    transform: translateY(-50%)
-    background-color: transparent
-  .hurl-it
-    position: absolute
-    right: 1em
-    background-color: inherit
 
 /* Bootstrap overrides */
 h1, .h1, h2, .h2, h3, .h3
@@ -352,6 +297,7 @@ p, li
     margin-right: 1em
     height: auto
     display: block
+    max-width: 200px
 
   .welcome
     font-weight: bold
@@ -437,7 +383,7 @@ p, li
           line-height: 1.1em
 
 #foundry-docs
-  $datatypes: "text" #0074D9, "html" #0074D9, "url" #AAAAAA, "email" #AAAAAA,  "number" #39CCCC, "money" #39CCCC, "percent" #39CCCC, "location" #3D9970, "calendar_date" #FF851B, "date" #FF851B, "deprecated" #AAAAAA, "checkbox" #7FDBFF, "point" #85144b, "drop_down_list" #AAAAAA, "flag" #AAAAAA, "stars" #AAAAAA, "photo" #AAAAAA, "document" #AAAAAA, "phone" #AAAAAA
+  $datatypes: "text" #0074D9, "html" #0074D9, "url" #AAAAAA, "email" #AAAAAA,  "number" #39CCCC, "money" #39CCCC, "percent" #39CCCC, "location" #3D9970, "floating_timestamp" #FF851B, "calendar_date" #FF851B, "date" #FF851B, "deprecated" #AAAAAA, "checkbox" #7FDBFF, "point" #85144b, "drop_down_list" #AAAAAA, "flag" #AAAAAA, "stars" #AAAAAA, "photo" #AAAAAA, "document" #AAAAAA, "phone" #AAAAAA
 
   .getting-started
     width: 67%
@@ -555,3 +501,23 @@ p, li
     white-space: nowrap
     overflow: hidden
     text-overflow: ellipsis
+
+.odn-search
+  width: 70%
+  margin:
+    top: 30px
+    bottom: 30px
+    left: auto
+    right: auto
+
+#peeper
+  width: 191px
+  height: 250px
+  position: fixed
+  top: 30%
+  right: -200px
+  z-index: 999
+
+  .dismiss
+    position: relative
+    left: 30px

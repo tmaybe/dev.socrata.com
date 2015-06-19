@@ -153,7 +153,7 @@ var dataset = function(domain, uid) {
   $.when(
     $.getJSON("https://" + domain + "/api/views.json?method=getByResourceName&name=" + uid), // Metadata
     $.getJSONForgiving404("https://" + domain + "/api/migrations/" + uid + ".json"), // Migrations API
-    $.getJSON("https://" + domain + "/resource/" + uid + ".json?$select=count(*)"), // Count
+    $.getJSON("https://" + domain + "/resource/" + uid + ".json?$select=count(*) as count"), // Count
     $.ajax("/foundry/template.mst")
   ).done(function(metadata, migration, count, template) {
     // We got migration details, let's parse the mapping too
@@ -173,6 +173,14 @@ var dataset = function(domain, uid) {
       last_synced = (new Date(migration[0].syncedAt*1000).toLocaleString());
       is_obe = (obe_uid == uid);
     }
+
+    // Clean up our columns a bit
+    $.each(metadata[0].columns, function(idx, col) {
+      if(col.dataTypeName == "calendar_date") {
+        // calendar_dates were replaced by floating_timestamps in NBE
+        col.dataTypeName = "floating_timestamp";
+      }
+    });
 
     // Roll up our changes so we can use them in our mustache template
     var splits = _.collect(flattenings, function(mapping, key) {
@@ -209,6 +217,7 @@ var dataset = function(domain, uid) {
       nbe_uid: nbe_uid,
       obe_uid: obe_uid,
       is_obe: is_obe,
+      is_nbe: !is_obe,
       show_migration: flags.show_migration && is_obe,
       has_structural_changes: splits.length > 0,
       splits: splits,
