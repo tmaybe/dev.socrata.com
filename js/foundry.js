@@ -176,6 +176,11 @@ var dataset = function(domain, uid) {
 
     // Clean up our columns a bit
     $.each(metadata[0].columns, function(idx, col) {
+      // Some things unfortunately need to be hidden...
+      if(col.fieldName.match(/^:@computed_region/)) {
+        col.hidden = true;
+      }
+
       if(col.dataTypeName == "calendar_date") {
         // calendar_dates were replaced by floating_timestamps in NBE
         col.dataTypeName = "floating_timestamp";
