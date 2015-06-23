@@ -12,7 +12,9 @@ $(document).ready(function(){
     + '</div>';
   $("body").append(peeper);
 
-  $('#peeper .dismiss').click(function() {
+  $('#peeper .dismiss').click(function(e) {
+    e.preventDefault();
+
     $('#peeper').animate({
       right: "-200px"   
     }, 500);
