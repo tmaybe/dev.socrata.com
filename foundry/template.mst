@@ -130,30 +130,32 @@
 
 <ul class="fields panel-group" id="accordion">
   {{#metadata.columns}}
-    <li class="field panel panel-default">
-      <div class="heading panel-heading {{dataTypeName}}" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{id}}">
-        <h3 class="panel-title">
-          <i class="collapse-icon fa fa-fw fa-plus-square-o"></i>
-          <code class="field-name {{dataTypeName}}">{{fieldName}}</code>
-          <code class="datatype">{{dataTypeName}}</code>
-        </h3>
-        <span class="human-name">{{name}}</span>
-      </div>
-      <div id="collapse-{{id}}" data-datatype="{{dataTypeName}}" data-fieldname="{{fieldName}}" class="panel-collapse collapse">
-        <div class="panel-body">
-          {{#description}}
-            <p class="description">{{description}}</p>
-          {{/description}}
-
-          <p class="overview">The <code>{{fieldName}}</code> column is of the <a href="/docs/datatypes/{{dataTypeName}}.html"><code>{{dataTypeName}}</code></a> datatype.</p>
-
-          <div class="tryit">
-            <p><i class="fa fa-code fa-spin"></i> Please wait while we fetch an example for you...</p>
-          </div>
-
-          <p>For more details on what query options you have for this column, see the <a href="/docs/datatypes/{{dataTypeName}}.html">detailed docs on the <code>{{dataTypeName}}</code> datatype</a></p>
+    {{^hidden}}
+      <li class="field panel panel-default">
+        <div class="heading panel-heading {{dataTypeName}}" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{id}}">
+          <h3 class="panel-title">
+            <i class="collapse-icon fa fa-fw fa-plus-square-o"></i>
+            <code class="field-name {{dataTypeName}}">{{fieldName}}</code>
+            <code class="datatype">{{dataTypeName}}</code>
+          </h3>
+          <span class="human-name">{{name}}</span>
         </div>
-      </div>
-    </li>
+        <div id="collapse-{{id}}" data-datatype="{{dataTypeName}}" data-fieldname="{{fieldName}}" class="panel-collapse collapse">
+          <div class="panel-body">
+            {{#description}}
+              <p class="description">{{description}}</p>
+            {{/description}}
+
+            <p class="overview">The <code>{{fieldName}}</code> column is of the <a href="/docs/datatypes/{{dataTypeName}}.html"><code>{{dataTypeName}}</code></a> datatype.</p>
+
+            <div class="tryit">
+              <p><i class="fa fa-code fa-spin"></i> Please wait while we fetch an example for you...</p>
+            </div>
+
+            <p>For more details on what query options you have for this column, see the <a href="/docs/datatypes/{{dataTypeName}}.html">detailed docs on the <code>{{dataTypeName}}</code> datatype</a></p>
+          </div>
+        </div>
+      </li>
+    {{/hidden}}
   {{/metadata.columns}}
 </ul>
