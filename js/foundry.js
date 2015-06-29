@@ -123,6 +123,7 @@ var load_query_suggestions = function(base_url, field_name, datatype, div) {
       div.html(Mustache.render(template[0], {
         full_url: base_url,
         datatype: datatype,
+        fieldName: field_name,
         suggestions: suggestions
       }));
 
