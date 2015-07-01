@@ -124,7 +124,7 @@
   {{/has_renames}}
 
   <div class="well">
-    Learn more about <a href="/changelog/2015/04/27/new-higher-performance-apis.html">the migration process</a>.
+    Learn more about <a target="_blank" href="/changelog/2015/04/27/new-higher-performance-apis.html">the migration process</a>.
   </div>
 {{/show_migration}}
 
