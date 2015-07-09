@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 2.1.1
+before_script:
+  - npm install surge
+script:
+  - bundle exec jekyll build
+after_success:
+  - surge --project ./public --domain your-project.surge.sh
