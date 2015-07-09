@@ -1,5 +1,5 @@
 destination: public
-exclude: [Makefile, Gemfile, Gemfile.lock, .rvmrc, public, sample-code]
+exclude: [Makefile, Gemfile, Gemfile.lock, .rvmrc, public, sample-code, vendor]
 # permalink: pretty
 splash: false
 splash_homepage: false
