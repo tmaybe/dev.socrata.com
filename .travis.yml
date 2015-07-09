@@ -9,4 +9,4 @@ before_script:
 script:
   - bundle exec jekyll build
 after_success:
-  - surge --project ./public --domain your-project.surge.sh
+  - surge --project ./public --domain dev-socrata.com.surge.sh
