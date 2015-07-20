@@ -7,7 +7,7 @@ audience: all
 language: PHP
 
 external_url: https://github.com/allejo/PhpSoda
-docs_url: https://github.com/allejo/PhpSoda/blob/master/README.md
+docs_url: https://github.com/allejo/PhpSoda/wiki
 bugs_url: https://github.com/allejo/PhpSoda/issues
 
 github_user: allejo
