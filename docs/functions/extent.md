@@ -6,6 +6,7 @@ title: extent(...)
 type: function
 datatypes:
 - point
+- polygon
 description: Returns a bounding box that encloses a set of geometries
 ---
 
