@@ -1,4 +1,3 @@
-// In some cases we're OK with 404s
 (function ($) {
   $.getJSONForgiving404 = function(url, data, success) {
     var dfrd = $.Deferred(),
@@ -33,7 +32,6 @@ var load_query_suggestions = function(base_url, field_name, datatype, div) {
       } catch(err) {
         console.log("Despite our best efforts, we didn't get a value back. Because: " + err);
       }
-      var suggestions = {};
 
       // Custom trial URLs for rich datatypes
       switch(datatype) {
@@ -135,7 +133,7 @@ var load_query_suggestions = function(base_url, field_name, datatype, div) {
 };
 
 // Dataset
-var dataset = function(domain, uid) {
+var dataset = function(domain, uid, no_redirect) {
   // Check to make sure we're on the right doc
   $.getJSON("https://" + domain + "/api/views.json?method=getDefaultView&id=" + uid)
     .done(function(data) {
@@ -164,6 +162,7 @@ var dataset = function(domain, uid) {
     var obe_uid = null;
     var last_synced = 0;
     var is_obe = false;
+    var redirected = (Cookies.get('foundry-redirected') == "true");
 
     if(migration != null && migration[1] == "success") {
       var mapping = JSON.parse(migration[0].controlMapping);
@@ -173,6 +172,15 @@ var dataset = function(domain, uid) {
       obe_uid = migration[0].obeId;
       last_synced = (new Date(migration[0].syncedAt*1000).toLocaleString());
       is_obe = (obe_uid == uid);
+    }
+
+    // If we're looking at an OBE dataset and we haven't forced these docs, redirect
+    if(is_obe && !no_redirect) {
+      Cookies.set('foundry-redirected', true, { expires: 1 });
+      console.log("Redirecting user to the NBE API for this dataset");
+      $('#foundry-docs').html("<p>Redirecting you to the new API endpoint for this datset...</p>").show();
+      window.location = "/foundry/#/" + domain + "/" + nbe_uid;
+      window.location.reload();
     }
 
     // Clean up our columns a bit
@@ -232,6 +240,7 @@ var dataset = function(domain, uid) {
       last_synced: last_synced,
       count: count[0][0].count.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
       full_url: full_url,
+      redirected: redirected
     }));
 
     // Set up our livedocs links
@@ -302,9 +311,9 @@ var load = function() {
   }
 
   // Load docs or catalog
-  if(components.length == 3) {
+  if(components.length >= 3) {
     // Load for a particular dataset
-    dataset(components[1], components[2]);
+    dataset(components[1], components[2], (components[3] == "no-redirect"));
   } else {
     $("#foundry-docs").html("<p>No parameters passed!</p>");
     return;

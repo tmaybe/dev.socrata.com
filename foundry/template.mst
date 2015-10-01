@@ -6,9 +6,16 @@
 {{/show_migration}}
 
 {{#is_nbe}}
-  <div class="alert alert-success">
-    <p><em><i class="fa fa-thumbs-up"></i> Good to go!</em> You're already using the latest version of this dataset API.</p> 
-  </div>
+  {{#redirected}}
+    <div class="alert alert-success">
+      <p><em><i class="fa fa-thumbs-up"></i> Heads up!</em> You've been automatically redirected to the latest version of this dataset API. If for some reason you want to refer to the documentation for the old version of this dataset API, you can <a href="/foundry/#/{{domain}}/{{obe_uid}}/no-redirect" target="_blank">view those instead</a>.</p> 
+    </div>
+  {{/redirected}}
+  {{^redirected}}
+    <div class="alert alert-success">
+      <p><em><i class="fa fa-thumbs-up"></i> Good to go!</em> You're already using the latest version of this dataset API.</p> 
+    </div>
+  {{/redirected}}
 {{/is_nbe}}
 
 <div class="panel panel-info metadata pull-right">
