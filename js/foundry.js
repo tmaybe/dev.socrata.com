@@ -1,3 +1,4 @@
+// In some cases we're OK with 404s
 (function ($) {
   $.getJSONForgiving404 = function(url, data, success) {
     var dfrd = $.Deferred(),
@@ -32,6 +33,7 @@ var load_query_suggestions = function(base_url, field_name, datatype, div) {
       } catch(err) {
         console.log("Despite our best efforts, we didn't get a value back. Because: " + err);
       }
+      var suggestions = {};
 
       // Custom trial URLs for rich datatypes
       switch(datatype) {
@@ -315,8 +317,9 @@ var load = function() {
     // Load for a particular dataset
     dataset(components[1], components[2], (components[3] == "no-redirect"));
   } else {
-    $("#foundry-docs").html("<p>No parameters passed!</p>");
-    return;
+    console.log("Redirecting back to the homepage");
+    window.location.replace("/");
+    window.location.reload();
   }
 }
 
