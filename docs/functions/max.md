@@ -8,6 +8,7 @@ datatypes:
 - number
 - double
 - money
+- floating_timestamp
 description: Returns the maximum of a given set of numbers 
 ---
 
