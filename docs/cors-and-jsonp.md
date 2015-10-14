@@ -20,16 +20,21 @@ Fortunately, techniques have since been developed that allow developers to secur
 You don't need to do anything special to use CORS with JavaScript in a modern browser. Your web browser and our servers will automatically negotiate the cross-origin request. For example, to make a CORS request with [jQuery](http://jquery.com/), you'd make your request just like you were performing it within the context of your own domain.
 
 {% highlight javascript %}
-$.getJSON(
-  "https://data.chattlibrary.org/resource/5na4-ggsr.json?"
-    + "codedescription=EMBEZZLEMENT"
-    + "&$$app_token=" + app_token,
-  function(data, status) {
-    console.log("Request received: " + data);
+$.ajax({
+  url: "https://data.chattlibrary.org/resource/5na4-ggsr.json",
+  method: "GET",
+  dataType: "json",
+  data: {
+    "codedescription": "EMBEZZLEMENT",
+    "$$app_token": app_token
+  },
+  success: function( data, status, jqxhr ){
+    console.log( "Request received:", data );
+  },
+  error: function( jqxhr, status, error ){
+    console.log( "Something went wrong!" );
   }
-).fail(function( {
-  console.log("Something went wrong!");
-);
+});
 {% endhighlight %}
 
 ## "JavaScript with Padding" (JSONP)

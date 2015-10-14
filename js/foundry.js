@@ -123,6 +123,7 @@ var load_query_suggestions = function(base_url, field_name, datatype, div) {
       div.html(Mustache.render(template[0], {
         full_url: base_url,
         datatype: datatype,
+        fieldName: field_name,
         suggestions: suggestions
       }));
 
@@ -134,7 +135,7 @@ var load_query_suggestions = function(base_url, field_name, datatype, div) {
 };
 
 // Dataset
-var dataset = function(domain, uid) {
+var dataset = function(domain, uid, no_redirect) {
   // Check to make sure we're on the right doc
   $.getJSON("https://" + domain + "/api/views.json?method=getDefaultView&id=" + uid)
     .done(function(data) {
@@ -163,6 +164,7 @@ var dataset = function(domain, uid) {
     var obe_uid = null;
     var last_synced = 0;
     var is_obe = false;
+    var redirected = (Cookies.get('foundry-redirected') == "true");
 
     if(migration != null && migration[1] == "success") {
       var mapping = JSON.parse(migration[0].controlMapping);
@@ -174,8 +176,22 @@ var dataset = function(domain, uid) {
       is_obe = (obe_uid == uid);
     }
 
+    // If we're looking at an OBE dataset and we haven't forced these docs, redirect
+    if(is_obe && !no_redirect) {
+      Cookies.set('foundry-redirected', true, { expires: 1 });
+      console.log("Redirecting user to the NBE API for this dataset");
+      $('#foundry-docs').html("<p>Redirecting you to the new API endpoint for this datset...</p>").show();
+      window.location = "/foundry/#/" + domain + "/" + nbe_uid;
+      window.location.reload();
+    }
+
     // Clean up our columns a bit
     $.each(metadata[0].columns, function(idx, col) {
+      // Some things unfortunately need to be hidden...
+      if(col.fieldName.match(/^:@computed_region/)) {
+        col.hidden = true;
+      }
+
       if(col.dataTypeName == "calendar_date") {
         // calendar_dates were replaced by floating_timestamps in NBE
         col.dataTypeName = "floating_timestamp";
@@ -226,6 +242,7 @@ var dataset = function(domain, uid) {
       last_synced: last_synced,
       count: count[0][0].count.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
       full_url: full_url,
+      redirected: redirected
     }));
 
     // Set up our livedocs links
@@ -296,12 +313,13 @@ var load = function() {
   }
 
   // Load docs or catalog
-  if(components.length == 3) {
+  if(components.length >= 3) {
     // Load for a particular dataset
-    dataset(components[1], components[2]);
+    dataset(components[1], components[2], (components[3] == "no-redirect"));
   } else {
-    $("#foundry-docs").html("<p>No parameters passed!</p>");
-    return;
+    console.log("Redirecting back to the homepage");
+    window.location.replace("/");
+    window.location.reload();
   }
 }
 

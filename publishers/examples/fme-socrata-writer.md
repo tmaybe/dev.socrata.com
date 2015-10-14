@@ -66,7 +66,15 @@ FME can also create a new Socrata dataset automatically. Simply enter the name y
 Socrata Writer: 'TEMP.csv' was successfully imported as a new Socrata dataset. The dataset ID is 'k5ad-vnv2'
 ```
 
-To have the workflow update the dataset you should set the "Dataset Name" to the dataset ID.
+To have the workflow update the dataset you should set the "Dataset Name" to this dataset ID from the log output.
+
+<div class="well">
+<em>Tip on publishing large datasets</em>:<br> The Socrata Writer may fail when creating datasets if you are loading a relatively large amount of data (60+ MB). If you get this error when creating a new dataset you need to first "seed" the dataset with a smaller number of records:
+<p>The JSON data is incomplete: Unexpectedly encountered the end of JSON data
+Socrata Writer: HTTP 100</p>
+To "seed" a dataset with a smaller number of records, in the Reader you are using you should reduce the Max Features to Read by finding the Reader in the Navigator panel (upper left) and going to Parameters > Features to Read > Max Features to Read. Set the value to something relatively small (5000). Run the workflow to create the dataset then get the resulting dataset ID (from the log as described above), input it as the Dataset Name in the Socrata Writer, set Truncate Dataset First to "Yes", set the Max Features to Read back to blank, and run the workflow again to replace the seeded dataset with the complete set of rows you wish to publish.
+</div>
+
 
 
 ### Step 4: Configure the update method

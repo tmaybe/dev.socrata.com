@@ -6,9 +6,16 @@
 {{/show_migration}}
 
 {{#is_nbe}}
-  <div class="alert alert-success">
-    <p><em><i class="fa fa-thumbs-up"></i> Good to go!</em> You're already using the latest version of this dataset API.</p> 
-  </div>
+  {{#redirected}}
+    <div class="alert alert-success">
+      <p><em><i class="fa fa-thumbs-up"></i> Heads up!</em> You've been automatically redirected to the latest version of this dataset API. If for some reason you want to refer to the documentation for the old version of this dataset API, you can <a href="/foundry/#/{{domain}}/{{obe_uid}}/no-redirect" target="_blank">view those instead</a>.</p> 
+    </div>
+  {{/redirected}}
+  {{^redirected}}
+    <div class="alert alert-success">
+      <p><em><i class="fa fa-thumbs-up"></i> Good to go!</em> You're already using the latest version of this dataset API.</p> 
+    </div>
+  {{/redirected}}
 {{/is_nbe}}
 
 <div class="panel panel-info metadata pull-right">
@@ -47,7 +54,7 @@
 
   <p>All communication with the API is done through HTTPS, and errors are communicated through HTTP response codes. Available response types include <code>JSON</code>, <code>XML</code>, and <code>CSV</code>, which are selectable by the "extension" (<code>.json</code>, etc.) on the API endpoint or through content-negotiation with HTTP <code>Accepts</code> headers.</p>
 
-  <p>Following <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>-ful paradigms, we return standard <a href="/docs/response-codes.html">HTTP Status Codes</a> to denote success or failure. For example, a successful request will get a <code>200 OK</code>, while a bad query will get a <code>400 Bad Request</code>. Errors are also accompanied by an <a href="/docs/response-codes.html">error response</a> including human-readble error message.</p>
+  <p>Following <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>-ful paradigms, we return standard <a href="/docs/response-codes.html">HTTP Status Codes</a> to denote success or failure. For example, a successful request will get a <code>200 OK</code>, while a bad query will get a <code>400 Bad Request</code>. Errors are also accompanied by an <a href="/docs/response-codes.html">error response</a> including a human-readable error message.</p>
 
   <p>This documentation also includes inline, runable examples. Click on any link that contains a <code><i class="fa fa-fw fa-cog" style="color: #c7254e"></i> gear symbol</code> next to it to run that example live against the <code>{{metadata.name}}</code> API. If you just want to grab the API endpoint and go, you'll find it below.</p>
 
@@ -71,7 +78,7 @@
 
 <p>All requests should include an <a href="/docs/app-tokens.html">app token</a> that identifies your application, and each application should have its own unique app token. A limited number of requests can be made without an app token, but they are subject to much lower throttling limits than request that do include one. With an app token, your application is guaranteed access to it's own pool of requests. If you don't have an app token yet, click the button to the right to sign up for one.</p>
 
-<div class="register"><a href="/register" target="_blank" class="btn btn-primary btn-lg pull-right"> <i class="fa fa-key fa-lg"></i> Sign up for app token!</a></div>
+<div class="register"><a href="/register" target="_blank" class="btn btn-primary btn-lg pull-right"> <i class="fa fa-key fa-lg"></i> Sign up for an app token!</a></div>
 
 <p>Once you have an app token, you can include it with your request either by using the <code>X-App-Token</code> HTTP header, or by passing it via the <code>$$app_token</code> parameter on your URL.</p>
 
@@ -81,7 +88,7 @@
 
 <h2>Fields</h2>
 
-<p>Each column in <a href="http://{{domain}}/d/{{uid}}">the dataset</a> is represented by a single <code>field</code> in its SODA API. Using <a href="/docs/filters.html">filters</a> and <a href="/docs/queries.html">SoQL queries</a>, you can search for records, limit your results, and change the way the data is output. For example, you could filter this dataset by its <code>{{metadata.columns.0.fieldName}}</code> field using a query like the following:</p>
+<p>Each column in <a href="http://{{domain}}/d/{{uid}}">the dataset</a> is represented by a single <code>field</code> in its SODA API. Using <a href="/docs/filtering.html">filters</a> and <a href="/docs/queries.html">SoQL queries</a>, you can search for records, limit your results, and change the way the data is output. For example, you could filter this dataset by its <code>{{metadata.columns.0.fieldName}}</code> field using a query like the following:</p>
 
 {{#metadata.columns.0.filter}}
   <a class="tryit" href="{{full_url}}?{{metadata.columns.0.filter}}">{{full_url}}?{{metadata.columns.0.filter}}</a>
@@ -92,7 +99,7 @@
 <div class="well">
   <p>Learn more about:</p>
   <ul>
-    <li><a href="/docs/filters.html">Simple Filters</a></li>
+    <li><a href="/docs/filtering.html">Simple Filters</a></li>
     <li><a href="/docs/queries.html">SoQL Queries</a></li>
     <li><a href="/docs/paging.html">Paging Through Data</a></li>
   </ul>
@@ -124,36 +131,38 @@
   {{/has_renames}}
 
   <div class="well">
-    Learn more about <a href="/changelog/2015-04-27-new-higher-performance-apis.html">the migration process</a>.
+    Learn more about <a target="_blank" href="/changelog/2015/04/27/new-higher-performance-apis.html">the migration process</a>.
   </div>
 {{/show_migration}}
 
 <ul class="fields panel-group" id="accordion">
   {{#metadata.columns}}
-    <li class="field panel panel-default">
-      <div class="heading panel-heading {{dataTypeName}}" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{id}}">
-        <h3 class="panel-title">
-          <i class="collapse-icon fa fa-fw fa-plus-square-o"></i>
-          <code class="field-name {{dataTypeName}}">{{fieldName}}</code>
-          <code class="datatype">{{dataTypeName}}</code>
-        </h3>
-        <span class="human-name">{{name}}</span>
-      </div>
-      <div id="collapse-{{id}}" data-datatype="{{dataTypeName}}" data-fieldname="{{fieldName}}" class="panel-collapse collapse">
-        <div class="panel-body">
-          {{#description}}
-            <p class="description">{{description}}</p>
-          {{/description}}
-
-          <p class="overview">The <code>{{fieldName}}</code> column is of the <a href="/docs/datatypes/{{dataTypeName}}.html"><code>{{dataTypeName}}</code></a> datatype.</p>
-
-          <div class="tryit">
-            <p><i class="fa fa-code fa-spin"></i> Please wait while we fetch an example for you...</p>
-          </div>
-
-          <p>For more details on what query options you have for this column, see the <a href="/docs/datatypes/{{dataTypeName}}.html">detailed docs on the <code>{{dataTypeName}}</code> datatype</a></p>
+    {{^hidden}}
+      <li class="field panel panel-default">
+        <div class="heading panel-heading {{dataTypeName}}" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{id}}">
+          <h3 class="panel-title">
+            <i class="collapse-icon fa fa-fw fa-plus-square-o"></i>
+            <code class="field-name {{dataTypeName}}">{{fieldName}}</code>
+            <code class="datatype">{{dataTypeName}}</code>
+          </h3>
+          <span class="human-name">{{name}}</span>
         </div>
-      </div>
-    </li>
+        <div id="collapse-{{id}}" data-datatype="{{dataTypeName}}" data-fieldname="{{fieldName}}" class="panel-collapse collapse">
+          <div class="panel-body">
+            {{#description}}
+              <p class="description">{{description}}</p>
+            {{/description}}
+
+            <p class="overview">The <code>{{fieldName}}</code> column is of the <a href="/docs/datatypes/{{dataTypeName}}.html"><code>{{dataTypeName}}</code></a> datatype.</p>
+
+            <div class="tryit">
+              <p><i class="fa fa-code fa-spin"></i> Please wait while we fetch an example for you...</p>
+            </div>
+
+            <p>For more details on what query options you have for this column, see the <a href="/docs/datatypes/{{dataTypeName}}.html">detailed docs on the <code>{{dataTypeName}}</code> datatype</a></p>
+          </div>
+        </div>
+      </li>
+    {{/hidden}}
   {{/metadata.columns}}
 </ul>

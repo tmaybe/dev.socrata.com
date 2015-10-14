@@ -3,6 +3,8 @@ layout: with-sidebar
 sidebar: documentation 
 title: Filtering
 audience: documentation
+redirect_from:
+- /docs/filters.html
 ---
 
 Querying datasets with simple equality filters is very easy with SODA. Simply use the column's field name as your parameter and the content you want to filter for as its value.
