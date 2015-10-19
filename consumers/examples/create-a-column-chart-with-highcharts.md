@@ -5,7 +5,7 @@ sidebar: consumer
 type: example
 audience: consumer
 custom_js:
-  - /js/simple-chart-with-highcharts.js
+- /js/simple-chart-with-highcharts.js
 author: marks
 ---
 
@@ -22,8 +22,6 @@ For this example, I am going to use the [Inpatient Prospective Payment System (I
 ### Live Demo
 
 <!-- include Highcharts Javascript -->
-<script src='http://code.highcharts.com/highcharts.js'></script>
-<script src='http://code.highcharts.com/modules/data.js'></script>
 <div id="chart-container" style="width: 100%; height: 400px; margin: 20px auto"><!-- This space intentionally left blank --></div>
 
 ### The Code
