@@ -3,8 +3,17 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
   var load_query_suggestions = function(base_url, field_name, datatype, div) {
     // Fetch sample data & template at the same time
     $.when(
-      $.getJSON(base_url + "?" + "$select=" + field_name 
-        + "&$limit=1&$where=" + field_name + " IS NOT NULL"),
+      $.ajax({
+        url: base_url,
+        method: "GET",
+        dataType: "json",
+        xhrFields: { withCredentials: true },
+        data: {
+          "$select": field_name,
+          "$limit": 1,
+          "$where": field_name + " IS NOT NULL"
+        }
+      }),
       $.ajax("/foundry/queries.mst")
     ).done(function(data, template) {
       try {
@@ -115,28 +124,61 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
     });
   };
 
-  var dataset = function(domain, uid, no_redirect, element) {
-    // Check to make sure we're on the right doc
-    $.getJSON("https://" + domain + "/api/views.json?method=getDefaultView&id=" + uid)
-      .done(function(data) {
-        if(data["id"] != uid) {
-          console.log("Redirecting user to the API for the default dataset");
-          $(element).html("<p>Redirecting you to the default dataset for this view...</p>").show();
-          window.location = "/foundry/#/" + domain + "/" + data["id"];
-          window.location.reload();
-        }
-      })
-      .fail(function(err) {
-        console.log("Something went wrong checking the default view. Hopefully we didn't need that.");
-      });
+  var dataset = function(args) {
+    var base = "https://" + args.domain;
+    if(args.proxy) {
+      // If we're proxying through the dev proxy, we need to change our base
+      base = "https://proxy." + window.location.hostname + "/socrata/" + args.domain;
+    }
 
     // Parallelize our data and metadata requests
     $.when(
-      $.getJSON("https://" + domain + "/api/views.json?method=getByResourceName&name=" + uid), // Metadata
-      $.getJSONForgiving404("https://" + domain + "/api/migrations/" + uid + ".json"), // Migrations API
-      $.getJSON("https://" + domain + "/resource/" + uid + ".json?$select=count(*) as count"), // Count
+      $.ajaxForgiving404({
+        url: base + "/api/views.json",
+        method: "GET",
+        dataType: "json",
+        xhrFields: { withCredentials: args.proxy },
+        data: {
+          "method": "getDefaultView",
+          "id": args.uid
+        }
+      }),
+      $.ajax({
+        url: base + "/api/views.json",
+        method: "GET",
+        dataType: "json",
+        xhrFields: { withCredentials: args.proxy },
+        data: {
+          "method": "getByResourceName",
+          "name": args.uid
+        }
+      }), // Metadata
+      $.ajaxForgiving404({
+        url: base + "/api/migrations/" + args.uid + ".json",
+        method: "GET",
+        dataType: "json",
+        xhrFields: { withCredentials: args.proxy },
+      }), // Migrations API
+      $.ajax({
+        url: base + "/resource/" + args.uid + ".json",
+        method: "GET",
+        dataType: "json",
+        xhrFields: { withCredentials: args.proxy },
+        data: {
+          "$select": "count(*) AS count"
+        }
+      }), // Count
       $.ajax("/foundry/template.mst")
-    ).done(function(metadata, migration, count, template) {
+    ).done(function(default_view, metadata, migration, count, template) {
+      // First check to make sure we're viewing the default dataset
+      if(default_view[1] == "success" && default_view[0]["id"] != args.uid) {
+        console.log("Redirecting user to the API for the default dataset");
+        $(args.target).html("<p>Redirecting you to the default dataset for this view...</p>").show();
+        window.location = "/foundry/#/" + args.domain + "/" + default_view[0]["id"];
+        window.location.reload();
+        return false;
+      }
+
       // We got migration details, let's parse the mapping too
       var flattenings = {};
       var name_shortenings = {}
@@ -153,15 +195,15 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
         nbe_uid = migration[0].nbeId;
         obe_uid = migration[0].obeId;
         last_synced = (new Date(migration[0].syncedAt*1000).toLocaleString());
-        is_obe = (obe_uid == uid);
+        is_obe = (obe_uid == args.uid);
       }
 
       // If we're looking at an OBE dataset and we haven't forced these docs, redirect
-      if(is_obe && !no_redirect) {
+      if(is_obe && !args.no_redirect) {
         Cookies.set('foundry-redirected', true, { expires: 1 });
         console.log("Redirecting user to the NBE API for this dataset");
-        $(element).html("<p>Redirecting you to the new API endpoint for this datset...</p>").show();
-        window.location = window.location.pathname + "#/" + domain + "/" + nbe_uid;
+        $(args.target).html("<p>Redirecting you to the new API endpoint for this datset...</p>").show();
+        window.location = window.location.pathname + "#/" + args.domain + "/" + nbe_uid;
         window.location.reload();
       }
 
@@ -205,10 +247,10 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
       document.title = metadata[0].name + " | Socrata API Foundry";
 
       //  Load our docs from our metadata
-      var full_url = "https://" + domain + "/resource/" + uid + ".json";
-      $(element).html(Mustache.render(template[0], {
-        uid: uid,
-        domain: domain,
+      var full_url = base + "/resource/" + args.uid + ".json";
+      $(args.target).html(Mustache.render(template[0], {
+        uid: args.uid,
+        domain: args.domain,
         metadata: metadata[0],
         nbe_uid: nbe_uid,
         obe_uid: obe_uid,
@@ -226,7 +268,7 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
       }));
 
       // Set up our livedocs links
-      TryIt.setup_livedocs($(element));
+      TryIt.setup_livedocs($(args.target));
 
       // Set up our clipboard buttons
       // TODO: Find a non-Flash clipbutton option
@@ -255,7 +297,7 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
 
       // Show ourselves!
       $("#loading").fadeOut();
-      $(element).fadeIn();
+      $(args.target).fadeIn();
 
       // Use readmore.js to shorten descriptions to something more reasonable.
       $(".metadata .description").readmore({
@@ -266,15 +308,16 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
       switch(xhr.status) {
         case 403:
           $("#loading").hide();
-          $(element).html("<p>Unfortunately, this dataset is private, and API Foundry does not support private datasets at this time.</p>").show();
+          var auth_url = "https://proxy." + window.location.hostname + "/login/" + args.domain + "/" + args.uid;
+          $(args.target).html('<p>This dataset is private, and you will need to authenticate before you can access it. When you authenticate, you\'ll be asked to log in and allow access to your private APIs before continuing</p><a href="' + auth_url + '" type="button" class="btn btn-primary">Authenticate</a>').show();
           break;
         case 404:
           $("#loading").hide();
-          $(element).html("<p>This dataset cannot be found or has been deleted.</p>").show();
+          $(args.target).html("<p>This dataset cannot be found or has been deleted.</p>").show();
           break;
         default:
           $("#loading").hide();
-          $(element).html("<p>Something went wrong fetching metadata</p>").show();
+          $(args.target).html("<p>Something went wrong fetching metadata</p>").show();
           break;
       }
     });
