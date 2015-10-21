@@ -28,9 +28,9 @@ custom_js:
 - /common/js/lib/clipboard.js
 
 gems:
-  - jekyll-redirect-from
-  - jekyll-sitemap
-  - jekyll-mentions
+- jekyll-redirect-from
+- jekyll-sitemap
+- jekyll-mentions
 
 # Offline mode plugin
 offline: false
