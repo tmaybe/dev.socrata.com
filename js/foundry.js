@@ -128,7 +128,9 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
     var query_base = "https://" + args.domain;
     var endpoint_base = query_base;
     if(Cookies.get('dev_proxy_user') && Cookies.get('dev_proxy_domain') == args.domain) {
+      // We're now in proxy mode!
       console.log("Proxying this domain's requests...");
+
       // If we're proxying through the dev proxy, we need to change our query_base
       query_base = "https://proxy." + window.location.hostname + "/socrata/" + args.domain;
 
@@ -274,7 +276,10 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
         count: count[0][0].count.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
         full_url: full_url,
         display_url: display_url,
-        redirected: redirected
+        redirected: redirected,
+        is_private: Cookies.get('dev_proxy_domain') == args.domain && metadata[0].flags["public"] == undefined,
+        username: decodeURI(Cookies.get('dev_proxy_user').replace(/\+/g, '%20')),
+        logout_url: "https://proxy." + window.location.hostname + "/logout/"
       }));
 
       // Set up our livedocs links
@@ -321,7 +326,12 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
         case 403:
           $("#loading").hide();
           var auth_url = "https://proxy." + window.location.hostname + "/login/" + args.domain + "?return=" + encodeURIComponent(window.location.href);
-          $(args.target).html('<p>This dataset is private, and you will need to authenticate before you can access it. When you authenticate, you\'ll be asked to log in and allow access to your private APIs before continuing</p><a href="' + auth_url + '" type="button" class="btn btn-primary">Authenticate</a>').show();
+          $(args.target).append('<h1><i class="fa fa-lock"></i> Private Dataset</h1>');
+          $(args.target).append('<p>This dataset is private, and you will need to authenticate before you can access it. When you authenticate, you\'ll be asked to log in and allow access to your private APIs before continuing</p>');
+          $(args.target).append('<p>Curious to <a href="/foundry/private-datasets.html">learn more about how this works</a>?</p>');
+
+          $(args.target).append('<a href="' + auth_url + '" type="button" class="btn btn-primary">Authenticate</a>');
+          $(args.target).show();
           break;
         case 404:
           $("#loading").hide();

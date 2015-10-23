@@ -15,38 +15,51 @@
     <div class="alert alert-success">
       <p><em><i class="fa fa-thumbs-up"></i> Good to go!</em> You're already using the latest version of this dataset API.</p> 
     </div>
-  {{/redirected}}
-{{/is_nbe}}
+  {{/redirected}} {{/is_nbe}} 
+<div class="pull-right sidebar">
+  {{#is_private}}
+    <div class="panel panel-success logged-in">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-unlock"></i> Private Dataset</h3>
+      </div>
+      <div class="panel-body">
+        <p>"{{metadata.name}}" is a private dataset, and you are viewing it logged in as <em>{{username}}</em>.</p>
+        <p>Curious about <a href="/foundry/private-datasets.html">how this works</a>?</p>
+      </div>
+      <div class="panel-footer"><a target="_blank" href="{{ logout_url }}">Log out &raquo;</a></div>
+    </div> 
+  {{/is_private}}
 
-<div class="panel panel-info metadata pull-right">
-  <div class="panel-heading">
-    <h3 class="panel-title">About this dataset</h3>
-  </div>
-  <div class="panel-body">
-    {{#metadata.description}}
-      <p class="description">{{metadata.description}}</p>
-    {{/metadata.description}}
+  <div class="panel panel-info metadata">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-info-circle"></i> About This Dataset</h3>
+    </div>
+    <div class="panel-body">
+      {{#metadata.description}}
+        <p class="description">{{metadata.description}}</p>
+      {{/metadata.description}}
 
-    <ul>
-      <li><em>Total Rows:</em> {{count}}</li>
-      <li><em>Source Domain:</em> <a href="http://{{domain}}">{{domain}}</a></li>
-      <li><em>Created:</em> {{metadata.createdAt}}</li>
-      <li><em>Last Updated:</em> {{metadata.rowsUpdatedAt}}</li>
-      {{#metadata.category}}
-        <li><em>Category:</em> {{metadata.category}}</li>
-      {{/metadata.category}}
-      {{#metadata.attribution}}
-        <li><em>Attribution:</em> {{metadata.attribution}}</li>
-      {{/metadata.attribution}}
-      {{#metadata.license}}
-        <li><em>License:</em> <a href="{{termsLink}}" target="_blank">{{name}}</a></li>
-      {{/metadata.license}}
-      {{#metadata.owner}}
-        <li><em>Owner:</em> <a href="http://{{domain}}/profile/{{id}}">{{displayName}}</a></li>
-      {{/metadata.owner}}
-    </ul>
+      <ul>
+        <li><em>Total Rows:</em> {{count}}</li>
+        <li><em>Source Domain:</em> <a href="http://{{domain}}">{{domain}}</a></li>
+        <li><em>Created:</em> {{metadata.createdAt}}</li>
+        <li><em>Last Updated:</em> {{metadata.rowsUpdatedAt}}</li>
+        {{#metadata.category}}
+          <li><em>Category:</em> {{metadata.category}}</li>
+        {{/metadata.category}}
+        {{#metadata.attribution}}
+          <li><em>Attribution:</em> {{metadata.attribution}}</li>
+        {{/metadata.attribution}}
+        {{#metadata.license}}
+          <li><em>License:</em> <a href="{{termsLink}}" target="_blank">{{name}}</a></li>
+        {{/metadata.license}}
+        {{#metadata.owner}}
+          <li><em>Owner:</em> <a href="http://{{domain}}/profile/{{id}}">{{displayName}}</a></li>
+        {{/metadata.owner}}
+      </ul>
+    </div>
+    <div class="panel-footer"><a target="_blank" href="http://{{domain}}/d/{{uid}}">View dataset &raquo;</a></div>
   </div>
-  <div class="panel-footer"><a target="_blank" href="http://{{domain}}/d/{{uid}}">View dataset &raquo;</a></div>
 </div>
 
 <div class="getting-started">
@@ -85,6 +98,21 @@
 <div class="well">
   Learn more about <a href="/docs/app-tokens.html">App Tokens &amp; Throttling</a>.
 </div>
+
+{{#is_private}}
+  <h2>Authentication</h2>
+
+  <p>All requests, both read and write, to private datasets must be <a href="/docs/authentication.html">authenticated</a>. Methods of authentication are available:</p>
+
+  <ul>
+    <li><a href="/docs/authentication.html#authenticating-using-http-basic-authentication">HTTP Basic</a>, which encodes your username and password in an HTTP header. This is best for offline scripts or systems that need to run in the background.</li>
+    <li><a href="/docs/authentication.html#oauth-20">OAuth 2.0</a>, which allows you to pass the user off to Socrata to be authenticated, and your application receives an authentication token which expires after a period of time. It's best for web applications, and is how these authenticated API documents are generated.</li>
+  </ul>
+
+  <div class="well">
+    Learn more about <a href="/docs/authentication.html">Authentication</a>.
+  </div>
+{{/is_private}}
 
 <h2>Fields</h2>
 
