@@ -24,7 +24,7 @@
       </div>
       <div class="panel-body">
         <p>"{{metadata.name}}" is a private dataset, and you are viewing it logged in as <em>{{username}}</em>.</p>
-        <p>Curious about <a href="/foundry/private-datasets.html">how this works</a>?</p>
+        <p>Curious about <a href="/changelog/2015/10/27/private-api-docs.html">how this works</a>?</p>
       </div>
       <div class="panel-footer"><a target="_blank" href="{{ logout_url }}">Log out &raquo;</a></div>
     </div> 

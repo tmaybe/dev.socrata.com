@@ -328,7 +328,7 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
           var auth_url = "https://proxy." + window.location.hostname + "/login/" + args.domain + "?return=" + encodeURIComponent(window.location.href);
           $(args.target).append('<h1><i class="fa fa-lock"></i> Private Dataset</h1>');
           $(args.target).append('<p>This dataset is private, and you will need to authenticate before you can access it. When you authenticate, you\'ll be asked to log in and allow access to your private APIs before continuing</p>');
-          $(args.target).append('<p>Curious to <a href="/foundry/private-datasets.html">learn more about how this works</a>?</p>');
+          $(args.target).append('<p>Curious to <a href="/changelog/2015/10/27/private-api-docs.html">learn more about how this works</a>?</p>');
 
           $(args.target).append('<a href="' + auth_url + '" type="button" class="btn btn-primary">Authenticate</a>');
           $(args.target).show();
