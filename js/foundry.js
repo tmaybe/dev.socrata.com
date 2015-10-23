@@ -1,13 +1,12 @@
 define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit'], function($, Mustache, Forgiving, Readmore, Cookies, TryIt) {
   // Generates sample URLs for a given column and datatype
-  var load_query_suggestions = function(base_url, field_name, datatype, div) {
+  var load_query_suggestions = function(base_url, display_url, field_name, datatype, div) {
     // Fetch sample data & template at the same time
     $.when(
       $.ajax({
         url: base_url,
         method: "GET",
         dataType: "json",
-        xhrFields: { withCredentials: true },
         data: {
           "$select": field_name,
           "$limit": 1,
@@ -112,6 +111,7 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
         // Update our block
         div.html(Mustache.render(template[0], {
           full_url: base_url,
+          display_url: display_url,
           datatype: datatype,
           fieldName: field_name,
           suggestions: suggestions
@@ -125,45 +125,53 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
   };
 
   var dataset = function(args) {
-    var base = "https://" + args.domain;
-    if(args.proxy) {
-      // If we're proxying through the dev proxy, we need to change our base
-      base = "https://proxy." + window.location.hostname + "/socrata/" + args.domain;
+    var query_base = "https://" + args.domain;
+    var endpoint_base = query_base;
+    if(Cookies.get('dev_proxy_user') && Cookies.get('dev_proxy_domain') == args.domain) {
+      console.log("Proxying this domain's requests...");
+      // If we're proxying through the dev proxy, we need to change our query_base
+      query_base = "https://proxy." + window.location.hostname + "/socrata/" + args.domain;
+
+      // Enable CORS when we're proxying
+      $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
+        options.crossDomain ={
+            crossDomain: true
+          };
+        options.xhrFields = {
+            withCredentials: true
+          };
+      });
     }
 
     // Parallelize our data and metadata requests
     $.when(
       $.ajaxForgiving404({
-        url: base + "/api/views.json",
+        url: query_base + "/api/views.json",
         method: "GET",
         dataType: "json",
-        xhrFields: { withCredentials: args.proxy },
         data: {
           "method": "getDefaultView",
           "id": args.uid
         }
       }),
       $.ajax({
-        url: base + "/api/views.json",
+        url: query_base + "/api/views.json",
         method: "GET",
         dataType: "json",
-        xhrFields: { withCredentials: args.proxy },
         data: {
           "method": "getByResourceName",
           "name": args.uid
         }
       }), // Metadata
       $.ajaxForgiving404({
-        url: base + "/api/migrations/" + args.uid + ".json",
+        url: query_base + "/api/migrations/" + args.uid + ".json",
         method: "GET",
-        dataType: "json",
-        xhrFields: { withCredentials: args.proxy },
+        dataType: "json"
       }), // Migrations API
       $.ajax({
-        url: base + "/resource/" + args.uid + ".json",
+        url: query_base + "/resource/" + args.uid + ".json",
         method: "GET",
         dataType: "json",
-        xhrFields: { withCredentials: args.proxy },
         data: {
           "$select": "count(*) AS count"
         }
@@ -247,7 +255,8 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
       document.title = metadata[0].name + " | Socrata API Foundry";
 
       //  Load our docs from our metadata
-      var full_url = base + "/resource/" + args.uid + ".json";
+      var full_url = query_base + "/resource/" + args.uid + ".json";
+      var display_url = endpoint_base + "/resource/" + args.uid + ".json";
       $(args.target).html(Mustache.render(template[0], {
         uid: args.uid,
         domain: args.domain,
@@ -264,6 +273,7 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
         last_synced: last_synced,
         count: count[0][0].count.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
         full_url: full_url,
+        display_url: display_url,
         redirected: redirected
       }));
 
@@ -283,7 +293,9 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
             .addClass("fa-minus-square-o");
 
           // Drop in our examples
-          load_query_suggestions(full_url,
+          load_query_suggestions(
+            full_url,
+            display_url,
             $(this).attr("data-fieldname"),
             $(this).attr("data-datatype"),
             $(this).find(".tryit"));
@@ -308,7 +320,7 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
       switch(xhr.status) {
         case 403:
           $("#loading").hide();
-          var auth_url = "https://proxy." + window.location.hostname + "/login/" + args.domain + "/" + args.uid;
+          var auth_url = "https://proxy." + window.location.hostname + "/login/" + args.domain + "?return=" + encodeURIComponent(window.location.href);
           $(args.target).html('<p>This dataset is private, and you will need to authenticate before you can access it. When you authenticate, you\'ll be asked to log in and allow access to your private APIs before continuing</p><a href="' + auth_url + '" type="button" class="btn btn-primary">Authenticate</a>').show();
           break;
         case 404:
