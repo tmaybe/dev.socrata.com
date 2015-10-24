@@ -12,8 +12,7 @@ all:
 
 # Builds the site and runs linklint to check for bad links
 test: all
-	linklint -doc ${link_dir} -root public /@
-	open ${link_dir}/index.html
+	bundle exec htmlproof ./public --only-4xx --check-favicon --check-html
 
 # Copies JS resources locally so you don't have to do a full jekyll build when hacking JS
 jslocal:

@@ -1,14 +1,16 @@
-sudo: false
 branches:
   only:
     - gh-pages
 language: ruby
+sudo: false
 cache: bundler
 rvm:
   - 2.1.1
+bundler_args: --with test
 before_script:
   - npm install surge
 script:
   - bundle exec jekyll build
+  - bundle exec htmlproof ./public --only-4xx --check-favicon --check-html
 after_success:
   - surge --project ./public --domain https://dev.socrata.com
