@@ -1,3 +1,4 @@
+sudo: false
 branches:
   only:
     - gh-pages
@@ -9,4 +10,4 @@ before_script:
 script:
   - bundle exec jekyll build
 after_success:
-  - surge --project ./public --domain dev-socrata-com.surge.sh
+  - surge --project ./public --domain https://dev.socrata.com
