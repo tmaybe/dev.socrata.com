@@ -10,7 +10,6 @@ bundler_args: --with test
 before_script:
   - npm install surge
 script:
-  - bundle exec jekyll build
-  - bundle exec htmlproof ./public --only-4xx --check-favicon --check-html
+  - make test
 after_success:
   - surge --project ./public --domain https://dev.socrata.com

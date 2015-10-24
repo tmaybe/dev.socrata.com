@@ -5,14 +5,14 @@ link_dir := $(shell mktemp -d /tmp/linkdoc.XXXX)
 all:
 	-rm search.json
 	-rm related.json
-	jekyll build
+	bundle exec jekyll build
 	cp public/search.json public/related.json .
 	-git add search.json related.json
 	-tput bel
 
 # Builds the site and runs linklint to check for bad links
 test: all
-	bundle exec htmlproof ./public --only-4xx --check-favicon --check-html
+	bundle exec htmlproof ./public --only-4xx --check-html --href-ignore "#" --href-ignore "/"
 
 # Copies JS resources locally so you don't have to do a full jekyll build when hacking JS
 jslocal:

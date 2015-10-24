@@ -1,7 +1,7 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: Response Codes & Errors
+title: Response Codes &amp; Errors
 redirect_from:
   - /long-running-requests
 ---
@@ -20,7 +20,7 @@ redirect_from:
   </ul>
 </div>
 
-<p>For any variety of error, we return a standard error message format that looks like the following:<p>
+For any variety of error, we return a standard error message format that looks like the following:
 
 <pre><code>
 {

@@ -41,7 +41,7 @@ While we are here, let's also add the URL we just created in webscript.io
 local scripturl = '<< URL OF YOUR WEBSCRIPT IN WEBSCRIPT.IO>>' 
 {% endhighlight %}
 
-Now for the fun part! Let's go to [NYC's Open Data Portal](data.ny.gov) and find our [restaurant inspection data](https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/xx67-kt59). The variables will focus on our DBA (Name of restaurant aka "Doing Business As"), Street, Grade (letter grade ranking e.g. A, B, C), and Score (points, higher points mean more violations). For reference: A (0-13 points); B (14-37 points); C (28 points or more)
+Now for the fun part! Let's go to [NYC's Open Data Portal](https://data.ny.gov) and find our [restaurant inspection data](https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/xx67-kt59). The variables will focus on our DBA (Name of restaurant aka "Doing Business As"), Street, Grade (letter grade ranking e.g. A, B, C), and Score (points, higher points mean more violations). For reference: A (0-13 points); B (14-37 points); C (28 points or more)
 
 To access this data will use [Socrata's Open Data API (SODA)](http://dev.socrata.com/). Here is the API endpoint for this dataset.
 
