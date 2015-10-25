@@ -9,7 +9,5 @@ before_script:
 script:
   - make test
 after_success:
-  - echo "Branch: $TRAVIS_BRANCH" | tee  ./public/build.txt
-  - echo "SHA: $(git rev-parse HEAD)" | tee -a ./public/build.txt
-  - echo "Date: $(date)" | tee -a ./public/build.txt
-  - test $TRAVIS_BRANCH" == "surge" && surge --project ./public --domain https://dev.socrata.com; fi
+  - make stamp
+  - test $TRAVIS_BRANCH == "surge" && surge --project ./public --domain https://dev.socrata.com
