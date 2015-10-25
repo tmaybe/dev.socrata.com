@@ -9,7 +9,7 @@ before_script:
 script:
   - make test
 after_success:
-  if [ "$TRAVIS_BRANCH" == "surge" ]; then
-    echo "Deploying to surge..."
-  - surge --project ./public --domain https://dev.socrata.com
-  fi
+  - echo "Branch: $TRAVIS_BRANCH" > ./public/.build
+  - echo "SHA: $(git rev-parse HEAD)" >> ./public/build
+  - echo "Date: $(date)" >> ./public/build
+  - if [ "$TRAVIS_BRANCH" == "surge" ]; then echo "Deploying to surge..."; surge --project ./public --domain https://dev.socrata.com; fi
