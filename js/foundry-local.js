@@ -13,8 +13,10 @@ require(["jquery", "/js/foundry.js"], function($, Foundry) {
       proxy: $.inArray("proxy", components) > 0
     });
   } else {
-    console.log("Redirecting back to the homepage");
-    window.location.replace("/");
-    window.location.reload();
+    $("#loading").hide();
+    $('#foundry-docs').append('<h1><i class="fa fa-question-circle"></i> Looks like you might need to find a dataset!</h1>');
+    $('#foundry-docs').append('<p>You\'ll need an open dataset to use API Foundry, maybe you should go check out the <a href="http://www.opendatanetwork.com">Open Data Network</a>!</p>');
+
+    $('#foundry-docs').show();
   }
 });
