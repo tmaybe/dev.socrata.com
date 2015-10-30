@@ -1,5 +1,15 @@
 destination: public
-exclude: [Makefile, Gemfile, Gemfile.lock, .rvmrc, public, sample-code, vendor]
+exclude: 
+- public
+- Makefile
+- Gemfile
+- Gemfile.lock
+- .rvmrc, 
+- sample-code
+- vendor
+- README.md
+- node_modules
+
 # permalink: pretty
 splash: false
 splash_homepage: false
