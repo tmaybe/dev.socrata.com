@@ -1,5 +1,5 @@
 ---
-layout: with-breadcrumbs
+layout: changelog
 title: New advanced Export API introduced to labs.socrata.com
 short_title: Advanced export API
 category: changelog

@@ -1,5 +1,5 @@
 ---
-layout: with-breadcrumbs
+layout: changelog
 title: dev.socrata.com goes HTTPS!
 short_title: dev.socrata.com goes HTTPS!
 category: changelog
@@ -9,8 +9,6 @@ parent_paths:
 parents: 
 - API Changelog
 ---
-
-{% include newsletter.html %}
 
 We're excited to announce that today, along with the release of [support for viewing documentation for private APIs while authenticated](/changelog/2015/10/27/private-api-docs.html), [dev.socrata.com](/) is also going HTTPS-only to protect your privacy.
 

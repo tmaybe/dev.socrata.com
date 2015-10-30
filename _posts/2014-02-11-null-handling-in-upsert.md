@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: changelog
 title: Changes to the handling of NULLs in Upsert operations 
 short_title: NULL handling change
 category: changelog
