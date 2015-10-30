@@ -13,5 +13,4 @@ after_success:
 - test $TRAVIS_BRANCH == "surge" && surge --project ./public --domain https://dev.socrata.com
 notifications:
   slack:
-    rooms:
-      secure: LZFyfPDVgLXDIFHdcDPmQ0kMIdKmeSKH6Z9J5nb3uASaDfoBTBTazNyA/Biv0WE4MO6i+iLfui0GG7u8tXoLCpfJ4u0LZstDAufY6A+4v74OP4fs5pCqO/hcqijgmORKmK/8qj0mkgADhwBEGOKa7qIT4nysFAmd+A3+WC3jFMU=
+    secure: P6Mce/govM2MEy8RCTZHhG2Mg+2Bmh6d84GXt3lKUGPSv9u5Xww0Ld7K+rh7C5/qxSqQIfCY6m2TbtQbz1IpfuSWpvA9QwANYGr/gyzXFvd6pV8gRValb+juokxmNwjL5JmP8TdaX8IKrUgx9eb26j+0dEUbGLZR/kZfT0CX048=
