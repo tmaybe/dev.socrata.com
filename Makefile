@@ -3,12 +3,7 @@ link_dir := $(shell mktemp -d /tmp/linkdoc.XXXX)
 # Builds SASS->CSS, compiles the site, and ensures that search.json is updated
 # If you've changed content, always commit search.json
 all:
-	-rm search.json
-	-rm related.json
 	bundle exec jekyll build
-	cp public/search.json public/related.json .
-	-git add search.json related.json
-	-tput bel
 
 # Builds the site and runs linklint to check for bad links
 test: all
