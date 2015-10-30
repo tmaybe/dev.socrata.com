@@ -9,7 +9,7 @@ require(["jquery", "js.cookie"], function($, Cookies) {
       + '<a href="' + flags.peeper.link + '">'
       + '<img src="' + flags.peeper.img + '" alt="Need a hand?" />'
       + '</a>'
-      + '<a href="#" class="dismiss"><i class="fa fa-times"></i> go away</a>'
+      + '<a href="#" class="dismiss"><i class="fa fa-times"></i> bye bye!</a>'
       + '</div>';
     $("body").append(peeper);
 
