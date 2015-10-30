@@ -2,12 +2,16 @@ language: ruby
 sudo: false
 cache: bundler
 rvm:
-  - 2.1.1
-bundler_args: --with test
+- 2.1.1
+bundler_args: "--with test"
 before_script:
-  - npm install surge
+- npm install surge
 script:
-  - make test
+- make test
 after_success:
-  - make stamp
-  - test $TRAVIS_BRANCH == "surge" && surge --project ./public --domain https://dev.socrata.com
+- make stamp
+- test $TRAVIS_BRANCH == "surge" && surge --project ./public --domain https://dev.socrata.com
+notifications:
+  slack:
+    rooms:
+      secure: LZFyfPDVgLXDIFHdcDPmQ0kMIdKmeSKH6Z9J5nb3uASaDfoBTBTazNyA/Biv0WE4MO6i+iLfui0GG7u8tXoLCpfJ4u0LZstDAufY6A+4v74OP4fs5pCqO/hcqijgmORKmK/8qj0mkgADhwBEGOKa7qIT4nysFAmd+A3+WC3jFMU=
