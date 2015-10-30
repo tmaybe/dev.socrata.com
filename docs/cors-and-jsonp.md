@@ -1,7 +1,7 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: CORS & JSONP
+title: CORS &amp; JSONP
 ---
 
 For security reasons, web browsers prevent what are called "cross-origin" or "cross-site" requests from one domain to another. JavaScript [`XMLHTTPRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)s (commonly called "AJAX" requests) inherit all of the authentication context of the currently logged in user, so a malicious web page could attempt to make malicious requests that cross domain contexts and cause trouble. Historically, that has made it difficult for web developers to build web applications making use of third-party APIs.

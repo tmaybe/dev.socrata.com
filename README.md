@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/socrata/dev.socrata.com.svg?branch=surge)](https://travis-ci.org/socrata/dev.socrata.com)
+
 This is the [Github Pages](http://pages.github.com/) source code for the [Socrata Developer Portal](http://dev.socrata.com) (currently deployed to <http://dev.socrata.com>.
 
 ## Contributing
@@ -10,13 +12,16 @@ The site is a fairly standard [Jekyll](http://jekyllrb.com/) site, but there are
 
 1. Make sure you have the `gh-pages` branch checked out: `git checkout -b gh-pages origin/gh-pages`
 2. Pull in the site templates and CSS/SASS, which come from submodules: `git submodule update --init`
-3. Make sure you have Ruby version 2.0.0-p353 installed. (`rbenv install 2.0.0-p353` if RBEnv is your thing).
+3. Make sure you have Ruby version installed. Check `.ruby-version` to see the preferred version.
 4. Make sure you have the `jekyll` RubyGem installed
-  * A `.rvmrc` [RVM](http://rvm.io/) configuration file is included if that's your thing
   * Install the `bundler gem` and then install the gems from the Gemfile: `gem install bundler && bundle`
 5. Build the site and run the local server: `jekyll serve --watch`. To speed up page re-building you can disable plugins by running `jekyll serve --watch --safe`
 
 You can now view your local server at <http://localhost:4000> (unless you changed the port number).
+
+### Before Submitting
+
+Before submitting, run `make test` to run the test suite and confirm that you haven't broken anything.
 
 ### Modifying CSS/SASS
 

@@ -1,14 +1,16 @@
-sudo: false
-branches:
-  only:
-    - gh-pages
 language: ruby
+sudo: false
 cache: bundler
 rvm:
-  - 2.1.1
+- 2.1.1
+bundler_args: "--with test"
 before_script:
-  - npm install surge
+- npm install surge
 script:
-  - bundle exec jekyll build
+- make test
 after_success:
-  - surge --project ./public --domain https://dev.socrata.com
+- make stamp
+- test $TRAVIS_BRANCH == "gh-pages" && surge --project ./public --domain https://dev.socrata.com
+notifications:
+  slack:
+    secure: P6Mce/govM2MEy8RCTZHhG2Mg+2Bmh6d84GXt3lKUGPSv9u5Xww0Ld7K+rh7C5/qxSqQIfCY6m2TbtQbz1IpfuSWpvA9QwANYGr/gyzXFvd6pV8gRValb+juokxmNwjL5JmP8TdaX8IKrUgx9eb26j+0dEUbGLZR/kZfT0CX048=

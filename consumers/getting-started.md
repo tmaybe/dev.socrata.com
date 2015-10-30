@@ -20,13 +20,13 @@ So you want to win that hackathon or build the next hot open data app? Follow th
 - Peruse our [online listing of Socrata-powered open data sites](https://opendata.socrata.com/dataset/Socrata-Customer-Spotlights/6wk3-4ija). There's probably one near you! (Hint: that listing has an API of it's own. See if you can find it!)
 - Check to see if there's a community group in your area with their own catalog hosted on [communities.socrata.com](https://communities.socrata.com/). Got a community group or event of your own and want free hosting for your data and APIs? [Sign up!](http://hackathon-in-a-box.org/open-data-apis/community-groups.html)
 
-Once you're on your local open data site, scroll down to the data catalog and use the search box and browse filters to find datasets that interest you. If your data site has custom [API Foundry](http://www.socrata.com/api-foundry/)-managed APIs, you can use the "API" filter on the left-hand side to show only those custom APIs. But if your dataset doesn't have the red API icon, don't fret &mdash; every dataset is accessible via the SODA API.
+Once you're on your local open data site, scroll down to the data catalog and use the search box and browse filters to find datasets that interest you - every dataset is accessible via the SODA API.
 
 ## Finding your API endpoint
 
 Every [Socrata](http://www.socrata.com) open dataset has a built-in SODA API. But how you find the API endpoint can vary a bit.
 
-If you're viewing an [API Foundry](http://www.socrata.com/api-foundry/) customized API, simply scroll down until you see the query examples and you're set. Click the `Try This API` button to experiment with filtering by different options, and grab the pre-created API endpoint for the query you create.
+If you're viewing a DataLens, there will be a prominent "API" button in the upper left of the page. Click that, and you'll get details on the API endpoint and a link to API documentation.
 
 If you're on a Socrata dataset, identifiable by the colorful buttons at the upper right, don't fret. Every Socrata dataset has a built-in open data API, so you'll be just fine. Click on `Export` and then `API` and you'll find the API endpoint under `API Access Endpoint`. Copy that and save it for later.
 

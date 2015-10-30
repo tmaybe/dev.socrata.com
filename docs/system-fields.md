@@ -9,14 +9,14 @@ In addition to the fields provided by the dataset owner, Socrata also provides a
 | Operation     | Description                                                                                                          |
 | ---           | ---                                                                                                                  |
 | `:id`         | The internal Socrata identifier for this record.                                                                     |
-| `:created_at` | A [Fixed Timestamp](/docs/datatypes/timestamp.html#fixed-timestamps) representing when this record was created.      |
-| `:updated_at` | A [Fixed Timestamp](/docs/datatypes/timestamp.html#fixed-timestamps) representing when this record was last updated. |
+| `:created_at` | A [Fixed Timestamp](/docs/datatypes/timestamp.html) representing when this record was created.      |
+| `:updated_at` | A [Fixed Timestamp](/docs/datatypes/timestamp.html) representing when this record was last updated. |
 
 Getting the SODA API to return system fields is as simple as adding the parameter `$$exclude_system_fields=false` to your request. The double dollar sign (`$$`) is significant - it denotes a Socrata-specific parameter that is not part of the SODA standard.
 
 {% include tryit.html domain='data.sfgov.org' path='/resource/tmnf-yvry.json' args='$$exclude_system_fields=false' %}
 
-Since `:created_at` and `:updated_at` are [Fixed Timestamp](/docs/datatypes/timestamp.html#fixed-timestamps), you can query them to get recent updates to a dataset using the `$where` [query parameter](/docs/queries.html), like this example:
+Since `:created_at` and `:updated_at` are [Fixed Timestamp](/docs/datatypes/timestamp.html), you can query them to get recent updates to a dataset using the `$where` [query parameter](/docs/queries.html), like this example:
 
 {% include tryit.html domain='data.sfgov.org' path='/resource/tmnf-yvry.json' args="$where=:updated_at > '2014-10-20'" %}
 

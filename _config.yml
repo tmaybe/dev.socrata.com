@@ -1,5 +1,15 @@
 destination: public
-exclude: [Makefile, Gemfile, Gemfile.lock, .rvmrc, public, sample-code, vendor]
+exclude: 
+- public
+- Makefile
+- Gemfile
+- Gemfile.lock
+- .rvmrc, 
+- sample-code
+- vendor
+- README.md
+- node_modules
+
 # permalink: pretty
 splash: false
 splash_homepage: false
@@ -19,20 +29,18 @@ flags:
     link: '/support.html'
     delay: 4000
 
-local_js:
-  - //cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js
-  - /common/js/purl.js
-  - /common/js/try.js
-  - /js/snuffleupadata.js
-  - /js/github.js
-  - /js/external-link.js
-  - /js/js.cookie.js
-  - /js/peeper.js
+# Path is relative to /common/js/common.js
+custom_js:
+- /js/main.js
+- /js/snuffleupadata.js
+- /js/peeper.js
+- /common/js/lib/socrata-status.js
+- /common/js/lib/clipboard.js
 
 gems:
-  - jekyll-redirect-from
-  - jekyll-sitemap
-  - jekyll-mentions
+- jekyll-redirect-from
+- jekyll-sitemap
+- jekyll-mentions
 
 # Offline mode plugin
 offline: false
