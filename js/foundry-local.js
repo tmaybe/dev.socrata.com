@@ -1,10 +1,10 @@
-require(["jquery", "/js/foundry.js"], function($, Foundry) {
+require(["jquery", "/js/foundry.js", "/js/branding.js"], function($, Foundry, Branding) {
   // Split up our hash components
   var components = window.location.hash.split("/");
 
   // Load docs or catalog
   if(components.length >= 3) {
-    ///Foundry.branding(components[1], $('#branding'));
+    Branding.header(components[1], $('#branding'));
     Foundry.dataset({
       target: $('#foundry-docs'),
       domain: components[1],
