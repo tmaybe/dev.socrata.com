@@ -278,7 +278,7 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
         display_url: display_url,
         redirected: redirected,
         is_private: Cookies.get('dev_proxy_domain') == args.domain && metadata[0].flags["public"] == undefined,
-        username: decodeURI(Cookies.get('dev_proxy_user').replace(/\+/g, '%20')),
+        username: decodeURI((Cookies.get('dev_proxy_user') || '').replace(/\+/g, '%20')),
         logout_url: "https://proxy." + window.location.hostname + "/logout/"
       }));
 
