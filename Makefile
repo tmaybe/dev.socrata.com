@@ -7,7 +7,7 @@ all:
 
 # Builds the site and runs linklint to check for bad links
 test: all
-	bundle exec htmlproof ./public --only-4xx --check-html --href-ignore "#" --href-ignore "/"
+	bundle exec htmlproof ./public --only-4xx --check-html --href-ignore "/#/,/\/register/,/APP_TOKEN/"
 
 # Copies JS resources locally so you don't have to do a full jekyll build when hacking JS
 jslocal:

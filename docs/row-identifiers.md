@@ -38,9 +38,9 @@ To use a row identifier to look up a row, simply append it to the resource endpo
 
 {% include tryit.html domain='open.whitehouse.gov' path='/resource/p86s-ychb/1.json' %}
 
-In contrast, the [USGS Earthquakes](https://soda.demo.socrata.com/dataset/USGS-Earthquake-Reports/4tka-6guv) dataset is configured to use a publisher-specified identifier. To look up the earthquake with the ID `00388609`:
+In contrast, the [Chicago Crimes](https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2) dataset is configured to use a publisher-specified identifier. To look up the earthquake with the ID `00388609`:
 
-{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv/00388609.json' %}
+{% include tryit.html domain='data.cityofchicago.org' path='/resource/6zsd-86xi/10288725.json' %}
 
 ## Establishing a Publisher-Specified Identifier
 

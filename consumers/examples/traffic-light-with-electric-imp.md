@@ -15,7 +15,7 @@ I wanted to build something real-time, and it of course needed to be based of Ch
 
 {% include tryit.html domain='data.cityofchicago.org' path='/resource/t2qc-9pjd.json' args='$select=AVG(current_speed)&$where=current_speed > 0' %}
 
-First, the hardware. In about 45 minutes, using my teeth for wire strippers, I had a basic circuit on my brand new breadboard that connected my [giant red and green dome LEDs](http://www.radioshack.com/product/index.jsp?productId=22472166) to pins 1 and 5 on the Imp. They each actually contain six separate LEDs, of which I connected three in parallel through a 330-ohm resistor. A circuit diagram is below, and I apologize if you're an electrical engineer...
+First, the hardware. In about 45 minutes, using my teeth for wire strippers, I had a basic circuit on my brand new breadboard that connected my [giant red and green dome LEDs](http://www.radioshack.com/products/radioshack-20-0mm-round-big-red-led?variant=5717559429) to pins 1 and 5 on the Imp. They each actually contain six separate LEDs, of which I connected three in parallel through a 330-ohm resistor. A circuit diagram is below, and I apologize if you're an electrical engineer...
 
 ![Circuit Diagram](/img/imp-circuit-diagram.png)
 

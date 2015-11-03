@@ -18,7 +18,7 @@ In addition to improved performance, the new SODA APIs have a ton of new feature
 - New geospatial datatypes like {% include dt.html dt="Point" %}, {% include dt.html dt="Line" %}, and {% include dt.html dt="Polygon" %}
 - Support for the standardized [GeoJSON](/docs/formats/geojson.html) output format, for direct use within geospatial tools like [Leaflet](http://leafletjs.com/)
 
-The new platform will also  make it easier for us to release new features and entirely new APIs like the new [global search API](http://labs.socrata.com/docs/search.html) and [fully-queryable export API](http://labs.socrata.com/docs/export.html). Old APIs will not receive these new features.
+The new platform will also  make it easier for us to release new features and entirely new APIs like the new [global search API](http://labs.socrata.com/docs/search.html). Old APIs will not receive these new features.
 
 Additional detail on the new platform release can be found in [Socrata Rethink](http://www.socrata.com/rethink/), and read on to learn how to migrate to your new improved API.
 
