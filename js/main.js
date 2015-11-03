@@ -6,6 +6,9 @@
 require(["jquery", "bootstrap"], function($) {
   // Activate all our tooltips
   $(".has-tooltip").tooltip();
+
+  // Upgrade all tables to look like nice Bootstrap tables
+  $("table").addClass("table table-striped table-hover");
 });
 
 // TryIt Links

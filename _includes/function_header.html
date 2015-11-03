@@ -1,15 +1,23 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><code>{{include.function_name}}</code></h3>
+    <h3 class="panel-title"><code>{{page.title}}</code></h3>
   </div>
   <div class="panel-body">
-    <p>{{include.description}}</p>
+    <p>{{page.description}}</p>
 
     <p>Works with the following datatypes:</p>
     <ul>
-      {% for datatype in include.datatypes %}
+      {% for datatype in page.datatypes %}
         <li><a href="/docs/datatypes/{{datatype}}.html">{{datatype | replace: '_', ' ' | capitalize}}</a></li>
       {% endfor %}
     </ul>
+
+    {% if page.backend == 'both' %}
+      <p>This function works with both new endpoints and legacy endpoints. <a href="/docs/endpoints.html">What does this mean? &raquo;</a></p>
+    {% elsif page.backend == 'new' %}
+      <p><i class="fa fa-exclamation-triangle"></i> This function works only with new API endpoints. Using this on a legacy API will result in an error. <a href="/docs/endpoints.html">What does this mean? &raquo;</a></p>
+    {% elsif page.backend == 'legacy' %}
+      <p><i class="fa fa-exclamation-triangle"></i> This function works only with legacy endpoints. Using this on a new API will result in an error. <a href="/docs/endpoints.html">What does this mean? &raquo;</a></p>
+    {% endif %}
   </div>
 </div>
