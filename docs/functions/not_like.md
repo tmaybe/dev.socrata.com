@@ -6,10 +6,11 @@ title: not like '...'
 type: function
 datatypes:
 - text 
+backend: new 
 description: Allows for matching text fields that do not contain a substring
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `like '...'` function allows you to filter for [Text](/docs/datatypes/text.html) values that do not match a given pattern. Patterns can include placeholders to make fuzzy matches:
 

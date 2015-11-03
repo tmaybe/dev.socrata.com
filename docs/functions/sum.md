@@ -8,10 +8,11 @@ datatypes:
 - number
 - double
 - money
+backend: both
 description: Returns the sum of a given set of numbers 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `sum(...)` function is most commonly used in `$select` aggregations to return the sum of a set of numeric values ([Numbers](/docs/datatypes/number.html), [Doubles](/docs/datatypes/double.html), or [Moneys](/docs/datatypes/money.html)). For example, to fetch the total amount spent on salaries at the White House:
 

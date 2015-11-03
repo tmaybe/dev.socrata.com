@@ -6,10 +6,11 @@ title: upper(...)
 type: function
 datatypes:
 - text 
+backend: both
 description: Returns the uppercase equivalent of a string of text
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `upper(...)` function is used within the `$select` or `$where` parameters to upper-case a [Text](/docs/datatypes/text.html) value. For example, you could use it within the `$select` statement to upper-case names from the White House salaries dataset:
 
