@@ -4,6 +4,7 @@ sidebar: documentation
 title: Floating Timestamp Datatype
 audience: documentation
 type: datatype
+datatype: floating_timestamp
 redirect_from:
   - /docs/datatypes/timestamps.html
   - /docs/datatypes/floating-timestamp.html

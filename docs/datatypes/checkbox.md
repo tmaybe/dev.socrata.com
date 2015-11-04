@@ -3,6 +3,7 @@ layout: with-sidebar
 sidebar: documentation 
 title: Checkbox Datatype
 type: datatype
+datatype: checkbox
 audience: documentation
 ---
 

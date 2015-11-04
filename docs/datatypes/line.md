@@ -3,6 +3,7 @@ layout: with-sidebar
 sidebar: documentation 
 title: Line Datatype
 type: datatype
+datatype: line
 audience: documentation
 ---
 

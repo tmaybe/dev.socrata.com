@@ -3,6 +3,7 @@ layout: with-sidebar
 sidebar: documentation 
 title: Point Datatype
 type: datatype
+datatype: point
 audience: documentation
 ---
 

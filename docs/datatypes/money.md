@@ -4,6 +4,7 @@ sidebar: documentation
 title: Money Datatype
 audience: documentation
 type: datatype
+datatype: money
 ---
 {% include numeric_types.html %}
 
