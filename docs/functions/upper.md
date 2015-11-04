@@ -8,6 +8,10 @@ datatypes:
 - text 
 backend: both
 description: Returns the uppercase equivalent of a string of text
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

@@ -17,6 +17,10 @@ datatypes:
 - text 
 backend: new
 description: Returns different values based on the evaluation of boolean comparisons
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

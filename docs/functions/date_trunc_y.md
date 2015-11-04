@@ -8,6 +8,10 @@ datatypes:
 - floating_timestamp
 backend: both
 description: Truncates a calendar date at the year threshold
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

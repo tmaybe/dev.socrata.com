@@ -13,6 +13,10 @@ datatypes:
 - point
 backend: both
 description: Returns a count of a given set of records
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

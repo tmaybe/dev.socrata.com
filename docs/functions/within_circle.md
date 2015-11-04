@@ -10,6 +10,10 @@ datatypes:
 - polygon
 backend: both
 description: Returns the rows that have locations within a specified circle, measured in meters
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

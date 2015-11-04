@@ -8,6 +8,10 @@ datatypes:
 - text 
 backend: new
 description: Matches on text strings that start with a given substring
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

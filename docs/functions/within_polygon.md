@@ -10,6 +10,10 @@ datatypes:
 - polygon
 backend: new
 description: Returns the rows that have locations within the specified box, defined by latitude, longitude corners
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

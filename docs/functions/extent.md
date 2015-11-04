@@ -9,6 +9,10 @@ datatypes:
 - polygon
 backend: new
 description: Returns a bounding box that encloses a set of geometries
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}
