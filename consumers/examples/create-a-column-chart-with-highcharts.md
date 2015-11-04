@@ -43,7 +43,7 @@ Javascript code to include on your page:
 // START CONFIGURATION
 var dataDomain = 'data.cms.gov'
 var dataSetId = 'xpsg-6hup'
-var dataQueryString = [ // following SoQL format documented at http://dev.socrata.com/docs/queries.html
+var dataQueryString = [ // following SoQL format documented at http://dev.socrata.com/docs/queries/
   '$select=drg_definition,avg(average_covered_charges),avg(average_medicare_payments),avg(average_total_payments)',
   '$group=drg_definition',
   '$order=avg_average_medicare_payments+desc',

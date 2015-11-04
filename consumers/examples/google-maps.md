@@ -16,7 +16,7 @@ Everybody loves the [Google Maps JavaScript API](https://developers.google.com/m
 
 This example pulls data live from [this State of Connecticut directory of schools](https://data.ct.gov/Education/Education-Directory/9k2y-kqxn?) via the SODA API.
 
-To start, we'll build our [SoQL query](http://dev.socrata.com/docs/queries.html). Our query filters our results by the `organization_type` column to only `Public School Districts`:
+To start, we'll build our [SoQL query](http://dev.socrata.com/docs/queries/). Our query filters our results by the `organization_type` column to only `Public School Districts`:
 
 {% highlight javascript %}
 // Construct the query string
