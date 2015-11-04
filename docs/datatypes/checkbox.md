@@ -21,7 +21,7 @@ The following operators can be used to compare and manipulate `floating_timestam
 | `!=`      | `TRUE` when two checkbox booleans have the same value|
 | `=`       | `TRUE` when two checkbox booleans do not have the same value|
 
-For example, in combination with an [aggregation](/docs/queries.html), to get the count of all of the crimes in Chicago that resulted in arrest:
+For example, in combination with an [aggregation](/docs/queries/), to get the count of all of the crimes in Chicago that resulted in arrest:
 
 {% include tryit.html domain='data.cityofchicago.org' path='/resource/6zsd-86xi.json' args="$select=count(*)&$where=arrest=true" %}
 

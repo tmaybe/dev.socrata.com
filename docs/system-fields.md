@@ -16,7 +16,7 @@ Getting the SODA API to return system fields is as simple as adding the paramete
 
 {% include tryit.html domain='data.sfgov.org' path='/resource/tmnf-yvry.json' args='$$exclude_system_fields=false' %}
 
-Since `:created_at` and `:updated_at` are [Fixed Timestamp](/docs/datatypes/timestamp.html), you can query them to get recent updates to a dataset using the `$where` [query parameter](/docs/queries.html), like this example:
+Since `:created_at` and `:updated_at` are [Fixed Timestamp](/docs/datatypes/timestamp.html), you can query them to get recent updates to a dataset using the `$where` [query parameter](/docs/queries/), like this example:
 
 {% include tryit.html domain='data.sfgov.org' path='/resource/tmnf-yvry.json' args="$where=:updated_at > '2014-10-20'" %}
 

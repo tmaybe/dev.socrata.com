@@ -40,7 +40,7 @@ For this example, we'll use this listing of [Alternative Fuel Locations](https:/
 
 ## Building simple filters and queries
 
-Filtering data via a SODA API is fairly straightforward. There are two primary mechanisms you can use to filter data: [Simple Filters](/docs/filtering.html) and [SoQL Queries](/docs/queries.html)
+Filtering data via a SODA API is fairly straightforward. There are two primary mechanisms you can use to filter data: [Simple Filters](/docs/filtering.html) and [SoQL Queries](/docs/queries/)
 
 
 ### Simple Filters
@@ -62,7 +62,7 @@ The "**So**crata **Q**uery **L**anguage" (SoQL) is a simple, SQL-like query lang
 {% include tryit.html domain='data.cityofchicago.org' path='/resource/alternative-fuel-locations.json' args='$where=within_box(location, 41.885001, -87.645939, 41.867011, -87.618516)' %}
 
 <div class="well">
-  Many different functions are available via SoQL. Read the detailed documentation on <a href="/docs/queries.html">SoQL Queries</a> for more info.
+  Many different functions are available via SoQL. Read the detailed documentation on <a href="/docs/queries/">SoQL Queries</a> for more info.
 </div>
 
 ### Paging
