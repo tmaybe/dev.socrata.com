@@ -1,7 +1,7 @@
 ---
 layout: with-sidebar
 sidebar: documentation 
-title: Filtering
+title: Simple Filtering
 audience: documentation
 redirect_from:
 - /docs/filters.html
