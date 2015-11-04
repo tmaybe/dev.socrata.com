@@ -11,6 +11,10 @@ datatypes:
 - floating_timestamp
 backend: new
 description: Returns TRUE for values in a given range 
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

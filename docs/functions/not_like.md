@@ -8,6 +8,10 @@ datatypes:
 - text 
 backend: new 
 description: Allows for matching text fields that do not contain a substring
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

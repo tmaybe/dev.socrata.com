@@ -9,6 +9,10 @@ datatypes:
 - number
 backend: new
 description: Matches values not in a given set of options
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

@@ -12,6 +12,10 @@ datatypes:
 - floating_timestamp
 backend: new
 description: Matches values in a given set of options
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

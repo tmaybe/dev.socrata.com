@@ -9,6 +9,10 @@ datatypes:
 - polygon
 backend: new
 description: Returns the minimum convex geometry that encloses all of the geometries within a set
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

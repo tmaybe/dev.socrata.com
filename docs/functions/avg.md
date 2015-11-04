@@ -10,6 +10,10 @@ datatypes:
 - money
 backend: both
 description: Returns the average of a given set of numbers 
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

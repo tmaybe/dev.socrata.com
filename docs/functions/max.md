@@ -11,6 +11,10 @@ datatypes:
 - floating_timestamp
 backend: new
 description: Returns the maximum of a given set of numbers 
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}

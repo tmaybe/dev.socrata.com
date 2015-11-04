@@ -8,6 +8,10 @@ datatypes:
 - text 
 backend: new
 description: Allows for substring searches in text strings
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
 {% include function_header.html %}
