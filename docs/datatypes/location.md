@@ -3,6 +3,7 @@ layout: with-sidebar
 sidebar: documentation 
 title: Location Datatype
 type: datatype
+datatype: location
 audience: documentation
 ---
 

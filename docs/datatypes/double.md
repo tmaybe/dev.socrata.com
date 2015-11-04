@@ -4,6 +4,7 @@ sidebar: documentation
 title: Double Datatype
 audience: documentation
 type: datatype
+datatype: double
 ---
 
 {% include numeric_types.html %}

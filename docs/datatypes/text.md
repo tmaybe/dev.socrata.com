@@ -4,6 +4,7 @@ sidebar: documentation
 title: Text Datatype
 audience: documentation
 type: datatype
+datatype: text
 redirect_from:
   - /docs/datatypes/string.html
 ---

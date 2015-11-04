@@ -4,6 +4,7 @@ sidebar: documentation
 title: Number Datatype
 audience: documentation
 type: datatype
+datatype: number
 redirect_from:
   - /docs/datatypes/numeric.html
 ---

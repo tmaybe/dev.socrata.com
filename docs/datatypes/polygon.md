@@ -3,6 +3,7 @@ layout: with-sidebar
 sidebar: documentation 
 title: Polygon Datatype
 type: datatype
+datatype: polygon
 audience: documentation
 ---
 
