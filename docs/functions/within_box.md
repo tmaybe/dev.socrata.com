@@ -10,6 +10,7 @@ datatypes:
 - line
 - polygon
 versions:
+- 2.0
 - 2.1
 description: Returns the rows that have locations within the specified box, defined by latitude, longitude corners
 parent_paths: 
