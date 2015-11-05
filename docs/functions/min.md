@@ -9,7 +9,8 @@ datatypes:
 - double
 - money
 - floating_timestamp
-backend: new
+versions:
+- 2.1
 description: Returns the minimum of a given set of numbers 
 parent_paths: 
 - /docs/functions/

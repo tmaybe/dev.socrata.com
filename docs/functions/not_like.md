@@ -6,7 +6,8 @@ title: not like '...'
 type: function
 datatypes:
 - text 
-backend: new 
+versions:
+- 2.1 
 description: Allows for matching text fields that do not contain a substring
 parent_paths: 
 - /docs/functions/

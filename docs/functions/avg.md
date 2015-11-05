@@ -8,7 +8,9 @@ datatypes:
 - number
 - double
 - money
-backend: both
+versions:
+- 2.0
+- 2.1
 description: Returns the average of a given set of numbers 
 parent_paths: 
 - /docs/functions/

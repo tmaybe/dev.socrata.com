@@ -9,7 +9,8 @@ datatypes:
 - point
 - line
 - polygon
-backend: new
+versions:
+- 2.1
 description: Returns the rows that have locations within the specified box, defined by latitude, longitude corners
 parent_paths: 
 - /docs/functions/

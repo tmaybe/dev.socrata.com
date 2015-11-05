@@ -6,7 +6,9 @@ title: upper(...)
 type: function
 datatypes:
 - text 
-backend: both
+versions:
+- 2.0
+- 2.1
 description: Returns the uppercase equivalent of a string of text
 parent_paths: 
 - /docs/functions/

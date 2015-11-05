@@ -15,7 +15,8 @@ datatypes:
 - point
 - polygon
 - text 
-backend: new
+versions:
+- 2.1
 description: Returns different values based on the evaluation of boolean comparisons
 parent_paths: 
 - /docs/functions/
