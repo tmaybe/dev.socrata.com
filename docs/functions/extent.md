@@ -7,7 +7,8 @@ type: function
 datatypes:
 - point
 - polygon
-backend: new
+versions:
+- 2.1
 description: Returns a bounding box that encloses a set of geometries
 parent_paths: 
 - /docs/functions/

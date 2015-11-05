@@ -10,7 +10,8 @@ datatypes:
 - double
 - money
 - floating_timestamp
-backend: new
+versions:
+- 2.1
 description: Matches values in a given set of options
 parent_paths: 
 - /docs/functions/

@@ -6,19 +6,20 @@ custom_js:
 - /js/function_listing.js
 ---
 
-<p>The following are all the functions available in SoQL. Some only work on the <a href="/docs/endpoints.html">newest API endpoints</a> while some work on legacy APIs as well. You can filter them by endpoint type and datatype using the filters below.</p>
+<p>The following are all the functions available in SoQL. Some only work on the <a href="/docs/endpoints.html">the latest version of our API endpoints</a>, while some work on legacy versions as well. You can filter them by endpoint version and datatype using the filters below.</p>
 
 <div class="filter-options pull-right">
-  <div class="btn-group backends" role="group" aria-label="Endpoint Type">
-    <button type="button" class="btn btn-default endpoint" data-endpoint="new">New Endpoint</button>
-    <button type="button" class="btn btn-default endpoint" data-endpoint="legacy">Legacy Endpoint</button>
+  <div class="btn-group versions" role="group" aria-label="Endpoint Type">
+    <button type="button" class="btn btn-default version" data-version="2.1">2.1</button>
+    <button type="button" class="btn btn-default version" data-version="2.0">2.0</button>
   </div>
 
-  <div class="btn-group" role="group">
+  <div class="btn-group datatypes" role="group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="title">Datatypes</span> <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
+      <li><a href="#" class="datatype" data-datatype="all">All Datatypes</a></li>
       {% for page in site.pages %}
         {% if page.type == "datatype" %}
           <li><a href="#" class="datatype" data-datatype="{{page.datatype}}">{{ page.datatype }}</a></li>
@@ -37,16 +38,10 @@ custom_js:
   <tbody>
     {% for page in site.pages %} 
       {% if page.type == "function" %} 
-        <tr class="function" data-backend="{{page.backend}}" data-datatypes="{{page.datatypes | join ''}}">
-          <td><a href="{{page.url}}">{{page.title}}</a></td>
+        <tr class="function" data-versions="{{page.versions | join}}" data-datatypes="{{page.datatypes | join}}">
+          <td><a href="{{page.url}}"><code>{{page.title}}</code></a></td>
           <td>{{page.description}}</td>
-          {% if page.backend == "both" %}
-            <td class="success">Both</td>
-          {% elsif page.backend == "new" %}
-            <td class="warning">New only</td>
-          {% elsif page.backend == "legacy" %}
-            <td class="warning">Legacy only</td>
-          {% endif %}
+          <td>{{page.versions | array_to_sentence_string}}</td>
         </tr>
       {% endif %}
     {% endfor %}

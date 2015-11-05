@@ -6,7 +6,8 @@ title: starts_with(...)
 type: function
 datatypes:
 - text 
-backend: new
+versions:
+- 2.1
 description: Matches on text strings that start with a given substring
 parent_paths: 
 - /docs/functions/

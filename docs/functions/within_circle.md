@@ -8,7 +8,9 @@ datatypes:
 - point
 - line
 - polygon
-backend: both
+versions:
+- 2.0
+- 2.1
 description: Returns the rows that have locations within a specified circle, measured in meters
 parent_paths: 
 - /docs/functions/

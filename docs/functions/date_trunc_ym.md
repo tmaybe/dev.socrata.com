@@ -6,7 +6,9 @@ title: date_trunc_ym(...)
 type: function
 datatypes:
 - floating_timestamp
-backend: both
+versions:
+- 2.0
+- 2.1
 description: Truncates a calendar date at the year/month threshold
 parent_paths: 
 - /docs/functions/

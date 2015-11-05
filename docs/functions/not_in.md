@@ -7,7 +7,8 @@ type: function
 datatypes:
 - text 
 - number
-backend: new
+versions:
+- 2.1
 description: Matches values not in a given set of options
 parent_paths: 
 - /docs/functions/

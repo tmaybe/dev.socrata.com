@@ -6,7 +6,8 @@ title: lower(...)
 type: function
 datatypes:
 - text 
-backend: new
+versions:
+- 2.1
 description: Returns the lowercase equivalent of a string of text
 parent_paths: 
 - /docs/functions/

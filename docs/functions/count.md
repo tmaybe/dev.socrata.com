@@ -11,7 +11,9 @@ datatypes:
 - timestamp
 - location
 - point
-backend: both
+versions:
+- 2.0
+- 2.1
 description: Returns a count of a given set of records
 parent_paths: 
 - /docs/functions/

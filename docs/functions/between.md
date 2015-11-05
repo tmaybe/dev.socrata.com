@@ -9,7 +9,8 @@ datatypes:
 - double
 - money
 - floating_timestamp
-backend: new
+versions:
+- 2.1
 description: Returns TRUE for values in a given range 
 parent_paths: 
 - /docs/functions/

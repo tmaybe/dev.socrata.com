@@ -6,7 +6,8 @@ title: like '...'
 type: function
 datatypes:
 - text 
-backend: new
+versions:
+- 2.1
 description: Allows for substring searches in text strings
 parent_paths: 
 - /docs/functions/

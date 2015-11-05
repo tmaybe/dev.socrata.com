@@ -7,7 +7,8 @@ type: function
 datatypes:
 - point
 - polygon
-backend: new
+versions:
+- 2.1
 description: Returns the minimum convex geometry that encloses all of the geometries within a set
 parent_paths: 
 - /docs/functions/
