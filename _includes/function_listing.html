@@ -33,7 +33,7 @@
         <tr class="function" data-versions="{{page.versions | join}}" data-datatypes="{{page.datatypes | join}}">
           <td><a href="{{page.url}}"><code>{{page.title}}</code></a></td>
           <td>{{page.description}}</td>
-          <td>{{page.versions | array_to_sentence_string}}</td>
+          <td>{{page.versions | sort | array_to_sentence_string}}</td>
         </tr>
       {% endif %}
     {% endfor %}
