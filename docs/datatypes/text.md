@@ -1,6 +1,8 @@
 ---
 layout: with-sidebar
 sidebar: documentation
+custom_js:
+- /js/function_listing.js
 title: Text Datatype
 audience: documentation
 type: datatype

@@ -1,4 +1,4 @@
-define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit'], function($, Mustache, Forgiving, Readmore, Cookies, TryIt) {
+define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit'], function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt) {
   // Generates sample URLs for a given column and datatype
   var load_query_suggestions = function(base_url, display_url, field_name, datatype, div) {
     // Fetch sample data & template at the same time
@@ -267,6 +267,7 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
         obe_uid: obe_uid,
         is_obe: is_obe,
         is_nbe: !is_obe,
+        version: is_obe ? '2.0' : '2.1',
         show_migration: flags.show_migration && is_obe,
         has_structural_changes: splits.length > 0,
         splits: splits,

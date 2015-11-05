@@ -8,42 +8,4 @@ custom_js:
 
 <p>The following are all the functions available in SoQL. Some only work on the <a href="/docs/endpoints.html">the latest version of our API endpoints</a>, while some work on legacy versions as well. You can filter them by endpoint version and datatype using the filters below.</p>
 
-<div class="filter-options pull-right">
-  <div class="btn-group versions" role="group" aria-label="Endpoint Type">
-    <button type="button" class="btn btn-default version" data-version="2.1">2.1</button>
-    <button type="button" class="btn btn-default version" data-version="2.0">2.0</button>
-  </div>
-
-  <div class="btn-group datatypes" role="group">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="title">Datatypes</span> <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li><a href="#" class="datatype" data-datatype="all">All Datatypes</a></li>
-      {% for page in site.pages %}
-        {% if page.type == "datatype" %}
-          <li><a href="#" class="datatype" data-datatype="{{page.datatype}}">{{ page.datatype }}</a></li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </div>
-</div>
-
-<table class="table table-striped table-hover function-listing">
-  <thead>
-    <th>Function Name</th>
-    <th>Description</th>
-    <th class="availability"><a href="/docs/endpoints.html">Availability &raquo;</a></th>
-  </thead>
-  <tbody>
-    {% for page in site.pages %} 
-      {% if page.type == "function" %} 
-        <tr class="function" data-versions="{{page.versions | join}}" data-datatypes="{{page.datatypes | join}}">
-          <td><a href="{{page.url}}"><code>{{page.title}}</code></a></td>
-          <td>{{page.description}}</td>
-          <td>{{page.versions | array_to_sentence_string}}</td>
-        </tr>
-      {% endif %}
-    {% endfor %}
-  </tbody>
-</table>
+{% include function_listing.html datatype="all" %}

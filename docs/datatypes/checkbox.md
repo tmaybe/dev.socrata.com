@@ -1,6 +1,8 @@
 ---
 layout: with-sidebar
-sidebar: documentation 
+sidebar: documentation
+custom_js:
+- /js/function_listing.js 
 title: Checkbox Datatype
 type: datatype
 datatype: checkbox

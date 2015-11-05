@@ -58,13 +58,12 @@
         {{#metadata.owner}}
           <li><em>Owner:</em> <a href="http://{{domain}}/profile/{{id}}">{{displayName}}</a></li>
         {{/metadata.owner}}
+        <li><em>Endpoint Version:</em> <a href="/docs/endpoints.html#{{version}}">{{version}}</a></li>
         {{#is_nbe}}
-        <li><em>Endpoint Version:</em> <a href="/docs/endpoints.html">New API</a></li>
         <li><em>Last Synchronized:</em> {{last_synced}}</li>
         {{/is_nbe}}
         {{#is_obe}}
-        <li><em>Endpoint Version:</em> <a href="/docs/endpoints.html">Legacy API</a></li>
-        <li><em>Newest Endpoint:</em> <a target="_blank" href="/foundry/#/{{domain}}/{{nbe_uid}}">{{metadata.name}}</a></li>
+        <li><em>Newest Version:</em> <a target="_blank" href="/foundry/#/{{domain}}/{{nbe_uid}}">{{metadata.name}}</a></li>
         {{/is_obe}}
       </ul>
     </div>
@@ -92,7 +91,7 @@
   <p>Learn more about:</p>
   <ul>
     <li><a href="/consumers/getting-started.html">Getting started with the SODA Consumer API</a></li>
-    <li><a href="/docs/formats/index.html">Output formats and content negotiation</a></li>
+    <li><a href="/docs/formats/index.html#{{version}}">Output formats and content negotiation</a></li>
     <li><a href="/docs/response-codes.html">Response codes &amp; error messages</a></li>
   </ul>
 </div>
@@ -139,7 +138,8 @@
   <ul>
     <li><a href="/docs/filtering.html">Simple Filters</a></li>
     <li><a href="/docs/queries/">SoQL Queries</a></li>
-    <li><a href="/docs/paging.html">Paging Through Data</a></li>
+    <li><a href="/docs/functions/#{{version}},">Available SoQL Functions</a></li>
+    <li><a href="/docs/paging.html#{{version}}">Paging Through Data</a></li>
   </ul>
 </div>
 
@@ -191,13 +191,13 @@
               <p class="description">{{description}}</p>
             {{/description}}
 
-            <p class="overview">The <code>{{fieldName}}</code> column is of the <a href="/docs/datatypes/{{dataTypeName}}.html"><code>{{dataTypeName}}</code></a> datatype.</p>
+            <p class="overview">The <code>{{fieldName}}</code> column is of the <a href="/docs/datatypes/{{dataTypeName}}.html{{version}},"><code>{{dataTypeName}}</code></a> datatype.</p>
 
             <div class="tryit">
               <p><i class="fa fa-code fa-spin"></i> Please wait while we fetch an example for you...</p>
             </div>
 
-            <p>For more details on what query options you have for this column, see the <a href="/docs/datatypes/{{dataTypeName}}.html">detailed docs on the <code>{{dataTypeName}}</code> datatype</a></p>
+            <p>For more details on what query options you have for this column, see the <a href="/docs/datatypes/{{dataTypeName}}.html#{{version}},">detailed docs on the <code>{{dataTypeName}}</code> datatype</a>.</p>
           </div>
         </div>
       </li>
