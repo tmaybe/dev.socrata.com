@@ -7,7 +7,7 @@ type: function
 datatypes:
 - text 
 - number
-- boolean
+- checkbox
 - timestamp
 - location
 - point

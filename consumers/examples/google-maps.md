@@ -5,7 +5,7 @@ sidebar: consumer
 type: example
 audience: consumer
 custom_js:
-  - https://maps.googleapis.com/maps/api/js?sensor=true
+  - //maps.googleapis.com/maps/api/js?sensor=true
   - /js/google-maps-mashup.js
 author: chrismetcalf
 ---

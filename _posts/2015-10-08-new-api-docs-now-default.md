@@ -1,5 +1,5 @@
 ---
-layout: with-breadcrumbs
+layout: changelog
 title: New API endpoints now default for API documentation
 short_title: New default for API documentation
 category: changelog

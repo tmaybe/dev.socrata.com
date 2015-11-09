@@ -78,7 +78,7 @@ Note that you will want to use the column header to expand complex types like Lo
 
 ### Querying using OData
 
-You can also directly query Socrata data using OData as a REST API.Socrata datasets follow the OData URI Conventions documented in [http://www.odata.org/documentation/uri-conventions](http://www.odata.org/documentation/uri-conventions). For more information on OData, see [http://www.odata.org/introduction](http://www.odata.org/introduction)
+You can also directly query Socrata data using OData as a REST API.Socrata datasets follow the OData URI Conventions documented in <http://www.odata.org/documentation/odata-version-2-0/uri-conventions/>. For more information on OData, see [http://www.odata.org/introduction](http://www.odata.org/introduction)
 
 Here are some examples of how to apply these conventions to a Socrata catalog and dataset:
 
