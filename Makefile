@@ -9,11 +9,8 @@ all:
 test: all
 	bundle exec htmlproof ./public --only-4xx --check-html --href-ignore "/#/,/\/register/,/APP_TOKEN/"
 
-# Copies JS resources locally so you don't have to do a full jekyll build when hacking JS
-jslocal:
-	cp js/* public/js/
-	cp common/js/* public/common/js/
-	cp foundry/*.mst public/foundry/
+stage: all
+	surge -d https://dev-socrata-staging.surge.sh public
 
 # Pushes updated taglines file. Since this requires my password, you (probably) can't run it...
 taglines:
