@@ -1,4 +1,44 @@
 define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit'], function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt) {
+  var load_sync_state = function(el) {
+    // Clean up
+    $(el).removeClass('btn-warning btn-success');
+    $(el).text('Loading...');
+    $(el).attr('title', '');
+
+    // If we're on NBE, figure out how far out of sync we are
+    var query_base = $(el).attr('data-query-base');
+    var uid = $(el).attr('data-obe-uid');
+    $.when(
+      $.ajaxForgiving404({
+        url: query_base + "/api/migrations/" + uid + ".json",
+        method: "GET",
+        dataType: "json"
+      }), // Migrations API
+      $.ajax({
+        url: query_base + "/api/views/" + uid + ".json",
+        method: 'GET',
+        dataType: 'json'
+      }) // Metadata
+    ).done(function(migration, meta) { 
+      // Clean up
+      $(el).removeClass('btn-warning btn-success');
+
+      // Check our sync state
+      if(migration[0].syncedAt < meta[0].rowsUpdatedAt) {
+        // We haven't synced since the dataset was updated
+        $(el).addClass('btn-warning');
+        $(el).text('Syncing...');
+        $(el).attr('title', ((meta[0].rowsUpdatedAt - migration[0].syncedAt)/60).toFixed(2) + ' minutes out of date');
+      } else {
+        // We're up to date
+        $(el).addClass('btn-success');
+        $(el).text('Up to date');
+        $(el).attr('title', 'Last synced at ' + (new Date(last*1000)).toLocaleString());
+      }
+      $(el).tooltip();
+    });
+  };
+
   // Generates sample URLs for a given column and datatype
   var load_query_suggestions = function(base_url, display_url, field_name, datatype, div) {
     // Fetch sample data & template at the same time
@@ -204,7 +244,7 @@ define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.
         name_shortenings = mapping.nameShortening;
         nbe_uid = migration[0].nbeId;
         obe_uid = migration[0].obeId;
-        last_synced = (new Date(migration[0].syncedAt*1000).toLocaleString());
+        last_synced = migration[0].syncedAt;
         is_obe = (obe_uid == args.uid);
       }
 
@@ -260,9 +300,11 @@ define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.
       var full_url = query_base + "/resource/" + args.uid + ".json";
       var display_url = endpoint_base + "/resource/" + args.uid + ".json";
       $(args.target).html(Mustache.render(template[0], {
+        // Metadata
         uid: args.uid,
         domain: args.domain,
         metadata: metadata[0],
+        // Migration & Versioning
         nbe_uid: nbe_uid,
         obe_uid: obe_uid,
         is_obe: is_obe,
@@ -274,10 +316,13 @@ define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.
         has_renames: renames.length > 0,
         renames: renames,
         last_synced: last_synced,
+        // Size, links
         count: count[0][0].count.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
         full_url: full_url,
         display_url: display_url,
+        query_base: query_base,
         redirected: redirected,
+        // Private datasets
         is_private: Cookies.get('dev_proxy_domain') == args.domain && metadata[0].flags["public"] == undefined,
         username: decodeURI((Cookies.get('dev_proxy_user') || '').replace(/\+/g, '%20')),
         logout_url: "https://proxy." + window.location.hostname + "/logout/"
@@ -322,6 +367,15 @@ define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.
         moreLink: '<a href="#">Show more <i class="fa fa-angle-double-down"></i></a>',
         lessLink: '<a href="#">Show less <i class="fa fa-angle-double-up"></i></a>'
       });
+
+      if(!is_obe) {
+        // If we're on NBE, wire up the sync button
+        load_sync_state($('.sync button'));
+        $('.sync button').click(function(e) {
+          e.preventDefault();
+          load_sync_state($('.sync button'));
+        });
+      }
     }).fail(function(xhr) {
       switch(xhr.status) {
         case 403:
