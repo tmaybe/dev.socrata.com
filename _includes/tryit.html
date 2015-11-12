@@ -1,2 +1,2 @@
 {% capture full_url %}https://{{ include.domain }}{{ include.path }}?{{ include.args }}{% endcapture %}
-<a class="tryit" href="{{full_url}}">{{full_url}}</a>
+<a class="tryit" href="{{full_url}}">{{ full_url | replace: "'", "&#39;" | replace: "\"", "&quot;" }}</a>
