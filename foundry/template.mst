@@ -60,7 +60,7 @@
         {{/metadata.owner}}
         <li><em>Endpoint Version:</em> <a href="/docs/endpoints.html#{{version}}">{{version}}</a></li>
         {{#is_nbe}}
-        <li><em>Last Synchronized:</em> {{last_synced}}</li>
+        <li class="sync"><em>Sync State <a href="/docs/endpoints.html#{{version}}"><i class="fa fa-question"></i></a>:</em> <button class="btn" data-toggle="tooltip" data-query-base="{{query_base}}" data-obe-uid="{{obe_uid}}">Loading...</button></li>
         {{/is_nbe}}
         {{#is_obe}}
         <li><em>Newest Version:</em> <a target="_blank" href="/foundry/#/{{domain}}/{{nbe_uid}}">{{metadata.name}}</a></li>
