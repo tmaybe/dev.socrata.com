@@ -5,6 +5,8 @@ custom_js:
 - /js/function_listing.js 
 title: Polygon Datatype
 type: datatype
+versions:
+- 2.1
 datatype: polygon
 audience: documentation
 ---

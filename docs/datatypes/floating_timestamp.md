@@ -6,6 +6,9 @@ custom_js:
 title: Floating Timestamp Datatype
 audience: documentation
 type: datatype
+versions:
+- 2.0
+- 2.1
 datatype: floating_timestamp
 redirect_from:
   - /docs/datatypes/timestamps.html
