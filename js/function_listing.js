@@ -26,8 +26,8 @@ require(['jquery'], function($, Cookies) {
 
     // Filter our records
     $('.function-listing .function').each(function() {
-      if($(this).attr('data-versions').match(params.version)
-          && $(this).attr('data-datatypes').match(params.datatype)) {
+      if(($(this).attr('data-versions') === undefined || $(this).attr('data-versions').match(params.version))
+          && ($(this).attr('data-datatypes') === undefined || $(this).attr('data-datatypes').match(params.datatype))) {
         $(this).show();
       } else {
         $(this).hide();

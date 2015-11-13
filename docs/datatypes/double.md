@@ -6,6 +6,9 @@ custom_js:
 title: Double Datatype
 audience: documentation
 type: datatype
+versions:
+- 2.0
+- 2.1
 datatype: double
 ---
 
