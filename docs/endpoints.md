@@ -38,7 +38,6 @@ However, some functionalities are not available on all of our API endpoints, whi
 
 Throughout the documentation on this developer portal you'll notice version toggles and info boxes that will help you understand the difference between SODA endpoint versions.
 
-
 <a name="2.1"/>
 
 ### Version 2.1 (Latest)
@@ -82,6 +81,10 @@ SODA 2.0 was originally released in 2011. Although 2.1 is backwards-compatible w
 ## Dataset Synchronization
 
 In some cases, data publishers may still be performing updates against an old API endpoint version, and may not have migrated their automated process. In those cases, we automatically migrate updates to a copy of the dataset of the latest endpoint version. In some cases, that process may fall behind, so in the API documentation for each dataset we display the "Sync Status" in the sidebar so you can check on it. {% include lb.html image='/img/version_sidebar.png' title='See this' %}
+
+## Versioning HTTP headers
+
+The simplest way to tell the difference between a 2.0 API and a 2.1 API is via the `X-SODA2-Legacy-Types` header, which will be `true` if you're accessing a legacy 2.0 API.
 
 ## When we will increment endpoint versions
 
