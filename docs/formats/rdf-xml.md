@@ -1,11 +1,17 @@
 ---
 layout: with-sidebar
 sidebar: documentation
+type: format
 title: XML-RDF Format
 audience: documentation
 redirect_from:
   - /docs/formats/rdf
   - /docs/formats/xml
+versions:
+- 2.0
+extension: rdf
+mime-type: application/rdf+xml; charset=utf-8
+format: RDF-XML
 ---
 
 The RDF ([Resource Description Framework](http://www.w3.org/TR/REC-rdf-syntax/)) format is a little different the other formats, because that dataset (or view) owners are able
