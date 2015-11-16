@@ -9,7 +9,7 @@ all:
 test: all
 	bundle exec htmlproof ./public --only-4xx --check-html --href-ignore "/#/,/\/register/,/APP_TOKEN/"
 
-stage: all
+stage: all test
 	surge -d https://dev-socrata-staging.surge.sh public
 
 # Pushes updated taglines file. Since this requires my password, you (probably) can't run it...
