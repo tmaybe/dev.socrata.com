@@ -59,16 +59,22 @@
           <li><em>Owner:</em> <a href="http://{{domain}}/profile/{{id}}">{{displayName}}</a></li>
         {{/metadata.owner}}
         <li><em>Endpoint Version:</em> <a href="/docs/endpoints.html#{{version}}">{{version}}</a></li>
-        {{#is_nbe}}
-        <li class="sync"><em>Sync State <a href="/docs/endpoints.html#{{version}}"><i class="fa fa-question"></i></a>:</em> <button class="btn" data-toggle="tooltip" data-query-base="{{query_base}}" data-obe-uid="{{obe_uid}}">Loading...</button></li>
-        {{/is_nbe}}
-        {{#is_obe}}
-        <li><em>Newest Version:</em> <a target="_blank" href="/foundry/#/{{domain}}/{{nbe_uid}}">{{metadata.name}}</a></li>
-        {{/is_obe}}
       </ul>
     </div>
     <div class="panel-footer"><a target="_blank" href="http://{{domain}}/d/{{uid}}">View dataset &raquo;</a></div>
   </div>
+
+  {{#is_synced}}
+    <div class="panel panel-default synced" data-query-base="{{query_base}}" data-obe-uid="{{obe_uid}}">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-refresh"></i> Synchronized Copy</h3>
+      </div>
+      <div class="panel-body">
+        <p>This dataset is actually a synchronized copy provided so you can use the <a href="/docs/endpoints.html#{{version}}">{{version}} API</a> before migration is complete. This dataset was last synchronized at <span class="sync-time">...</span>, and is currently <span class="sync-state">...</span>.</p>
+      </div>
+      <div class="panel-footer"><a target="_blank" href="/docs/endpoints.html#dataset-synchronization">Learn how this works &raquo;</a></div>
+    </div>
+  {{/is_synced}}
 </div>
 
 <div class="getting-started">

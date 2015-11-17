@@ -1,11 +1,6 @@
 define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit'], function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt) {
   var load_sync_state = function(el) {
-    // Clean up
-    $(el).removeClass('btn-warning btn-success');
-    $(el).text('Loading...');
-    $(el).attr('title', '');
-
-    // If we're on NBE, figure out how far out of sync we are
+    // Figure out how far out of sync we are
     var query_base = $(el).attr('data-query-base');
     var uid = $(el).attr('data-obe-uid');
     $.when(
@@ -19,23 +14,22 @@ define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.
         method: 'GET',
         dataType: 'json'
       }) // Metadata
-    ).done(function(migration, meta) { 
+    ).done(function(migration, meta) {
       // Clean up
       $(el).removeClass('btn-warning btn-success');
 
-      // Check our sync state
-      if(migration[0].syncedAt < meta[0].rowsUpdatedAt) {
-        // We haven't synced since the dataset was updated
-        $(el).addClass('btn-warning');
-        $(el).text('Syncing...');
-        $(el).attr('title', ((meta[0].rowsUpdatedAt - migration[0].syncedAt)/60).toFixed(2) + ' minutes out of date');
+      // Update our last sync time
+      $(el).find('.sync-time').text((new Date(migration[0].syncedAt*1000)).toLocaleString());
+      var min_ood = meta[0].rowsUpdatedAt - migration[0].syncedAt;
+      if(min_ood > 0) {
+        // OUTATIME!!!
+        $(el).find('.sync-state').text((min_ood/60).toFixed(1) + " minutes out of date");
+        $(el).removeClass("panel-default").addClass("panel-warning");
       } else {
         // We're up to date
-        $(el).addClass('btn-success');
-        $(el).text('Up to date');
-        $(el).attr('title', 'Last synced at ' + (new Date(last*1000)).toLocaleString());
+        $(el).find('.sync-state').text("up to date");
+        $(el).removeClass("panel-default").addClass("panel-success");
       }
-      $(el).tooltip();
     });
   };
 
@@ -234,8 +228,8 @@ define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.
       var name_shortenings = {}
       var nbe_uid = null;
       var obe_uid = null;
-      var last_synced = 0;
       var is_obe = false;
+      var is_synced = false;
       var redirected = (Cookies.get('foundry-redirected') == "true");
 
       if(migration != null && migration[1] == "success") {
@@ -244,8 +238,8 @@ define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.
         name_shortenings = mapping.nameShortening;
         nbe_uid = migration[0].nbeId;
         obe_uid = migration[0].obeId;
-        last_synced = migration[0].syncedAt;
         is_obe = (obe_uid == args.uid);
+        is_synced = !is_obe;
       }
 
       // If we're looking at an OBE dataset and we haven't forced these docs, redirect
@@ -307,15 +301,15 @@ define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.
         // Migration & Versioning
         nbe_uid: nbe_uid,
         obe_uid: obe_uid,
+        is_synced: is_synced,
         is_obe: is_obe,
         is_nbe: !is_obe,
         version: is_obe ? '2.0' : '2.1',
-        show_migration: flags.show_migration && is_obe,
+        show_migration: is_obe,
         has_structural_changes: splits.length > 0,
         splits: splits,
         has_renames: renames.length > 0,
         renames: renames,
-        last_synced: last_synced,
         // Size, links
         count: count[0][0].count.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
         full_url: full_url,
@@ -369,12 +363,8 @@ define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.
       });
 
       if(!is_obe) {
-        // If we're on NBE, wire up the sync button
-        load_sync_state($('.sync button'));
-        $('.sync button').click(function(e) {
-          e.preventDefault();
-          load_sync_state($('.sync button'));
-        });
+        // If we're on NBE, update our sync status
+        load_sync_state($('.synced'));
       }
     }).fail(function(xhr) {
       switch(xhr.status) {
