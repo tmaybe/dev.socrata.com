@@ -92,6 +92,4 @@ For my cursory analysis, I set out to use the dataset titled Behavioral Risk Fac
 
 Before writing this post, I hadn't use SAS since an introductory undergraduate statistics class but because it is so easy to get data out of Socrata using standard APIs that support CSV, I was able to whip up this example in a matter of hours.
 
-Have any questions 
-
 Have a great example of your own? Please [contribute]({{ site.github_repo }}) to our community-maintained documentation!
