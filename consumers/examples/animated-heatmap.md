@@ -9,7 +9,7 @@ author: chriswhong
 
 I recently saw [HalifaxCrime](http://www.crimeheatmap.ca/), a hackathon project that animates crime data. I hoped to use the same technique to make a lightweight heatmap that I could feed with data from any Socrata dataset with a location column and a date & time column. 
 
-<iframe width="758" height="600" src="http://chriswhong.github.io/nyc-heatmap/" frameborder="0" allowfullscreen></iframe>
+<iframe width="758" height="600" src="https://chriswhong.github.io/nyc-heatmap/" frameborder="0" allowfullscreen></iframe>
 
 HalifaxCrime uses [Heatmap.js](http://www.patrick-wied.at/static/heatmapjs/) an open source JavaScript library for making heatmaps. Most of the examples involve tracking user mouse movements and clicks on websites, but it's also quite useful for mapping. (So useful that there are existing plugins for [Google Maps](https://developers.google.com/maps/), [Leaflet](http://leafletjs.com/), and [OpenLayers](http://openlayers.org/). I started with [this non-animated example](http://www.patrick-wied.at/static/heatmapjs/example-heatmap-leaflet.html) from the heatmap-leaflet.js plugin page.
 
