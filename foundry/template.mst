@@ -99,6 +99,7 @@
     <li><a href="/consumers/getting-started.html">Getting started with the SODA Consumer API</a></li>
     <li><a href="/docs/formats/index.html#{{version}}">Output formats and content negotiation</a></li>
     <li><a href="/docs/response-codes.html">Response codes &amp; error messages</a></li>
+    <li><a href="/changelog/">How to stay up to date on API changes</a></li>
   </ul>
 </div>
 

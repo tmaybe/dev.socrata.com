@@ -80,7 +80,9 @@ SODA 2.0 was originally released in 2011. Although 2.1 is backwards-compatible w
 
 ## Dataset Synchronization
 
-In some cases, data publishers may still be performing updates against an old API endpoint version, and may not have migrated their automated process. In those cases, we automatically migrate updates to a copy of the dataset of the latest endpoint version. In some cases, that process may fall behind, so in the API documentation for each dataset we display the "Sync Status" in the sidebar so you can check on it. {% include lb.html image='/img/version_sidebar.png' title='See this' %}
+{% comment %}In some cases, data publishers may still be performing updates against an old API endpoint version, and may not have migrated their automated process. In those cases, we automatically migrate updates to a copy of the dataset of the latest endpoint version. In some cases, that process may fall behind, so in the API documentation for each dataset we display the "Sync Status" in the sidebar so you can check on it. {% include lb.html image='/img/version_sidebar.png' title='See this' %}{% endcomment %}
+
+In order to make sure you always have the latest version of the API available, we automatically migrate updates to a copy of the dataset of the latest endpoint version. In some cases, that process may fall behind, so in the API documentation for each dataset we display the "Sync Status" in the sidebar so you can check on it. {% include lb.html image='/img/version_sidebar.png' title='See this' %}
 
 ## Versioning HTTP headers
 
@@ -90,4 +92,4 @@ The simplest way to tell the difference between a 2.0 API and a 2.1 API is via t
 
 From time to time, we'll introduce new [SoQL functions](/docs/functions/) and [datatypes](/docs/datatypes/) to the latest version of the SODA API. Those changes will be non-breaking, and old queries and applications will continue to function unchanged. The SODA API is designed to make it easy to introduce new functionality over time without making breaking changes.
 
-When we introduce breaking changes, such as the deprecation of a function or datatype, we'll increment the SODA version and notify developers.
+When we introduce breaking changes, such as the deprecation of a function or datatype, we'll increment the SODA version and notify developers. Make sure you [sign up for our developer newsletter](/changelog/) so you can stay up to date!
