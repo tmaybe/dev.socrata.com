@@ -14,7 +14,7 @@ htmlproof:
 test: clean jekyll htmlproof done
 	bundle exec htmlproof ./public --only-4xx --check-html --href-ignore "/#/,/\/register/,/APP_TOKEN/"
 
-stage: clean jekyll stamp test done
+stage: clean jekyll stamp htmlproof done
 	surge -d https://dev-socrata-staging.surge.sh public
 
 # Pushes updated taglines file. Since this requires my password, you (probably) can't run it...
