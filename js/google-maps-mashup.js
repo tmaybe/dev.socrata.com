@@ -1,4 +1,4 @@
-require(['jquery'], function($) {
+require(['jquery', 'googlemaps'], function($, google) {
   // Construct the query string
   url = 'http://data.ct.gov/resource/9k2y-kqxn.json?'
     + 'organization_type=Public%20School%20Districts'

@@ -9,10 +9,16 @@ datatypes:
 - double
 - money
 - floating_timestamp
+versions:
+- 2.1
 description: Returns the maximum of a given set of numbers 
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `max(...)` function is most commonly used in `$select` aggregations to return the maximum of a set of numeric values ([Numbers](/docs/datatypes/number.html), [Doubles](/docs/datatypes/double.html), or [Moneys](/docs/datatypes/money.html)). For example, to fetch the highest salary of all of the employees in the White House:
 

@@ -1,9 +1,15 @@
 ---
 layout: with-sidebar
 sidebar: documentation
+custom_js:
+- /js/function_listing.js
 title: Number Datatype
 audience: documentation
 type: datatype
+versions:
+- 2.0
+- 2.1
+datatype: number
 redirect_from:
   - /docs/datatypes/numeric.html
 ---

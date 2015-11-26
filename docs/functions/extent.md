@@ -7,10 +7,16 @@ type: function
 datatypes:
 - point
 - polygon
+versions:
+- 2.1
 description: Returns a bounding box that encloses a set of geometries
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `extent(...)` generates a rectangle that completely encompass a set of [Points](/docs/datatypes/point.html). For example, to get the rectangle that surrounds all of the crimes in Chicago in 2014:
 

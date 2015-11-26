@@ -15,7 +15,9 @@
     <div class="alert alert-success">
       <p><em><i class="fa fa-thumbs-up"></i> Good to go!</em> You're already using the latest version of this dataset API.</p> 
     </div>
-  {{/redirected}} {{/is_nbe}} 
+  {{/redirected}} 
+{{/is_nbe}} 
+
 <div class="pull-right sidebar">
   {{#is_private}}
     <div class="panel panel-success logged-in">
@@ -56,10 +58,23 @@
         {{#metadata.owner}}
           <li><em>Owner:</em> <a href="http://{{domain}}/profile/{{id}}">{{displayName}}</a></li>
         {{/metadata.owner}}
+        <li><em>Endpoint Version:</em> <a href="/docs/endpoints.html#{{version}}">{{version}}</a></li>
       </ul>
     </div>
     <div class="panel-footer"><a target="_blank" href="http://{{domain}}/d/{{uid}}">View dataset &raquo;</a></div>
   </div>
+
+  {{#is_synced}}
+    <div class="panel panel-default synced" data-query-base="{{query_base}}" data-obe-uid="{{obe_uid}}">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-refresh"></i> Synchronized Copy</h3>
+      </div>
+      <div class="panel-body">
+        <p>This dataset is actually a synchronized copy provided so you can use the <a href="/docs/endpoints.html#{{version}}">{{version}} API</a> before migration is complete. This dataset was last synchronized at <span class="sync-time">...</span>, and is currently <span class="sync-state">...</span>.</p>
+      </div>
+      <div class="panel-footer"><a target="_blank" href="/docs/endpoints.html#dataset-synchronization">Learn how this works &raquo;</a></div>
+    </div>
+  {{/is_synced}}
 </div>
 
 <div class="getting-started">
@@ -82,8 +97,9 @@
   <p>Learn more about:</p>
   <ul>
     <li><a href="/consumers/getting-started.html">Getting started with the SODA Consumer API</a></li>
-    <li><a href="/docs/formats/index.html">Output formats and content negotiation</a></li>
+    <li><a href="/docs/formats/index.html#{{version}}">Output formats and content negotiation</a></li>
     <li><a href="/docs/response-codes.html">Response codes &amp; error messages</a></li>
+    <li><a href="/changelog/">How to stay up to date on API changes</a></li>
   </ul>
 </div>
 
@@ -116,20 +132,21 @@
 
 <h2>Fields</h2>
 
-<p>Each column in <a href="http://{{domain}}/d/{{uid}}">the dataset</a> is represented by a single <code>field</code> in its SODA API. Using <a href="/docs/filtering.html">filters</a> and <a href="/docs/queries.html">SoQL queries</a>, you can search for records, limit your results, and change the way the data is output. For example, you could filter this dataset by its <code>{{metadata.columns.0.fieldName}}</code> field using a query like the following:</p>
+<p>Each column in <a href="http://{{domain}}/d/{{uid}}">the dataset</a> is represented by a single <code>field</code> in its SODA API. Using <a href="/docs/filtering.html">filters</a> and <a href="/docs/queries/">SoQL queries</a>, you can search for records, limit your results, and change the way the data is output. For example, you could filter this dataset by its <code>{{metadata.columns.0.fieldName}}</code> field using a query like the following:</p>
 
 {{#metadata.columns.0.filter}}
   <a class="tryit" href="{{full_url}}?{{metadata.columns.0.filter}}">{{display_url}}?{{metadata.columns.0.filter}}</a>
 {{/metadata.columns.0.filter}}
 
-<p>For richer filtering, you can combine filters together by stacking parameters on your URL or by using <a href="/docs/queries.html">SoQL</a> queries. Learn more about about each of the fields in this dataset by clicking the headers below, or read more about the SODA API using the navigation at the top of the page.</p>
+<p>For richer filtering, you can combine filters together by stacking parameters on your URL or by using <a href="/docs/queries/">SoQL</a> queries. Learn more about about each of the fields in this dataset by clicking the headers below, or read more about the SODA API using the navigation at the top of the page.</p>
 
 <div class="well">
   <p>Learn more about:</p>
   <ul>
     <li><a href="/docs/filtering.html">Simple Filters</a></li>
-    <li><a href="/docs/queries.html">SoQL Queries</a></li>
-    <li><a href="/docs/paging.html">Paging Through Data</a></li>
+    <li><a href="/docs/queries/">SoQL Queries</a></li>
+    <li><a href="/docs/functions/#{{version}},">Available SoQL Functions</a></li>
+    <li><a href="/docs/paging.html#{{version}}">Paging Through Data</a></li>
   </ul>
 </div>
 
@@ -181,13 +198,13 @@
               <p class="description">{{description}}</p>
             {{/description}}
 
-            <p class="overview">The <code>{{fieldName}}</code> column is of the <a href="/docs/datatypes/{{dataTypeName}}.html"><code>{{dataTypeName}}</code></a> datatype.</p>
+            <p class="overview">The <code>{{fieldName}}</code> column is of the <a href="/docs/datatypes/{{dataTypeName}}.html{{version}},"><code>{{dataTypeName}}</code></a> datatype.</p>
 
             <div class="tryit">
               <p><i class="fa fa-code fa-spin"></i> Please wait while we fetch an example for you...</p>
             </div>
 
-            <p>For more details on what query options you have for this column, see the <a href="/docs/datatypes/{{dataTypeName}}.html">detailed docs on the <code>{{dataTypeName}}</code> datatype</a></p>
+            <p>For more details on what query options you have for this column, see the <a href="/docs/datatypes/{{dataTypeName}}.html#{{version}},">detailed docs on the <code>{{dataTypeName}}</code> datatype</a>.</p>
           </div>
         </div>
       </li>

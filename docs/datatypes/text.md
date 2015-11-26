@@ -1,16 +1,28 @@
 ---
 layout: with-sidebar
 sidebar: documentation
+custom_js:
+- /js/function_listing.js
 title: Text Datatype
 audience: documentation
 type: datatype
+versions:
+- 2.0
+- 2.1
+datatype: text
 redirect_from:
   - /docs/datatypes/string.html
 ---
 
 A string of text is an arbitrary sequence of Unicode characters. How the characters are encoded for response will be dependent on the negotiated HTTP charset. If there are characters in the string that cannot be represented in the negotiated charset, they will be replaced. It is _strongly_ recommended that all clients use UTF–8 to prevent this from happening.
 
-Operations on strings are case insensitive. This includes sorting as well as comparison operations.
+<div class="alert alert-info">
+  <p><em>Important!</em> Matching behavior differs between <a href="/docs/endpoints.html">endpoint versions</a>:</p>
+  <ul>
+    <li>On 2.0 endpoints, matching is case-insensitive. eg: <code>'FOO' == 'foo'</code></li>
+    <li>On 2.1 endpoints, matching is case-sensitive, to be more consistent with SQL. eg: <code>'FOO' != 'foo'</code>. To make matches case-insensitive, you can use the <a href="/docs/functions/upper.html"><code>upper(...)</code> SoQL function</a>, like <code>$where=UPPER(field_name) = 'FOO'</code>.</li>
+  </ul>
+</div>
 
 When using SoQL, string literals are created using the single quote (`'`). For example:
 

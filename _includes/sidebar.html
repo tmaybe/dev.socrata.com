@@ -82,27 +82,26 @@
 
   <li class="nav-header dropdown-header">Filtering &amp; Querying</li>
   <li><a href="/docs/filtering.html">Simple Filters</a></li>
-  <li><a href="/docs/queries.html">SoQL Queries</a></li>
+  <li><a href="/docs/queries/">SoQL Queries</a></li>
   <li><a href="/docs/paging.html">Paging Through Data</a></li>
-  <li><a href="/docs/functions/index.html">SoQL Function Listing</a></li>
+  <li><a href="/docs/functions/">SoQL Function Listing</a></li>
 
-  <li class="nav-header dropdown-header">Data Formats</li>
-  <li><a href="/docs/formats/index.html">Selecting Output Formats</a></li>
-  <li><a href="/docs/formats/json.html">JSON</a></li>
-  <li><a href="/docs/formats/geojson.html">GeoJSON</a></li>
-  <li><a href="/docs/formats/csv.html">CSV</a></li>
-  <li><a href="/docs/formats/rdf-xml.html">RDF-XML</a></li>
-  <li><a href="/odata/">OData</a></li>
+  <li class="nav-header dropdown-header"><a href="/docs/formats/">Data Formats</a></li>
+  <li class="dropdown-hide"><a href="/docs/formats/json.html">JSON</a></li>
+  <li class="dropdown-hide"><a href="/docs/formats/geojson.html">GeoJSON</a></li>
+  <li class="dropdown-hide"><a href="/docs/formats/csv.html">CSV</a></li>
+  <li class="dropdown-hide"><a href="/docs/formats/rdf-xml.html">RDF-XML</a></li>
 
-  <li class="nav-header dropdown-header">Datatypes</li>
+  <li class="nav-header dropdown-header"><a href="/docs/datatypes/">Datatypes</a></li>
   {% for page in site.pages %}
     {% if page.type == 'datatype' %}
-      <li><a href="{{ page.url }}">{{ page.title | replace: ' Datatype', '' }}</a></li>
+      <li class="dropdown-hide"><a href="{{ page.url }}">{{ page.title | replace: ' Datatype', '' }}</a></li>
     {% endif %}
   {% endfor %}
   {% comment %} <li><a href="/docs/datatypes/converting.html">Conversions</a></li> {% endcomment %}
 
   <li class="nav-header dropdown-header">Other</li>
+  <li><a href="/odata/">OData</a></li>
   <li><a href="/changelog/">API Changelog</a></li>
   <li><a href="/support.html">Getting Help</a></li>
 

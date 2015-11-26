@@ -15,10 +15,16 @@ datatypes:
 - point
 - polygon
 - text 
+versions:
+- 2.1
 description: Returns different values based on the evaluation of boolean comparisons
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `case(...)` function is a special boolean function that can be used to return different values based on the result of boolean comparisons, similar to `if`/`then`/`else` statements in other languages. 
 

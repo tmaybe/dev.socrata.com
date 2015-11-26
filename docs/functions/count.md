@@ -11,10 +11,17 @@ datatypes:
 - timestamp
 - location
 - point
+versions:
+- 2.0
+- 2.1
 description: Returns a count of a given set of records
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `count(...)` function is most commonly used in `$select` aggregations to return the count of a set of values. For example, to fetch the total number of employees in the White House:
 

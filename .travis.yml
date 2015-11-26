@@ -15,8 +15,7 @@ before_script:
 script:
 - make test
 after_success:
-- make stamp
-- test $TRAVIS_BRANCH == "gh-pages" && test $TRAVIS_PULL_REQUEST == "false" && surge --project ./public --domain https://dev.socrata.com
+- test $TRAVIS_BRANCH == "gh-pages" && test $TRAVIS_PULL_REQUEST == "false" && make prod
 notifications:
   slack:
     secure: P6Mce/govM2MEy8RCTZHhG2Mg+2Bmh6d84GXt3lKUGPSv9u5Xww0Ld7K+rh7C5/qxSqQIfCY6m2TbtQbz1IpfuSWpvA9QwANYGr/gyzXFvd6pV8gRValb+juokxmNwjL5JmP8TdaX8IKrUgx9eb26j+0dEUbGLZR/kZfT0CX048=

@@ -1,16 +1,41 @@
 ---
 layout: with-sidebar
 sidebar: documentation
-title: Selecting Output Formats
+title: Output Formats
 audience: documentation
+custom_js:
+- /js/function_listing.js
 ---
 
 The Socrata Open Data API supports a number of different response formats that can be specified either via response type extensions on the API endpoint or HTTP `Accept` headers.
 
-* [JSON](/docs/formats/json.html) (JavaScript Object Notation)
-* [GeoJSON](/docs/formats/geojson.html) (Geospatial JSON)
-* [CSV](/docs/formats/csv.html) (Comma-separated values)
-* [RDF-XML](/docs/formats/rdf-xml.html) (Resource Description Framework eXtensible Markup Language)
+<div class="filter-options pull-right">
+  <div class="btn-group versions" role="group" aria-label="Endpoint Type">
+    <button type="button" class="btn btn-default version" data-version="2.1">2.1</button>
+    <button type="button" class="btn btn-default version" data-version="2.0">2.0</button>
+  </div>
+</div>
+
+<table class="table table-striped table-hover function-listing">
+  <thead>
+    <th>Format</th>
+    <th>Extension</th>
+    <th>Mime Type</th>
+    <th class="availability"><a href="/docs/endpoints.html">Availability &raquo;</a></th>
+  </thead>
+  <tbody>
+    {% for page in site.pages %} 
+      {% if page.type == "format" %} 
+        <tr class="function" data-versions="{{page.versions | join}}">
+          <td><a href="{{page.url}}">{{page.format}}</a></td>
+          <td><code>{{page.extension}}</code></td>
+          <td><code>{{page.mime-type}}</code></td>
+          <td>{{page.versions | sort | array_to_sentence_string}}</td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
 
 Neither type is better than the other - simply select the one that works best for your framework and application.
 
@@ -18,22 +43,12 @@ Neither type is better than the other - simply select the one that works best fo
 
 The simplest way to specify the response format is by appending an response type extension to the URL. This allows you to set the response format without requiring the ability to set headers in your HTTP client.
 
-Simply add the extension to the endpoint. For example, if your resource endpoint is `/resource/644b-gaut`:
-
-* `/resource/644b-gaut.json` returns [JSON](/docs/formats/json.html)
-* `/resource/644b-gaut.geojson` returns [GeoJSON](/docs/formats/geojson.html)
-* `/resource/644b-gaut.csv` returns [CSV](/docs/formats/csv.html)
-* `/resource/644b-gaut.rdf` returns [RDF-XML](/docs/formats/rdf-xml.html)
+Simply add the extension to the endpoint. For example, if your resource endpoint is `/resource/644b-gaut`, and you wanted to get CSV output, your path would be `/resource/644b-gaut.csv`.
 
 ## HTTP Accept Headers
 
 [HTTP Accept](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) headers allow applications to automatically negotiate content types with a web service. With SODA, this also means you can request content types using Accept headers without needing to provide an response type extension.
 
-Simply send an `Accept`header along with the desired [mimetype](http://en.wikipedia.org/wiki/Internet_media_type) for the desired response type. Use the following headers:
-
-* `Accept: application/json` for [JSON](/docs/formats/json.html)
-* `Accept: application/vnd.geo+json` for [GeoJSON](/docs/formats/geojson.html)
-* `Accept: text/csv` for [CSV](/docs/formats/csv.html)
-* `Accept: application/rdf+xml` for [RDF-XML](/docs/formats/rdf-xml.html)
+Simply send an `Accept` header along with the desired [mimetype](http://en.wikipedia.org/wiki/Internet_media_type) for the desired response type. For example, to request [JSON](/docs/formats/json.html), you'd use a header of `Accept: application/json`.
 
 The SODA API response will also include a `Content-type` header to specify the format of the data that it is returning.

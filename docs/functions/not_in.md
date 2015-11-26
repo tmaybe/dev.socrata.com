@@ -7,10 +7,16 @@ type: function
 datatypes:
 - text 
 - number
+versions:
+- 2.1
 description: Matches values not in a given set of options
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `not in(...)` function is used within the `$where` parameter exclude a set of possible values. For example, to exclude the `ARSON`, `NARCOTICS`, and `RITUALISM` values in the [Chicago Crimes](http://data.cityofchicago.org/d/6zsd-86xi):
 

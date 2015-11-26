@@ -9,10 +9,17 @@ datatypes:
 - point
 - line
 - polygon
+versions:
+- 2.0
+- 2.1
 description: Returns the rows that have locations within the specified box, defined by latitude, longitude corners
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `within_box(...)` function is used in the `$where` parameter filter for [Point](/docs/datatypes/point.html) or [Location](/docs/datatypes/location.html) values within a box defined by two points. It accepts four parameters:
 

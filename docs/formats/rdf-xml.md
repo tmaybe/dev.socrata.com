@@ -1,22 +1,24 @@
 ---
 layout: with-sidebar
 sidebar: documentation
+type: format
 title: XML-RDF Format
 audience: documentation
 redirect_from:
   - /docs/formats/rdf
-  - /docs/formats/xml
+versions:
+- 2.0
+extension: rdf
+mime-type: application/rdf+xml; charset=utf-8
+format: RDF-XML
 ---
 
-The RDF ([Resource Description Framework](http://www.w3.org/TR/REC-rdf-syntax/)) format is a little different the other formats, because that dataset (or view) owners are able
-to map the output to different semantic web schemas through changing either the metadata on the dataset itself or metadata on the columns of the dataset.
+The RDF ([Resource Description Framework](http://www.w3.org/TR/REC-rdf-syntax/)) format is a little different the other formats, because that dataset (or view) owners are able to map the output to different semantic web schemas through changing either the metadata on the dataset itself or metadata on the columns of the dataset.
 
 For example, the following URL
 
-<!-- {% include tryit.html domain='open.whitehouse.gov' path='/resource/nominations.rdf' args='$limit=1' %} -->
-
 {% highlight xml %}
-    https://open.whitehouse.gov/resource/nominations.rdf?$limit=1
+    https://open.whitehouse.gov/resource/nmc8-q2u.rdf?$limit=1
 {% endhighlight %}
 
 yields:
