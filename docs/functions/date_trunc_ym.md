@@ -6,10 +6,17 @@ title: date_trunc_ym(...)
 type: function
 datatypes:
 - floating_timestamp
+versions:
+- 2.0
+- 2.1
 description: Truncates a calendar date at the year/month threshold
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `date_trunc_ym(...)` function is used in the `$select`, `$where`, or `$group` parameters to truncate [Floating Timestamps](/docs/datatypes/number.html) at the year and month level. For example, `date_trunc_ym('2012-09-22T18:05:00.000')` would result in new timestamp of `'2012-09-01T00:00:00.000'`. This is handy for aggregation & display usages. For example, to aggregate the Chicago Crimes dataset by month: 
 

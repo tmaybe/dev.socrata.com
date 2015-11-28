@@ -9,10 +9,16 @@ datatypes:
 - double
 - money
 - floating_timestamp
+versions:
+- 2.1
 description: Returns TRUE for values in a given range 
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 `between` is used with the `$where` parameter to return numeric or time stamp values between two input values. For example, to get all of the individuals who make between $40,000 and $60,000 at the White House:
 

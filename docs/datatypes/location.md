@@ -1,8 +1,13 @@
 ---
 layout: with-sidebar
-sidebar: documentation 
+sidebar: documentation
+custom_js:
+- /js/function_listing.js 
 title: Location Datatype
 type: datatype
+versions:
+- 2.0
+datatype: location
 audience: documentation
 ---
 

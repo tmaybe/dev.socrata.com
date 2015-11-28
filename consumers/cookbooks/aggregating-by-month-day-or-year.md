@@ -7,13 +7,13 @@ audience: consumer
 featured: false
 related: 
   - /docs/datatypes/timestamp.html
-  - /docs/queries.html
+  - /docs/queries/
 author: alaurenz
 ---
 
 When analyzing time series, data, it's often useful to aggregate data to discover trends. Take, for example, this dataset from the [City of Chicago](https://data.cityofchicago.org) reporting [every towed car in the city](https://data.cityofchicago.org/Transportation/Towed-Vehicles/ygr5-vcbg). What if we wanted to aggregate it by month to see how many cars are towed in Chicago by month?
 
-Fortunately, with the power of [SoQL](/docs/queries.html), this is fairly straightforward. You can use the date truncation functions on the dataset's `tow_date` column, which is of the [timestamp](/docs/datatypes/timestamp.html) datatype. We'll want to use the `date_trunc_ym` function to truncate the full timestamp down to just the year and month when the vehicle was towed.
+Fortunately, with the power of [SoQL](/docs/queries/), this is fairly straightforward. You can use the date truncation functions on the dataset's `tow_date` column, which is of the [timestamp](/docs/datatypes/timestamp.html) datatype. We'll want to use the `date_trunc_ym` function to truncate the full timestamp down to just the year and month when the vehicle was towed.
 
 Using that in conjunction with the `$select` and `$group` parameters, just like we'd do in traditional SQL, we'd end up with:
 

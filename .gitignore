@@ -3,3 +3,4 @@ public/
 tmp/*
 .DS_Store
 .bundle
+node_modules

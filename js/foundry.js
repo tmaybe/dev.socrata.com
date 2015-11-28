@@ -1,4 +1,38 @@
-define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit'], function($, Mustache, Forgiving, Readmore, Cookies, TryIt) {
+define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit'], function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt) {
+  var load_sync_state = function(el) {
+    // Figure out how far out of sync we are
+    var query_base = $(el).attr('data-query-base');
+    var uid = $(el).attr('data-obe-uid');
+    $.when(
+      $.ajaxForgiving404({
+        url: query_base + "/api/migrations/" + uid + ".json",
+        method: "GET",
+        dataType: "json"
+      }), // Migrations API
+      $.ajax({
+        url: query_base + "/api/views/" + uid + ".json",
+        method: 'GET',
+        dataType: 'json'
+      }) // Metadata
+    ).done(function(migration, meta) {
+      // Clean up
+      $(el).removeClass('btn-warning btn-success');
+
+      // Update our last sync time
+      $(el).find('.sync-time').text((new Date(migration[0].syncedAt*1000)).toLocaleString());
+      var min_ood = meta[0].rowsUpdatedAt - migration[0].syncedAt;
+      if(min_ood > 0) {
+        // OUTATIME!!!
+        $(el).find('.sync-state').text((min_ood/60).toFixed(1) + " minutes out of date");
+        $(el).removeClass("panel-default").addClass("panel-warning");
+      } else {
+        // We're up to date
+        $(el).find('.sync-state').text("up to date");
+        $(el).removeClass("panel-default").addClass("panel-success");
+      }
+    });
+  };
+
   // Generates sample URLs for a given column and datatype
   var load_query_suggestions = function(base_url, display_url, field_name, datatype, div) {
     // Fetch sample data & template at the same time
@@ -194,8 +228,8 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
       var name_shortenings = {}
       var nbe_uid = null;
       var obe_uid = null;
-      var last_synced = 0;
       var is_obe = false;
+      var is_synced = false;
       var redirected = (Cookies.get('foundry-redirected') == "true");
 
       if(migration != null && migration[1] == "success") {
@@ -204,8 +238,8 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
         name_shortenings = mapping.nameShortening;
         nbe_uid = migration[0].nbeId;
         obe_uid = migration[0].obeId;
-        last_synced = (new Date(migration[0].syncedAt*1000).toLocaleString());
         is_obe = (obe_uid == args.uid);
+        is_synced = !is_obe;
       }
 
       // If we're looking at an OBE dataset and we haven't forced these docs, redirect
@@ -260,23 +294,29 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
       var full_url = query_base + "/resource/" + args.uid + ".json";
       var display_url = endpoint_base + "/resource/" + args.uid + ".json";
       $(args.target).html(Mustache.render(template[0], {
+        // Metadata
         uid: args.uid,
         domain: args.domain,
         metadata: metadata[0],
+        // Migration & Versioning
         nbe_uid: nbe_uid,
         obe_uid: obe_uid,
+        is_synced: is_synced,
         is_obe: is_obe,
         is_nbe: !is_obe,
-        show_migration: flags.show_migration && is_obe,
+        version: is_obe ? '2.0' : '2.1',
+        show_migration: is_obe,
         has_structural_changes: splits.length > 0,
         splits: splits,
         has_renames: renames.length > 0,
         renames: renames,
-        last_synced: last_synced,
+        // Size, links
         count: count[0][0].count.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"),
         full_url: full_url,
         display_url: display_url,
+        query_base: query_base,
         redirected: redirected,
+        // Private datasets
         is_private: Cookies.get('dev_proxy_domain') == args.domain && metadata[0].flags["public"] == undefined,
         username: decodeURI((Cookies.get('dev_proxy_user') || '').replace(/\+/g, '%20')),
         logout_url: "https://proxy." + window.location.hostname + "/logout/"
@@ -321,6 +361,11 @@ define(['jquery', 'mustache', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryi
         moreLink: '<a href="#">Show more <i class="fa fa-angle-double-down"></i></a>',
         lessLink: '<a href="#">Show less <i class="fa fa-angle-double-up"></i></a>'
       });
+
+      if(!is_obe) {
+        // If we're on NBE, update our sync status
+        load_sync_state($('.synced'));
+      }
     }).fail(function(xhr) {
       switch(xhr.status) {
         case 403:

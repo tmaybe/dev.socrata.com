@@ -27,7 +27,7 @@ First, you'll need to install a few Python packages with `pip`:
 
 We're going to be analyzing this dataset of [Los Angeles Police Department Calls for Service](https://data.lacity.org/A-Safe-City/LAPD-Calls-for-Service-YTD-2014/mgue-vbsx). For fun, let's analyze the dataset and see what days of the week the most noise disturbance calls for "Parties" are on, and see if we can identify some popular holidays.
 
-First, we'll structure a query that uses [SoQL](/docs/queries.html) to aggregate the dataset so that we don't need to pull down all of the details of the millions of calls the LAPD has received. We'll do a few things:
+First, we'll structure a query that uses [SoQL](/docs/queries/) to aggregate the dataset so that we don't need to pull down all of the details of the millions of calls the LAPD has received. We'll do a few things:
 
 - Filter the dataset by `call_type_code` "507P", the code for a noise violation call on a party
 - Aggregate by the truncated version of the `dispatch_date` field and get the count of noise violations per day

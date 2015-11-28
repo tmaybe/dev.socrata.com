@@ -9,10 +9,16 @@ datatypes:
 - double
 - money
 - floating_timestamp
+versions:
+- 2.1
 description: Returns TRUE for values not in a given range
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 `not between` is used with the `$where` parameter to return numeric or time stamp values excluding those between two input values. For example, to get all of the individuals who make less than $40,000 or more than $150,000 at the White House:
 
