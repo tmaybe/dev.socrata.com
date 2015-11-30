@@ -45,6 +45,7 @@ custom_js:
 - /js/peeper.js
 - /common/js/lib/socrata-status.js
 - /common/js/lib/clipboard.js
+- /common/js/lib/ga-tracking.js
 
 gems:
 - jekyll-redirect-from
