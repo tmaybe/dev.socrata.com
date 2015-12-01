@@ -15,7 +15,7 @@ stamp:
 done:
 	if [[ -x /usr/local/bin/terminal-notifier && -x /usr/local/bin/reattach-to-user-namespace ]]; then \
 		reattach-to-user-namespace terminal-notifier -message "Done!"; \
-	fi ;
+	fi
 
 # Pushes updated taglines file. Since this requires my password, you (probably) can't run it...
 taglines:
@@ -32,7 +32,6 @@ all: clean jekyll stamp done
 
 # Builds the site and runs linklint to check for bad links
 test: clean jekyll stamp htmlproof done
-	bundle exec htmlproof ./public --only-4xx --check-html --href-ignore "/#/,/\/register/,/APP_TOKEN/"
 
 stage: clean jekyll stamp htmlproof surge-stage done
 
