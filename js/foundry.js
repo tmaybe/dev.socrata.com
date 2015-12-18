@@ -101,6 +101,46 @@ define(['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.
               + lon + ", 1000)";
             break;
 
+          case "multipolygon":
+            var lat = 47.59;
+            var lon = -122.33;
+
+            suggestions.query = "within_circle("
+              + field_name + ", "
+              + lat + ", "
+              + lon + ", 1000)";
+            break;
+
+          case "polygon":
+            var lat = 47.59;
+            var lon = -122.33;
+
+            suggestions.query = "within_circle("
+              + field_name + ", "
+              + lat + ", "
+              + lon + ", 1000)";
+            break;
+
+          case "line":
+            var lat = 47.59;
+            var lon = -122.33;
+
+            suggestions.query = "within_circle("
+              + field_name + ", "
+              + lat + ", "
+              + lon + ", 1000)";
+            break;
+
+          case "multiline":
+            var lat = 47.59;
+            var lon = -122.33;
+
+            suggestions.query = "within_circle("
+              + field_name + ", "
+              + lat + ", "
+              + lon + ", 1000)";
+            break;
+
           case "location":
             var lat = 47.59;
             var lon = -122.33;
