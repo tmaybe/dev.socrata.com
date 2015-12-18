@@ -37,4 +37,14 @@ Just like the [Location](/docs/datatypes/location.html) datatype, you can use th
 
 However, there are also a ton of additional geo query functions that come with the Point datatype. For example, to aggregate that same dataset by ward and return polygons surrounding each cluster, in [GeoJSON](/docs/formats/geojson.html):
 
-{% include tryit.html domain='data.cityofchicago.org' path='/resource/6zsd-86xi.geojson' args="$select=ward, count(*), convex_hull(location)&$group=ward" %}
+{% include tryit.html domain='data.cityofchicago.org' path='/resource/6zsd-86xi.geojson' args="$select=ward, count(&#42;), convex_hull(location)&$group=ward" %}
+
+## Why are the latitude and longitude backwards?!
+
+Back in school, you were taught that points on the earth were defined as "degrees of latitude and longitude", right? You probably used them to find locations on the globe, to locate your campsite, or to plot the location of that prime fishing spot or anchorage. So why then are locations in the `Point` datatype encoded as `$longitude, $latitude`?
+
+Well, a latitude and longitude pair, usually used on a [Mercator projection](https://en.wikipedia.org/wiki/Mercator_projection) is actually only one of many many different ways of translating locations on our (semi-)spherical world onto a flat piece of paper (or an LCD monitor). Not only are there dozens of ways of flattening that globe into a plane (called [map projections](https://en.wikipedia.org/wiki/Map_projection)), but there are also thousands of ways of actually mapping coordinates onto those projections. 
+
+GeoJSON and Well Known Text are designed to be flexible to work with many different map projections and coordinate projections, and just like the Cartesian coordinates you learned in math class, those coordinates are encoded in "X, Y" order. With the [`EPSG:4326`](http://epsg.io/4326) coordinate system that we use for our geospatial datatypes, that means that the coordinates are encoded in `$longitude, $latitude` order.
+
+For fun, check out [this excellent XKCD comic](https://xkcd.com/977/) to see what your favorite map projection says about you.
