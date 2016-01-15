@@ -26,6 +26,7 @@ GEM
     ferret (0.11.8.6)
     ffi (1.9.10)
     gemoji (2.1.0)
+    git-version-bump (0.15.1)
     github-pages (39)
       RedCloth (= 4.2.9)
       github-pages-health-check (~> 0.2)
@@ -123,6 +124,10 @@ GEM
     pygments.rb (0.6.3)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.2.0)
+    rack (1.6.4)
+    rack-contrib (1.4.0)
+      git-version-bump (~> 0.15)
+      rack (~> 1.4)
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -153,6 +158,8 @@ DEPENDENCIES
   mime-types
   nokogiri
   pry
+  rack
+  rack-contrib
 
 BUNDLED WITH
    1.10.6
