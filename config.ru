@@ -7,7 +7,8 @@ use Rack::TryStatic, {
   urls: %w[/],
   try: %w[
     .html index.html /index.html
-  ]
+  ],
+  :header_rules => [[ :all, { 'Cache-control' => 'no-cache' } ]]
 }
 
 run lambda { |env|
@@ -15,7 +16,7 @@ run lambda { |env|
     200,
     {
       'Content-type' => 'text/html',
-      'Cache-control' => 'public, max-age=86400'
+      'Cache-control' => 'no-cache'
     },
     File.open('public/200.html', File::RDONLY)
   ]

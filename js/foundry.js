@@ -357,7 +357,7 @@ define(
           level: 'warning',
           icon: 'warning',
           title: 'Heads up!',
-          message: 'A <a target="_blank" href="/foundry/#/' +
+          message: 'A <a target="_blank" href="/foundry/' +
             domain + '/' + migration.nbeId + 
             '">new, improved version of this API</a> is available for your use.'
         });
@@ -471,7 +471,7 @@ define(
           title: 'Please wait!',
           message: "Redirecting you to the API endpoint for this filtered view..."
         });
-        $.redirect(window.location.pathname + "#/" + args.domain + "/" + default_view[0]["id"]);
+        $.redirect("/foundry/" + args.domain + "/" + default_view[0]["id"]);
         return false;
       } else if(!default_view && by_resource && by_resource[1] == "success") {
         // We didn't get a default view, but we did get it by resource
@@ -488,7 +488,7 @@ define(
           title: 'Please wait!',
           message: "Redirecting you to the new API endpoint for this datset..."
         });
-        $.redirect(window.location.pathname + "#/" + args.domain + "/" + migration[0].nbeId);
+        $.redirect("/foundry/" + args.domain + "/" + migration[0].nbeId);
         return false;
       }
 
