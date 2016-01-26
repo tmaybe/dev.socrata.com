@@ -17,10 +17,6 @@
       <h3 class="panel-title"><i class="fa fa-info-circle"></i> About This Dataset</h3>
     </div>
     <div class="panel-body">
-      {{#metadata.description}}
-        <p class="description">{{metadata.description}}</p>
-      {{/metadata.description}}
-
       <ul>
         <li><em>Total Rows:</em> <span class="row-count" data-query-base="{{query_base}}" data-uid="{{uid}}">&hellip;</span></li>
         <li><em>Source Domain:</em> <a href="http://{{domain}}">{{domain}}</a></li>
@@ -57,14 +53,20 @@
       </div>
     {{/structural_metadata.newBackend}}
   {{/migration}}
+
+  <div class="odn" data-uid="{{uid}}" data-domain="{{domain}}" data-name="{{metadata.name}}"/>
 </div>
+
+{{#metadata.description}}
+  <div class="description">
+    <p class="description">{{metadata.description}}</p>
+  </div>
+{{/metadata.description}}
 
 <div class="getting-started">
   <h2>Getting Started</h2>
 
   <p>All communication with the API is done through HTTPS, and errors are communicated through HTTP response codes. Available response types include <code>JSON</code>, <code>XML</code>, and <code>CSV</code>, which are selectable by the "extension" (<code>.json</code>, etc.) on the API endpoint or through content-negotiation with HTTP <code>Accepts</code> headers.</p>
-
-  <p>Following <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>-ful paradigms, we return standard <a href="/docs/response-codes.html">HTTP Status Codes</a> to denote success or failure. For example, a successful request will get a <code>200 OK</code>, while a bad query will get a <code>400 Bad Request</code>. Errors are also accompanied by an <a href="/docs/response-codes.html">error response</a> including a human-readable error message.</p>
 
   <p>This documentation also includes inline, runable examples. Click on any link that contains a <code><i class="fa fa-fw fa-cog" style="color: #c7254e"></i> gear symbol</code> next to it to run that example live against the <code>{{metadata.name}}</code> API. If you just want to grab the API endpoint and go, you'll find it below.</p>
 
@@ -72,8 +74,6 @@
     <a class="tryit" href="{{full_url}}">{{display_url}}</a>
   </div>
 </div>
-
-<div class="clearfix"></div>
 
 <div class="well">
   <p>Learn more about:</p>
