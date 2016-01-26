@@ -9,7 +9,6 @@
     <ul>
       <li><a target="_blank" href="http://www.opendatanetwork.com/dataset/{{domain}}/{{uid}}">More about this dataset</a></li>
       <li><a target="_blank" href="http://www.opendatanetwork.com/search?categories={{category}}">See more {{category}} datasets</a></li>
-      <li><a target="_blank" href="http://www.opendatanetwork.com/search?domains={{domain}}">Other datasets from {{domain}}</a></li>
       {{#mapping}}
       <li><a target="_blank" href="http://www.opendatanetwork.com/region/{{region_id}}">Learn more about the "{{region_name}}" area</a></li>
       {{/mapping}}
