@@ -1,4 +1,4 @@
-<div class="pull-right sidebar">
+<div class="pull-right sidebar metadata">
   {{#is_private}}
     <div class="panel panel-success logged-in">
       <div class="panel-heading">
@@ -12,7 +12,7 @@
     </div>
   {{/is_private}}
 
-  <div class="panel panel-info metadata">
+  <div class="panel panel-info about">
     <div class="panel-heading">
       <h3 class="panel-title"><i class="fa fa-info-circle"></i> About This Dataset</h3>
     </div>
@@ -180,9 +180,9 @@
         <h3 class="panel-title">
           <i class="collapse-icon fa fa-fw fa-plus-square-o"></i>
           <code class="field-name {{dataTypeName}}">{{fieldName}}</code>
-          <code class="datatype">{{dataTypeName}}</code>
+          <code class="datatype hidden-xs">{{dataTypeName}}</code>
         </h3>
-        <span class="human-name">{{name}}</span>
+        <span class="human-name hidden-xs">{{name}}</span>
       </div>
       <div 
         id="collapse-{{id}}" 
@@ -192,6 +192,8 @@
         data-display-url="{{display_url}}"
         class="panel-collapse collapse">
         <div class="panel-body">
+          <h4 class="visible-xs-block">{{name}}</h4>
+
           {{#description}}
             <p class="description">{{description}}</p>
           {{/description}}

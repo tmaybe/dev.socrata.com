@@ -437,6 +437,15 @@ define(
 
       // Load related links from the ODN
       $('.odn').update_odn();
+
+      // If we're on a small screen, un-float the float
+      if($(window).width() < 768) {
+        $('.metadata')
+          .removeClass('pull-right')
+          .removeClass('sidebar')
+          .detach()
+          .insertBefore('.getting-started');
+      }
     });
   };
 
