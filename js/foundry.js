@@ -245,7 +245,7 @@ define(
         $.when(
           $.ajax('/foundry/odn.mst'),
           $.ajax('https://api.us.socrata.com/api/catalog/v1?q=' + name),
-          $.ajax('https://odn.data.socrata.com/resource/jwbj-xtgt.json?$limit=1&domain=' + domain)
+          $.ajax('https://odn.data.socrata.com/resource/jwbj-xtgt.json?$where=region_id IS NOT NULL&$limit=1&domain=' + domain)
         ).done(function(template, search, mappings) {
           // Hopefully one of these is our dataset
           var dataset = _.find(search[0].results, function(ds) {
