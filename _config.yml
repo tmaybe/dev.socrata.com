@@ -22,6 +22,8 @@ icon: fa fa-code
 github_repo: https://github.com/socrata/dev.socrata.com
 contribute: /contributing.html
 
+dataset_limit: 50000
+
 # Setup for RSS feeds
 name: 'Socrata Developer Portal Changelog'
 description: 'Recent, significant changes to http://dev.socrata.com'
