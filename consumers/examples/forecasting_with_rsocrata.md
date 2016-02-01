@@ -1,28 +1,35 @@
 ---
 layout: with-sidebar
-title: R Forecasting with RSocrata
+title: Forecasting with RSocrata
 sidebar: consumer
 type: example
 audience: consumer
 author: stuagano
 ---
 
-Ever since the City of Chicago team built the [RSocrata Connector](https://github.com/Chicago/RSocrata) I have been dying to put together this simple tutorial for showing the ability for forecasting data in R on top of Socrata datasets. 
+Ever since the City of Chicago team built the [RSocrata Connector](https://github.com/Chicago/RSocrata) I have been dying to put together this simple tutorial for showing the ability for forecasting data in R on top of Socrata datasets. Most recently the City of Chicago updated the RSocrata connector to include `write.Socrata` which will have a number of interesting uses. 
 
 This example is pulling a dataset in from the [City of Austin Open Data Portal](http://data.austintexas.gov) containing [EMS Incidents by Month](https://data.austintexas.gov/Public-Safety/EMS-Incidents-by-Month/gjtj-jt2d) and forecasting the next two years of EMS Incidents. 
 
-Two dependencies you will need are:
+Three dependencies you will need are:
 
 {% highlight R %}
-install(RSocrata)
-library(forecast)
+devtools [needed for getting the github version of RSocrata and not through CRAN]
+RSocrata [Reading and Writing to and from Socrata]
+forecast [values generator]
 {% endhighlight %}
 
-The first step is to import the dataset as an R dataframe. 
+Step 0: getting RSocrata from Github
+
+{% highlight R %}
+install_github("Chicago/RSocrata")
+{% endhighlight %}
+
+The first real step is to import the dataset as an R dataframe. 
 
 {% highlight R %}
 # API Endpoint for EMS-Ambulence Responses by Month
-read.socrata("https://data.austintexas.gov/resource/bptg-ndvw.json") 
+EMSIncidents <- read.socrata("https://data.austintexas.gov/resource/bptg-ndvw.json") 
 {% endhighlight %}
 
 The next step is to create a time series variable based off of the response column in the dataset. 
@@ -46,7 +53,7 @@ plot(fit)
 
 ![Seasonality](/img/r_forecasting_2.png)
 
-Finaly we can forecast the dataset out a number of periods. 
+Next we can forecast the dataset out a number of periods. 
 
 {% highlight R %}
 # Projected Forecast
@@ -56,7 +63,24 @@ plot(forecast(fit))
 
 ![Projected Forecast](/img/r_forecasting_3.png)
 
-You can also export your predicted values as a `.csv` file so that you can perform further analysis upon them.
+Lets save these forecasted values in thier own data frame 
 
-There you have it. You have now taken a dataset and loaded it into R and began to forecast values based on the data.  
+{% highlight R %}
+projected <- forecast(fit) # stores it as a list 
+projected.DF <- as.data.frame(projected) #converts list to data frame
+{% endhighlight %}
 
+Next lets write this to Socrata 
+{% highlight R %}
+# Store user email and password
+socrataEmail <- Sys.getenv("SOCRATA_EMAIL", "XXX@socrata.com")
+socrataPassword <- Sys.getenv("SOCRATA_PASSWORD", "XXXXXXX")
+
+datasetToAddToUrl <- "https://opendata.socrata.com/resource/evnp-32vr.json" # dataset
+
+write.socrata(projected.DF,datasetToAddToUrl,"UPSERT",socrataEmail,socrataPassword)
+{% endhighlight %}
+
+Lets use Socrata to visualize this data as well. 
+
+<div><iframe width="500px" title="EMS Incidents Projections" height="425px" src="https://opendata.socrata.com/w/evnp-32vr/y34g-bnf3?cur=c9191PINCHc&from=root" frameborder="0"scrolling="no"><a href="https://opendata.socrata.com/dataset/EMS-Incidents-Projections/evnp-32vr" title="EMS Incidents Projections" target="_blank">EMS Incidents Projections</a></iframe><p><a href="http://www.socrata.com/" target="_blank">Powered by Socrata</a></p></div>
