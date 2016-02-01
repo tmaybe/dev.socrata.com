@@ -14,12 +14,12 @@ This example is pulling a dataset in from the [City of Austin Open Data Portal](
 Three dependencies you will need are:
 
 {% highlight R %}
-devtools [needed for getting the github version of RSocrata and not through CRAN]
-RSocrata [Reading and Writing to and from Socrata]
+devtools [needed for getting the GitHub version of RSocrata and not through CRAN]
+RSocrata [reading and writing to and from Socrata]
 forecast [values generator]
 {% endhighlight %}
 
-Step 0: getting RSocrata from Github
+Step 0: getting RSocrata from GitHub
 
 {% highlight R %}
 install_github("Chicago/RSocrata")
@@ -63,7 +63,7 @@ plot(forecast(fit))
 
 ![Projected Forecast](/img/r_forecasting_3.png)
 
-Lets save these forecasted values in thier own data frame 
+Let's save these forecasted values in their own data frame 
 
 {% highlight R %}
 projected <- forecast(fit) # stores it as a list 
@@ -81,6 +81,6 @@ datasetToAddToUrl <- "https://opendata.socrata.com/resource/evnp-32vr.json" # da
 write.socrata(projected.DF,datasetToAddToUrl,"UPSERT",socrataEmail,socrataPassword)
 {% endhighlight %}
 
-Lets use Socrata to visualize this data as well. 
+Let's use Socrata to visualize this data as well. 
 
 <div><iframe width="500px" title="EMS Incidents Projections" height="425px" src="https://opendata.socrata.com/w/evnp-32vr/y34g-bnf3?cur=c9191PINCHc&from=root" frameborder="0"scrolling="no"><a href="https://opendata.socrata.com/dataset/EMS-Incidents-Projections/evnp-32vr" title="EMS Incidents Projections" target="_blank">EMS Incidents Projections</a></iframe><p><a href="http://www.socrata.com/" target="_blank">Powered by Socrata</a></p></div>
