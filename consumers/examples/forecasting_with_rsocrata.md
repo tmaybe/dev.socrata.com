@@ -83,4 +83,5 @@ write.socrata(projected.DF,datasetToAddToUrl,"UPSERT",socrataEmail,socrataPasswo
 
 Let's use Socrata to visualize this data as well. 
 
-<div><iframe width="500px" title="EMS Incidents Projections" height="425px" src="https://opendata.socrata.com/w/evnp-32vr/y34g-bnf3?cur=c9191PINCHc&from=root" frameborder="0"scrolling="no"><a href="https://opendata.socrata.com/dataset/EMS-Incidents-Projections/evnp-32vr" title="EMS Incidents Projections" target="_blank">EMS Incidents Projections</a></iframe><p><a href="http://www.socrata.com/" target="_blank">Powered by Socrata</a></p></div>
+<iframe width="100%" title="EMS Incidents Projections" height="600px" src="https://opendata.socrata.com/w/evnp-32vr/y34g-bnf3?cur=c9191PINCHc&from=root" frameborder="0" scrolling="no"><a href="https://opendata.socrata.com/dataset/EMS-Incidents-Projections/evnp-32vr" title="EMS Incidents Projections" target="_blank">EMS Incidents Projections</a></iframe>
+
