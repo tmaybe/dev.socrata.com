@@ -5,11 +5,13 @@ require(["jquery", "js.cookie"], function($, Cookies) {
       return;
     }
 
-    var peeper = '<div id="peeper">'
+    var peeper = '<div class="hidden-xs" id="peeper">'
       + '<a href="' + flags.peeper.link + '">'
       + '<img src="' + flags.peeper.img + '" alt="Need a hand?" />'
       + '</a>'
-      + '<a href="#" class="dismiss"><i class="fa fa-times"></i> bye bye!</a>'
+      + '<a href="#" class="dismiss ga-track" data-tracking-category="peeper" data-tracking-label="dismiss">'
+      + '<i class="fa fa-times"></i> bye bye!'
+      + '</a>'
       + '</div>';
     $("body").append(peeper);
 

@@ -29,11 +29,6 @@
 {% when 'publisher' %}
   <li class="nav-header dropdown-header">Data Publishers</li>
   <li><a href="/publishers/">Publisher Guide</a></li>
-  <li class="nav-header dropdown-header">The Publisher API</li>
-  <li><a href="/publishers/getting-started.html">Publisher API Basics</a></li>
-  <li><a href="/publishers/direct-row-manipulation.html">Direct Row Manipulation</a></li>
-  <li><a href="/publishers/upsert.html">Updating via "Upsert"</a></li>
-  <li><a href="/publishers/replace.html">Full Replace</a></li>
 
   <li class="nav-header dropdown-header">Tools &amp; Connectors</li>
   {% for page in site.pages %}
@@ -45,6 +40,12 @@
       {% endif %}
     {% endif %}
   {% endfor %}
+
+  <li class="nav-header dropdown-header">The Publisher API</li>
+  <li><a href="/publishers/getting-started.html">Publisher API Basics</a></li>
+  <li><a href="/publishers/direct-row-manipulation.html">Direct Row Manipulation</a></li>
+  <li><a href="/publishers/upsert.html">Updating via "Upsert"</a></li>
+  <li><a href="/publishers/replace.html">Full Replace</a></li>
 
   <li class="nav-header dropdown-header">SDKs &amp; Libraries</li>
   {% for page in site.pages %}
