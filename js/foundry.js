@@ -257,7 +257,8 @@ define(
             $(el).html(Mustache.render(template[0], {
               domain: domain,
               uid: uid,
-              category: dataset.classification.domain_category.toLowerCase(),
+              categories: dataset.classification.categories,
+              domain_category: dataset.classification.domain_category,
               mapping: mappings[0]
             }));
           }
