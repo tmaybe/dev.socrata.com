@@ -29,7 +29,7 @@ To use a row identifier to look up a row, simply append it to the resource endpo
 
 In contrast, the [Chicago Crimes](https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2) dataset is configured to use a publisher-specified identifier. To look up the earthquake with the ID `00388609`:
 
-{% include tryit.html domain='data.cityofchicago.org' path='/resource/6zsd-86xi/10288725.json' %}
+{% include tryit.html domain='data.cityofchicago.org' path='/resource/6zsd-86xi/10399602.json' %}
 
 ## Establishing a Publisher-Specified Identifier
 

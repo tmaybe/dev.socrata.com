@@ -19,7 +19,7 @@ To start, we'll build our [SoQL query](http://dev.socrata.com/docs/queries/). Ou
 
 {% highlight javascript %}
 // Construct the query string
-url = 'http://data.ct.gov/resource/9k2y-kqxn.json?'
+url = 'https://data.ct.gov/resource/9k2y-kqxn.json?'
       + 'organization_type=Public%20School%20Districts'
       + '&$$app_token=CGxaHQoQlgQSev4zyUh5aR5J3';
 {% endhighlight %}
@@ -63,7 +63,7 @@ To finish it up, we wrap the whole thing in jQuery's `$(window).load` function s
 {% highlight javascript %}
 $(window).load(function() {
     // Construct the query string
-    url = 'http://data.ct.gov/resource/9k2y-kqxn.json?'
+    url = 'https://data.ct.gov/resource/9k2y-kqxn.json?'
           + 'organization_type=Public%20School%20Districts'
           + '&$$app_token=CGxaHQoQlgQSev4zyUh5aR5J3';
     
