@@ -27,4 +27,4 @@ With [SoQL](/docs/queries/), this is fairly straightforward. By using the boolea
 
 For example, here's the query for "228 Market":
 
-{% include tryit.html domain='data.cityofboston.gov' path='/resource/8sq6-p7et.json' args="$where=street%20=%20'Market'%20AND%20(stno%20=%20'228'%20OR%20(stno%20%3C=%20'228'%20AND%20sthigh%20%3E=%20'228'))" %}
+{% include tryit.html domain='data.cityofboston.gov' path='/resource/8sq6-p7et.json' args="$where=street = 'Market' AND (stno = '228' OR (stno <= '228' AND sthigh >= '228'))" %}

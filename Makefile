@@ -1,6 +1,12 @@
 jekyll:
 	bundle exec jekyll build
 
+quick:
+	bundle exec jekyll build --incremental --safe
+
+watch:
+	bundle exec jekyll build --watch --incremental --safe
+
 clean:
 	rm -rf public
 
