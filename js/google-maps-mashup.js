@@ -1,6 +1,6 @@
 require(['jquery', 'googlemaps'], function($, google) {
   // Construct the query string
-  url = 'http://data.ct.gov/resource/9k2y-kqxn.json?'
+  url = 'https://data.ct.gov/resource/9k2y-kqxn.json?'
     + 'organization_type=Public%20School%20Districts'
     + '&$$app_token=CGxaHQoQlgQSev4zyUh5aR5J3';
 
