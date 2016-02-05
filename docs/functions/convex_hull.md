@@ -4,12 +4,21 @@ sidebar: documentation
 title: convex_hull(...)
 
 type: function
-datatypes:
-- point
-- polygon
+function: convex_hull($1)
+description: Returns the minimum convex geometry that encloses all of the geometries within a set
 versions:
 - 2.1
-description: Returns the minimum convex geometry that encloses all of the geometries within a set
+datatypes:
+- point
+- line
+- polygon
+params:
+  $1:
+  - point
+  - line
+  - polygon
+returns: polygon
+
 parent_paths: 
 - /docs/functions/
 parents: 

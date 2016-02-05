@@ -4,14 +4,27 @@ sidebar: documentation
 title: not between ... and ...
 
 type: function
+function: $1 not between $low and $high
+description: Returns TRUE for values not in a given range
+versions:
+- 2.1
 datatypes:
 - number
 - double
 - money
 - floating_timestamp
-versions:
-- 2.1
-description: Returns TRUE for values not in a given range
+params:
+  $1:
+  - number
+  - double
+  - money
+  - floating_timestamp
+  $low:
+  - typeof($1)
+  $high:
+  - typeof($1)
+returns: boolean
+
 parent_paths: 
 - /docs/functions/
 parents: 

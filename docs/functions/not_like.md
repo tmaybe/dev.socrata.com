@@ -4,11 +4,19 @@ sidebar: documentation
 title: not like '...'
 
 type: function
+function: "$1 not like $match"
+description: Allows for matching text fields that do not contain a substring
+versions:
+- 2.1
 datatypes:
 - text 
-versions:
-- 2.1 
-description: Allows for matching text fields that do not contain a substring
+params:
+  $1:
+  - text
+  $match:
+  - text
+returns: boolean
+
 parent_paths: 
 - /docs/functions/
 parents: 

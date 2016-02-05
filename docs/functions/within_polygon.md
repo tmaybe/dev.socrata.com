@@ -4,13 +4,23 @@ sidebar: documentation
 title: within_polygon(...)
 
 type: function
+function: within_polygon($1, $2)
+description: Returns the rows that have locations within the specified box, defined by latitude, longitude corners
+versions:
+- 2.1
 datatypes:
 - point
 - line
 - polygon
-versions:
-- 2.1
-description: Returns the rows that have locations within the specified box, defined by latitude, longitude corners
+params:
+  $1:
+  - point
+  - line
+  - polygon
+  $2:
+  - polygon
+returns: boolean
+
 parent_paths: 
 - /docs/functions/
 parents: 

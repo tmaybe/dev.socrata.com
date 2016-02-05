@@ -4,6 +4,11 @@ sidebar: documentation
 title: count(...)
 
 type: function
+function: count($1)
+description: Returns a count of a given set of records
+versions:
+- 2.0
+- 2.1
 datatypes:
 - text 
 - number
@@ -11,10 +16,11 @@ datatypes:
 - timestamp
 - location
 - point
-versions:
-- 2.0
-- 2.1
-description: Returns a count of a given set of records
+params:
+  $1:
+  - any
+returns: number
+
 parent_paths: 
 - /docs/functions/
 parents: 

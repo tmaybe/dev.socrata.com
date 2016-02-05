@@ -4,14 +4,25 @@ sidebar: documentation
 title: sum(...)
 
 type: function
-datatypes:
-- number
-- double
-- money
-versions:
-- 2.0
-- 2.1
+function: sum($1)
 description: Returns the sum of a given set of numbers 
+versions:
+- 2.1
+datatypes:
+- double
+- floating_timestamp
+- money
+- number
+- text
+params:
+  $1:
+  - double
+  - floating_timestamp
+  - money
+  - number
+  - text
+returns: typeof($1)
+
 parent_paths: 
 - /docs/functions/
 parents: 

@@ -4,15 +4,32 @@ sidebar: documentation
 title: within_box(...)
 
 type: function
+function: within_box($1, $nw_lat, $nw_long, $se_lat, $sw_long)
+description: Returns the rows that have geodata within the specified box, defined by latitude, longitude corners
+versions:
+- 2.0
+- 2.1
 datatypes:
 - location
 - point
 - line
 - polygon
-versions:
-- 2.0
-- 2.1
-description: Returns the rows that have locations within the specified box, defined by latitude, longitude corners
+params:
+  $1:
+  - location
+  - point
+  - line
+  - polygon
+  $nw_lat:
+  - number
+  $nw_long:
+  - number
+  $se_lat:
+  - number
+  $se_long:
+  - number
+returns: boolean
+
 parent_paths: 
 - /docs/functions/
 parents: 

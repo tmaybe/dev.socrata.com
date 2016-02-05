@@ -4,12 +4,17 @@ sidebar: documentation
 title: upper(...)
 
 type: function
+function: upper($1)
+description: Returns the uppercase equivalent of a string of text
+versions:
+- 2.1
 datatypes:
 - text 
-versions:
-- 2.0
-- 2.1
-description: Returns the uppercase equivalent of a string of text
+params:
+  $1:
+  - text
+returns: text
+
 parent_paths: 
 - /docs/functions/
 parents: 

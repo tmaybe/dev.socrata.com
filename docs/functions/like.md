@@ -4,11 +4,19 @@ sidebar: documentation
 title: like '...'
 
 type: function
-datatypes:
-- text 
+function: "$1 like $match"
+description: Allows for substring searches in text strings
 versions:
 - 2.1
-description: Allows for substring searches in text strings
+datatypes:
+- text 
+params:
+  $1:
+  - text
+  $match:
+  - text
+returns: boolean
+
 parent_paths: 
 - /docs/functions/
 parents: 
