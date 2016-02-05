@@ -2,16 +2,32 @@
 layout: with-sidebar
 sidebar: documentation
 title: within_circle(...)
+
 type: function
+function: within_circle($1, $lat, $long, $radius_m)
+description: Returns the rows that have locations within a specified circle, measured in meters
+versions:
+- 2.0
+- 2.1
 datatypes:
 - location
 - point
 - line
 - polygon
-versions:
-- 2.0
-- 2.1
-description: Returns the rows that have locations within a specified circle, measured in meters
+params:
+  $1:
+  - location
+  - point
+  - line
+  - polygon
+  $lat:
+  - number
+  $long:
+  - number
+  $radius_m:
+  - number
+returns: boolean
+
 parent_paths: 
 - /docs/functions/
 parents: 

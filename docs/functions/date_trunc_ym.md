@@ -4,12 +4,18 @@ sidebar: documentation
 title: date_trunc_ym(...)
 
 type: function
-datatypes:
-- floating_timestamp
+function: date_trunc_ym($1)
+description: Truncates a calendar date at the year/month threshold
 versions:
 - 2.0
 - 2.1
-description: Truncates a calendar date at the year/month threshold
+datatypes:
+- floating_timestamp
+params:
+  $1:
+  - floating_timestamp
+returns: text
+
 parent_paths: 
 - /docs/functions/
 parents: 

@@ -4,12 +4,21 @@ sidebar: documentation
 title: extent(...)
 
 type: function
-datatypes:
-- point
-- polygon
+function: extent($1)
+description: Returns a bounding box that encloses a set of geometries
 versions:
 - 2.1
-description: Returns a bounding box that encloses a set of geometries
+datatypes:
+- point
+- line
+- polygon
+params:
+  $1:
+  - point
+  - line
+  - polygon
+returns: polygon
+
 parent_paths: 
 - /docs/functions/
 parents: 

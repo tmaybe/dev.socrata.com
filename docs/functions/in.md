@@ -4,15 +4,23 @@ sidebar: documentation
 title: in(...)
 
 type: function
+function: $1 in($2, ...)
+description: Matches values in a given set of options
+versions:
+- 2.1
 datatypes:
 - text 
 - number
 - double
 - money
 - floating_timestamp
-versions:
-- 2.1
-description: Matches values in a given set of options
+params:
+  $1:
+  - any
+  $2:
+  - typeof($1)
+returns: boolean
+
 parent_paths: 
 - /docs/functions/
 parents: 

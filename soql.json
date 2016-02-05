@@ -1,0 +1,28 @@
+---
+---
+{% assign datatype_pages = site.pages | where: "type", "datatype" %}
+{% assign function_pages = site.pages | where: "type", "function" %}
+
+{
+  "versions" : [ 2.0, 2.1 ],
+  "datatypes" : {
+    {% for dt in datatype_pages %}
+      {{ dt.datatype | jsonify }} : {
+        "href" : {{ dt.url | jsonify }},
+        "name" : {{ dt.title | jsonify }},
+        "versions" : {{ dt.versions | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  },
+  "functions" : {
+    {% for func in function_pages %}
+      {{ func.function | jsonify }} : {
+        "href" : {{ func.url | jsonify }},
+        "description" : {{ func.description | jsonify }},
+        "versions" : {{ func.versions | jsonify }},
+        "params" : {{ func.params | jsonify }},
+        "returns" : {{ func.returns | jsonify  }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  }
+}

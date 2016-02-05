@@ -4,6 +4,10 @@ sidebar: documentation
 title: case(...)
 
 type: function
+function: case($eval, $return, ...)
+description: Returns different values based on the evaluation of boolean comparisons
+versions:
+- 2.1
 datatypes:
 - checkbox
 - double
@@ -15,9 +19,13 @@ datatypes:
 - point
 - polygon
 - text 
-versions:
-- 2.1
-description: Returns different values based on the evaluation of boolean comparisons
+params:
+  $eval:
+  - boolean
+  $return:
+  - any
+returns: typeof($return)
+
 parent_paths: 
 - /docs/functions/
 parents: 
