@@ -19,8 +19,8 @@ require(
       target: $('#foundry-docs'),
       domain: params[1],
       uid: params[2],
-      no_redirect: $.inArray("no-redirect", options) > 0,
-      proxy: $.inArray("proxy", options) > 0
+      no_redirect: $.inArray("no-redirect", options) >= 0,
+      proxy: $.inArray("proxy", options) >= 0
     });
   }
 });
