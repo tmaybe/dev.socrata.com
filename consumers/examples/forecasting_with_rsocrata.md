@@ -85,3 +85,6 @@ Let's use Socrata to visualize this data as well.
 
 <iframe width="100%" title="EMS Incidents Projections" height="600px" src="https://opendata.socrata.com/w/evnp-32vr/y34g-bnf3?cur=c9191PINCHc&from=root" frameborder="0" scrolling="no"><a href="https://opendata.socrata.com/dataset/EMS-Incidents-Projections/evnp-32vr" title="EMS Incidents Projections" target="_blank">EMS Incidents Projections</a></iframe>
 
+[Check out the Code on Github](https://github.com/stuagano/R_Projects/tree/master/Austin%20EMS%20Incidents) 
+
+RSocrata saves the Day!
