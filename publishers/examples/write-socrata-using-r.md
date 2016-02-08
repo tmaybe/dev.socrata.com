@@ -31,6 +31,6 @@ write.socrata(long.DF,datasetToAddToUrl,"UPSERT",socrataEmail,socrataPassword
 
 Using Socrata to Visualize the Data.
 
-<div><iframe width="500px" title="Average GDP Growth by Country" height="425px" src="https://opendata.socrata.com/w/u2pr-5qx3/y34g-bnf3?cur=dLSf7ZOrZmT&from=root" frameborder="0"scrolling="no"><a href="https://opendata.socrata.com/dataset/Average-GDP-Growth-by-Country/u2pr-5qx3" title="Average GDP Growth by Country" target="_blank">Average GDP Growth by Country</a></iframe><p><a href="http://www.socrata.com/" target="_blank">Powered by Socrata</a></p></div>
+<div><iframe width="100%" title="Average GDP Growth by Country" height="425px" src="https://opendata.socrata.com/w/u2pr-5qx3/y34g-bnf3?cur=dLSf7ZOrZmT&from=root" frameborder="0" scrolling="no"><a href="https://opendata.socrata.com/dataset/Average-GDP-Growth-by-Country/u2pr-5qx3" title="Average GDP Growth by Country" target="_blank">Average GDP Growth by Country</a></iframe></div>
 
-![Link to the code on Github](https://github.com/stuagano/R_Projects/tree/master/Tidyr%20and%20Dyplr) go take a look. 
+[Link to the code on Github](https://github.com/stuagano/R_Projects/tree/master/Tidyr%20and%20Dyplr) - go take a look!
