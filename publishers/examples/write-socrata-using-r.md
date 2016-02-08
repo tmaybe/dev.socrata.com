@@ -19,14 +19,11 @@ Heres data from the World Bank on GDP Growth Rates.  As you can see it is stored
 | Arab World   | ARB          | GDP growth (annual %) | NY.GDP.MKTP.KD.ZG |      |      |      |      |      |      |      |      |      |      |      |             |             |             |             |             | 12.60122516 | 8.298998395 | 1.674562132 | 10.28398808 | 9.586066132 | 4.200516832  | -3.640696544 | -2.856583281 | 1.373144378  | -0.709690552 | 0.413388325 | 0.122365198  | 4.358036673  | 1.901193597 | 9.736370165  | 1.397233261  | 4.895711385  | 3.614019302  | 3.533169062 | 2.736176506 | 4.793786889 | 4.250490927  | 4.715284511 | 2.223526746 | 4.966278313  | 2.355654473  | 1.786087698 | 5.210411699 | 9.134031991 | 6.224418243 | 7.228029021 | 5.738490164  | 6.337478784  | 1.48520826   | 4.699088578  | 3.469317602  | 6.610002445  | 2.830243732  | 2.221650145 |      |
 
 {% highlight R %}
-install.packages("dplyr")
+# install.packages("dplyr")
 install.packages("tidyr")
-
 long.DF <- gather(GDP.Growth.Rate.,year,GDPGrowth,X1961:X2015, na.rm = TRUE)
-
 socrataEmail <- Sys.getenv("SOCRATA_EMAIL", "stuart.gano@socrata.com")
 socrataPassword <- Sys.getenv("SOCRATA_PASSWORD", "Wakeboard1")
-
 datasetToAddToUrl <- "https://opendata.socrata.com/resource/qvqx-yuvy.json"
 write.socrata(long.DF,datasetToAddToUrl,"UPSERT",socrataEmail,socrataPassword
 {% endhighlight %}
