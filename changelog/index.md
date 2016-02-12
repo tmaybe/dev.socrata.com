@@ -33,7 +33,7 @@ Every API must change from time to time. While we strive to keep breaking change
 
 # Developer Documentation Updates 
 
-On an almost content basis, we are making updates to the content, samples, and detailed documentation available on this website. In fact, you can contribute by [filing issues](https://github.com/socrata/dev.socrata.com/issues/new) for problems you find or by [submitting pull requests](https://github.com/socrata/dev.socrata.com/pull/new/gh-pages) with fixes or improvements.
+On an almost content basis, we are making updates to the content, samples, and detailed documentation available on this website. In fact, you can contribute by [filing issues](https://github.com/socrata/dev.socrata.com/issues/new) for problems you find or by [submitting pull requests](https://github.com/socrata/dev.socrata.com/compare?expand=1) with fixes or improvements.
 
 You can see details on all the recent activities on the Socrata Developer Portal below.
 
