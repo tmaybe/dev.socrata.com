@@ -1,8 +1,10 @@
 jekyll:
 	bundle exec jekyll build
 
-quick:
+incremental-build:
 	bundle exec jekyll build --incremental --safe
+
+quick: incremental-build stamp
 
 watch:
 	bundle exec jekyll build --watch --incremental --safe
@@ -14,9 +16,19 @@ htmlproof:
 	bundle exec htmlproof ./public --only-4xx --check-html --href-ignore "/#/,/\/foundry/,/\/register/,/APP_TOKEN/"
 
 # Generates a build stamp and plugs it into a file in public
+SHA=$(shell git rev-parse --short HEAD)
+DATE=$(shell date +"%s")
+define STAMP
+{
+  "sha" : "$(SHA)",
+  "href" : "https://github.com/socrata/dev.socrata.com/commit/$(SHA)",
+  "date" : $(DATE)
+}
+endef
+export STAMP
 stamp:
-	echo "SHA: `git rev-parse HEAD`" > ./public/build.txt
-	echo "Date: `date`" >> ./public/build.txt
+	echo "Stamping with build.json..."
+	@echo "$$STAMP" > ./public/build.json
 
 done:
 	if [[ -x /usr/local/bin/terminal-notifier && -x /usr/local/bin/reattach-to-user-namespace ]]; then \

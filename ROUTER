@@ -5,6 +5,7 @@
 301   /4                                              /
 301   /changelog/2016/01/04/system                    /changelog/2016/01/04/system-fields.html
 301   /docs/                                          /docs/endpoints.html
+301   /build.txt                                      /build.json
 
 # I have no idea how these field guide links got directed to me, but lets clean this up
 301   /open-data-field-guide/three-tips-to-it-savings-with-open-data/   https://www.socrata.com/open-data-field-guide/
