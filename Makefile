@@ -17,7 +17,7 @@ htmlproof:
 
 # Generates a build stamp and plugs it into a file in public
 SHA=$(shell git rev-parse --short HEAD)
-DATE=$(shell date +"%s")
+DATE=$(shell git show --pretty="format:%at" HEAD | head -n 1)
 define STAMP
 {
   "sha" : "$(SHA)",
