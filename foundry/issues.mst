@@ -1,0 +1,16 @@
+<div class="panel panel-info issues">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="fa fa-github"></i> Discuss This Dataset</h3>
+  </div>
+
+  <div class="panel-body">
+    <p>There {{#plural}}are{{/plural}}{{^plural}}is{{/plural}} currently <a target="_blank" href="http://github.com/socrata/discuss/issues?q={{nugget}}">{{count}} discussion {{#plural}}threads{{/plural}}{{^plural}}thread{{/plural}}</a> about this dataset.{{#issues}} Below are some the most recent.{{/issues}}</p>
+
+    <ul>
+      {{#issues}}
+      <li><a target="_blank" href="{{html_url}}">{{short_title}}</a></li>
+      {{/issues}}
+    </ul>
+  </div>
+  <div class="panel-footer"><a target="_blank" href="https://github.com/socrata/discuss/issues/new?labels=dataset&title={{nugget}} Question about %22{{name}}%22">Start a new discussion &raquo;</a></div>
+</div>

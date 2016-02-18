@@ -264,6 +264,40 @@ define(
           }
         });
       });
+    },
+
+    // Load discussion details from GitHub
+    update_issues: function() {
+      $(this).each(function() {
+        var uid = $(this).attr('data-uid');
+        var domain = $(this).attr('data-domain');
+        var name = $(this).attr('data-name');
+        var el = $(this);
+        var nugget = "[" + domain + "/" + uid + "]";
+
+
+        // Fetch count from the discussions forum on GitHub
+        $.when(
+          $.ajax("https://proxy." + 
+            window.location.hostname + 
+            "/github/repos/socrata/discuss/issues?sort=updated&filter=" + nugget
+          ),
+          $.ajax("/foundry/issues.mst")
+        ).done(function(issues, template) {
+          _.each(issues[0], function(issue) {
+            issue.short_title =
+              issue.title.replace(nugget, '').trim();
+          });
+
+          $(el).html(Mustache.render(template[0], {
+            name: name,
+            count: issues[0].length,
+            plural: issues[0].length != 1,
+            nugget: nugget,
+            issues: issues[0]
+          }));
+        });
+      });
     }
   });
 
@@ -438,6 +472,9 @@ define(
 
       // Load related links from the ODN
       $('.odn').update_odn();
+
+      // Load up issues from GitHub
+      $('.issues').update_issues();
 
       // If we're on a small screen, un-float the float
       if($(window).width() < 768) {
