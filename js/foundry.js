@@ -280,7 +280,7 @@ define(
         $.when(
           $.ajax("https://proxy." + 
             window.location.hostname + 
-            "/github/repos/socrata/discuss/issues?sort=updated&filter=" + nugget
+            "/github/repos/socrata/discuss/issues?state=open&sort=updated&filter=" + nugget
           ),
           $.ajax("/foundry/issues.mst")
         ).done(function(issues, template) {
