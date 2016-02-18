@@ -4,7 +4,7 @@
   </div>
 
   <div class="panel-body">
-    <p>There {{#plural}}are{{/plural}}{{^plural}}is{{/plural}} currently <a target="_blank" href="http://github.com/socrata/discuss/issues?q={{nugget}}">{{count}} discussion {{#plural}}threads{{/plural}}{{^plural}}thread{{/plural}}</a> about this dataset.{{#issues}} Below are some the most recent.{{/issues}}</p>
+    <p>There {{#plural}}are{{/plural}}{{^plural}}is{{/plural}} currently <a target="_blank" href="http://github.com/socrata/discuss/issues?q={{nugget}}">{{count}} open discussion {{#plural}}threads{{/plural}}{{^plural}}thread{{/plural}}</a> about this dataset.{{#issues}} Below are some the most recent.{{/issues}}</p>
 
     <ul>
       {{#issues}}
