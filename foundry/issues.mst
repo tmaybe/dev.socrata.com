@@ -4,7 +4,7 @@
   </div>
 
   <div class="panel-body">
-    <p>There {{#plural}}are{{/plural}}{{^plural}}is{{/plural}} currently <a target="_blank" href="http://github.com/socrata/discuss/issues?q={{nugget}}">{{count}} open discussion {{#plural}}threads{{/plural}}{{^plural}}thread{{/plural}}</a> about this dataset.{{#issues}} Below are some the most recent.{{/issues}}</p>
+    <p>There {{#plural}}are{{/plural}}{{^plural}}is{{/plural}} currently <a target="_blank" href="http://github.com/socrata/discuss/issues?q={{nugget}}">{{count}} open community-supported discussion {{#plural}}threads{{/plural}}{{^plural}}thread{{/plural}}</a> about this dataset.{{#issues}} Below are some the most recent.{{/issues}}</p>
 
     <ul>
       {{#issues}}
@@ -12,5 +12,25 @@
       {{/issues}}
     </ul>
   </div>
-  <div class="panel-footer"><a target="_blank" href="https://github.com/socrata/discuss/issues/new?labels=dataset&title={{nugget}} Question about %22{{name}}%22">Start a new discussion &raquo;</a></div>
+  <div class="panel-footer"><a data-toggle="modal" data-target="#discuss-modal" href="#">Start a new discussion &raquo;</a></div>
+</div>
+
+<div class="modal fade" id="discuss-modal" tabindex="-1" role="dialog" aria-labelledby="discuss-modal-label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="discuss-modal-label">Community-Supported Discussions</h4>
+      </div>
+      <div class="modal-body">
+        <p>Please note that this is an unofficial discussion forum, supported by Socrata staff and our civic developer community. Although we'll make our best effort to answer the questions we receive, we can't guarantee an official response or action from the data publishers themselves.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Eh, nevermind...</button>
+        <a type="button" class="btn btn-primary" target="_blank" href="https://github.com/socrata/discuss/issues/new?labels=dataset&title={{nugget}} Question about %22{{name}}%22">Take me there!</a>
+      </div>
+    </div>
+  </div>
 </div>
