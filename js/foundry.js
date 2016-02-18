@@ -280,21 +280,21 @@ define(
         $.when(
           $.ajax("https://proxy." + 
             window.location.hostname + 
-            "/github/repos/socrata/discuss/issues?state=open&sort=updated&filter=" + nugget
+            "/github/search/issues?q=repo:socrata/discuss state:open " + nugget
           ),
           $.ajax("/foundry/issues.mst")
         ).done(function(issues, template) {
-          _.each(issues[0], function(issue) {
+          _.each(issues[0].items, function(issue) {
             issue.short_title =
               issue.title.replace(nugget, '').trim();
           });
 
           $(el).html(Mustache.render(template[0], {
             name: name,
-            count: issues[0].length,
-            plural: issues[0].length != 1,
+            count: issues[0].total_count,
+            plural: issues[0].total_count != 1,
             nugget: nugget,
-            issues: issues[0]
+            issues: issues[0].items
           }));
         });
       });
