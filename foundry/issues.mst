@@ -29,7 +29,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Eh, nevermind...</button>
-        <a type="button" class="btn btn-primary" target="_blank" href="https://github.com/socrata/discuss/issues/new?labels=dataset&title={{nugget}} Question about %22{{name}}%22">Take me there!</a>
+        <a type="button" class="btn btn-primary" target="_blank" href="https://github.com/socrata/discuss/issues/new?labels=dataset&title={{nugget}} Question about %22{{name}}%22&body=API Docs: https://dev.socrata.com/foundry/{{domain}}/{{uid}}">Take me there!</a>
       </div>
     </div>
   </div>

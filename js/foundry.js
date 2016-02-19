@@ -291,6 +291,8 @@ define(
 
           $(el).html(Mustache.render(template[0], {
             name: name,
+            domain: domain,
+            uid: uid,
             count: issues[0].total_count,
             plural: issues[0].total_count != 1,
             nugget: nugget,
