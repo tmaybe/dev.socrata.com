@@ -1,0 +1,39 @@
+---
+---
+{
+  "name" : "Open Data Network",
+  "description" : "This is an inventory of all of the public open data APIs made available through the Open Data Network and it's affiliated government open data portals.",
+  "image" : "https://dev.socrata.com/img/snuffleupacan.png",
+  "tags" : [
+    "open data",
+    "government",
+    "APIs"
+  ],
+  "created" : "2016-03-03",
+  "updated" : "{{updated_date}}",
+  "url" : "https://dev.socrata.com/apis.json",
+  "specificationVersion" : "0.15",
+  "maintainers": [
+    {
+      "FN": "Socrata, Inc.",
+      "X-Twitter": "socrata",
+      "X-Github" : "https://github.com/socrata/"
+      "Email": "info@socrata.com"
+    }
+  ],
+  "apis" : [
+    {% for api in page.apis %}
+      {
+        "name" : {{ api.name | jsonify }},
+        "description" : {{ api.description | jsonify }},
+        "humanURL" : "https://dev.socrata.com/foundry/{{ api.domain }}/{{ api.uid }}",
+        "baseURL" : "https://{{ api.domain }}/resource/{{ api.uid }}",
+        "tags" : {{ api.tags | jsonify }},
+        "properties" : [ {
+          "type" : "X-signup",
+          "url" : "https://{{ api.domain }}/profile/app_tokens"
+        } ]
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
