@@ -2,6 +2,7 @@
 ---
 {% assign datatype_pages = site.pages | where: "type", "datatype" %}
 {% assign function_pages = site.pages | where: "type", "function" %}
+{% assign format_pages = site.pages   | where: "type", "format" %}
 
 {
   "versions" : [ 2.0, 2.1 ],
@@ -11,6 +12,16 @@
         "href" : {{ dt.url | jsonify }},
         "name" : {{ dt.title | jsonify }},
         "versions" : {{ dt.versions | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  },
+  "formats" : {
+    {% for format in format_pages %}
+      {{ format.extension | jsonify }} : {
+        "href" : {{ format.url | jsonify }},
+        "name" : {{ format.format | jsonify }},
+        "extension" : {{ format.extension | jsonify }},
+        "versions" : {{ format.versions | jsonify }}
       }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   },

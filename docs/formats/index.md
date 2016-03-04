@@ -24,15 +24,14 @@ The Socrata Open Data API supports a number of different response formats that c
     <th class="availability"><a href="/docs/endpoints.html">Availability &raquo;</a></th>
   </thead>
   <tbody>
-    {% for page in site.pages %} 
-      {% if page.type == "format" %} 
-        <tr class="function" data-versions="{{page.versions | join}}">
-          <td><a href="{{page.url}}">{{page.format}}</a></td>
-          <td><code>{{page.extension}}</code></td>
-          <td><code>{{page.mime-type}}</code></td>
-          <td>{{page.versions | sort | array_to_sentence_string}}</td>
-        </tr>
-      {% endif %}
+    {% assign format_pages = site.pages | where: "type", "format" %}
+    {% for page in format_pages %} 
+      <tr class="function" data-versions="{{page.versions | join}}">
+        <td><a href="{{page.url}}">{{page.format}}</a></td>
+        <td><code>{{page.extension}}</code></td>
+        <td><code>{{page.mime-type}}</code></td>
+        <td>{{page.versions | sort | array_to_sentence_string}}</td>
+      </tr>
     {% endfor %}
   </tbody>
 </table>

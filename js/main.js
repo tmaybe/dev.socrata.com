@@ -13,7 +13,7 @@ require(["jquery", "bootstrap"], function($) {
 
 // TryIt Links
 require(["jquery", "tryit"], function($, TryIt) {
-  $(document).ready(TryIt.setup_livedocs($("body")));
+  $(document).ready(TryIt.setup_livedocs($("a.tryit")));
 });
 
 // Load scripts which just inspect the DOM
@@ -21,9 +21,3 @@ require(["emphasis", "featherlight"], function(emphasis, featherlight) {
   // Bind Featherlight
   $('a[data-featherlight]').featherlight();
 });
-
-// Clipboard Links
-// TODO: Find a non-Flash clipboard alternative
-// require(['jquery', 'clipboard'], function($, ClipBoard) {
-//   ClipBoard.clipbutton($('pre'));
-// });
