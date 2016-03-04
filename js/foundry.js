@@ -1,6 +1,6 @@
 define(
-    ['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit', 'jquery.redirect', 'jquery.splash'],
-    function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt, Redirect, Splash) {
+  ['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit', 'jquery.redirect', 'jquery.splash', 'proxy'],
+  function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt, Redirect, Splash, Proxy) {
 
   // Set up some JQuery convenience functions
   $.fn.extend({
@@ -207,7 +207,7 @@ define(
               suggestions: suggestions
             }));
 
-            TryIt.setup_livedocs(tryit);
+            TryIt.setup_livedocs($(el).find('a.tryit'));
           } catch(err) {
             console.log("Error loading sample data: " + err);
           }
@@ -278,8 +278,7 @@ define(
 
         // Fetch count from the discussions forum on GitHub
         $.when(
-          $.ajax("https://proxy." + 
-            window.location.hostname + 
+          $.ajax(Proxy.root() + 
             "/github/search/issues?q=repo:socrata/discuss state:open " + nugget
           ),
           $.ajax("/foundry/issues.mst")
@@ -408,8 +407,8 @@ define(
         query_base: query_base,
         // Private datasets
         is_private: !is_public,
-        username: decodeURI((Cookies.get('dev_proxy_user') || '').replace(/\+/g, '%20')),
-        logout_url: "https://proxy." + window.location.hostname + "/logout/"
+        username: Proxy.username(),
+        logout_url: Proxy.logout_url()
       });
       $(args.target).html(content);
 
@@ -435,7 +434,7 @@ define(
       $('.row-count').update_count();
 
       // Set up our livedocs links
-      TryIt.setup_livedocs($(args.target));
+      TryIt.setup_livedocs($(args.target).find('a.tryit'));
 
       // Set up our clipboard buttons
       // TODO: Find a non-Flash clipbutton option
@@ -491,25 +490,8 @@ define(
 
   // Entry point for rendering API docs
   var dataset = function(args) {
-    var query_base = "https://" + args.domain;
+    var query_base = Proxy.query_base(args.domain);
     var endpoint_base = query_base;
-    if(Cookies.get('dev_proxy_user') && Cookies.get('dev_proxy_domain') == args.domain) {
-      // We're now in proxy mode!
-      console.log("Proxying this domain's requests...");
-
-      // If we're proxying through the dev proxy, we need to change our query_base
-      query_base = "https://proxy." + window.location.hostname + "/socrata/" + args.domain;
-
-      // Enable CORS when we're proxying
-      $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
-        options.crossDomain = {
-            crossDomain: true
-          };
-        options.xhrFields = {
-            withCredentials: true
-          };
-      });
-    }
 
     // Front load as many of the things that we can fast-redirct on
     $.when(
@@ -630,7 +612,7 @@ define(
         case 403:
           // TODO: Replace this with a partial
           $("#loading").hide();
-          var auth_url = "https://proxy." + window.location.hostname + "/login/" + args.domain + "?return=" + encodeURIComponent(window.location.href);
+          var auth_url = Proxy.login_url(args.domain);
           $(args.target).append('<h1><i class="fa fa-lock"></i> Private Dataset</h1>');
           $(args.target).append('<p>This dataset is private, and you will need to authenticate before you can access it. When you authenticate, you\'ll be asked to log in and allow access to your private APIs before continuing</p>');
           $(args.target).append('<p>Curious to <a href="/changelog/2015/10/27/private-api-docs.html">learn more about how this works</a>?</p>');
