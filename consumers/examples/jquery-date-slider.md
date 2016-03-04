@@ -9,11 +9,7 @@ author: chriswhong
 
 This example shows how to use a jQueryUI date range slider to build a SODA API query on demand. The user selects the range of data they want, JavaScript builds the corresponding SoQL call and fetches the data from a Socrata dataset.
 
-Let's start with [Fort Worth's Certificate of Occupancy Dataset.](https://data.fortworthtexas.gov/Development-Permitting/Certificate-Of-Occupancy/i85s-46fv) It contains over 36,000 records dating back to the mid 1990s. The task at hand will be to allow a user to easily select a range of dates, and see the corresponding data in an HTML table. (In the real world, we'd want to spruce up the UI for the results a bit more or actually do something with the data, but a table will suffice for now)
-
-Before we break things down, give it a try:
-
-<iframe width="758" height="600" src="http://chriswhong.github.io/sodaDateQuery/" frameborder="0" allowfullscreen></iframe>
+Let's start with Fort Worth's Certificate of Occupancy Dataset [Editors Note: This dataset has since been removed, but we'll keep this example up since it's still useful]. It contains over 36,000 records dating back to the mid 1990s. The task at hand will be to allow a user to easily select a range of dates, and see the corresponding data in an HTML table. (In the real world, we'd want to spruce up the UI for the results a bit more or actually do something with the data, but a table will suffice for now)
 
 Let's get down to business. jQueryUI does have a [simple slider](http://jqueryui.com/slider/) out of the box, but there's a great plugin called [jQRangeSlider](http://ghusse.github.io/jQRangeSlider/) that greatly simplifies the setup and interaction for sliders. With just a few lines of code, we can initialize a date slider with a specified range. Just make a div with id '`slider`' and jQRangeSlider takes care of the rest:
 
@@ -40,7 +36,7 @@ Next, we'll add a listener for when the user clicks the submit button. We'll wan
 
 Our target dataset has two date columns, but we'll be focused on `codate`, the date the certificate of occupancy was issued. The API call we eventually want will have a `$where` clause with two date comparisons that will look something like this:
 
-{% include tryit.html domain='data.fortworthtexas.gov' path='/resource/i85s-46fv.json' args="$where=codate >= '2014-07-01' AND codate < '2014-07-31'" %}
+<code>/resource/i85s-46fv.json?$where=codate &gt;= '2014-07-01' AND codate &lt; '2014-07-31'</code>
 
 We make use of another great javascript library called moment.js to handle the reformatting of the time objects. Here's our submit button listener, which gets the dates, reformats them, then builds the API call:
 
