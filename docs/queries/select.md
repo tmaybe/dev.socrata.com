@@ -6,6 +6,14 @@ parent_paths:
 - /docs/queries/
 parents: 
 - Queries using SODA
+
+type: parameter
+param: "$select"
+in_query: SELECT
+description: "The set of columns to be returned, similar to a `SELECT` in SQL"
+default: All columns, equivalent to `$select=*`
+data_type: string
+order: 1
 ---
 
 The `$select` parameter is similar to a `SELECT` in SQL. It allows expressions and aliases, as well as aggregations when using

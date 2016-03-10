@@ -6,6 +6,14 @@ parent_paths:
 - /docs/queries/
 parents: 
 - Queries using SODA
+
+type: parameter
+param: "$where"
+in_query: WHERE
+default: No filter
+description: "Filters the rows to be returned, similar to `WHERE`"
+data_type: string
+order: 2
 ---
 
 

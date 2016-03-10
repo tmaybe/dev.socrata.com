@@ -6,6 +6,12 @@ parent_paths:
 - /docs/queries/
 parents: 
 - Queries using SODA
+
+type: parameter
+param: "$query"
+description: "A full SoQL query string, all as one parameter"
+data_type: string
+order: 8
 ---
 
 The `$query` parameter allows you to combine multiple SoQL clauses together into a single parameter, for convenience. For example, you could combine a `$select` and a `$where` query together as follows:
