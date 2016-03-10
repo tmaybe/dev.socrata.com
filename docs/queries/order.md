@@ -6,6 +6,14 @@ parent_paths:
 - /docs/queries/
 parents: 
 - Queries using SODA
+
+type: parameter
+param: "$order"
+in_query: ORDER BY
+default: Unspecified order
+description: "Column to order results on, similar to ORDER BY in SQL"
+data_type: string
+order: 3
 ---
 
 The `$order` parameter determines how the results should be sorted, using the values from the specified columns, similar to a SQL `ORDER BY`. Sorting can be performed in either ascending or descending order, the default being ascending, but you can also reverse the order with `DESC`.

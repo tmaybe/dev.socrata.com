@@ -6,6 +6,14 @@ parent_paths:
 - /docs/queries/
 parents: 
 - Queries using SODA
+
+type: parameter
+param: "$group"
+in_query: GROUP BY
+default: No grouping
+description: "Column to group results on, similar to GROUP BY in SQL"
+data_type: string
+order: 4
 ---
 
 SoQL also provides a limited amount of aggregation functionality through its `$group` parameter. `$group` must be used in conjunction with `$select` to provide the aggregation functions you wish to use. For example, to find the strongest earthquake by region, we want to `$group` by `region` and provide a `$select` of `region, MAX(magnitude)`:
