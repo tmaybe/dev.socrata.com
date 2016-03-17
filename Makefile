@@ -16,10 +16,10 @@ htmlproof:
 	bundle exec htmlproof ./public --only-4xx --check-html --href-ignore "/#/,/\/foundry/,/\/register/,/APP_TOKEN/"
 
 casperjs:
-	casperjs --verbose --log-level=warning test _tests/*
+	casperjs --ssl-protocol=any --verbose --log-level=warning test _tests/*
 
 casperdebug:
-	casperjs --verbose --log-level=debug test _tests/*
+	casperjs --ssl-protocol=any --verbose --log-level=debug test _tests/*
 
 # Generates a build stamp and plugs it into a file in public
 SHA=$(shell git rev-parse --short HEAD)
