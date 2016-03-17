@@ -1,9 +1,18 @@
+var system = require('system');
+
 // Tests various API Foundry use cases
 var base = 'https://dev.socrata.com';
+// Set a longer timeout
+if(system.env.BASE) {
+  casper.log('Setting base to ' + system.env.BASE);
+  base = system.env.BASE;
+}
 
-var timeout = function(delay) {
-  casper.log('Timeout after ' + delay + ' milliseconds.', 'warning');
-};
+// Set a longer timeout
+if(system.env.CASPERJS_TIMEOUT) {
+  casper.log('Setting timeout to ' + system.env.CASPERJS_TIMEOUT);
+  casper.options.waitTimeout = parseInt(system.env.CASPERJS_TIMEOUT);
+}
 
 /// 2.1 API, no redirect
 casper.test.begin("2.1 API, no redirect", 7, function(test) {
@@ -14,21 +23,21 @@ casper.test.begin("2.1 API, no redirect", 7, function(test) {
     test.assertSelectorHasText('#branding h4.welcome', 
         'Socrata API, powered by Socrata', 
         'branding header is present and correct');
-  }, timeout, 10000);
+  });
 
   // Check splash
   casper.waitForSelectorTextChange('#splash', function() {
     test.assertSelectorHasText('#splash .alert', 
         'You\'re already using the latest version of this dataset API',
         'splash states we\'re on the latest version');
-  }, timeout, 10000);
+  });
 
   // Check title
   casper.waitForSelectorTextChange('h1#title', function() {
     test.assertSelectorHasText('h1#title',
         'Old Backend Dataset Name',
         'foundry is using old endpoint title');
-  }, timeout, 10000);
+  });
 
   // Check Foundry itself
   casper.waitForSelectorTextChange('#foundry-docs', function() {
@@ -45,7 +54,7 @@ casper.test.begin("2.1 API, no redirect", 7, function(test) {
     test.assertSelectorHasText('#foundry-docs .endpoint .target',
         '/resource/b6kv-3wgw.json',
         'resource endpoint is correct');
-  }, timeout, 10000);
+  });
 
   casper.run(function() {
     test.done();
