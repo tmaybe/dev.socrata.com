@@ -10,7 +10,7 @@ casper.test.begin("2.1 API, no redirect", 7, function(test) {
     test.assertSelectorHasText('#branding h4.welcome', 
         'Socrata API, powered by Socrata', 
         'branding header is present and correct');
-  }, 10000);
+  });
 
   // Check splash
   casper.waitForSelectorTextChange('#splash', function() {
@@ -24,7 +24,7 @@ casper.test.begin("2.1 API, no redirect", 7, function(test) {
     test.assertSelectorHasText('h1#title',
         'Old Backend Dataset Name',
         'foundry is using old endpoint title');
-  }, 10000);
+  });
 
   // Check Foundry itself
   casper.waitForSelectorTextChange('#foundry-docs', function() {
@@ -41,7 +41,7 @@ casper.test.begin("2.1 API, no redirect", 7, function(test) {
     test.assertSelectorHasText('#foundry-docs .endpoint .target',
         '/resource/b6kv-3wgw.json',
         'resource endpoint is correct');
-  }, 10000);
+  });
 
   casper.run(function() {
     test.done();
