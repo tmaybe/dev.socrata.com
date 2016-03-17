@@ -52,4 +52,4 @@ surge:
 all: clean jekyll stamp done
 
 # Builds the site and runs linklint to check for bad links
-test: clean jekyll stamp casperjs htmlproof done
+test: clean jekyll stamp casperdebug htmlproof done
