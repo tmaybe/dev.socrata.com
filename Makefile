@@ -19,7 +19,7 @@ casperjs:
 	casperjs --ssl-protocol=any --verbose --log-level=warning test _tests/*
 
 casperdebug:
-	casperjs --ssl-protocol=any --verbose --log-level=debug test _tests/*
+	casperjs --ssl-protocol=any --ignore-ssl-errors=true --verbose --log-level=debug test ./_tests/*
 
 # Generates a build stamp and plugs it into a file in public
 SHA=$(shell git rev-parse --short HEAD)
