@@ -11,6 +11,7 @@ env:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
 bundler_args: "--with test"
 before_install:
+- nvm ls
 - nvm use # Use node version from .nvmrc
 - npm install
 - npm install -g casperjs
