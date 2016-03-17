@@ -10,10 +10,11 @@ env:
 rvm:
 - 2.1.1
 bundler_args: "--with test"
+before_install:
+- npm install -g casperjs
 script:
 - make test
 after_success:
-# - test $TRAVIS_BRANCH == "gh-pages" && test $TRAVIS_PULL_REQUEST != "false" && DOMAIN="dev-socrata-com-pr-${TRAVIS_PULL_REQUEST}.surge.sh" make surge
 - test $TRAVIS_BRANCH == "gh-pages" && test $TRAVIS_PULL_REQUEST == "false" && npm install surge && DOMAIN="dev.socrata.com" make surge
 notifications:
   slack:

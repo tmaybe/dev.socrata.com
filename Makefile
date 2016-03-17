@@ -15,6 +15,9 @@ clean:
 htmlproof:
 	bundle exec htmlproof ./public --only-4xx --check-html --href-ignore "/#/,/\/foundry/,/\/register/,/APP_TOKEN/"
 
+casperjs:
+	casperjs test _tests/*
+
 # Generates a build stamp and plugs it into a file in public
 SHA=$(shell git rev-parse --short HEAD)
 DATE=$(shell git show --pretty="format:%at" HEAD | head -n 1)
@@ -46,4 +49,4 @@ surge:
 all: clean jekyll stamp done
 
 # Builds the site and runs linklint to check for bad links
-test: clean jekyll stamp htmlproof done
+test: clean jekyll stamp casperjs htmlproof done
