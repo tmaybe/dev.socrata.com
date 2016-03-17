@@ -2,19 +2,18 @@
 layout: default
 title: Socrata Developers
 bodyclass: homepage
-comment: This just needs a few content tweaks and it's probably good to go.
 redirect_from:
-  - /deprecated/
-  - /deprecated/accessing-view-metadata
-  - /deprecated/retrieving-row-data
-  - /console
-  - /gallery
+- /deprecated/
+- /deprecated/accessing-view-metadata
+- /deprecated/retrieving-row-data
+- /console
+- /gallery
 custom_js:
-  - /js/homepage.js
+- /js/homepage.js
 ---
 
 <div class="fat-header hidden-sm hidden-xs">
-  <img src="/img/soda.png" alt="Socrata APIs" class="pull-left" />
+  <a href="http://snuffleupadata.com" target="_blank"><img src="/img/snuffleupacan.png" alt="snuffleupadata" class="pull-left" /></a>
   <h1 class="hello-dolly"><noscript>puts “Hello Data!”;</noscript></h1>
 </div>
 
@@ -22,7 +21,7 @@ custom_js:
   <h1 class="tagline">Build something awesome with Open Data!</h1>
   <p>The Socrata Open Data API allows you to programatically access a wealth of open data resources from governments, non-profits, and NGOs around the world. Click the link below and try a live example right now.</p>
 
-  {% include tryit.html domain='data.ct.gov' path='/resource/hma6-9xbg.json' args="category=Fruit&item=Peaches" %}
+  {% include tryit.html domain='data.ct.gov' path='/resource/y6p2-px98.json' args="category=Fruit&item=Peaches" %}
 
   <div class="row trailhead">
     <div class="col-md-4">
@@ -40,7 +39,7 @@ custom_js:
   </div>
 
   <div class="row publishers">
-    <div class="col-xs-2 text-center">
+    <div class="col-xs-2 text-center hidden-xs">
       <i class="fa fa-cloud-upload fa-4x"></i>
     </div>
     <div class="col-xs-10">
@@ -70,3 +69,4 @@ custom_js:
       <p>Subscribe to a public calendar of upcoming Socrata developer events.</p>
     </div>
   </div>
+</div>

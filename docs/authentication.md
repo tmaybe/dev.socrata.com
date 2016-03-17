@@ -16,7 +16,7 @@ There are two methods available for authentication: HTTP Basic and OAuth 2.0.
 
 Requests can be authenticated by passing in HTTP Basic Authentication headers. We only support this method for legacy purposes, and encourage all our API users to use the OAuth 2.0 workflow to authenticate their users. We may deprecate this authentication method in the future.
 
-All HTTP-basic-authenticated requests *must* be performed over a secure (`https`) connection, and *must* include an application token, which is obtained when you [register your application](http://opendata.socrata.com/profile/app_tokens). Authenticated requests made over an insecure connection or without an application token will be denied.
+All HTTP-basic-authenticated requests *must* be performed over a secure (`https`) connection, and should include an application token, which is obtained when you [register your application](http://opendata.socrata.com/profile/app_tokens). However, authentication tokens are not strictly required when a request is authenticated. Authenticated requests made over an insecure connection will be denied.
 
 Here is a sample HTTP session that uses HTTP Basic Authentication:
 

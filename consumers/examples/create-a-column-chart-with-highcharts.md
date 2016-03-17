@@ -5,7 +5,7 @@ sidebar: consumer
 type: example
 audience: consumer
 custom_js:
-  - /js/simple-chart-with-highcharts.js
+- /js/simple-chart-with-highcharts.js
 author: marks
 ---
 
@@ -22,8 +22,6 @@ For this example, I am going to use the [Inpatient Prospective Payment System (I
 ### Live Demo
 
 <!-- include Highcharts Javascript -->
-<script src='http://code.highcharts.com/highcharts.js'></script>
-<script src='http://code.highcharts.com/modules/data.js'></script>
 <div id="chart-container" style="width: 100%; height: 400px; margin: 20px auto"><!-- This space intentionally left blank --></div>
 
 ### The Code
@@ -45,7 +43,7 @@ Javascript code to include on your page:
 // START CONFIGURATION
 var dataDomain = 'data.cms.gov'
 var dataSetId = 'xpsg-6hup'
-var dataQueryString = [ // following SoQL format documented at http://dev.socrata.com/docs/queries.html
+var dataQueryString = [ // following SoQL format documented at http://dev.socrata.com/docs/queries/
   '$select=drg_definition,avg(average_covered_charges),avg(average_medicare_payments),avg(average_total_payments)',
   '$group=drg_definition',
   '$order=avg_average_medicare_payments+desc',
@@ -87,6 +85,6 @@ In the Javascript snippet, we:
 1. Set some configuration vairables including the domain the dataset lives on, the dataset's unique ID (aka "four by four"), the query string, and finallyt the title for the chart.
 2. Inside jQuery's `.ready()` callback, which is called once the HTML page and dependencies are fully loaded, we form a URL to query the dataset for the data we want and use the response to create the chart in the specified `#chart-container` div. [You can learn more about how to create a chart using Highcharts and find links to their documentation here](http://www.highcharts.com/docs/getting-started/your-first-chart).
 
-I hope this was helpful! I encourage you to tinker with this on your own page web page or fork the [jsFiddle](http://jsfiddle.net/marksskram/ed42ghw5/1/). If you have any questions, feel free to reach out to me directly via Twitter ([@skram](http://twitter.com/skram)) or through [one of our support channels](http://dev.socrata.com/support.html).
+I hope this was helpful! I encourage you to tinker with this on your own page web page or fork the [jsFiddle](http://jsfiddle.net/marksskram/ed42ghw5/1/). If you have any questions, feel free to reach out to me directly via Twitter (@skram)) or through [one of our support channels](http://dev.socrata.com/support.html).
 
 Have a great example of your own? Please [contribute]({{ site.github_repo }}) to our community-maintained documentation!

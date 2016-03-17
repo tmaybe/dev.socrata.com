@@ -4,12 +4,26 @@ sidebar: documentation
 title: not like '...'
 
 type: function
+function: "$1 not like $match"
+description: Allows for matching text fields that do not contain a substring
+versions:
+- 2.1
 datatypes:
 - text 
-description: Allows for matching text fields that do not contain a substring
+params:
+  $1:
+  - text
+  $match:
+  - text
+returns: boolean
+
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `like '...'` function allows you to filter for [Text](/docs/datatypes/text.html) values that do not match a given pattern. Patterns can include placeholders to make fuzzy matches:
 

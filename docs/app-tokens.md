@@ -36,15 +36,15 @@ Using the header is the preferred method.
 The following is an example of using the `X-App-Token` HTTP header to pass an application token:
 
 {% highlight http %}
-GET /resource/4tka-6guv.json HTTP/1.1
-Host: soda.demo.socrata.com
+GET /resource/3k2p-39jp.json HTTP/1.1
+Host: data.seattle.gov
 Accept: application/json
 X-App-Token: [REDACTED]
 {% endhighlight %}
 
 The same application token could also be passed as a URL parameter:
 
-{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$$app_token=APP_TOKEN' %}
+{% include tryit.html domain='data.seattle.gov' path='/resource/3k2p-39jp' args='$$app_token=APP_TOKEN' %}
 
 ## Using the Application Token as part of the authentication process
 

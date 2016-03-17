@@ -4,13 +4,28 @@ sidebar: documentation
 title: convex_hull(...)
 
 type: function
+function: convex_hull($1)
+description: Returns the minimum convex geometry that encloses all of the geometries within a set
+versions:
+- 2.1
 datatypes:
 - point
+- line
 - polygon
-description: Returns the minimum convex geometry that encloses all of the geometries within a set
+params:
+  $1:
+  - point
+  - line
+  - polygon
+returns: polygon
+
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `convex_hull(...)` generates a polygon that represents the minimum convex geometry that can encompass a set of [Points](/docs/datatypes/point.html). All of the points in the set will either represent vertexes of that polygon, or will be enclosed within it, much like if you were to take a rubber band and snap it around the set of points. The below image [from Wikipedia](https://en.wikipedia.org/wiki/Convex_hull) may help explain better:
 

@@ -1,0 +1,19 @@
+---
+layout: with-sidebar
+sidebar: documentation
+title: Consumer Examples
+---
+
+<p>The following walkthroughs may help you get started with the Socrata Open Data API:</p>
+
+<ul>
+  {% for page in site.pages %}
+    {% if page.type == 'example' and page.audience == 'consumer' %}
+      {% if page.external_url %}
+        <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
+      {% else %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</ul>

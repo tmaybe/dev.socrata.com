@@ -17,16 +17,16 @@ So you want to win that hackathon or build the next hot open data app? Follow th
 [Socrata](http://www.socrata.com) hosts over one hundred different data catalogs for governments, non-profits, and NGOs around the world, so finding an open data catalog to work with is easy:
 
 - Check to see if your local government or state already has an open data site. Check your city or state website or even just Google "open data" and your government's name. You'll probably find something pretty quickly.
-- Peruse our [online listing of Socrata-powered open data sites](https://opendata.socrata.com/dataset/Socrata-Customer-Spotlights/6wk3-4ija). There's probably one near you! (Hint: that listing has an API of it's own. See if you can find it!)
+- Peruse the [Open Data Network](http://www.opendatanetwork.com), our global catalog of open datasets. The same catalog listing is also available programmatically via the [Global Catalog API](http://labs.socrata.com/docs/search.html).
 - Check to see if there's a community group in your area with their own catalog hosted on [communities.socrata.com](https://communities.socrata.com/). Got a community group or event of your own and want free hosting for your data and APIs? [Sign up!](http://hackathon-in-a-box.org/open-data-apis/community-groups.html)
 
-Once you're on your local open data site, scroll down to the data catalog and use the search box and browse filters to find datasets that interest you. If your data site has custom [API Foundry](http://www.socrata.com/api-foundry/)-managed APIs, you can use the "API" filter on the left-hand side to show only those custom APIs. But if your dataset doesn't have the red API icon, don't fret &mdash; every dataset is accessible via the SODA API.
+Once you're on your local open data site, scroll down to the data catalog and use the search box and browse filters to find datasets that interest you - every dataset is accessible via the SODA API.
 
 ## Finding your API endpoint
 
 Every [Socrata](http://www.socrata.com) open dataset has a built-in SODA API. But how you find the API endpoint can vary a bit.
 
-If you're viewing an [API Foundry](http://www.socrata.com/api-foundry/) customized API, simply scroll down until you see the query examples and you're set. Click the `Try This API` button to experiment with filtering by different options, and grab the pre-created API endpoint for the query you create.
+If you're viewing a DataLens, there will be a prominent "API" button in the upper left of the page. Click that, and you'll get details on the API endpoint and a link to API documentation.
 
 If you're on a Socrata dataset, identifiable by the colorful buttons at the upper right, don't fret. Every Socrata dataset has a built-in open data API, so you'll be just fine. Click on `Export` and then `API` and you'll find the API endpoint under `API Access Endpoint`. Copy that and save it for later.
 
@@ -40,7 +40,7 @@ For this example, we'll use this listing of [Alternative Fuel Locations](https:/
 
 ## Building simple filters and queries
 
-Filtering data via a SODA API is fairly straightforward. There are two primary mechanisms you can use to filter data: [Simple Filters](/docs/filtering.html) and [SoQL Queries](/docs/queries.html)
+Filtering data via a SODA API is fairly straightforward. There are two primary mechanisms you can use to filter data: [Simple Filters](/docs/filtering.html) and [SoQL Queries](/docs/queries/)
 
 
 ### Simple Filters
@@ -62,7 +62,7 @@ The "**So**crata **Q**uery **L**anguage" (SoQL) is a simple, SQL-like query lang
 {% include tryit.html domain='data.cityofchicago.org' path='/resource/alternative-fuel-locations.json' args='$where=within_box(location, 41.885001, -87.645939, 41.867011, -87.618516)' %}
 
 <div class="well">
-  Many different functions are available via SoQL. Read the detailed documentation on <a href="/docs/queries.html">SoQL Queries</a> for more info.
+  Many different functions are available via SoQL. Read the detailed documentation on <a href="/docs/queries/">SoQL Queries</a> for more info.
 </div>
 
 ### Paging
@@ -71,7 +71,7 @@ For performance, SODA APIs are paged, and return a maximum of 50,000 records per
 
 So, to request page two, at 100 records per page, of our fuel locations API:
 
-{% include tryit.html domain='data.cityofchicago.org' path='/resource/alternative-fuel-locations.json' args='$limit=100&amp;$offset=50' %}
+{% include tryit.html domain='data.cityofchicago.org' path='/resource/alternative-fuel-locations.json' args='$limit=100&amp;$offset=100' %}
 
 <div class="well">
   Read the detailed documentation on <a href="/docs/paging.html">Paging</a> for more info.

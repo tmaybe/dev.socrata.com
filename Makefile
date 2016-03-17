@@ -1,27 +1,49 @@
-link_dir := $(shell mktemp -d /tmp/linkdoc.XXXX)
+jekyll:
+	bundle exec jekyll build
 
-# Builds SASS->CSS, compiles the site, and ensures that search.json is updated
-# If you've changed content, always commit search.json
-all:
-	-rm search.json
-	-rm related.json
-	jekyll build
-	cp public/search.json public/related.json .
-	-git add search.json related.json
-	-tput bel
+incremental-build:
+	bundle exec jekyll build --incremental --safe
 
-# Builds the site and runs linklint to check for bad links
-test: all
-	linklint -doc ${link_dir} -root public /@
-	open ${link_dir}/index.html
+quick: incremental-build stamp
 
-# Copies JS resources locally so you don't have to do a full jekyll build when hacking JS
-jslocal:
-	cp js/* public/js/
-	cp common/js/* public/common/js/
-	cp foundry/*.mst public/foundry/
+watch:
+	bundle exec jekyll build --watch --incremental --safe
+
+clean:
+	rm -rf public
+
+htmlproof:
+	bundle exec htmlproof ./public --only-4xx --check-html --href-ignore "/#/,/\/foundry/,/\/register/,/APP_TOKEN/"
+
+# Generates a build stamp and plugs it into a file in public
+SHA=$(shell git rev-parse --short HEAD)
+DATE=$(shell git show --pretty="format:%at" HEAD | head -n 1)
+define STAMP
+{
+  "sha" : "$(SHA)",
+  "href" : "https://github.com/socrata/dev.socrata.com/commit/$(SHA)",
+  "date" : $(DATE)
+}
+endef
+export STAMP
+stamp:
+	echo "Stamping with build.json..."
+	@echo "$$STAMP" > ./public/build.json
+
+done:
+	if [[ -x /usr/local/bin/terminal-notifier && -x /usr/local/bin/reattach-to-user-namespace ]]; then \
+		reattach-to-user-namespace terminal-notifier -message "Done!"; \
+	fi
 
 # Pushes updated taglines file. Since this requires my password, you (probably) can't run it...
 taglines:
 	curl --user chris.metcalf@socrata.com -X PUT --data @taglines.json --header "Content-type: application/json" --header "X-App-Token: bjp8KrRvAPtuf809u1UXnI0Z8" https://soda.demo.socrata.com/resource/etih-7ix2.json
 
+surge:
+	surge --project ./public --domain https://$(DOMAIN)
+
+# Default: Build the site
+all: clean jekyll stamp done
+
+# Builds the site and runs linklint to check for bad links
+test: clean jekyll stamp htmlproof done

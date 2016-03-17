@@ -4,12 +4,24 @@ sidebar: documentation
 title: lower(...)
 
 type: function
+function: lower($1)
+description: Returns the lowercase equivalent of a string of text
+versions:
+- 2.1
 datatypes:
 - text 
-description: Returns the lowercase equivalent of a string of text
+params:
+  $1:
+  - text
+returns: text
+
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `lower(...)` function is used within the `$select` or `$where` parameters to lower-case a [Text](/docs/datatypes/text.html) value. For example, you could use it within the `$select` statement to lower-case names from the White House salaries dataset:
 

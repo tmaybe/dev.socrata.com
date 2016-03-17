@@ -4,14 +4,32 @@ sidebar: documentation
 title: sum(...)
 
 type: function
-datatypes:
-- number
-- double
-- money
+function: sum($1)
 description: Returns the sum of a given set of numbers 
+versions:
+- 2.1
+datatypes:
+- double
+- floating_timestamp
+- money
+- number
+- text
+params:
+  $1:
+  - double
+  - floating_timestamp
+  - money
+  - number
+  - text
+returns: typeof($1)
+
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `sum(...)` function is most commonly used in `$select` aggregations to return the sum of a set of numeric values ([Numbers](/docs/datatypes/number.html), [Doubles](/docs/datatypes/double.html), or [Moneys](/docs/datatypes/money.html)). For example, to fetch the total amount spent on salaries at the White House:
 

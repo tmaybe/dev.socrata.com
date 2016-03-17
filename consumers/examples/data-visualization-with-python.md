@@ -27,13 +27,22 @@ First, you'll need to install a few Python packages with `pip`:
 
 We're going to be analyzing this dataset of [Los Angeles Police Department Calls for Service](https://data.lacity.org/A-Safe-City/LAPD-Calls-for-Service-YTD-2014/mgue-vbsx). For fun, let's analyze the dataset and see what days of the week the most noise disturbance calls for "Parties" are on, and see if we can identify some popular holidays.
 
-First, we'll structure a query that uses [SoQL](/docs/queries.html) to aggregate the dataset so that we don't need to pull down all of the details of the millions of calls the LAPD has received. We'll do a few things:
+First, we'll structure a query that uses [SoQL](/docs/queries/) to aggregate the dataset so that we don't need to pull down all of the details of the millions of calls the LAPD has received. We'll do a few things:
 
 - Filter the dataset by `call_type_code` "507P", the code for a noise violation call on a party
 - Aggregate by the truncated version of the `dispatch_date` field and get the count of noise violations per day
 - Order the results by our truncated date value
 
-{% include tryit.html domain='data.lacity.org' path='/resource/mgue-vbsx.json' args="$group=date&call_type_code=507P&$select=date_trunc_ymd(dispatch_date)%20AS%20date%2C%20count(*)&$order=date" %}
+<pre><code> https://data.lacity.org/resource/mgue-vbsx.json?
+  $group=date
+  &call_type_code=507P
+  &$select=date_trunc_ymd(dispatch_date) AS date, count(&#42;)
+  &$order=date
+</code></pre>
+
+<div class="alert alert-info">
+  <p><em>Note:</em> Unfortunately the LAPD has since taken this dataset down, but we've left the query here as an example.</p>
+</div>
 
 Pandas makes it super easy to read data from a JSON API, so we can just read our data directly using the `read_json` function:
 
@@ -44,7 +53,7 @@ import datetime
 import urllib
  
 from bokeh.plotting import *
-from bokeh.objects import HoverTool
+from bokeh.models import HoverTool
 from collections import OrderedDict
  
 # Read in our data. We've aggregated it by date already, so we don't need to worry about paging
@@ -106,28 +115,32 @@ Finally, we'll pass everything to the Bokeh `rect` plot, which will create our v
 {% highlight python %}
 output_file('all-las-parties.html')
  
-figure()
- 
-rect("week", "day_of_week", 1, 1, source=source,
-     x_range=weeks, y_range=list(reversed(days)),
-     x_axis_location="above",
-     color="color", line_color=None,
-     tools="resize,hover,previewsave", title="\"Party\" Disturbance Calls in LA",
-     plot_width=900, plot_height=400, toolbar_location="left")
- 
-grid().grid_line_color = None
-axis().axis_line_color = None
-axis().major_tick_line_color = None
-axis().major_label_text_font_size = "10pt"
-axis().major_label_standoff = 0
-xaxis().major_label_orientation = np.pi/3
- 
-hover = curplot().select(dict(type=HoverTool))
+TOOLS = "hover"
+
+p=figure(
+    title='\"Party\" Disturbance Calls in LA', 
+    x_range=weeks, 
+    y_range=list(reversed(days)),
+    tools=TOOLS)
+p.plot_width=900
+p.plot_height = 400
+p.toolbar_location='left'
+
+p.rect("week", "day_of_week", 1, 1, source=source, color=color, line_color=None)
+
+p.grid.grid_line_color = None
+p.axis.axis_line_color = None
+p.axis.major_tick_line_color = None
+p.axis.major_label_text_font_size = "10pt"
+p.axis.major_label_standoff = 0
+p.xaxis.major_label_orientation = np.pi/3
+
+hover = p.select(dict(type=HoverTool))
 hover.tooltips = OrderedDict([
     ('parties', '@parties'),
 ])
- 
-show()      # show the plot
+
+show(p) # show the plot
 {% endhighlight %}
 
 When you're done, you simply run the script with Python, and it generates and opens up the visualization in your web browser. The results are pretty cool. You can clearly see that the weekends are the busiest nights for the party patrol, but you can also spot popular holidays like New Years Eve, Independence Day, and Labor Day. You can find the [full source code in this Gist](https://gist.github.com/chrismetcalf/984fcf38dd90efbce94a)

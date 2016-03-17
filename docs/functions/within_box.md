@@ -4,15 +4,39 @@ sidebar: documentation
 title: within_box(...)
 
 type: function
+function: within_box($1, $nw_lat, $nw_long, $se_lat, $sw_long)
+description: Returns the rows that have geodata within the specified box, defined by latitude, longitude corners
+versions:
+- 2.0
+- 2.1
 datatypes:
 - location
 - point
 - line
 - polygon
-description: Returns the rows that have locations within the specified box, defined by latitude, longitude corners
+params:
+  $1:
+  - location
+  - point
+  - line
+  - polygon
+  $nw_lat:
+  - number
+  $nw_long:
+  - number
+  $se_lat:
+  - number
+  $se_long:
+  - number
+returns: boolean
+
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `within_box(...)` function is used in the `$where` parameter filter for [Point](/docs/datatypes/point.html) or [Location](/docs/datatypes/location.html) values within a box defined by two points. It accepts four parameters:
 

@@ -11,11 +11,11 @@ At this year's [API Strategy & Practice Conference](http://apistrategyconference
 
 Even better, Matt handed out [developer kits](http://electricimp.com/docs/gettingstarted/devkits/) after his session. I took that as a personal challenge. After a quick run to a nearby RadioShack for supplies, a plan emerged.
 
-I wanted to build something real-time, and it of course needed to be based of Chicago. I dug around a bit, and found this awesome [dataset of real-time traffic congestion](https://data.cityofchicago.org/Transportation/Chicago-Traffic-Tracker-Congestion-Estimates-by-Re/t2qc-9pjd?) around the city. Using the aggregation functions of [SoQL](http://dev.socrata.com/docs/queries.html), I averaged the traffic at all of the measured intersections to create "average speed" across the whole city:
+I wanted to build something real-time, and it of course needed to be based of Chicago. I dug around a bit, and found this awesome [dataset of real-time traffic congestion](https://data.cityofchicago.org/Transportation/Chicago-Traffic-Tracker-Congestion-Estimates-by-Re/t2qc-9pjd?) around the city. Using the aggregation functions of [SoQL](http://dev.socrata.com/docs/queries/), I averaged the traffic at all of the measured intersections to create "average speed" across the whole city:
 
 {% include tryit.html domain='data.cityofchicago.org' path='/resource/t2qc-9pjd.json' args='$select=AVG(current_speed)&$where=current_speed > 0' %}
 
-First, the hardware. In about 45 minutes, using my teeth for wire strippers, I had a basic circuit on my brand new breadboard that connected my [giant red and green dome LEDs](http://www.radioshack.com/product/index.jsp?productId=22472166) to pins 1 and 5 on the Imp. They each actually contain six separate LEDs, of which I connected three in parallel through a 330-ohm resistor. A circuit diagram is below, and I apologize if you're an electrical engineer...
+First, the hardware. In about 45 minutes, using my teeth for wire strippers, I had a basic circuit on my brand new breadboard that connected my [giant red and green dome LEDs](http://www.radioshack.com/products/radioshack-20-0mm-round-big-red-led?variant=5717559429) to pins 1 and 5 on the Imp. They each actually contain six separate LEDs, of which I connected three in parallel through a 330-ohm resistor. A circuit diagram is below, and I apologize if you're an electrical engineer...
 
 ![Circuit Diagram](/img/imp-circuit-diagram.png)
 

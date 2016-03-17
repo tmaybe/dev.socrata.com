@@ -1,9 +1,15 @@
 ---
 layout: with-sidebar
 sidebar: documentation
+custom_js:
+- /js/function_listing.js
 title: Money Datatype
 audience: documentation
 type: datatype
+versions:
+- 2.0
+- 2.1
+datatype: money
 ---
 {% include numeric_types.html %}
 

@@ -4,14 +4,30 @@ sidebar: documentation
 title: within_polygon(...)
 
 type: function
+function: within_polygon($1, $2)
+description: Returns the rows that have locations within the specified box, defined by latitude, longitude corners
+versions:
+- 2.1
 datatypes:
 - point
 - line
 - polygon
-description: Returns the rows that have locations within the specified box, defined by latitude, longitude corners
+params:
+  $1:
+  - point
+  - line
+  - polygon
+  $2:
+  - polygon
+returns: boolean
+
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `within_polygon(...)` function is used in the `$where` parameter filter for {% include dt.html dt="Point" %}, {% include dt.html dt="Line" %}, and {% include dt.html dt="Polygon" %} values within a polygon defined by a sequence points. It accepts two parameters:
 
