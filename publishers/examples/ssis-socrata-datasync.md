@@ -20,14 +20,17 @@ It's very common that financial data has a primary budget table that countains b
 * The first step involves creating a Dataflow that first makes an OLE DB Connection to the database. Then it is possible to select any table or view on that database.
 * The destination dataset also contains a Count column to make it easy to create rollups and interesting visualizations so a Derived Column transform creates that column and sets value to 1.
 * A Flat File transformer creates a CSV with quotes around text fields to handle any values that may contain commas.
+
 ![SSIS screenshot dataflow](/img/DataFlowTransformationTasks.PNG)
 
 #### Control Flow that calls the Dataflow and then executes Datasync command
 Within the Control Flow, an Process Task is added that can be execute Datasync once the Data Flow Task has been completed successfully.
+
 ![SSIS screenshot workflow](/img/ControlFlowTasks.PNG)
 
 #### Package Deployment to SQL Server
 Once the SSIS package has been completed, it is deployed to the SQL Server that will be running it. Note, it is important to set the protection level of the package and job so that the database is able to execute it.
+
 ![SSIS screenshot of package deployment](/img/DeployPackageStep.PNG)
 
 ### SQL Server Agent
