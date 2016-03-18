@@ -13,6 +13,7 @@ This example shows how to use SQL and SSIS to automate the publishing of a sampl
 
 #### View that joins RevenueBudget to Fund for Fund Name and Type
 It's very common that financial data has a primary budget table that countains budget amounts per Fund, Department, Program, Service for a given fiscal period. Usually these records have a code in the budget table that ties to lookup tables for names, descriptions and other supporting information for a Fund, Department, Program and Service. The view created below joins the Fund table to the Budget table to retrieve Fund Name and Type. A SQL view isn't necessary for SSIS packages, but it is one method of hiding any complex SQL that can then be easily modified without making any changes to the SSIS package that calls it.
+
 ![SQL View](/img/SQLView.PNG)
 
 ### SSIS Package
