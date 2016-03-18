@@ -18,7 +18,7 @@ Sample SSIS package that -
 ### SQL Server
 
 #### View that joins RevenueBudget to Fund for Fund Name and Type
-![SQL View](https://github.com/socrata/dev.socrata.com/raw/gh-pages/img/SQLView.PNG)
+![SQL View](/img/SQLView.PNG)
 
 ### SSIS Package
 
@@ -26,18 +26,18 @@ Sample SSIS package that -
 * Selects all records from a view
 * Creates a Count column and defaults value to 1
 * Creates CSV with quotes around text fields (to handle any values that may contain commas)
-![SSIS screenshot dataflow](https://github.com/socrata/dev.socrata.com/raw/gh-pages/img/DataFlowTransformationTasks.PNG)
+![SSIS screenshot dataflow](/img/DataFlowTransformationTasks.PNG)
 
 #### Control Flow that calls the Dataflow and then executes Datasync command
-![SSIS screenshot workflow](https://github.com/socrata/dev.socrata.com/raw/gh-pages/img/ControlFlowTasks.PNG)
+![SSIS screenshot workflow](/img/ControlFlowTasks.PNG)
 
 #### Package Deployment to SQL Server
-![SSIS screenshot of package deployment](https://github.com/socrata/dev.socrata.com/raw/gh-pages/img/DeployPackageStep.PNG)
+![SSIS screenshot of package deployment](/img/DeployPackageStep.PNG)
 
 ### SQL Server Agent
 
 #### Package Execution Report after execution
-![SSIS screenshot dataflow](https://github.com/socrata/dev.socrata.com/raw/gh-pages/img/SQLPackageReport.PNG)
+![SSIS screenshot dataflow](/img/SQLPackageReport.PNG)
 
 ## Resources
 * [SQL Server Integration Services](https://msdn.microsoft.com/en-us/library/ms141026(v=sql.120).aspx)
