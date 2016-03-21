@@ -9,6 +9,7 @@ gem 'pry'
 gem 'mime-types'
 gem 'html-proofer'
 gem 'httparty'
+gem 'colorize'
 
 group :development do
   gem 'rack'
