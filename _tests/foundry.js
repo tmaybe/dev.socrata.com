@@ -1,33 +1,19 @@
-var system = require('system');
-
-// Tests various API Foundry use cases
-var base = 'https://dev.socrata.com';
-// Set a longer timeout
-if(system.env.BASE) {
-  casper.log('Setting base to ' + system.env.BASE);
-  base = system.env.BASE;
-}
-
-// Set a longer timeout
-if(system.env.CASPERJS_TIMEOUT) {
-  casper.log('Setting timeout to ' + system.env.CASPERJS_TIMEOUT);
-  casper.options.waitTimeout = parseInt(system.env.CASPERJS_TIMEOUT);
-}
+var common = require('./common');
 
 /// 2.1 API, no redirect
 casper.test.begin("2.1 API, no redirect", 7, function(test) {
-  casper.start(base + '/foundry/soda.demo.socrata.com/b6kv-3wgw');
+  casper.start(common.base + '/foundry/soda.demo.socrata.com/b6kv-3wgw');
 
   // Check page branding
   casper.waitForSelectorTextChange('#branding', function() {
-    test.assertSelectorHasText('#branding h4.welcome', 
-        'Socrata API, powered by Socrata', 
+    test.assertSelectorHasText('#branding h4.welcome',
+        'Socrata API, powered by Socrata',
         'branding header is present and correct');
   });
 
   // Check splash
   casper.waitForSelectorTextChange('#splash', function() {
-    test.assertSelectorHasText('#splash .alert', 
+    test.assertSelectorHasText('#splash .alert',
         'You\'re already using the latest version of this dataset API',
         'splash states we\'re on the latest version');
   });
