@@ -16,8 +16,8 @@ before_install:
 - npm install
 - npm install -g casperjs
 script:
-- rake staging_test
-- test $TRAVIS_PULL_REQUEST == "false" && rake teardown
+- bundle exec rake staging_test
+- test $TRAVIS_PULL_REQUEST == "false" && bundle exec rake teardown
 after_success:
   # If we're on gh-pages and not a PR, deploy to production
   - test $TRAVIS_BRANCH == "gh-pages" && test $TRAVIS_PULL_REQUEST == "false" && surge --project ./public --domain https://dev.socrata.com
