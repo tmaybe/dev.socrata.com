@@ -62,7 +62,7 @@ end
 desc "run casperjs tests on #{URL}"
 task :test do
   puts "Running casperjs tests on #{URL}...".green
-  sh "BASE=#{URL} casperjs --verbose --log-level=warning test _tests/test-*"
+  sh "BASE=#{URL} casperjs --ssl-protocol=any --ignore-ssl-errors=true --verbose --log-level=warning test _tests/test-*"
 end
 
 desc "clean up the ROUTER file, so we can push staging sites to Surge.sh"
