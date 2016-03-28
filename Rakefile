@@ -43,21 +43,26 @@ task :quick => [:incremental, :stamp] do
 end
 
 desc "test links with htmlproof"
-task :htmlproof do
-  # sh 'bundle exec htmlproof ./public --only-4xx --check-html --href-ignore "/#/,/\/foundry/,/\/register/,/APP_TOKEN/"'
-  sh "bundle exec htmlproof #{URL}/ --only-4xx --check-html"
+task :htmlproof => [:jekyll] do
+  sh "bundle exec htmlproof ./public/ --only-4xx --check-html --href-ignore \"/#/,/\/foundry/,/\/register/,/APP_TOKEN/\""
 end
 
 desc "stage site to #{URL}"
-task :stage do
+task :stage => [:jekyll, :stamp, :rm_router] do
   puts "Staging content to #{URL}...".green
   sh "surge --project ./public --domain #{URL}"
 end
 
+desc "tear down site at #{URL}"
+task :teardown do
+  puts "Tearing down content at #{URL}...".green
+  sh "surge --domain #{URL} teardown"
+end
+
 desc "run casperjs tests on #{URL}"
-task :casperjs do
+task :test do
   puts "Running casperjs tests on #{URL}...".green
-  sh "BASE=#{URL} casperjs --verbose --log-level=warning test _tests/*"
+  sh "BASE=#{URL} casperjs --verbose --log-level=warning test _tests/test-*"
 end
 
 desc "clean up the ROUTER file, so we can push staging sites to Surge.sh"
@@ -66,6 +71,6 @@ task :rm_router do
 end
 
 desc "perform a full test cycle to #{URL}"
-task :staging_test => [:clean, :jekyll, :stamp, :rm_router, :stage, :casperjs] do
+task :staging_test => [:clean, :jekyll, :htmlproof, :stamp, :rm_router, :stage, :test] do
   puts "Done!!!".on_green
 end

@@ -1,4 +1,4 @@
-var common = require('./common');
+var common = require('./lib/common');
 
 /// 2.1 API, no redirect
 casper.test.begin("2.1 API, no redirect", 7, function(test) {

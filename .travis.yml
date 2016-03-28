@@ -16,9 +16,11 @@ before_install:
 - npm install
 - npm install -g casperjs
 script:
-- make test
+- rake staging_test
+- test $TRAVIS_PULL == "false" && rake teardown
 after_success:
-- test $TRAVIS_BRANCH == "gh-pages" && test $TRAVIS_PULL_REQUEST == "false" && npm install surge && DOMAIN="dev.socrata.com" make surge
+  # If we're on gh-pages and not a PR, deploy to production
+  - test $TRAVIS_BRANCH == "gh-pages" && test $TRAVIS_PULL_REQUEST == "false" && surge --project ./public --domain https://dev.socrata.com
 notifications:
   slack:
     secure: P6Mce/govM2MEy8RCTZHhG2Mg+2Bmh6d84GXt3lKUGPSv9u5Xww0Ld7K+rh7C5/qxSqQIfCY6m2TbtQbz1IpfuSWpvA9QwANYGr/gyzXFvd6pV8gRValb+juokxmNwjL5JmP8TdaX8IKrUgx9eb26j+0dEUbGLZR/kZfT0CX048=
