@@ -2,19 +2,29 @@ branches:
   only:
     - /.*/
 language: ruby
+rvm:
+- 2.1.1
 sudo: false
 cache: bundler
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
-rvm:
-- 2.1.1
 bundler_args: "--with test"
+before_install:
+- nvm install # Install node from .nvmrc
+- nvm use # Use node version from .nvmrc
+- npm install
+- npm install -g casperjs
+- npm install -g surge
 script:
-- make test
+- bundle exec rake staging_test
 after_success:
-# - test $TRAVIS_BRANCH == "gh-pages" && test $TRAVIS_PULL_REQUEST != "false" && DOMAIN="dev-socrata-com-pr-${TRAVIS_PULL_REQUEST}.surge.sh" make surge
-- test $TRAVIS_BRANCH == "gh-pages" && test $TRAVIS_PULL_REQUEST == "false" && npm install surge && DOMAIN="dev.socrata.com" make surge
+# If this is a pull request, stick a message in the PR comments
+- test $TRAVIS_PULL_REQUEST && bundle exec rake tag_pull_request
+# If this isn't a pull request, tear it down
+- test $TRAVIS_PULL_REQUEST == "false" && bundle exec rake teardown
+# If we're on gh-pages and not a PR, deploy to production
+- test $TRAVIS_BRANCH == "gh-pages" && test $TRAVIS_PULL_REQUEST == "false" && surge --project ./public --domain https://dev.socrata.com
 notifications:
   slack:
     secure: P6Mce/govM2MEy8RCTZHhG2Mg+2Bmh6d84GXt3lKUGPSv9u5Xww0Ld7K+rh7C5/qxSqQIfCY6m2TbtQbz1IpfuSWpvA9QwANYGr/gyzXFvd6pV8gRValb+juokxmNwjL5JmP8TdaX8IKrUgx9eb26j+0dEUbGLZR/kZfT0CX048=
