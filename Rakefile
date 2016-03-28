@@ -1,4 +1,6 @@
 require 'colorize'
+require 'httparty'
+require 'json'
 
 # Variables and setup
 SHA = `git rev-parse --short HEAD`.strip
@@ -57,6 +59,23 @@ desc "tear down site at #{URL}"
 task :teardown do
   puts "Tearing down content at #{URL}...".green
   sh "surge --domain #{URL} teardown"
+end
+
+desc "add a comment to a pull request with the staging URL, #{URL}"
+task :tag_pull_request do
+  response = HTTParty.post(
+    "https://api.github.com/repos/#{ENV['TRAVIS_REPO_SLUG']}/issues/#{ENV['TRAVIS_PULL_REQUEST']}/comments",
+    :body => {
+      body: ":rocket: Site staged at #{URL}"
+    }.to_json,
+    :headers => {
+      "Content-Type" => "application/json",
+      "User-Agent" => "Travis Integration",
+      "Authorization" => "token #{ENV['GITHUB_OAUTH_TOKEN']}"
+    }
+  )
+
+  puts response.inspect
 end
 
 desc "run casperjs tests on #{URL}"
