@@ -10,6 +10,7 @@ gem 'mime-types'
 gem 'html-proofer'
 gem 'httparty'
 gem 'colorize'
+gem 'rake'
 
 group :development do
   gem 'rack'

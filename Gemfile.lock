@@ -132,6 +132,7 @@ GEM
     rack-contrib (1.4.0)
       git-version-bump (~> 0.15)
       rack (~> 1.4)
+    rake (10.1.0)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -167,6 +168,7 @@ DEPENDENCIES
   pry
   rack
   rack-contrib
+  rake
 
 BUNDLED WITH
    1.10.6
