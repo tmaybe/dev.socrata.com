@@ -15,6 +15,7 @@ before_install:
 - nvm use # Use node version from .nvmrc
 - npm install
 - npm install -g casperjs
+- npm install -g surge
 script:
 - bundle exec rake staging_test
 - test $TRAVIS_PULL_REQUEST == "false" && bundle exec rake teardown
