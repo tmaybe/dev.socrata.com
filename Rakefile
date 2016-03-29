@@ -61,6 +61,26 @@ task :teardown do
   sh "surge --domain #{URL} teardown"
 end
 
+desc "allows you to clean up surge staged sites" 
+task :surge_cleanup do
+  sites = `surge list | grep dev-socrata-com`.lines.collect { |s| s.strip }
+
+  puts "We will now " + "PERMANANTLY DELETE".on_red + " the following #{sites.count} sites:"
+  sites.each { |s| puts " - #{s}" }
+
+  print "Are you sure you want to do that? (y/N) ".green
+  answer = STDIN.gets
+
+  if answer.strip.downcase == "y"
+    sites.each do |s|
+      puts "Tearing down #{s}..."
+      sh "surge --domain #{s} teardown"
+    end
+  else
+    print "Aborted!".red
+  end
+end
+
 desc "add a comment to a pull request with the staging URL, #{URL}"
 task :tag_pull_request do
   response = HTTParty.post(
