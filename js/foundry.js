@@ -491,7 +491,7 @@ define(
   // Entry point for rendering API docs
   var dataset = function(args) {
     var query_base = Proxy.query_base(args.domain);
-    var endpoint_base = query_base;
+    var endpoint_base = 'https://' + args.domain;
 
     // Front load as many of the things that we can fast-redirct on
     $.when(
