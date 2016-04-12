@@ -34,6 +34,18 @@ task :incremental do
   sh 'bundle exec jekyll build --incremental --safe'
 end
 
+desc "watch for changes and automatically rebuild (incrementally)"
+task :watch do
+  puts "Performing an incremental build...".green
+  sh 'bundle exec jekyll build --incremental --safe --watch'
+end
+
+desc "automatically rebuild (incrementally), running a local server"
+task :serve do
+  puts "Performing an incremental build...".green
+  sh 'bundle exec jekyll serve --incremental --safe --watch'
+end
+
 desc "create a build and version build.json file"
 task :stamp do
   puts "Stamping build.json for #{SHA}...".green
