@@ -15,13 +15,10 @@ The `Polygon` datatype represents a shape on the Earth as a ring of WGS84 Latitu
 
 {% highlight javascript %}
 {
-  "type": "Point",
-  "geometry": {
-    "type": "Polygon",
-    "coordinates": [
-      [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ]
-    ]
-  },
+  "type": "Polygon",
+  "coordinates": [
+    [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ]
+  ]
 }
 {% endhighlight %}
 
