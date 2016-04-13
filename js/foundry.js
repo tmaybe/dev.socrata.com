@@ -347,9 +347,11 @@ define(
             col.dataTypeName = "floating_timestamp";
           }
 
-          // Render column metadata as Markdown
-          // Update our description to be rendered markdown
-          col.description = micromarkdown.parse($.sanitize(col.description));
+          if(col.description) {
+            // Render column metadata as Markdown
+            // Update our description to be rendered markdown
+            col.description = micromarkdown.parse($.sanitize(col.description));
+          }
         }).value();
 
       // Roll up our changes so we can use them in our mustache template
@@ -389,7 +391,9 @@ define(
       });
 
       // Update our description to be rendered markdown
-      metadata.description = micromarkdown.parse($.sanitize(metadata.description));
+      if(metadata.description) {
+        metadata.description = micromarkdown.parse($.sanitize(metadata.description));
+      }
 
       var content = Mustache.render(template, {
         // Metadata
