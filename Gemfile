@@ -9,7 +9,8 @@ gem 'pry'
 gem 'mime-types'
 gem 'html-proofer'
 gem 'httparty'
-gem 'ruby-progressbar'
+gem 'colorize'
+gem 'rake'
 
 group :development do
   gem 'rack'

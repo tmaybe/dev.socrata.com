@@ -1,6 +1,6 @@
 define(
-  ['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit', 'jquery.redirect', 'jquery.splash', 'proxy'],
-  function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt, Redirect, Splash, Proxy) {
+  ['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit', 'jquery.redirect', 'jquery.splash', 'jquery.sanitize', 'proxy', 'micromarkdown'],
+  function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt, Redirect, Splash, Sanitize, Proxy, micromarkdown) {
 
   // Set up some JQuery convenience functions
   $.fn.extend({
@@ -346,6 +346,12 @@ define(
             // calendar_dates were replaced by floating_timestamps in NBE
             col.dataTypeName = "floating_timestamp";
           }
+
+          if(col.description) {
+            // Render column metadata as Markdown
+            // Update our description to be rendered markdown
+            col.description = micromarkdown.parse($.sanitize(col.description));
+          }
         }).value();
 
       // Roll up our changes so we can use them in our mustache template
@@ -383,6 +389,12 @@ define(
       var is_public = _.some(structural_metadata.grants, function(grant) {
         return grant.flags && _.contains(grant.flags, 'public');
       });
+
+      // Update our description to be rendered markdown
+      if(metadata.description) {
+        metadata.description = micromarkdown.parse($.sanitize(metadata.description));
+      }
+
       var content = Mustache.render(template, {
         // Metadata
         uid: args.uid,
@@ -462,12 +474,6 @@ define(
       $("#loading").fadeOut();
       $(args.target).fadeIn();
 
-      // Use readmore.js to shorten descriptions to something more reasonable.
-      $(".metadata .description").readmore({
-        moreLink: '<a href="#">Show more <i class="fa fa-angle-double-down"></i></a>',
-        lessLink: '<a href="#">Show less <i class="fa fa-angle-double-up"></i></a>'
-      });
-
       // If we're on NBE, update our sync status
       $('.synced').load_sync_state();
 
@@ -491,7 +497,7 @@ define(
   // Entry point for rendering API docs
   var dataset = function(args) {
     var query_base = Proxy.query_base(args.domain);
-    var endpoint_base = query_base;
+    var endpoint_base = 'https://' + args.domain;
 
     // Front load as many of the things that we can fast-redirct on
     $.when(

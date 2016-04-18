@@ -1,7 +1,7 @@
 destination: public
 exclude: 
 - public
-- Makefile
+- Rakefile
 - Gemfile
 - Gemfile.lock
 - .rvmrc, 
@@ -9,6 +9,8 @@ exclude:
 - vendor
 - README.md
 - node_modules
+- _tests
+- package.json
 
 # permalink: pretty
 splash: false
