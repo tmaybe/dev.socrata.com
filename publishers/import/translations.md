@@ -134,5 +134,5 @@ Of course, you can't run hog wild with this. We have some limits on what you're 
 * *If something goes wrong, the row is thrown out*, and a warning is added to the final dataset.
 * On the other hand, *the importer will stop producing warnings* if you have too many. It will indicate when this occurs.
 
- [1]: /publisher/imports/
+ [1]: /publishers/imports/
  [2]: http://en.wikipedia.org/wiki/JavaScript
