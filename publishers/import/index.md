@@ -5,6 +5,8 @@ title: The Import API
 audience: publisher
 ---
 
+{% include imports-note.html %}
+
 ## Introduction
 
 In an ideal world, you will be able to use the live append and modification features that the Socrata Open Data API supports to keep your Socrata dataset directly in sync with your system of record. However, the system of record may not be available for direct export, or the data you are publishing might never change. In these cases, you can use the Import API to programmatically import data into datasets. Note that the Imports endpoints are proprietary Socrata extensions to the SODA API, and will only be available on Socrata-powered websites.

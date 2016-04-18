@@ -9,6 +9,8 @@ parents:
 - The Import API
 ---
 
+{% include imports-note.html %}
+
 Import translations are essentially a way to transform data as it's being imported, before the importer itself sees and interprets your data. If, say, you have a column in your output that has some non-importable numbers (eg. "`USD 24.50`"), you can use a translation to clean up that data to just a number so that the importer will read it correctly. Or, say you have multiple columns (eg `First Name`, `Last Name`) that you'd like to combine into one in your dataset; you can use a translation to do that, too.
 
 ## How Translations Work
