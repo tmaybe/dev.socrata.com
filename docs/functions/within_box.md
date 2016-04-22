@@ -14,12 +14,14 @@ datatypes:
 - point
 - line
 - polygon
+- multipolygon
 params:
   $1:
   - location
   - point
   - line
   - polygon
+  - multipolygon
   $nw_lat:
   - number
   $nw_long:
