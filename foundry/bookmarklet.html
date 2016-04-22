@@ -8,6 +8,6 @@ sidebar: foundry
 
 <p>Drag the button below into your browser bookmark bar, and then click it when you're on any Socrata dataset page in order to quickly jump to or create a link to the API documentation page on <a href="http://dev.socrata.com">dev.socrata.com</a>.</p>
 
-<a class="btn btn-primary" href="javascript:try { window.open('http://dev.socrata.com/foundry/' + window.location.host + '/' + window.location.pathname.match('([a-z0-9]{4}-[a-z0-9]{4})')[1], '_blank'); } catch(err) { alert('You sure this is a dataset URL?'); }">Doc It!</a>
+<a class="btn btn-primary" href="javascript:try { window.open('http://dev.socrata.com/foundry/' + window.location.host + '/' + window.location.pathname.match('/([a-z0-9]{4}-[a-z0-9]{4})\?.*$')[1], '_blank'); } catch(err) { alert('You sure this is a dataset URL?'); }">Doc It!</a>
 
-<a class="btn btn-primary" href="javascript:try { window.open('data:text/html, <html contenteditable>[' + document.title + '](' + window.location + ') ([API](http://dev.socrata.com/foundry/' + window.location.host + '/' + window.location.pathname.match('([a-z0-9]{4}-[a-z0-9]{4})')[1] + '))<script>document.execCommand(\'selectAll\')</script></html>', '_blank'); } catch(err) { alert('You sure this is a dataset URL?'); }">Link It!</a>
+<a class="btn btn-primary" href="javascript:try { window.open('data:text/html, <html contenteditable>[' + document.title + '](' + window.location + ') ([API](http://dev.socrata.com/foundry/' + window.location.host + '/' + window.location.pathname.match('/([a-z0-9]{4}-[a-z0-9]{4})\?.*$')[1] + '))<script>document.execCommand(\'selectAll\')</script></html>', '_blank'); } catch(err) { alert('You sure this is a dataset URL?'); }">Link It!</a>
