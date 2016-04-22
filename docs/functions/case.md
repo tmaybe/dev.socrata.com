@@ -18,6 +18,7 @@ datatypes:
 - number
 - point
 - polygon
+- multipolygon
 - text 
 params:
   $eval:
