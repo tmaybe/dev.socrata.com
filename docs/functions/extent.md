@@ -12,11 +12,13 @@ datatypes:
 - point
 - line
 - polygon
+- multipolygon
 params:
   $1:
   - point
   - line
   - polygon
+  - multipolygon
 returns: polygon
 
 parent_paths: 
