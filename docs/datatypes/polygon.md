@@ -29,3 +29,5 @@ The `Polygon` datatype represents a shape on the Earth as a ring of WGS84 Latitu
 The following table describes the functions that can be used with {% include dt.html dt="Polygon" %}. 
 
 {% include function_listing.html datatype="polygon" %}
+
+Closely related to the Polygon datatype is the {% include dt.html dt="MultiPolygon" %}. 
