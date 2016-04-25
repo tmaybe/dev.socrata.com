@@ -1,8 +1,10 @@
 ---
 ---
-{% assign datatype_pages = site.pages | where: "type", "datatype" %}
-{% assign function_pages = site.pages | where: "type", "function" %}
-{% assign format_pages = site.pages   | where: "type", "format" %}
+{% assign datatype_pages = site.pages  | where: "type", "datatype" %}
+{% assign function_pages = site.pages  | where: "type", "function" %}
+{% assign format_pages = site.pages    | where: "type", "format" %}
+{% assign parameter_pages = site.pages | where: "type", "parameter" %}
+{% assign response_codes = site.data.response_codes %}
 
 {
   "versions" : [ 2.0, 2.1 ],
@@ -33,6 +35,27 @@
         "versions" : {{ func.versions | jsonify }},
         "params" : {{ func.params | jsonify }},
         "returns" : {{ func.returns | jsonify  }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  },
+  "parameters" : {
+    {% for param in parameter_pages %}
+      {{ param.param | jsonify }} : {
+        "name": {{ param.param | jsonify }},
+        "in" : "query",
+        "required" : false,
+        "description" : {{ param.description | jsonify }},
+        "type": {{ param.data_type | jsonify }}{% if param.format %},
+        "format": {{ param.format | jsonify }}{% endif %}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  },
+  "response_codes" : {
+    {% for code in response_codes %}
+      "{{ code.code }}" : {
+        "name" : {{ code.name | jsonify }},
+        "description" : {{ code.description | jsonify }},
+        "response" : {{ code.response | jsonify }}
       }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   }
