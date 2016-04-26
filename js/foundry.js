@@ -373,8 +373,10 @@ define(
 
       // Convert our timestamps into printable times
       $.each(["createdAt", "rowsUpdatedAt"], function(idx, name){
-        structural_metadata[name] = (new Date(structural_metadata[name]*1000).toLocaleString());
-        metadata[name] = (new Date(metadata[name]*1000).toLocaleString());
+        if(_.isNumber(structural_metadata[name]))
+          structural_metadata[name] = (new Date(structural_metadata[name]*1000)).toLocaleString();
+        if(_.isNumber(metadata[name]))
+          metadata[name] = (new Date(metadata[name]*1000)).toLocaleString();
       });
 
       // Update our page header

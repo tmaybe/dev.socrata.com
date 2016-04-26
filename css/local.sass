@@ -256,34 +256,25 @@ p, li
     margin-bottom: 0.5em
 
 .response-codes
-  ul
-    padding-left: 0
+  a.code
+    color: white
+    display: inline-block
+    width: 50px
+    text-align: center
+    -moz-border-radius: 2px
+    -webkit-border-radius: 2px
+    -o-border-radius: 2px
+    -ms-border-radius: 2px
+    -khtml-border-radius: 2px
+    border-radius: 2px
+    margin:
+      right: 0.4em
 
     $response_codes: "good" #0074D9, "bad" #FF851B, "ugly" #FF4136
-    li
-      line-height: 1.2em
-      list-style: none
-      margin-bottom: 0.3em
-
-      code
-        color: white
-        display: inline-block
-        width: 50px
-        text-align: center
-        padding: 7px 0 4px
-        -moz-border-radius: 2px
-        -webkit-border-radius: 2px
-        -o-border-radius: 2px
-        -ms-border-radius: 2px
-        -khtml-border-radius: 2px
-        border-radius: 2px
-        margin:
-          right: 0.4em
-
-        @each $code in $response_codes
-          &.#{nth($code, 1)}
-            background-color: nth($code, 2)
-            border: 1px solid lighten(nth($code, 2), 20%)
+    @each $code in $response_codes
+      &.#{nth($code, 1)}
+        background-color: nth($code, 2)
+        border: 1px solid lighten(nth($code, 2), 20%)
 
 .branding
   -moz-border-radius: 4px
