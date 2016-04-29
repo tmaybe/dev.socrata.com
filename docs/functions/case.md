@@ -13,12 +13,14 @@ datatypes:
 - double
 - floating_timestamp
 - line
+- multi_line
 - location
 - money
 - number
 - point
+- multi_point
 - polygon
-- multipolygon
+- multi_polygon
 - text 
 params:
   $eval:
