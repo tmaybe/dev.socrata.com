@@ -7,8 +7,30 @@ title: MultiPolygon Datatype
 type: datatype
 versions:
 - 2.1
-datatype: multipolygon
+redirect_from:
+- /docs/datatypes/multipolygon.html
+datatype: multi_polygon
 audience: documentation
+definition:
+  type: object
+  properties: 
+    type: 
+      description: "The GeoJSON type of this object, `MultiPolygon`"
+      type: string
+      enum: 
+      - MultiPolygon
+    coordinates: 
+      description: "The sequence of longitude, latitude coordinates for this MultiPolygon, in WGS84"
+      type: array
+      items: 
+        type: array
+        items: 
+          type: array
+          items: 
+            type: number
+            format: double
+          minItems: 2
+          maxItems: 2
 ---
 
 Some geometries may be polygons with "holes" in the center, or may be made up of multiple disconnected polygons. In that case, the [GeoJSON "multipolygon"](http://geojson.org/geojson-spec.html#multipolygon) is used. Example:
@@ -29,6 +51,6 @@ Some geometries may be polygons with "holes" in the center, or may be made up of
 
 The following table describes the functions that can be used with {% include dt.html dt="MultiPolygon" %}. 
 
-{% include function_listing.html datatype="multipolygon" %}
+{% include function_listing.html datatype="multi_polygon" %}
 
 Closely related to the MultiPolygon datatype is the {% include dt.html dt="Polygon" %}. 
