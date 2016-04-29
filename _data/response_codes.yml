@@ -3,7 +3,7 @@
   url: http://httpstatusdogs.com/200-ok
   description: Your request was successful
   class: good
-  response: Row
+  response: Record
 
 - code: 202
   name: Request Processing

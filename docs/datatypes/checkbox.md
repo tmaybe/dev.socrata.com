@@ -10,6 +10,8 @@ versions:
 - 2.1
 datatype: checkbox
 audience: documentation
+definition:
+  type: boolean
 ---
 
 Checkbox fields are boolean values that represent either `true` or `false`. If a value was not provided for the field, they can also be `null`. Example, in [JSON](/docs/formats/json.html):

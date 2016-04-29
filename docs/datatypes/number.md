@@ -12,6 +12,9 @@ versions:
 datatype: number
 redirect_from:
   - /docs/datatypes/numeric.html
+definition:
+  type: number
+  format: double
 ---
 
 {% include numeric_types.html %}
