@@ -8,8 +8,8 @@ type: datatype
 versions:
 - 2.1
 redirect_from:
-- /docs/datatypes/multipolygon.html
-datatype: multi_polygon
+- /docs/datatypes/multi_polygon.html
+datatype: multipolygon
 audience: documentation
 definition:
   type: object
@@ -51,6 +51,6 @@ Some geometries may be polygons with "holes" in the center, or may be made up of
 
 The following table describes the functions that can be used with {% include dt.html dt="MultiPolygon" %}. 
 
-{% include function_listing.html datatype="multi_polygon" %}
+{% include function_listing.html datatype="multipolygon" %}
 
 Closely related to the MultiPolygon datatype is the {% include dt.html dt="Polygon" %}. 
