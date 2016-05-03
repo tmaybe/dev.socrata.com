@@ -7,7 +7,9 @@ title: MultiLine Datatype
 type: datatype
 versions:
 - 2.1
-datatype: multi_line
+redirect_from:
+- /docs/datatypes/multi_line.html
+datatype: multiline
 audience: documentation
 definition:
   type: object
@@ -47,6 +49,6 @@ The `MultiLine` datatype represents a set of paths on the Earth as sequences of 
   <em>Heads up!</em> Contrary to the normal convention of "latitude, longitude" ordering in the <code>coordinates</code> property, GeoJSON orders the coordinates as "longitude, latitude" (X coordinate, Y coordinate), as other GIS coordiate systems are encoded. Note that the SoQL <code>within_box</code> and <code>within_circle</code> functions use the more conventional ordering, however.
 </div>
 
-The following table describes the functions that can be used with {% include dt.html dt="multi_line" %}. 
+The following table describes the functions that can be used with {% include dt.html dt="multiline" %}. 
 
-{% include function_listing.html datatype="multi_line" %}
+{% include function_listing.html datatype="multiline" %}

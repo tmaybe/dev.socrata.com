@@ -7,7 +7,9 @@ title: MultiPoint Datatype
 type: datatype
 versions:
 - 2.1
-datatype: multi_point
+redirect_from:
+- /docs/datatypes/multi_point.html
+datatype: multipoint
 audience: documentation
 definition:
   type: object
@@ -44,4 +46,4 @@ The `MultiPoint` datatype is very similar to the [`Location`](/docs/datatypes/lo
 
 The following table describes the functions that can be used with MultiPoints. 
 
-{% include function_listing.html datatype="multi_point" %}
+{% include function_listing.html datatype="multipoint" %}

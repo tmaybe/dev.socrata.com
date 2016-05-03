@@ -10,22 +10,22 @@ versions:
 - 2.1
 datatypes:
 - point
-- multi_point
+- multipoint
 - line
-- multi_line
+- multiline
 - polygon
-- multi_polygon
+- multipolygon
 params:
   $1:
   - point
-  - multi_point
+  - multipoint
   - line
-  - multi_line
+  - multiline
   - polygon
-  - multi_polygon
+  - multipolygon
   $2:
   - polygon
-  - multi_polygon
+  - multipolygon
 returns: boolean
 
 parent_paths: 
@@ -39,7 +39,7 @@ parents:
 The `within_polygon(...)` function is used in the `$where` parameter filter for {% include dt.html dt="Point" %}, {% include dt.html dt="Line" %}, and {% include dt.html dt="Polygon" %} values within a polygon defined by a sequence points. It accepts two parameters:
 
 - The field name of a Location or Point
-- A multi_polygon in [Well-Known Text](https://en.wikipedia.org/wiki/Well-known_text) format
+- A multipolygon in [Well-Known Text](https://en.wikipedia.org/wiki/Well-known_text) format
 
 [Well-Known Text](https://en.wikipedia.org/wiki/Well-known_text) is a standard way of encoding geospatial data in a textual manner, and is more compact than GeoJSON:
 
