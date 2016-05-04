@@ -1,8 +1,9 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: API Foundry path change 
 short_title: API Foundry path change 
-category: changelog
+categories: changelog
 date: 2016-01-26
 parent_paths: 
 - /changelog/

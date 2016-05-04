@@ -1,8 +1,9 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: New API endpoints now default for API documentation
 short_title: New default for API documentation
-category: changelog
+categories: changelog
 date: 2015-10-08
 parent_paths: 
 - /changelog/

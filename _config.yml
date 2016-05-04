@@ -1,3 +1,4 @@
+# Jekyll Config
 destination: public
 exclude: 
 - public
@@ -11,8 +12,11 @@ exclude:
 - node_modules
 - _tests
 - package.json
+- bin
 
-# permalink: pretty
+permalink: pretty
+
+# Template Config
 splash: false
 splash_homepage: false
 
@@ -27,13 +31,14 @@ contribute: /contributing.html
 dataset_limit: 50000
 
 # Setup for RSS feeds
-name: 'Socrata Developer Portal Changelog'
-description: 'Recent, significant changes to http://dev.socrata.com'
+name: 'Socrata Developer Portal'
+description: 'Updates, examples, and significant changes to http://dev.socrata.com'
 url: 'https://dev.socrata.com'
 author: 
   name: 'Socrata Developer Program'
   uri: 'https://dev.socrata.com'
 
+# JS Configuration Flags
 flags:
   show_migration: true
   peeper:
@@ -46,6 +51,7 @@ custom_js:
 - /js/main.js
 - /js/snuffleupadata.js
 - /js/peeper.js
+- /js/github.js
 - /common/js/lib/socrata-status.js
 - /common/js/lib/ga-tracking.js
 

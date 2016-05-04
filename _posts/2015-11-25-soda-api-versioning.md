@@ -1,8 +1,9 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: Introducing clarified SODA API versioning
 short_title: Introducing clarified SODA API versioning
-category: changelog
+categories: changelog
 date: 2015-11-25
 parent_paths: 
 - /changelog/

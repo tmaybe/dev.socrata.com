@@ -1,8 +1,9 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: Added more detail about how to access system fields within SODA
 short_title: Additional detail about system fields
-category: changelog
+categories: changelog
 date: 2016-01-04
 parent_paths: 
 - /changelog/

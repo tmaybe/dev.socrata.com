@@ -1,8 +1,9 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: New global catalog search API introduced to labs.socrata.com
 short_title: Global search API
-category: changelog
+categories: changelog
 date: 2015-04-27
 parent_paths: 
 - /changelog/

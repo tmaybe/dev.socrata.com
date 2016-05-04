@@ -107,6 +107,11 @@
   <li><a href="/changelog/">API Changelog</a></li>
   <li><a href="/support.html">Getting Help</a></li>
 
+{% when 'post' %}
+  <li><em>Posted:</em> {{ page.date | date_to_string }}</li>
+  <li><em>Category:</em> {{ page.category | capitalize }}</li>
+  <li><em>Tagged:</em> {{ page.tags | array_to_sentence_string }}</li>
+
 {% else %}
   <li>Whoever created this page messed something up. Please <a href="/contributing.html">file an issue</a> and ask them to pass a "type" variable.</li>
 {% endcase %}

@@ -1,8 +1,9 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: API Documentation for Private Datasets
 short_title: API Documentation for Private Datasets
-category: changelog
+categories: changelog
 date: 2015-10-27
 parent_paths: 
 - /changelog/

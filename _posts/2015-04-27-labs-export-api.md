@@ -1,8 +1,9 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: New advanced Export API introduced to labs.socrata.com
 short_title: Advanced export API
-category: changelog
+categories: changelog
 date: 2015-04-27
 parent_paths: 
 - /changelog/

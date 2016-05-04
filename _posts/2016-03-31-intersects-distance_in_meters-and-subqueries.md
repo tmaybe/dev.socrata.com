@@ -1,8 +1,9 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: intersects(...), distance_in_meters(...), and sub-queries 
 short_title: intersects(...), distance_in_meters(...), and sub-queries 
-category: changelog
+categories: changelog
 date: 2016-03-31
 parent_paths: 
 - /changelog/

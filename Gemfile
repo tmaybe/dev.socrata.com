@@ -15,4 +15,5 @@ gem 'rake'
 group :development do
   gem 'rack'
   gem 'rack-contrib'
+  gem 'simple-rss'
 end

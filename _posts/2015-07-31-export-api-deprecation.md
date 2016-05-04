@@ -1,8 +1,9 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: Socrata Labs Export API Deprecation, $limit raised on new dataset APIs
 short_title: Socrata Labs Export API Deprecation
-category: changelog
+categories: changelog
 date: 2015-07-31
 parent_paths: 
 - /changelog/

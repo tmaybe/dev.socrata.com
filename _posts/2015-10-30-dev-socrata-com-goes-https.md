@@ -1,8 +1,9 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: dev.socrata.com goes HTTPS!
 short_title: dev.socrata.com goes HTTPS!
-category: changelog
+categories: changelog
 date: 2015-10-30
 parent_paths: 
 - /changelog/

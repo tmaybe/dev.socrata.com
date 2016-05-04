@@ -1,8 +1,8 @@
 ---
-layout: changelog
+layout: post
 title: Upper bound now set on Catalog Search API
 short_title: Upper bound now set on Catalog Search API
-category: changelog
+categories: changelog
 date: 2016-05-04
 parent_paths: 
 - /changelog/

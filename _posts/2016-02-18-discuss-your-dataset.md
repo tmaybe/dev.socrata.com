@@ -1,8 +1,9 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: Discuss datasets and APIs on GitHub
 short_title: Discuss datasets and APIs on GitHub
-category: changelog
+categories: changelog
 date: 2016-02-18
 parent_paths: 
 - /changelog/

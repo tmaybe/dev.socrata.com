@@ -1,8 +1,9 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: Changes to the handling of NULLs in Upsert operations 
 short_title: NULL handling change
-category: changelog
+categories: changelog
 date: 2014-02-11
 redirect_from:
   - /changes/2014-02-11-null-handling-in-upsert.html

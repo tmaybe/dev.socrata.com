@@ -1,8 +1,9 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: New Tools for Sample Queries
 short_title: New Tools for Sample Queries
-category: changelog
+categories: changelog
 date: 2016-03-03
 parent_paths: 
 - /changelog/
