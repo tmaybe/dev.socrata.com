@@ -1,8 +1,10 @@
 ---
 ---
-{% assign datatype_pages = site.pages | where: "type", "datatype" %}
-{% assign function_pages = site.pages | where: "type", "function" %}
-{% assign format_pages = site.pages   | where: "type", "format" %}
+{% assign datatype_pages = site.pages  | where: "type", "datatype" %}
+{% assign function_pages = site.pages  | where: "type", "function" %}
+{% assign format_pages = site.pages    | where: "type", "format" %}
+{% assign parameter_pages = site.pages | where: "type", "parameter" %}
+{% assign response_codes = site.data.response_codes %}
 
 {
   "versions" : [ 2.0, 2.1 ],
@@ -11,7 +13,8 @@
       {{ dt.datatype | jsonify }} : {
         "href" : {{ dt.url | jsonify }},
         "name" : {{ dt.title | jsonify }},
-        "versions" : {{ dt.versions | jsonify }}
+        "versions" : {{ dt.versions | jsonify }},
+        "definition" : {{ dt.definition | jsonify }}
       }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   },
@@ -35,5 +38,49 @@
         "returns" : {{ func.returns | jsonify  }}
       }{% unless forloop.last %},{% endunless %}
     {% endfor %}
+  },
+  "parameters" : {
+    {% for param in parameter_pages %}
+      {{ param.param | jsonify }} : {
+        "name": {{ param.param | jsonify }},
+        "in" : "query",
+        "required" : false,
+        "description" : {{ param.description | jsonify }},
+        "type": {{ param.data_type | jsonify }}{% if param.format %},
+        "format": {{ param.format | jsonify }}{% endif %}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  },
+  "response_codes" : {
+    {% for code in response_codes %}
+      "{{ code.code }}" : {
+        "name" : {{ code.name | jsonify }},
+        "description" : {{ code.description | jsonify }},
+        "response" : {{ code.response | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  },
+  "standard_responses" : {
+    "Error" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "description" : "An error code string that can be used to uniquely identify each class of error",
+          "type" : "string"
+        },
+        "error" : {
+          "description" : "A boolean field you can check to validate if this is an error message",
+          "type" : "boolean"
+        },
+        "message" : {
+          "description" : "A human-readable error message with details on the error",
+          "type" : "string"
+        },
+        "data" : {
+          "description" : "A payload containing details about this error, such as the query that was issued",
+          "type" : "object"
+        }
+      }
+    }
   }
 }

@@ -10,13 +10,19 @@ versions:
 - 2.1
 datatypes:
 - point
+- multipoint
 - line
+- multiline
 - polygon
+- multipolygon
 params:
   $1:
   - point
+  - multipoint
   - line
+  - multiline
   - polygon
+  - multipolygon
 returns: polygon
 
 parent_paths: 

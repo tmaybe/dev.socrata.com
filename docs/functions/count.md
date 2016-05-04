@@ -16,6 +16,11 @@ datatypes:
 - timestamp
 - location
 - point
+- multipoint
+- polygon
+- line
+- multiline
+- multipolygon
 params:
   $1:
   - any

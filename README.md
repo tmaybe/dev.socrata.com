@@ -8,20 +8,22 @@ We love pull requests! If you'd like to contribute, feel free to [fork this repo
 
 ### Setting Up
 
-The site is a fairly standard [Jekyll](http://jekyllrb.com/) site, but there are a few steps you'll want to make first to ensure that everything compiles properly:
+The site is a customized [Jekyll](http://jekyllrb.com/) site, so there are some steps you'll need to take care of to get your environment set up:
 
 1. Make sure you have the `gh-pages` branch checked out: `git checkout -b gh-pages origin/gh-pages`
 2. Pull in the site templates and CSS/SASS, which come from submodules: `git submodule update --init`
-3. Make sure you have Ruby version installed. Check `.ruby-version` to see the preferred version.
-4. Make sure you have the `jekyll` RubyGem installed
-  * Install the `bundler gem` and then install the gems from the Gemfile: `gem install bundler && bundle`
-5. Build the site and run the local server: `jekyll serve --watch`. To speed up page re-building you can disable plugins by running `jekyll serve --watch --safe`
-
-You can now view your local server at <http://localhost:4000> (unless you changed the port number).
+3. Make sure you have Ruby version installed. Check `.ruby-version` to see the preferred version. If you're using rbenv or rvm, this should automatically be set up
+4. Install the Bundler Gem installed: `gem install bundler`
+5. Set up the Gem bundle: `bundle`
+6. Make sure you have the `jekyll` RubyGem installed
+7. You can then run one of several options on the `Rakefile`, depending on your setup:
+    - `rake incremental` will perform a Jekyll build into `./public`. If rerun, it'll be faster since it'll only build what you have changed.
+    - `rake watch` will perform an incremental build automatically when you change files, which is handy if you're using something like [Pow](https://pow.cx)
+    - `rake serve` will run a standalone server for testing
 
 ### Before Submitting
 
-Before submitting, run `make test` to run the test suite and confirm that you haven't broken anything.
+Before submitting, run `rake test` and `rake htmlproof` to run the test suite and confirm that you haven't broken anything.
 
 ### Modifying CSS/SASS
 

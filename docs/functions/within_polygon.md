@@ -10,15 +10,22 @@ versions:
 - 2.1
 datatypes:
 - point
+- multipoint
 - line
+- multiline
 - polygon
+- multipolygon
 params:
   $1:
   - point
+  - multipoint
   - line
+  - multiline
   - polygon
+  - multipolygon
   $2:
   - polygon
+  - multipolygon
 returns: boolean
 
 parent_paths: 
@@ -47,5 +54,5 @@ For example, to query for all of the Chicago 311 service requests for vacant and
 {% include tryit.html domain='data.cityofchicago.org' path='/resource/yama-9had.json' args="$where=within_polygon(location, 'MULTIPOLYGON (((-87.637714 41.887275, -87.613681 41.886892, -87.625526 41.871555, -87.637714 41.887275)))')" %}
 
 <div class="alert alert-info">
-  <p><em>Cool Tool!</em> Formatting shapes as <code>MULTIPOLYGON</code>s for testing is tedious and error-prone - I don't recommend it. Instead, use a library that can generate them for you, or a tool like <a href="http://arthur-e.github.io/Wicket/sandbox-gmaps3.html">Wicket</a> to draw them in your browser.</p>
+<p><em>Cool Tool!</em> Formatting shapes as WKT for testing is tedious and error-prone - I don't recommend it. Instead, use a library that can generate them for you, or a tool like <a href="http://arthur-e.github.io/Wicket/sandbox-gmaps3.html">Wicket</a> to draw them in your browser.</p>
 </div>
