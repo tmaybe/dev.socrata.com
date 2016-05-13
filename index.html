@@ -33,8 +33,8 @@ custom_js:
       <p>Support for most popular programming languages and platforms.</p>
     </div>
     <div class="col-md-4">
-      <ul class="fa-ul"><li><h2><a href="/support.html"><i class="fa fa-li fa-question-circle"></i>Need Help?</a></h2></li></ul>
-      <p>Struggling with a problem you can't figure out? <a href="/support.html">Get help fast!</a></p>
+      <ul class="fa-ul"><li><h2><a href="/support.html"><i class="fa fa-li fa-table"></i>Need Data?</a></h2></li></ul>
+      <p>Looking for data? Search on the <a href="http://www.opendatanetwork.com">Open Data Network</a>!</p>
     </div>
   </div>
 
@@ -51,30 +51,49 @@ custom_js:
 
   <div class="row trailhead yet-more">
     <div class="col-md-4">
-      <ul class="fa-ul"><li><h3><a href="/changelog/"><i class="fa fa-li fa-code-fork"></i>Changelog</a></h3></li></ul>
+      <h3><a href="/changelog/"><i class="fa fa-fw fa-code-fork"></i>Changelog</a></h3>
       <p>Track the latest updates to our APIs and learn about upcoming changes.</p>
       <dl>
         {% for change in site.categories.changelog limit:3 %}
-          <dt><a href="{{change.url}}">{{ change.title }}</a></dt>
-          <dd><em>{{ change.date | date_to_string }}</em></dd>
+          <dt><a href="{{change.url}}"><i class="fa fa-fw fa-code-fork"></i> {{ change.title }}</a></dt>
+          <dd><em><a href="https://github.com/{{change.author}}">{{change.author}}</a> on {{ change.date | date_to_string }}</em></dd>
         {% endfor %}
       </dl>
       <p><a href="/changelog/">More...</a></p>
     </div>
+
     <div class="col-md-4">
-      <ul class="fa-ul"><li><h3><a href="/blog/"><i class="fa fa-li fa-code-fork"></i>Developer Blog</a></h3></li></ul>
+      <h3><a href="/blog/"><i class="fa fa-fw fa-rss-square"></i>Developer Blog</a></h3>
       <p>Tips &amp; tricks, updates about events &amp; hackathons, and interesting projects from the community.</p>
       <dl>
         {% for post in site.categories.blog limit:3 %}
-          <dt><a href="{{post.url}}">{{ post.title }}</a></dt>
+          <dt><a href="{{post.url}}"><a href="{{post.url}}"><i class="fa fa-fw {{ post.icon | default: "fa-rss" }}"></i> {{ post.title }}</a></dt>
           <dd><em><a href="https://github.com/{{post.author}}">{{post.author}}</a> on {{ post.date | date_to_string }}</em></dd>
         {% endfor %}
       </dl>
       <p><a href="/blog/">More...</a></p>
     </div>
+
     <div class="col-md-4">
-      <ul class="fa-ul"><li><h3><a href="/calendar.html"><i class="fa fa-li fa-calendar"></i>Event Calendar</a></h3></li></ul>
-      <p>Subscribe to a public calendar of upcoming Socrata developer events.</p>
+      <h3><a href="/blog/"><i class="fa fa-fw fa-question-circle"></i>Support Resources</a></h3>
+      <p>We're here to help! Check out the resources below for answers.</p>
+
+      <dl>
+        <dt><a href="https://stackoverflow.com/search?tab=newest&q=soda%20OR%20socrata"><i class="fa fa-fw fa-stack-overflow"></i> Stack Overflow</a><dt>
+        <dd>We follow the <code>soda</code> and <code>socrata</code> tags on Stack Overflow.</dd>
+
+        <dt><a href="/irc.html"><i class="fa fa-fw fa-slack"></i> IRC Chat</a><dt>
+        <dd>Come chat with the Socrata team and ask questions</dd>
+
+        <dt><a href="https://github.com/socrata"><i class="fa fa-fw fa-github"></i> GitHub</a><dt>
+        <dd>Socrata <i class="fa fa-heart"></i>'s Open Source!</dd>
+
+        <dt><a href="https://github.com/socrata/discuss/issues"><i class="fa fa-fw fa-bug"></i> Issue Tracker</a><dt>
+        <dd>Raise and discuss issues with the Socrata API, datasets, or data itself</dd>
+
+        <dt><a href="/calendar.html"><i class="fa fa-fw fa-calendar"></i> Event Calendar</a></dt>
+        <dd>Where you can find our team in the coming weeks</dd>
+      </dl>
     </div>
   </div>
 </div>

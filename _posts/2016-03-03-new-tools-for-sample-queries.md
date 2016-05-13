@@ -3,12 +3,12 @@ layout: post
 categories: changelog
 title: New Tools for Sample Queries
 short_title: New Tools for Sample Queries
-categories: changelog
 date: 2016-03-03
 parent_paths: 
 - /changelog/
 parents: 
 - API Changelog
+author: chrismetcalf
 ---
 
 We've updated the code block for sample queries on [dev.socrata.com](/) with a number of new great tools to help you interact with our example queries. On every sample query block, you'll see a new toolbar on the top with buttons that perform different operations.

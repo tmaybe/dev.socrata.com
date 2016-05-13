@@ -16,4 +16,5 @@ group :development do
   gem 'rack'
   gem 'rack-contrib'
   gem 'simple-rss'
+  gem 'reverse_markdown'
 end

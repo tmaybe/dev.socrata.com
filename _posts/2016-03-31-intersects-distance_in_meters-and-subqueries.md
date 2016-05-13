@@ -3,12 +3,12 @@ layout: post
 categories: changelog
 title: intersects(...), distance_in_meters(...), and sub-queries 
 short_title: intersects(...), distance_in_meters(...), and sub-queries 
-categories: changelog
 date: 2016-03-31
 parent_paths: 
 - /changelog/
 parents: 
 - API Changelog
+author: chrismetcalf
 ---
 
 We're excited to announce that we're making three new features of our SoQL query language public:

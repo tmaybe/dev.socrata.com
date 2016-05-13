@@ -1,0 +1,37 @@
+---
+layout: default
+title: Changelog
+redirect_from:
+- /changelog.html
+custom_css:
+- //cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css
+- /common/css/github-activity.css
+custom_js:
+- /js/changelog.js
+---
+
+<h1 id="apichangelog">API Changelog</h1>
+
+Every API must change from time to time. While we strive to keep breaking changes to a minimum, some changes in behavior may affect your application. Many changes also bring new or enhanced functionality to the API.
+
+{% include newsletter.html %}
+
+<dl class="archive">
+  {% assign changelog = site.categories['changelog'] %}
+  {% for post in changelog %}
+    <dt><a href="{{post.url}}"><a href="{{post.url}}"><i class="fa fa-fw fa-code-fork"></i> {{ post.title }}</a></dt>
+    <dd><em><a href="https://github.com/{{post.author}}">{{post.author}}</a> on {{ post.date | date_to_string }}</em></dd>
+  {% endfor %}
+</dl>
+
+<h1 id="developerdocumentationupdates">Developer Documentation Updates</h1>
+
+<p>On an almost content basis, we are making updates to the content, samples, and detailed documentation available on this website. In fact, you can contribute by <a href="https://github.com/socrata/dev.socrata.com/issues/new">filing issues</a> for problems you find or by <a href="https://github.com/socrata/dev.socrata.com/compare?expand=1">submitting pull requests</a> with fixes or improvements.</p>
+
+<p>You can see details on all the recent activities on the Socrata Developer Portal below.</p>
+
+<div id="feed">&nbsp;</div>
+
+<p>You can also subscribe to <a href="https://hooks.slack.com/services/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">API Changelog</a>, which will notify you when any significant changes are made to the documentation on our developer portal.</p>
+
+<script type="text/javascript" src="//www.apichangelog.com/static/widget/follow.js" api="socrata"></script>

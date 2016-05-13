@@ -50,8 +50,11 @@ require(["jquery", "humane"], function($) {
       // Update our template
       $(element).find("a.profile-link").attr("src", profile.html_url);
       $(element).find("img.avatar")
-        .attr("src", profile.avatar_url)
-        .attr("alt", profile.username);
+        .fadeOut(500, function() {
+          $(element).find("img.avatar").attr("src", profile.avatar_url);
+          $(element).find("img.avatar").attr("alt", profile.username);
+        })
+        .fadeIn(500);
       $(element).find(".fullname").text(profile.name);
       $(element).find(".username").text(profile.login);
       $(element).show();

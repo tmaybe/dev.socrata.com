@@ -138,6 +138,8 @@ GEM
       ffi (>= 0.5.0)
     rdiscount (2.1.8)
     redcarpet (3.3.3)
+    reverse_markdown (1.0.3)
+      nokogiri
     rouge (1.10.1)
     safe_yaml (1.0.4)
     sass (3.4.21)
@@ -170,6 +172,7 @@ DEPENDENCIES
   rack
   rack-contrib
   rake
+  reverse_markdown
   simple-rss
 
 BUNDLED WITH

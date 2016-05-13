@@ -3,12 +3,12 @@ layout: post
 categories: changelog
 title: Migration to new, high-performance Socrata Open Data APIs
 short_title: New, high-perf APIs
-categories: changelog
 date: 2015-04-27
 parent_paths: 
 - /changelog/
 parents: 
 - API Changelog
+author: chrismetcalf
 ---
 
 In April and May 2015, as part of [a huge new set of product and platform releases](https://www.socrata.com/blog/rethink-open-data/), we'll be releasing new, high-performance SODA dataset API endpoints that will replace the existing enes. Developers will be given ample time to migrate their code to the new APIs, but starting later in the year the old SODA APIs for some datasets may stop receiving new data.
