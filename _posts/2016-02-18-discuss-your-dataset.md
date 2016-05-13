@@ -1,13 +1,14 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: Discuss datasets and APIs on GitHub
 short_title: Discuss datasets and APIs on GitHub
-category: changelog
 date: 2016-02-18
 parent_paths: 
 - /changelog/
 parents: 
 - API Changelog
+author: chrismetcalf
 ---
 
 Today we've released a small, experimental feature that will allow you to discuss datasets and their APIs via an [issues forum](https://github.com/socrata/discuss/issues) we've created on GitHub. When you visit the API documentation for any dataset, [like this one](https://dev.socrata.com/foundry/soda.demo.socrata.com/6yvf-kk3n), you'll be presented with a new box in the sidebar that lists open discussions about that dataset, and provides you a link where you can open a new issue to discuss a new topic.

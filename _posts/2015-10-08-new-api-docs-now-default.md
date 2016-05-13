@@ -1,13 +1,14 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: New API endpoints now default for API documentation
 short_title: New default for API documentation
-category: changelog
 date: 2015-10-08
 parent_paths: 
 - /changelog/
 parents: 
 - API Changelog
+author: chrismetcalf
 ---
 
 In the past few days, you may have noticed that when visiting API documentation for datasets, you're automatically redirected to the documentation for the [new, high-performance endpoint](/changelog/2015/04/27/new-higher-performance-apis.html) for that dataset. This was a deliberate change in order to encourage developers to use those new endpoints, now that we have 6 months of stability under our belts.
