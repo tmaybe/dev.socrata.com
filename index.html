@@ -56,7 +56,7 @@ custom_js:
       <dl>
         {% for change in site.categories.changelog limit:3 %}
           <dt><a href="{{change.url}}"><i class="fa fa-fw fa-code-fork"></i> {{ change.title }}</a></dt>
-          <dd><em><a href="https://github.com/{{change.author}}">{{change.author}}</a> on {{ change.date | date_to_string }}</em></dd>
+          <dd><em>{% if change.author contains ' ' %}{{change.author}}{% else %}<a href="https://github.com/{{change.author}}">{{change.author}}</a>{% endif %} on {{ change.date | date_to_string }}</em></dd>
         {% endfor %}
       </dl>
       <p><a href="/changelog/">More...</a></p>
@@ -68,7 +68,7 @@ custom_js:
       <dl>
         {% for post in site.categories.blog limit:3 %}
           <dt><a href="{{post.url}}"><a href="{{post.url}}"><i class="fa fa-fw {{ post.icon | default: "fa-rss" }}"></i> {{ post.title }}</a></dt>
-          <dd><em><a href="https://github.com/{{post.author}}">{{post.author}}</a> on {{ post.date | date_to_string }}</em></dd>
+          <dd><em>{% if post.author contains ' ' %}{{post.author}}{% else %}<a href="https://github.com/{{post.author}}">{{post.author}}</a>{% endif %} on {{ post.date | date_to_string }}</em></dd>
         {% endfor %}
       </dl>
       <p><a href="/blog/">More...</a></p>
