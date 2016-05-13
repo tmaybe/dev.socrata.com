@@ -90,6 +90,6 @@ In the Javascript snippet, we:
 1. Set some configuration vairables including the domain the dataset lives on, the dataset's unique ID (aka "four by four"), the query string, and finallyt the title for the chart.
 2. Inside jQuery's `.ready()` callback, which is called once the HTML page and dependencies are fully loaded, we form a URL to query the dataset for the data we want and use the response to create the chart in the specified `#chart-container` div. [You can learn more about how to create a chart using Highcharts and find links to their documentation here](http://www.highcharts.com/docs/getting-started/your-first-chart).
 
-I hope this was helpful! I encourage you to tinker with this on your own page web page or fork the [jsFiddle](http://jsfiddle.net/marksskram/ed42ghw5/1/). If you have any questions, feel free to reach out to me directly via Twitter (@skram)) or through [one of our support channels](http://dev.socrata.com/support.html).
+I hope this was helpful! I encourage you to tinker with this on your own page web page or fork the [jsFiddle](http://jsfiddle.net/marksskram/ed42ghw5/1/). If you have any questions, feel free to reach out to me directly via Twitter ([skram](https://twitter.com/skram)) or through [one of our support channels](http://dev.socrata.com/support.html).
 
 Have a great example of your own? Please [contribute]({{ site.github_repo }}) to our community-maintained documentation!

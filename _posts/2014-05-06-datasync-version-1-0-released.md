@@ -25,7 +25,7 @@ We also invite you to contribute to the documentation using a [GitHub pull reque
 DataSync 1.0 comes with additional enhancements and new features, many of which are based off of customer requests:
 
 - _"Replace via FTP' update method:_ Enables simple and efficient replace operations on datasets of essentially any size
-- _Reduces complexity of updating datasets with Location datatype columns:_ You can now use the [Control file configuration](http://socrata.github.io/datasync/resources/ftp-control-config.html)(available when using "replace via FTP' method) to "pull" address, city, state, zip code, or latitude/longitude data within other (non-Location) columns into the Location column (to enable Map visualizations or geocoding)
+- _Reduces complexity of updating datasets with Location datatype columns:_ You can now use the [Control file configuration](https://socrata.github.io/datasync/resources/control-config.html)(available when using "replace via FTP' method) to "pull" address, city, state, zip code, or latitude/longitude data within other (non-Location) columns into the Location column (to enable Map visualizations or geocoding)
 - _Update dataset metadata:_ You can now use DataSync to automate updating dataset metadata using a Metadata Job (go to `File -> New.. -> Metadata Job`).Many thanks to the generous open source code contribution to DataSync by [Brian Williamson](https://github.com/bhwilliamson) for that new job type!  
 - _Improved command-line interface:_ More user-friendly and fully-featured interface to configure and run Standard integration and Port jobs without the user interface 
 - _Delete update operation:_ Now you can use the "delete" method
@@ -48,6 +48,6 @@ Watch the GitHub repository to remain up to speed with new features on the roadm
 Related Links:
 
 - [Getting Started Guide](http://socrata.github.io/datasync/)
-- [Integration Class Webinar](http://support.socrata.com/entries/24978167-Now-Available-Video-Replay-From-July-25th-2013-Introduction-to-Integration) - in which our integration experts go over a few of the integration options compatible with the Socrata platform, including DataSync. You can register for the next live webinar here: [http://discover.socrata.com/socratauniversity.html](http://discover.socrata.com/socratauniversity.html)
+- [Integration Class Webinar](https://support.socrata.com/hc/en-us/articles/202959163) - in which our integration experts go over a few of the integration options compatible with the Socrata platform, including DataSync. You can register for the next live webinar here: [http://discover.socrata.com/socratauniversity.html](http://discover.socrata.com/socratauniversity.html)
 
 

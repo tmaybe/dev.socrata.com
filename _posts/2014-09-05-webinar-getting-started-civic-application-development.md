@@ -26,7 +26,7 @@ Chris Metcalf is the Director of Developer Platform at Socrata. He is a technolo
 ![Chris Metcalf](https://avatars0.githubusercontent.com/u/19971?v=3&s=460)  
 
 <dl>
-  <dt>Chris Metcalf<dt>
+  <dt>Chris Metcalf</dt>
   <dd>Director of Platform</dd>  
   <dd>Socrata, Inc.</dd>
 </dl>

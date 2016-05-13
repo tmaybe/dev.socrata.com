@@ -10,7 +10,7 @@ sidebar: post
 type: post
 ---
 
-This February 21st marks the fifth annual [International Open Data Day](http://opendataday.org/). What started as loosely-organized, grassroots movement has grown to become an awesome network of worldwide open government events including [CodeAcross](http://www.codeforamerica.org/events/codeacross-2015/) and the [Global Urban Datafest](http://www.global.datafest.net/).
+This February 21st marks the fifth annual [International Open Data Day](http://opendataday.org/). What started as loosely-organized, grassroots movement has grown to become an awesome network of worldwide open government events including [CodeAcross](http://www.codeforamerica.org/) and the [Global Urban Datafest](http://www.global.datafest.net/).
 
 This year also marks the fifth year that Socrata has been excited to participate and support local event organizers. If you're organizing an event in your community, there are a number of ways we can help.
 

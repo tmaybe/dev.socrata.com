@@ -25,7 +25,7 @@ In the future, the Socrata Open Developer Portal will continue to be evolved wit
 
 This is where the community comes in. Our new developer portal has been completely developed as an open-source resource, and is [managed and published via Github Pages](http://github.com/socrata/dev.socrata.com). This allows any interested party to fork, modify, and send our team a "pull request" of changes to any of our developer resources. Those changes could be as simple as a fix of a typo, or they could be an entirely new "how-to" document or example of how to use the Socrata APIs with a new language or framework. If the pull request meets our [contributor guidelines](http://dev.socrata.com/contributing.html), we'll accept the change and their changes will be merged in with the rest of our developer resources.
 
-This also marks the launch of a great new resource for learning about engineering, technology, and developer experience at Socrata. The new [Socrata Tech Blog](/developer-blog), for which this is the first post will feature:
+This also marks the launch of a great new resource for learning about engineering, technology, and developer experience at Socrata. The new [Socrata Tech Blog](/blog/), for which this is the first post will feature:
 
 - Updates on changes and improvements to our developer experience
 - Details on the exciting work coming out of our developer community

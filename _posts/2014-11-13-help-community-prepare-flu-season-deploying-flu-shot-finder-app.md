@@ -22,8 +22,8 @@ Deploying a new [flu shot finder](https://github.com/socrata/flushots) is very s
 2. Fork the [flu shot finder repo](https://github.com/socrata/flushots) on Github into your own account.
 3. Modify the `_config.yml` to specify where to find your dataset and to provide some details about your community. You can even edit it through your web browser using Github’s [built-in code editor](https://help.github.com/articles/editing-files-in-your-repository/).
 
-That’s it! Once you commit and push your changes, [Github Pages](http://pages.github.com) takes care of the rest, and you’ll have a flu-shot finder online under your account, like [the one we partnered with at Code for Raleigh, NC](http://socrata.github.io/flushots/).
+That's it! Once you commit and push your changes, [Github Pages](http://pages.github.com) takes care of the rest, and you’ll have a flu-shot finder online under your account, like [the one we partnered with at Code for Raleigh, NC](http://socrata.github.io/flushots/).
 
-To learn more about the flu shot finder, check out its [repository on Github](http://socrata.github.io/flushots/). The project is open sourced under the [MIT License](https://github.com/socrata/flushots/blob/gh-pages/LICENSE.TXT), and we welcome pull requests! Code for America Brigades are also welcome request space on the [Brigade Open Data Sharing Platform](https://brigades.opendatanetwork.com/) to host their data.
+To learn more about the flu shot finder, check out its [repository on Github](http://socrata.github.io/flushots/). The project is open sourced under the [MIT License](https://github.com/socrata/flushots/blob/gh-pages/LICENSE), and we welcome pull requests! Code for America Brigades are also welcome request space on the [Brigade Open Data Sharing Platform](https://brigades.opendatanetwork.com/) to host their data.
 
 
