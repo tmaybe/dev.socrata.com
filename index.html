@@ -32,20 +32,31 @@ custom_js:
       <ul class="fa-ul"><li><h2><a href="/libraries/"><i class="fa fa-li fa-mobile-phone"></i>Libraries &amp; SDKs</a></h2></li></ul>
       <p>Support for most popular programming languages and platforms.</p>
     </div>
-    <div class="col-md-4">
-      <ul class="fa-ul"><li><h2><a href="/support.html"><i class="fa fa-li fa-table"></i>Need Data?</a></h2></li></ul>
-      <p>Looking for data? Search on the <a href="http://www.opendatanetwork.com">Open Data Network</a>!</p>
+    <div class="col-md-4"j>
+      <ul class="fa-ul"><li><h2><a href="/publishers/"><i class="fa fa-li fa-cloud-upload"></i>Data Publishers</a></h2></li></ul>
+      <p>Are you a Socrata customer or data publisher? Check out our <a href="/publishers/">data publishing guide &raquo;</a></p>
     </div>
   </div>
 
-  <div class="row publishers">
-    <div class="col-xs-2 text-center hidden-xs">
-      <i class="fa fa-cloud-upload fa-4x"></i>
-    </div>
+  <div class="row odn">
     <div class="col-xs-10">
-      <h2>Data Publishers</h2>
+      <h3><a class="logo" href="http://www.opendatanetwork.com" title="Open Data Network"></a></h3>
 
-      <p>Are you a Socrata customer or data publisher? Want to learn more about how to automate the maintenance of your open data? Check out our <a href="/publishers/">data publishing guide &raquo;</a></p>
+      <p>Looking for open data? Search the <a href="http://www.opendatanetwork.com">Open Data Network</a> for datasets from all our customers and partners.</p>
+
+      <form action="http://www.opendatanetwork.com/search" method="GET">
+        <div class="search">
+          <div class="input-group col-md-12">
+            <input name="source" type="hidden" value="dev.socrata.com"/>
+            <input name="q" type="text" class="search-query form-control" placeholder="Search the Open Data Network" />
+            <span class="input-group-btn">
+              <button class="btn btn-danger" type="button">
+                <span class=" glyphicon glyphicon-search"></span>
+              </button>
+            </span>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -75,7 +86,7 @@ custom_js:
     </div>
 
     <div class="col-md-4">
-      <h3><a href="/blog/"><i class="fa fa-fw fa-question-circle"></i>Support Resources</a></h3>
+      <h3><a href="/support.html"><i class="fa fa-fw fa-question-circle"></i>Support Resources</a></h3>
       <p>We're here to help! Check out the resources below for answers.</p>
 
       <dl>
