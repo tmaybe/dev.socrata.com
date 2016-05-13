@@ -5,7 +5,7 @@ categories: blog
 tags: blog, developer
 date: 2015-05-07
 original_url: "https://www.socrata.com/developer-blog-article/streaming-geospatial-processing-in-the-socrata-platform/"
-author: "Evan Chan"
+author: "velvia"
 sidebar: post
 type: post
 ---
