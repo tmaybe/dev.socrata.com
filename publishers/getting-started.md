@@ -3,8 +3,6 @@ layout: with-sidebar
 sidebar: publisher
 title: Publisher API Basics
 audience: publisher
-redirect_from:
-  - /publishers/getting-started
 ---
 
 <!-- open("data", O_CREAT|O_RDWR); -->

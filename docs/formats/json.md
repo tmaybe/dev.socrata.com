@@ -4,8 +4,6 @@ sidebar: documentation
 type: format 
 title: JSON Format
 audience: documentation
-redirect_from:
-  - /docs/formats/json
 versions:
 - 2.1
 - 2.0
