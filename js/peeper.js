@@ -1,6 +1,6 @@
 require(["jquery", "js.cookie"], function($, Cookies) {
   $(document).ready(function(){
-    if(Cookies.get('hide-peeper')) {
+    if(document.location.pathname.match(/\/foundry\//) || Cookies.get('hide-peeper')) {
       console.log("Peeper has been hidden"); 
       return;
     }
