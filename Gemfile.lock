@@ -54,7 +54,7 @@ GEM
     html-pipeline (2.4.1)
       activesupport (>= 2, < 5)
       nokogiri (>= 1.4)
-    html-proofer (3.0.6)
+    html-proofer (2.6.4)
       activesupport (~> 4.2)
       addressable (~> 2.3)
       colored (~> 1.2)
@@ -159,7 +159,7 @@ DEPENDENCIES
   colorize
   ferret
   github-pages
-  html-proofer
+  html-proofer (= 2.6.4)
   httparty
   jekyll-feed
   mime-types
@@ -172,4 +172,4 @@ DEPENDENCIES
   simple-rss
 
 BUNDLED WITH
-   1.11.2
+   1.12.4
