@@ -1,0 +1,62 @@
+#!/usr/bin/env ruby
+# A (hopefully) one-time-use script to convert legacy dev blog entries from WP Extended RSS to Jekyll _post files
+#
+# Maybe somebody else will find it useful some day...
+
+require 'simple-rss'
+require 'erb'
+require 'reverse_markdown'
+
+# Map authors to their GitHub profiles
+AUTHOR_MAP = {
+  "Chris Metcalf" => "chrismetcalf",
+  "AdrianLaurenzi" => "alaurenz"
+}
+
+# Simple RegExp filters we'll use on the content
+REGEXP_FILTERS = {
+  /\[youtube id="(\w+)"\]/ => '<iframe id="ytplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/\1?autoplay=0" frameborder="0">You must enable iFrames</iframe>',
+  /Â/ => '',
+  /Ã/ => '',
+  /¢/ => '"',
+  %r{\[/?two_third\]} => '',
+  %r{\[/?one_third_last\]} => '',
+  "/wp-content/uploads/chris-metcalf-headshot2.jpg" => 'https://avatars0.githubusercontent.com/u/19971?v=3&s=460'
+}
+
+def filter_content(content)
+  content = content.force_encoding('iso-8859-1').encode('utf-8')
+
+  REGEXP_FILTERS.each do |k, v|
+    content = content.gsub(k, v)
+  end
+
+  return ReverseMarkdown.convert content
+end
+
+rss = SimpleRSS.parse open(File.join(File.dirname(__FILE__), '../_data/legacy-blog.xml'))
+template = ERB.new(DATA.read)
+
+rss.entries.each do |entry|
+  filename = File.join(File.dirname(__FILE__),
+                       '../_posts/',
+                       "#{entry.pubDate.strftime('%Y-%m-%d')}-#{entry.link.match(%r{/([a-z0-9-]+)/?$})[1]}.md")
+
+  puts "Writing: #{entry.title}..."
+  File.open(filename, 'w') { |f| f.write(template.result(binding)) }
+end
+
+__END__
+---
+layout: post
+title: "<%= entry.title %>"
+categories: blog
+tags: blog, developer
+date: <%= entry.pubDate.strftime("%Y-%m-%d") %>
+original_url: "<%= entry.link %>"
+author: "<%= AUTHOR_MAP[entry.dc_creator] || entry.dc_creator  %>"
+sidebar: post
+type: post
+---
+
+<%= filter_content(entry.content_encoded) %>

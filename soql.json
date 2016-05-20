@@ -5,6 +5,7 @@
 {% assign format_pages = site.pages    | where: "type", "format" %}
 {% assign parameter_pages = site.pages | where: "type", "parameter" %}
 {% assign response_codes = site.data.response_codes %}
+{% assign changelog = site.categories['changelog'] %}
 
 {
   "versions" : [ 2.0, 2.1 ],
@@ -82,5 +83,14 @@
         }
       }
     }
-  }
+  },
+  "changelog" : [
+    {% for change in changelog %}
+      {
+        "date" : {{ change.date | jsonify }},
+        "title" : {{ change.title | jsonify }},
+        "url" : "https://dev.socrata.com{{change.url}}"
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
 }
