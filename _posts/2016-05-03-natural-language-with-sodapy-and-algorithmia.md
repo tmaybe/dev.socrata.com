@@ -49,7 +49,7 @@ username="user.name@domain.com",
 password="passw0rd!")
 
 # Algorithmia App Token
-algoKey = 'simDW/YrikSSwfqDddG2aX7S1IJ1'
+algoKey = 'algoAppToken'
 ```
     
 ## Running our analysis on a single record
