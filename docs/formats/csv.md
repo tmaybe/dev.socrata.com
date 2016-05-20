@@ -4,8 +4,6 @@ sidebar: documentation
 type: format
 title: CSV Format
 audience: documentation
-redirect_from:
-- /docs/formats/csv
 versions:
 - 2.0
 - 2.1

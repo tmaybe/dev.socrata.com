@@ -2,8 +2,6 @@
 layout: with-sidebar
 sidebar: documentation
 title: Authentication
-redirect_from:
-  - /authentication
 ---
 
 <div class="alert alert-info"><em>Note:</em> Authentication is only necessary when accessing datasets that have been marked as <em>private</em> or when making write requests (<code>PUT</code>, <code>POST</code>, and <code>DELETE</code>). For reading datasets that have not been marked as private, simply use an <a href="/docs/app-tokens.html">application token</a>.</div>
