@@ -47,7 +47,7 @@ The `within_circle(...)` function is used in the `$where` parameter filter for [
 - The field name of a Location or Point
 - The latitude of your central point
 - The longitude of your central point
-- A range in meters
+- The radius of the circle in meters
 
 For example, to query for all of the [Seattle Fire 911 Calls](https://data.seattle.gov/Public-Safety/Seattle-Police-Department-911-Incident-Response/3k2p-39jp) calls within 500 meters of the Socrata offices in Seattle:
 
