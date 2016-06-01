@@ -20,7 +20,7 @@ The `$order` parameter determines how the results should be sorted, using the va
 
 For example, to sort our earthquakes by `magnitude`, in descending order:
 
-{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$order=magnitude DESC' %}
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv.json' args='$order=magnitude DESC' %}
 
 We could sort them in ascending order by replacing `DESC` with `ASC`, or by simply omitting it.
 

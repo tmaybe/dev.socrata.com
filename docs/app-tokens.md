@@ -44,7 +44,7 @@ X-App-Token: [REDACTED]
 
 The same application token could also be passed as a URL parameter:
 
-{% include tryit.html domain='data.seattle.gov' path='/resource/3k2p-39jp' args='$$app_token=APP_TOKEN' %}
+{% include tryit.html domain='data.seattle.gov' path='/resource/3k2p-39jp.json' args='$$app_token=APP_TOKEN' %}
 
 ## Using the Application Token as part of the authentication process
 

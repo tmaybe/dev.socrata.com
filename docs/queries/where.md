@@ -19,11 +19,11 @@ order: 2
 
 The `$where` parameter allows you to filter your results using boolean operators. For example, to retrieve only quakes with a `magnitude` of greater than 3.0:
 
-{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$where=magnitude > 3.0' %}
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv.json' args='$where=magnitude > 3.0' %}
 
 You can also combine multiple filters together using boolean operators to chain filters together. If we also only wanted only quakes from the `pr` source:
 
-{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$where=magnitude > 3.0 AND source = \'pr\'' %}
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv.json' args='$where=magnitude > 3.0 AND source = \'pr\'' %}
 
 Multiple boolean operators are available to combine filters:
 
@@ -38,9 +38,9 @@ Multiple boolean operators are available to combine filters:
 
 Note that using [simple filtering](/docs/filtering.html), equality clauses can be simplified. And since multiple parameters are implicitly `AND`ed together, the above query can be simplified to:
 
-{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$where=magnitude > 3.0&amp;source=pr' %}
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv.json' args='$where=magnitude > 3.0&amp;source=pr' %}
 
 Multiple equality clauses can be even simpler:
 
-{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='region=Virgin Islands region&amp;source=pr' %}
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv.json' args='region=Virgin Islands region&amp;source=pr' %}
 
