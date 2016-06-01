@@ -27,7 +27,7 @@ Note that unlike SQL, there is no `FROM` clause.
 
 For example, you could combine `$select` and `$where` parameters together as follows:
 
-{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$query=SELECT location, magnitude WHERE magnitude > 4.2' %}
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv.json' args='$query=SELECT location, magnitude WHERE magnitude > 4.2' %}
 
 For a full listing of the functionality available in SoQL, check out the [the SoQL documentation](/docs/queries/).
 
