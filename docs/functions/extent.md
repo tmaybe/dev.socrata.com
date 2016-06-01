@@ -33,7 +33,7 @@ parents:
 
 {% include function_header.html %}
 
-The `extent(...)` generates a rectangle that completely encompass a set of [Points](/docs/datatypes/point.html). For example, to get the rectangle that surrounds all of the crimes in Chicago in 2014:
+The `extent(...)` generates a rectangle that completely encompass a set of points or geometries, to get the rectangle that surrounds all of the crimes in Chicago in 2014:
 
 {% include tryit.html domain='data.cityofchicago.org' path='/resource/6zsd-86xi.geojson' args="$select=count(*),extent(location)&year=2014" %}
 
