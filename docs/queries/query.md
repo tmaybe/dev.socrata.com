@@ -11,7 +11,7 @@ type: parameter
 param: "$query"
 description: "A full SoQL query string, all as one parameter"
 data_type: string
-order: 8
+order: 9
 ---
 
 The `$query` parameter allows you to combine multiple SoQL clauses together into a single parameter, for convenience. Similar to SQL, clauses must be specified in a specific order:

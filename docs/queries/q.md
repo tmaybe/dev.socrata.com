@@ -12,7 +12,7 @@ param: "$q"
 default: No search
 description: "Performs a full text search for a value."
 data_type: string
-order: 7
+order: 8
 ---
 
 The `$q` parameter is used to access a special full-text index that searches within the dataset. The full-text index spans all of the fields of the dataset, so think of it more like using a search engine than performing a SQL query.

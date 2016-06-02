@@ -13,7 +13,7 @@ in_query: HAVING
 default: No filter
 description: "Filters the rows that result from an aggregation, similar to `HAVING`"
 data_type: string
-order: 2
+order: 5
 ---
 
 
