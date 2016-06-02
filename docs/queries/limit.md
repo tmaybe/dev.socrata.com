@@ -14,7 +14,7 @@ default: "1000 (2.0 endpoints: maximum of 50,000; 2.1: unlimited [&raquo;](/docs
 description: "Maximum number of results to return"
 data_type: integer
 format: int64
-order: 5
+order: 6
 ---
 
 The `$limit` parameter controls the total number of rows returned, and it defaults to 1,000 records per request. It can be used either alone, or with `$offset` in order to page through a dataset.
