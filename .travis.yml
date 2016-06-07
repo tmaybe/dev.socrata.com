@@ -28,3 +28,6 @@ after_success:
 notifications:
   slack:
     secure: P6Mce/govM2MEy8RCTZHhG2Mg+2Bmh6d84GXt3lKUGPSv9u5Xww0Ld7K+rh7C5/qxSqQIfCY6m2TbtQbz1IpfuSWpvA9QwANYGr/gyzXFvd6pV8gRValb+juokxmNwjL5JmP8TdaX8IKrUgx9eb26j+0dEUbGLZR/kZfT0CX048=
+
+# Secure build config
+secure: "DJ9EuDuGm2QZDfAFeTET+OUd3tQJ1myhRLTdFnWLtVBd9tAW+XD+ZUOnU7E3W2ujV/WJ/4sIrf2RamOzAJhROaLW4dhf7mswkkaiYAbylG2Ma/xHlKW80cnT1TVe/eCBUvicRIFtpeU2JBYg9upKSApmoROrLd4QOxntz2xKGKQ="
