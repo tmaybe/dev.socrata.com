@@ -10,6 +10,9 @@ versions:
 - 2.0
 - 2.1
 datatype: double
+definition:
+  type: number
+  format: double
 ---
 
 {% include numeric_types.html %}

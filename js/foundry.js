@@ -1,6 +1,6 @@
 define(
-    ['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit', 'jquery.redirect', 'jquery.splash'],
-    function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt, Redirect, Splash) {
+  ['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit', 'jquery.redirect', 'jquery.splash', 'jquery.sanitize', 'proxy', 'micromarkdown'],
+  function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt, Redirect, Splash, Sanitize, Proxy, micromarkdown) {
 
   // Set up some JQuery convenience functions
   $.fn.extend({
@@ -207,7 +207,7 @@ define(
               suggestions: suggestions
             }));
 
-            TryIt.setup_livedocs(tryit);
+            TryIt.setup_livedocs($(el).find('a.tryit'));
           } catch(err) {
             console.log("Error loading sample data: " + err);
           }
@@ -264,6 +264,41 @@ define(
           }
         });
       });
+    },
+
+    // Load discussion details from GitHub
+    update_issues: function() {
+      $(this).each(function() {
+        var uid = $(this).attr('data-uid');
+        var domain = $(this).attr('data-domain');
+        var name = $(this).attr('data-name');
+        var el = $(this);
+        var nugget = "[" + domain + "/" + uid + "]";
+
+
+        // Fetch count from the discussions forum on GitHub
+        $.when(
+          $.ajax(Proxy.root() + 
+            "/github/search/issues?q=repo:socrata/discuss state:open " + nugget
+          ),
+          $.ajax("/foundry/issues.mst")
+        ).done(function(issues, template) {
+          _.each(issues[0].items, function(issue) {
+            issue.short_title =
+              issue.title.replace(nugget, '').trim();
+          });
+
+          $(el).html(Mustache.render(template[0], {
+            name: name,
+            domain: domain,
+            uid: uid,
+            count: issues[0].total_count,
+            plural: issues[0].total_count != 1,
+            nugget: nugget,
+            issues: issues[0].items
+          }));
+        });
+      });
     }
   });
 
@@ -311,6 +346,12 @@ define(
             // calendar_dates were replaced by floating_timestamps in NBE
             col.dataTypeName = "floating_timestamp";
           }
+
+          if(col.description) {
+            // Render column metadata as Markdown
+            // Update our description to be rendered markdown
+            col.description = micromarkdown.parse($.sanitize(col.description));
+          }
         }).value();
 
       // Roll up our changes so we can use them in our mustache template
@@ -332,8 +373,10 @@ define(
 
       // Convert our timestamps into printable times
       $.each(["createdAt", "rowsUpdatedAt"], function(idx, name){
-        structural_metadata[name] = (new Date(structural_metadata[name]*1000).toLocaleString());
-        metadata[name] = (new Date(metadata[name]*1000).toLocaleString());
+        if(_.isNumber(structural_metadata[name]))
+          structural_metadata[name] = (new Date(structural_metadata[name]*1000)).toLocaleString();
+        if(_.isNumber(metadata[name]))
+          metadata[name] = (new Date(metadata[name]*1000)).toLocaleString();
       });
 
       // Update our page header
@@ -348,6 +391,12 @@ define(
       var is_public = _.some(structural_metadata.grants, function(grant) {
         return grant.flags && _.contains(grant.flags, 'public');
       });
+
+      // Update our description to be rendered markdown
+      if(metadata.description) {
+        metadata.description = micromarkdown.parse($.sanitize(metadata.description));
+      }
+
       var content = Mustache.render(template, {
         // Metadata
         uid: args.uid,
@@ -372,8 +421,8 @@ define(
         query_base: query_base,
         // Private datasets
         is_private: !is_public,
-        username: decodeURI((Cookies.get('dev_proxy_user') || '').replace(/\+/g, '%20')),
-        logout_url: "https://proxy." + window.location.hostname + "/logout/"
+        username: Proxy.username(),
+        logout_url: Proxy.logout_url()
       });
       $(args.target).html(content);
 
@@ -399,7 +448,7 @@ define(
       $('.row-count').update_count();
 
       // Set up our livedocs links
-      TryIt.setup_livedocs($(args.target));
+      TryIt.setup_livedocs($(args.target).find('a.tryit'));
 
       // Set up our clipboard buttons
       // TODO: Find a non-Flash clipbutton option
@@ -427,17 +476,14 @@ define(
       $("#loading").fadeOut();
       $(args.target).fadeIn();
 
-      // Use readmore.js to shorten descriptions to something more reasonable.
-      $(".metadata .description").readmore({
-        moreLink: '<a href="#">Show more <i class="fa fa-angle-double-down"></i></a>',
-        lessLink: '<a href="#">Show less <i class="fa fa-angle-double-up"></i></a>'
-      });
-
       // If we're on NBE, update our sync status
       $('.synced').load_sync_state();
 
       // Load related links from the ODN
       $('.odn').update_odn();
+
+      // Load up issues from GitHub
+      $('.issues').update_issues();
 
       // If we're on a small screen, un-float the float
       if($(window).width() < 768) {
@@ -452,25 +498,8 @@ define(
 
   // Entry point for rendering API docs
   var dataset = function(args) {
-    var query_base = "https://" + args.domain;
-    var endpoint_base = query_base;
-    if(Cookies.get('dev_proxy_user') && Cookies.get('dev_proxy_domain') == args.domain) {
-      // We're now in proxy mode!
-      console.log("Proxying this domain's requests...");
-
-      // If we're proxying through the dev proxy, we need to change our query_base
-      query_base = "https://proxy." + window.location.hostname + "/socrata/" + args.domain;
-
-      // Enable CORS when we're proxying
-      $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
-        options.crossDomain = {
-            crossDomain: true
-          };
-        options.xhrFields = {
-            withCredentials: true
-          };
-      });
-    }
+    var query_base = Proxy.query_base(args.domain);
+    var endpoint_base = 'https://' + args.domain;
 
     // Front load as many of the things that we can fast-redirct on
     $.when(
@@ -591,7 +620,7 @@ define(
         case 403:
           // TODO: Replace this with a partial
           $("#loading").hide();
-          var auth_url = "https://proxy." + window.location.hostname + "/login/" + args.domain + "?return=" + encodeURIComponent(window.location.href);
+          var auth_url = Proxy.login_url(args.domain);
           $(args.target).append('<h1><i class="fa fa-lock"></i> Private Dataset</h1>');
           $(args.target).append('<p>This dataset is private, and you will need to authenticate before you can access it. When you authenticate, you\'ll be asked to log in and allow access to your private APIs before continuing</p>');
           $(args.target).append('<p>Curious to <a href="/changelog/2015/10/27/private-api-docs.html">learn more about how this works</a>?</p>');

@@ -9,6 +9,22 @@ versions:
 - 2.1
 datatype: point
 audience: documentation
+definition:
+  type: object
+  properties: 
+    type: 
+      description: "The GeoJSON type of this object, `Point`"
+      type: string
+      enum: 
+      - Point
+    coordinates: 
+      description: "The longitude, latitude coordinates for this Point, in WGS84"
+      type: array
+      items: 
+        type: number
+        format: double
+      minItems: 2
+      maxItems: 2
 ---
 
 The `Point` datatype is very similar to the [`Location`](/docs/datatypes/location.html) datatype. It represents a location on the Earth as a WGS84 Latitude and Longitude. The location is encoded as a [GeoJSON "point"](http://geojson.org/geojson-spec.html#point). Example:
@@ -37,7 +53,7 @@ Just like the [Location](/docs/datatypes/location.html) datatype, you can use th
 
 However, there are also a ton of additional geo query functions that come with the Point datatype. For example, to aggregate that same dataset by ward and return polygons surrounding each cluster, in [GeoJSON](/docs/formats/geojson.html):
 
-{% include tryit.html domain='data.cityofchicago.org' path='/resource/6zsd-86xi.geojson' args="$select=ward, count(&#42;), convex_hull(location)&$group=ward" %}
+{% include tryit.html domain='data.cityofchicago.org' path='/resource/6zsd-86xi.geojson' args="$select=ward, count(*), convex_hull(location)&$group=ward" %}
 
 ## Why are the latitude and longitude backwards?!
 

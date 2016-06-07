@@ -4,11 +4,19 @@ sidebar: documentation
 title: starts_with(...)
 
 type: function
-datatypes:
-- text 
+function: $1 starts_with($2)
+description: Matches on text strings that start with a given substring
 versions:
 - 2.1
-description: Matches on text strings that start with a given substring
+datatypes:
+- text 
+params:
+  $1:
+  - text
+  $2:
+  - text
+returns: boolean
+
 parent_paths: 
 - /docs/functions/
 parents: 

@@ -56,12 +56,14 @@
     {{/structural_metadata.newBackend}}
   {{/migration}}
 
+  <div class="issues" data-uid="{{uid}}" data-domain="{{domain}}" data-name="{{metadata.name}}"/>
+
   <div class="odn" data-uid="{{uid}}" data-domain="{{domain}}" data-name="{{metadata.name}}"/>
 </div>
 
 {{#metadata.description}}
   <div class="description">
-    <p class="description">{{metadata.description}}</p>
+    <p class="description">{{{metadata.description}}}</p>
   </div>
 {{/metadata.description}}
 
@@ -197,7 +199,7 @@
           <h4 class="visible-xs-block">{{name}}</h4>
 
           {{#description}}
-            <p class="description">{{description}}</p>
+            <p class="description">{{{description}}}</p>
           {{/description}}
 
           <p class="overview">The <code>{{fieldName}}</code> column is of the <a href="/docs/datatypes/{{dataTypeName}}.html#{{version}},"><code>{{dataTypeName}}</code></a> datatype.</p>

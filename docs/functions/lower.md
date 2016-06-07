@@ -4,11 +4,17 @@ sidebar: documentation
 title: lower(...)
 
 type: function
-datatypes:
-- text 
+function: lower($1)
+description: Returns the lowercase equivalent of a string of text
 versions:
 - 2.1
-description: Returns the lowercase equivalent of a string of text
+datatypes:
+- text 
+params:
+  $1:
+  - text
+returns: text
+
 parent_paths: 
 - /docs/functions/
 parents: 

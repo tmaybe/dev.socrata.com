@@ -4,14 +4,22 @@ sidebar: documentation
 title: avg(...)
 
 type: function
+function: avg($1)
+description: Returns the average of a given set of numbers 
+versions:
+- 2.0
+- 2.1
 datatypes:
 - number
 - double
 - money
-versions:
-- 2.0
-- 2.1
-description: Returns the average of a given set of numbers 
+params:
+  $1:
+    - number
+    - double
+    - money
+returns: number
+
 parent_paths: 
 - /docs/functions/
 parents: 

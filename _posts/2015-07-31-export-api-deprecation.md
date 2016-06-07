@@ -1,13 +1,14 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: Socrata Labs Export API Deprecation, $limit raised on new dataset APIs
 short_title: Socrata Labs Export API Deprecation
-category: changelog
 date: 2015-07-31
 parent_paths: 
 - /changelog/
 parents: 
 - API Changelog
+author: chrismetcalf
 ---
 
 After several months of trial, we've decided to deprecate the beta-version Socrata Labs "Export" API in favor of a solution more tightly integrated with our other APIs. That service will be discontinued in the near future.

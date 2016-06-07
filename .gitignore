@@ -4,3 +4,4 @@ tmp/*
 .DS_Store
 .bundle
 node_modules
+.jekyll-metadata

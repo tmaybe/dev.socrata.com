@@ -1,0 +1,29 @@
+{
+  "name": "dev.socrata.com",
+  "version": "1.0.0",
+  "description": "Socrata Developer Portal",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "casperjs": "^1.1.0-beta5",
+    "r.js": "^1.0.3",
+    "surge": "^0.17.7",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/socrata/dev.socrata.com.git"
+  },
+  "author": "Chris Metcalf <chris.metcalf@socrata.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/socrata/dev.socrata.com/issues"
+  },
+  "homepage": "https://github.com/socrata/dev.socrata.com#readme"
+}

@@ -1,13 +1,14 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: Introducing clarified SODA API versioning
 short_title: Introducing clarified SODA API versioning
-category: changelog
 date: 2015-11-25
 parent_paths: 
 - /changelog/
 parents: 
 - API Changelog
+author: chrismetcalf
 ---
 
 On this Thanksgiving eve, we have some tasty new updates for you. [In April](/changelog/2015/04/27/new-higher-performance-apis.html) we announced the release of new, high-performance Socrata Open Data APIs for many datasets. Over time, those APIs have been rolled out for more and more datasets, but that process is not yet complete. In the meantime, we've discovered that there is a significant amount of confusion about what functionality is available on which API endpoints. So, in order to clarify that situation, we're re-introducing those new API endpoints as SODA version 2.1.

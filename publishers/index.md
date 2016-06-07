@@ -34,7 +34,7 @@ For more information about how to update a dataset via the Socrata web interface
 
 [Socrata DataSync](http://socrata.github.io/datasync) is a cross-platform [Java](http://en.wikipedia.org/wiki/Java_(programming_language)) application that makes it easy to set up an automatic process to keep a Socrata dataset up to date. It also uses an intelligent update method to efficiently update datasets even when performing what would otherwise be a full replace.
 
-For more information about [DataSync](http://socrata.github.io/datasync), check out it's [documentation and getting started guide](http://socrata.github.io/datasync).
+For more information about [DataSync](http://socrata.github.io/datasync), check out its [documentation and getting started guide](http://socrata.github.io/datasync).
 
 ### Safe FME
 

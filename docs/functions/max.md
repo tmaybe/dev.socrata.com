@@ -4,14 +4,25 @@ sidebar: documentation
 title: max(...)
 
 type: function
-datatypes:
-- number
-- double
-- money
-- floating_timestamp
+function: max($1)
+description: Returns the maximum of a given set of numbers 
 versions:
 - 2.1
-description: Returns the maximum of a given set of numbers 
+datatypes:
+- double
+- floating_timestamp
+- money
+- number
+- text
+params:
+  $1:
+  - double
+  - floating_timestamp
+  - money
+  - number
+  - text
+returns: typeof($1)
+
 parent_paths: 
 - /docs/functions/
 parents: 

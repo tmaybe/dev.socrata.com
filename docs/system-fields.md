@@ -18,7 +18,7 @@ System fields are not included by default, and the method that you use to reques
 
 With version 2.1 APIs, accessing the system fields is as simple as including them in your [`$select`](/docs/queries/select.html) parameter, either explicitly or via a wildcard. You can either `$select=:id, :updated_at, name, address`, or you could be even more broad and simply select `:*, *` to retrieve both all of the hidden internal fields and the fields from the dataset itself. For example:
 
-{% include tryit.html domain='data.seattle.gov' path='/resource/pu5n-trf4.json' args="$select=:&#42;, &#42;" %}
+{% include tryit.html domain='data.seattle.gov' path='/resource/pu5n-trf4.json' args="$select=:*, *" %}
 
 Since `:created_at` and `:updated_at` are [Fixed Timestamp](/docs/datatypes/timestamp.html), you can query them to get recent updates to a dataset using the `$where` [query parameter](/docs/queries/), like this example:
 

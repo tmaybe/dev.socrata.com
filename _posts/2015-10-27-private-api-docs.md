@@ -1,13 +1,14 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: API Documentation for Private Datasets
 short_title: API Documentation for Private Datasets
-category: changelog
 date: 2015-10-27
 parent_paths: 
 - /changelog/
 parents: 
 - API Changelog
+author: chrismetcalf
 ---
 
 Ever since we released the new automatic documentation functionality for Socrata APIs (often called "API Foundry"), the most popular request by far has been the introduction of API documentation for private datasets. We've also noticed an exciting trend of our customers using private APIs as a foundation to build web apps and services upon.

@@ -5,7 +5,7 @@ require(["jquery", "humane"], function($) {
     var repo_name = $(repo).attr("data-repo");
 
     // Fetch its metadata
-    $.getJSON("https://api.github.com/repos/" + org + "/" + repo_name, function(repo_details) {
+    $.getJSON("https://proxy." + window.location.hostname + "/github/repos/" + org + "/" + repo_name, function(repo_details) {
       // Update repository details based on content from Github
       $.each(repo_details, function(prop, value) {
         if($(repo).find(".github." + prop).text().trim().length == 0) {
@@ -24,7 +24,7 @@ require(["jquery", "humane"], function($) {
       }
     });
 
-    $.getJSON("https://api.github.com/repos/" + org + "/" + repo_name + "/stats/contributors", function(contributors) {
+    $.getJSON("https://proxy." + window.location.hostname + "/github/repos/" + org + "/" + repo_name + "/stats/contributors", function(contributors) {
       $.each(contributors, function(idx, contributor) {
         var li = '<li>'
           + '<a class="contributor" href="' + contributor['author']['html_url'] + '" target="_blank" data-toggle="tooltip" title="' + contributor['author']["login"] + '">'
@@ -46,12 +46,15 @@ require(["jquery", "humane"], function($) {
     var author = $(element).attr("data-author");
 
     // Their profile
-    $.getJSON("https://api.github.com/users/" + author, function(profile) {
+    $.getJSON("https://proxy." + window.location.hostname + "/github/users/" + author, function(profile) {
       // Update our template
       $(element).find("a.profile-link").attr("src", profile.html_url);
       $(element).find("img.avatar")
-        .attr("src", profile.avatar_url)
-        .attr("alt", profile.username);
+        .fadeOut(500, function() {
+          $(element).find("img.avatar").attr("src", profile.avatar_url);
+          $(element).find("img.avatar").attr("alt", profile.username);
+        })
+        .fadeIn(500);
       $(element).find(".fullname").text(profile.name);
       $(element).find(".username").text(profile.login);
       $(element).show();

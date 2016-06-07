@@ -4,12 +4,27 @@ sidebar: documentation
 title: convex_hull(...)
 
 type: function
-datatypes:
-- point
-- polygon
+function: convex_hull($1)
+description: Returns the minimum convex geometry that encloses all of the geometries within a set
 versions:
 - 2.1
-description: Returns the minimum convex geometry that encloses all of the geometries within a set
+datatypes:
+- point
+- multipoint
+- line
+- multiline
+- polygon
+- multipolygon
+params:
+  $1:
+  - point
+  - multipoint
+  - line
+  - multiline
+  - polygon
+  - multipolygon
+returns: polygon
+
 parent_paths: 
 - /docs/functions/
 parents: 
@@ -18,7 +33,7 @@ parents:
 
 {% include function_header.html %}
 
-The `convex_hull(...)` generates a polygon that represents the minimum convex geometry that can encompass a set of [Points](/docs/datatypes/point.html). All of the points in the set will either represent vertexes of that polygon, or will be enclosed within it, much like if you were to take a rubber band and snap it around the set of points. The below image [from Wikipedia](https://en.wikipedia.org/wiki/Convex_hull) may help explain better:
+The `convex_hull(...)` generates a polygon that represents the minimum convex geometry that can encompass a set of points or geometries. All of the points in the set will either represent vertexes of that polygon, or will be enclosed within it, much like if you were to take a rubber band and snap it around the set of points. The below image [from Wikipedia](https://en.wikipedia.org/wiki/Convex_hull) may help explain better:
 
 ![Convex Hull](https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/ConvexHull.svg/301px-ConvexHull.svg.png)
 

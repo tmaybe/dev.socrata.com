@@ -1,13 +1,14 @@
 ---
-layout: changelog
+layout: post
+categories: changelog
 title: New global catalog search API introduced to labs.socrata.com
 short_title: Global search API
-category: changelog
 date: 2015-04-27
 parent_paths: 
 - /changelog/
 parents: 
 - API Changelog
+author: chrismetcalf
 ---
 
 Through [Socrata Labs](http://labs.socrata.com), we're excited to announce the beta launch of our new [Global Catalog Search API](http://labs.socrata.com/docs/search.html). The new global search API will allow you to search for public datasets across any of our public data portals. This is a first for the Socrata platform!

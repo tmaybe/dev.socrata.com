@@ -9,6 +9,24 @@ versions:
 - 2.1
 datatype: line
 audience: documentation
+definition:
+  type: object
+  properties: 
+    type: 
+      description: "The GeoJSON type of this object `LineString`"
+      type: string
+      enum: 
+      - LineString
+    coordinates: 
+      description: "The sequence of longitude, latitude coordinates for this LineString in WGS84"
+      type: array
+      items: 
+        type: array
+        items: 
+          type: number
+          format: double
+        minItems: 2
+        maxItems: 2
 ---
 
 The `Line` datatype represents a path on the Earth as a sequence of WGS84 Latitude and Longitude pairs. The location is encoded as a [GeoJSON "linestring"](http://geojson.org/geojson-spec.html#linestring). Example:

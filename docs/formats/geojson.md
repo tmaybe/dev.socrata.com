@@ -4,8 +4,6 @@ sidebar: documentation
 type: format 
 title: GeoJSON Format
 audience: documentation
-redirect_from:
-- /docs/formats/json
 versions:
 - 2.1
 extension: geojson

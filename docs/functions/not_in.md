@@ -4,12 +4,23 @@ sidebar: documentation
 title: not in(...)
 
 type: function
+function: $1 not in($2, ...)
+description: Matches values not in a given set of options
+versions:
+- 2.1
 datatypes:
 - text 
 - number
-versions:
-- 2.1
-description: Matches values not in a given set of options
+- double
+- money
+- floating_timestamp
+params:
+  $1:
+  - any
+  $2:
+  - typeof($1)
+returns: boolean
+
 parent_paths: 
 - /docs/functions/
 parents: 
