@@ -1,0 +1,14 @@
+<div class="panel panel-info external-integrations">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="fa fa-external-link"></i> External Integrations</h3>
+  </div>
+
+  <div class="panel-body">
+    <p>Explore this dataset using other tools:</p>
+
+    {{#integrations}}
+      <a href="{{url}}" class="btn btn-default btn-block">Open with {{name}}<br /><small>{{tagline}}</small></a>
+    {{/integrations}}
+
+  </div>
+</div>
