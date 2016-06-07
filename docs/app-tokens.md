@@ -8,14 +8,30 @@ redirect_from:
 
 The Socrata Open Data API uses application tokens for two purposes:
 
-- Using an application token reduces the [throttling](/docs/throttling.html), resulting in more API requests allowed per unit of time.
+- Using an application token allows us to throttle by application, rather than via IP address, which gives you a higher throttling limit
 - Authentication using OAuth
 
 <div class="alert alert-info"><strong>Note:</strong> The Socrata Open Data API has two concepts around API access: authentication and application tokens. You only need to authenticate if you wish to add, delete, or modify data that is attached to your account, or if you wish to read data you own that you have marked as private. Read-only requests only require the application token. See the <a href="/publishers/getting-started.html">publisher API documentation</a> for more details on changing data.</div>
 
 ## Throttling limits
 
-The default throttling quota when using an application token is 1000 requests, per IP address, per token, per hour. If you exceed that limit, you will receive a status code `429` response.
+Without an application, we can only track usage and perform throttling based on a few simple criteria, mainly source IP address. As such, requests that aren't using an application token come from a shared pool via IP address. IP addresses that make too many requests during a given period may be subject to throttling.
+
+When requests are made using an application token, we can actually attribute each request to a particular application and developer, granting each their own pool of API requests. Currently we do not throttle API requests that are using an application token, _unless those requests are determined to be abusive or malicious._
+
+We reserve the right to change these throttling limits with notice, and we will [post an update](/changelog/) to announce any such change.
+
+If you are throttled for any reason, you will receive a status code [`429` response](https://httpstatusdogs.com/429-too-many-requests).
+
+### Don't be a jerk!
+
+<img class="pull-right" src="/img/bernie.gif" alt="Dont do that!" />
+
+Yes, I know it says you get _unlimited requests_. But keep in mind that you're using a shared platform, and you should still be deliberate in how you design your application to use our API. Applications that are determined to be abusive or malicious, or that otherwise monopolize the use of our API may be throttled.
+
+If we detect that your application is nearing the point where we may have to throttle it, we will likely pro-actively reach out to you to discuss how you can optimize your usage. If you have any questions, feel free to [contact us](/support.html) and we'd be glad to help!
+
+<span class="clearfix" />
 
 ## Obtaining an Application Token
 
