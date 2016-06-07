@@ -162,3 +162,9 @@ task :blog do
   system(ENV['EDITOR'], filename)
 end
 
+# Pre-compile task for Heroku
+namespace :assets do
+  task :precompile do
+    puts `bundle exec jekyll build`
+  end
+end
