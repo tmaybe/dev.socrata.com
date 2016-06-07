@@ -9,6 +9,7 @@ cache: bundler
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+  - secure: "DJ9EuDuGm2QZDfAFeTET+OUd3tQJ1myhRLTdFnWLtVBd9tAW+XD+ZUOnU7E3W2ujV/WJ/4sIrf2RamOzAJhROaLW4dhf7mswkkaiYAbylG2Ma/xHlKW80cnT1TVe/eCBUvicRIFtpeU2JBYg9upKSApmoROrLd4QOxntz2xKGKQ="
 bundler_args: "--with test"
 before_install:
 - nvm install # Install node from .nvmrc
