@@ -18,7 +18,7 @@ icon: fa-table
 
 Many of the challenges can be either solved with or augmented by open data. I've picked out a few of my favorite challenges, and provided a few examples what datasets might be handy.
 
-Good luck this weekend, and if you have any questions or need any help, please [reach out](/blog/2016/05/19/preparing-for-ndoch.html#for-event-attendees) and we'd be glad to help!
+Good luck this weekend, and if you have any questions or need any help, please [reach out](/support.html) and we'd be glad to help!
 
 ### [Challenge: Applying for Food Stamps](https://www.codeforamerica.org/events/national-day-2016/challenge-applying-for-food-stamps)
 
