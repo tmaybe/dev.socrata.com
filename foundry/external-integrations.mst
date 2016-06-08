@@ -7,7 +7,7 @@
     <p>Explore this dataset using other tools:</p>
 
     {{#integrations}}
-      <a href="{{url}}" class="btn btn-default btn-block">Open with {{name}}<br /><small>{{tagline}}</small></a>
+      <a href="{{url}}" target="blank" class="btn btn-default btn-block">Open with {{name}}<br /><small>{{tagline}}</small></a>
     {{/integrations}}
 
   </div>
