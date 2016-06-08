@@ -44,7 +44,7 @@ To authenticate with OAuth 2.0, you will first need to [register your applicatio
 
 Once you have an application and a secret token, you'll be able to authenticate with the SODA OAuth 2.0 endpoint. You'll first need to redirect the user to the Socrata-powered site you wish to access so that they may log in and approve your application. For example:
 
-    https://sandbox.socrata.com/oauth/authorize?client_id=YOUR_AUTH_TOKEN&response_type=code &redirect_uri=YOUR_REDIRECT_URI
+    https://soda.demo.socrata.com/oauth/authorize?client_id=YOUR_AUTH_TOKEN&response_type=code &redirect_uri=YOUR_REDIRECT_URI
 
 Note that the `redirect_uri` here must be an absolute, secure (`https:`) URI which starts with the `Callback Prefix` you specified when you registered your application. If any of these cases fail, the user will be shown an error indicating as much.
 
@@ -58,7 +58,7 @@ If your `redirect_uri` contain a querystring, it will be preserved, and the `cod
 
 Now that the user has authorized your application, the next step is to retrieve an `access_token` so that you can perform operations on their behalf. You can do this by making the following `POST` request from your server:
 
-    https://sandbox.socrata.com/oauth/access_token
+    https://soda.demo.socrata.com/oauth/access_token
     ?client_id=YOUR_AUTH_TOKEN
     &client_secret=YOUR_SECRET_TOKEN
     &grant_type=authorization_code
@@ -87,9 +87,9 @@ Once you have obtained an `access_token`, you should include it on requests whic
 
 One quirk of authenticating via OAuth 2.0 is that the entire process happens without the 3rd party application (that's you!) having any knowledge of who, exactly, the user is that just authorized the application. To remedy this, we have set up an endpoint that simply returns the information of the current user. To return the data in JSON:
 
-    https://sandbox.socrata.com/api/users/current.json
+    https://soda.demo.socrata.com/api/users/current.json
 
 To return the data in XML:
 
-    https://sandbox.socrata.com/users/current.xml
+    https://soda.demo.socrata.com/users/current.xml
 
