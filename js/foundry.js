@@ -304,8 +304,8 @@ define(
     // Load discussion details from GitHub
     update_external_integrations: function() {
       var integration_configs = [
-        {"slug":"plotly", "name":"Plot.ly", "url":"https://plot.ly/external/?url=", "tagline":"Collaborative data science", "format":"csv" },
-        {"slug":"cartodb", "name":"CartoDB.com", "url":"http://oneclick.cartodb.com/?file=", "tagline":"Maps for the web, made easy", "format":"geojson"}
+        {"slug":"plotly", "name":"Plot.ly", "url":"https://plot.ly/external/?url=", "tagline":"Collaborative data science", "format":"csv", "file_size_warning":"has a file size limit of 5MB"},
+        {"slug":"cartodb", "name":"CartoDB.com", "url":"http://oneclick.cartodb.com/?file=", "tagline":"Maps for the web, made easy", "format":"geojson", "file_size_warning":"has different file size limits depending on your user account. Free users are limited to importing datasets of up to 250 MB."}
       ]
 
       $(this).each(function() {
