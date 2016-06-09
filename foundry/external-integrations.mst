@@ -24,7 +24,7 @@
           <h4 class="modal-title" id="external-integration-modal-{{slug}}-label">External Integration: {{name}}</h4>
         </div>
         <div class="modal-body">
-          <p>Please note that by continuing to the link below, you will be continuing to {{name}} which may have different policies than this site.</p>
+          <p>By continuing on to the link below you will be redirected to {{name}}.</p>
           <div class="alert alert-warning">
             <strong>Please be aware that</strong> {{name}} {{file_size_warning}}
           </div>
