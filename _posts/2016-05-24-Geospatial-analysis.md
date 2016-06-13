@@ -36,17 +36,17 @@ This will pull up a dialog box:
 
 Let's pull up the Chattanooga item. 
 
-![chattadata](/img/Geospatial/chattadata.png)
+![chattanooga_map](/img/Geospatial/chattanooga_map.png)
 
 This gives us the unique ID for the dataset so if we so desired, we can check out the data as it lives [online](https://data.chattlibrary.org/d/4gat-rdif). Click OK and voila, it is added to your map.
 
-![basemap](/img/Geospatial/basemap.png)
+![base_map](/img/Geospatial/base_map.png)
 
 Now that we have a good sense of the area, let's grab some interesting data. Reselect Web > Socrata > Socrata Plugin. The settings you had entered are already saved, so you can go straight back to Get Data.
 
 Select the Hamilton County E911 Active Calls item. Click ok - this may take a moment to load as there are many points.
 
-![datamap](/img/Geospatial/datamap.png)
+![data_map](/img/Geospatial/data_map.png)
 
 ## Creating a Heat Map
 
@@ -66,11 +66,9 @@ Begin by:
 
 - Selecting Vector > Data Management Tools > Join Attributes by Location...
 
-![join](/img/Geospatial/)
-
 - Set Hamilton County E911 as the Join Vector Layer
 
-![setjoin](/img/Geospatial/)
+![join_settings](/img/Geospatial/join_settings.png)
 
 - Select "Take summary of intersecting features" and choose Sum
 
@@ -78,8 +76,26 @@ Begin by:
 
 ## Making a chloropleth map
 
-Now when you Open Attribute Table and scroll all the way to last column, you will notice the 
+Now when you Open Attribute Table for your newly created merged layer and scroll all the way to last column, you will notice the counts now appear. Using this data we can create a chloropleth map that will show the relative density of the points within the Chattanooga boundaries.
 
+![table_view](/img/Geospatial/table_view.png)
 
+Right click on the merged layer and select Properties. Similar to the heat map, but we want to select "Graduated"
 
+![chloropleth_settings](/img/Geospatial/chloropleth_settings.png)
 
+Choose the COUNT column as your Column and click `Classify` to get the necessary classifications
+
+![chloropleth_settings_2](/img/Geospatial/chloropleth_settings_2.png)
+
+Select OK, and now you have a chloropleth map of joined layers.
+
+![chloropleth_map](/img/Geospatial/chloropleth_map.png)
+
+## Reading the map
+
+So what does this all mean? In essence, you can start to draw conclusions about where the 911 calls that are being received in the county. This can inform policies ranging from where to build the next EMS station to, if you had a map of local hospitals, the number of citizens being served.
+
+### Acknowledgements
+
+A special thank you to the City of Chattanooga for letting me use their data for this tutorial. 
