@@ -11,7 +11,7 @@ gem 'html-proofer', '2.6.4'
 gem 'httparty'
 gem 'colorize'
 gem 'rake'
-
+gem 'casperjs'
 group :development do
   gem 'rack'
   gem 'rack-contrib'
