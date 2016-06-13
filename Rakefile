@@ -1,6 +1,7 @@
 require 'colorize'
 require 'httparty'
 require 'json'
+require 'erb'
 
 # Variables and setup
 SHA = `git rev-parse --short HEAD`.strip
@@ -124,4 +125,46 @@ end
 desc "perform a full test cycle to #{URL}"
 task :staging_test => [:clean, :jekyll, :htmlproof, :stamp, :rm_router, :stage, :test] do
   puts "Done!!!".on_green
+end
+
+TEMPLATE = <<TMPL
+---
+layout: post
+categories: <%= @category %>
+tags:
+<%= @tags.collect { |t| "- " + t.downcase }.join("\n") %>
+title: "<%= @title %>"
+date: <%= @date %>
+author: <%= ENV['GITHUB_USERNAME'] || ENV['USER'] %>
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictum augue ac lorem malesuada at rhoncus turpis condimentum. Maecenas commodo sem ac magna posuere ultrices. Proin ut felis ac odio consectetur rutrum vel quis sem.
+TMPL
+
+desc "generate a new blog post or changelog"
+task :blog do
+  @date = Time.now.strftime("%Y-%m-%d")
+ 
+  print "Title: "
+  @title = $stdin.gets.strip
+
+  print "Category (default: 'blog'): "
+  @category = $stdin.gets.strip 
+  @category = @category.empty? ? "blog" : @category
+
+  print "Tags (comma separated): "
+  @tags = $stdin.gets.strip.split(/\s*,\s*/)
+
+  template = ERB.new(TEMPLATE)
+
+  filename = "_posts/#{@date}-#{@title.gsub(/[^A-Za-z-]/, '-').gsub(/-\+/, '-').downcase}.md"
+  File.open(filename, 'w') { |f| f.write(template.result) }
+  system(ENV['EDITOR'], filename)
+end
+
+# Pre-compile task for Heroku
+namespace :assets do
+  task :precompile do
+    puts `bundle exec jekyll build`
+  end
 end

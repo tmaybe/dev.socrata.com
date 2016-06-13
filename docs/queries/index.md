@@ -26,6 +26,6 @@ Note that for equality comparisons, the `$where` clause can be replaced with usi
 
 These parameters can then be directly added to the API endpoint. For example, here is how you would query the USGS Earthquakes datasets for quakes of greater than 3.0 on the Richter scale: 
 
-{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv' args='$where=magnitude > 3.0' %}
+{% include tryit.html domain='soda.demo.socrata.com' path='/resource/4tka-6guv.json' args='$where=magnitude > 3.0' %}
 
 In examples, we will leave the parameters as is, but it is best to [URL Encode](http://en.wikipedia.org/wiki/Url_encode) your parameters to ensure they are parsed correctly.
