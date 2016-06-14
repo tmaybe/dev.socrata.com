@@ -2,6 +2,8 @@ require 'colorize'
 require 'httparty'
 require 'json'
 require 'erb'
+require 'rspec'
+require 'rspec/core/rake_task'
 
 # Variables and setup
 SHA = `git rev-parse --short HEAD`.strip
@@ -21,7 +23,6 @@ task :clean do
   puts "Cleaning up after ourselves...".green
   sh "rm -rf public"
 end
-
 
 desc "perform a full jekyll site build"
 task :jekyll do
@@ -111,20 +112,17 @@ task :tag_pull_request do
   puts response.inspect
 end
 
-desc "run casperjs tests on #{URL}"
+desc "run rspec tests"
 task :test do
-  puts "Running casperjs tests on #{URL}...".green
-  sh "BASE=#{URL} casperjs --ssl-protocol=any --ignore-ssl-errors=true --verbose --log-level=warning test _tests/test-*"
+  RSpec::Core::RakeTask.new(:spec) do |t|
+    t.pattern = '_tests/*.rb'
+  end
+  Rake::Task["spec"].execute
 end
 
 desc "clean up the ROUTER file, so we can push staging sites to Surge.sh"
 task :rm_router do
   sh "rm public/ROUTER"
-end
-
-desc "perform a full test cycle to #{URL}"
-task :staging_test => [:clean, :jekyll, :htmlproof, :stamp, :rm_router, :stage, :test] do
-  puts "Done!!!".on_green
 end
 
 TEMPLATE = <<TMPL

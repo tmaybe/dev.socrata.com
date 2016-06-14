@@ -17,7 +17,7 @@ require(["jquery", "tryit"], function($, TryIt) {
 });
 
 // Load scripts which just inspect the DOM
-require(["emphasis", "featherlight"], function(emphasis, featherlight) {
+require(["jquery", "emphasis", "featherlight"], function($, emphasis, featherlight) {
   // Bind Featherlight
   $('a[data-featherlight]').featherlight();
 });
