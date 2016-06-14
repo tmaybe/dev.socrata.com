@@ -1,22 +1,4 @@
-<h1 class="title">{{ metadata.name }}</h1> 
-{{#show_migration}}
-  <div class="alert alert-info">
-    <p><em><i class="fa fa-warning"></i> Heads up!</em> A <a target="_blank" href="/foundry/#/{{domain}}/{{nbe_uid}}">new, improved version of this API</a> is available for your use. <a target="_blank" href="/foundry/#/{{domain}}/{{nbe_uid}}">Go check it out</a>, or read on for details on how to migrate.</p>
-  </div>
-{{/show_migration}}
-
-{{#is_nbe}}
-  {{#redirected}}
-    <div class="alert alert-success">
-      <p><em><i class="fa fa-thumbs-up"></i> Heads up!</em> You've been automatically redirected to the latest version of this dataset API. If for some reason you want to refer to the documentation for the old version of this dataset API, you can <a href="/foundry/#/{{domain}}/{{obe_uid}}/no-redirect" target="_blank">view those instead</a>.</p> 
-    </div>
-  {{/redirected}}
-  {{^redirected}}
-    <div class="alert alert-success">
-      <p><em><i class="fa fa-thumbs-up"></i> Good to go!</em> You're already using the latest version of this dataset API.</p> 
-    </div>
-  {{/redirected}} {{/is_nbe}} 
-<div class="pull-right sidebar">
+<div class="pull-right sidebar metadata">
   {{#is_private}}
     <div class="panel panel-success logged-in">
       <div class="panel-heading">
@@ -27,23 +9,20 @@
         <p>Curious about <a href="/changelog/2015/10/27/private-api-docs.html">how this works</a>?</p>
       </div>
       <div class="panel-footer"><a target="_blank" href="{{ logout_url }}">Log out &raquo;</a></div>
-    </div> 
+    </div>
   {{/is_private}}
 
-  <div class="panel panel-info metadata">
+  <div class="panel panel-info about">
     <div class="panel-heading">
       <h3 class="panel-title"><i class="fa fa-info-circle"></i> About This Dataset</h3>
     </div>
     <div class="panel-body">
-      {{#metadata.description}}
-        <p class="description">{{metadata.description}}</p>
-      {{/metadata.description}}
-
       <ul>
-        <li><em>Total Rows:</em> {{count}}</li>
+        <li><em>Dataset Identifier:</em> <code>{{uid}}</code></li>
+        <li><em>Total Rows:</em> <span class="row-count" data-query-base="{{query_base}}" data-uid="{{uid}}">&hellip;</span></li>
         <li><em>Source Domain:</em> <a href="http://{{domain}}">{{domain}}</a></li>
         <li><em>Created:</em> {{metadata.createdAt}}</li>
-        <li><em>Last Updated:</em> {{metadata.rowsUpdatedAt}}</li>
+        <li><em>Last Updated:</em> {{structural_metadata.rowsUpdatedAt}}</li>
         {{#metadata.category}}
           <li><em>Category:</em> {{metadata.category}}</li>
         {{/metadata.category}}
@@ -56,18 +35,47 @@
         {{#metadata.owner}}
           <li><em>Owner:</em> <a href="http://{{domain}}/profile/{{id}}">{{displayName}}</a></li>
         {{/metadata.owner}}
+        <li><em>Endpoint Version:</em> <a href="/docs/endpoints.html#{{version}}">{{version}}</a></li>
       </ul>
     </div>
-    <div class="panel-footer"><a target="_blank" href="http://{{domain}}/d/{{uid}}">View dataset &raquo;</a></div>
+    <div class="panel-footer"><a target="_blank" href="http://{{domain}}/d/{{metadata.id}}">View dataset &raquo;</a></div>
   </div>
+
+  {{#migration}}
+    {{#structural_metadata.newBackend}}
+      <div class="panel panel-default synced" data-query-base="{{query_base}}" data-obe-uid="{{obe_uid}}">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-refresh"></i> Synchronized Copy</h3>
+        </div>
+        <div class="panel-body">
+          <p>This is actually a synchronized copy provided so you can use the <a href="/docs/endpoints.html#{{version}}">{{version}} API</a> before migration is complete. It was last synchronized at <code class="sync-time">...</code>, and is currently <code class="sync-state">...</code>.</p>
+          <p>You can also reference <a href="/foundry/{{domain}}/{{obe_uid}}/no-redirect">the documentation for the 2.0 version of this API</a>.</p>
+        </div>
+        <div class="panel-footer"><a target="_blank" href="/docs/endpoints.html#dataset-synchronization">Learn how this works &raquo;</a></div>
+      </div>
+    {{/structural_metadata.newBackend}}
+  {{/migration}}
+
+  <div class="issues" data-uid="{{uid}}" data-domain="{{domain}}" data-name="{{metadata.name}}"/>
+
+  <div class="odn" data-uid="{{uid}}" data-domain="{{domain}}" data-name="{{metadata.name}}"/>
+  
+  {{#structural_metadata.newBackend}}
+    <div class="external-integrations" data-uid="{{uid}}" data-domain="{{domain}}" data-name="{{metadata.name}}"/>
+  {{/structural_metadata.newBackend}}
+
 </div>
+
+{{#metadata.description}}
+  <div class="description">
+    <p class="description">{{{metadata.description}}}</p>
+  </div>
+{{/metadata.description}}
 
 <div class="getting-started">
   <h2>Getting Started</h2>
 
   <p>All communication with the API is done through HTTPS, and errors are communicated through HTTP response codes. Available response types include <code>JSON</code>, <code>XML</code>, and <code>CSV</code>, which are selectable by the "extension" (<code>.json</code>, etc.) on the API endpoint or through content-negotiation with HTTP <code>Accepts</code> headers.</p>
-
-  <p>Following <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>-ful paradigms, we return standard <a href="/docs/response-codes.html">HTTP Status Codes</a> to denote success or failure. For example, a successful request will get a <code>200 OK</code>, while a bad query will get a <code>400 Bad Request</code>. Errors are also accompanied by an <a href="/docs/response-codes.html">error response</a> including a human-readable error message.</p>
 
   <p>This documentation also includes inline, runable examples. Click on any link that contains a <code><i class="fa fa-fw fa-cog" style="color: #c7254e"></i> gear symbol</code> next to it to run that example live against the <code>{{metadata.name}}</code> API. If you just want to grab the API endpoint and go, you'll find it below.</p>
 
@@ -76,14 +84,13 @@
   </div>
 </div>
 
-<div class="clearfix"></div>
-
 <div class="well">
   <p>Learn more about:</p>
   <ul>
     <li><a href="/consumers/getting-started.html">Getting started with the SODA Consumer API</a></li>
-    <li><a href="/docs/formats/index.html">Output formats and content negotiation</a></li>
+    <li><a href="/docs/formats/index.html#{{version}}">Output formats and content negotiation</a></li>
     <li><a href="/docs/response-codes.html">Response codes &amp; error messages</a></li>
+    <li><a href="/changelog/">How to stay up to date on API changes</a></li>
   </ul>
 </div>
 
@@ -91,7 +98,7 @@
 
 <p>All requests should include an <a href="/docs/app-tokens.html">app token</a> that identifies your application, and each application should have its own unique app token. A limited number of requests can be made without an app token, but they are subject to much lower throttling limits than request that do include one. With an app token, your application is guaranteed access to it's own pool of requests. If you don't have an app token yet, click the button to the right to sign up for one.</p>
 
-<div class="register"><a href="https://{{domain}}/profile/app_tokens" target="_blank" class="btn btn-primary btn-lg pull-right"> <i class="fa fa-key fa-lg"></i> Sign up for an app token!</a></div>
+<div class="register"><a href="https://{{domain}}/profile/app_tokens" target="_blank" class="btn btn-primary btn-lg pull-right" data-tracking-category="foundry" data-tracking-label="app token signup"> <i class="fa fa-key fa-lg"></i> Sign up for an app token!</a></div>
 
 <p>Once you have an app token, you can include it with your request either by using the <code>X-App-Token</code> HTTP header, or by passing it via the <code>$$app_token</code> parameter on your URL.</p>
 
@@ -116,81 +123,99 @@
 
 <h2>Fields</h2>
 
-<p>Each column in <a href="http://{{domain}}/d/{{uid}}">the dataset</a> is represented by a single <code>field</code> in its SODA API. Using <a href="/docs/filtering.html">filters</a> and <a href="/docs/queries.html">SoQL queries</a>, you can search for records, limit your results, and change the way the data is output. For example, you could filter this dataset by its <code>{{metadata.columns.0.fieldName}}</code> field using a query like the following:</p>
+<p>Each column in <a href="{{display_url}}">the dataset</a> is represented by a single <code>field</code> in its SODA API. Using <a href="/docs/filtering.html">filters</a> and <a href="/docs/queries/">SoQL queries</a>, you can search for records, limit your results, and change the way the data is output. For example, you could filter this dataset by its <code>{{metadata.columns.0.fieldName}}</code> field using a query like the following:</p>
 
-{{#metadata.columns.0.filter}}
-  <a class="tryit" href="{{full_url}}?{{metadata.columns.0.filter}}">{{display_url}}?{{metadata.columns.0.filter}}</a>
-{{/metadata.columns.0.filter}}
+{{#metadata.0.filter}}
+  <a class="tryit" href="{{full_url}}?{{columns.0.filter}}">{{display_url}}?{{metadata.columns.0.filter}}</a>
+{{/metadata.0.filter}}
 
-<p>For richer filtering, you can combine filters together by stacking parameters on your URL or by using <a href="/docs/queries.html">SoQL</a> queries. Learn more about about each of the fields in this dataset by clicking the headers below, or read more about the SODA API using the navigation at the top of the page.</p>
+<p>For richer filtering, you can combine filters together by stacking parameters on your URL or by using <a href="/docs/queries/">SoQL</a> queries. Learn more about about each of the fields in this dataset by clicking the headers below, or read more about the SODA API using the navigation at the top of the page.</p>
 
 <div class="well">
   <p>Learn more about:</p>
   <ul>
     <li><a href="/docs/filtering.html">Simple Filters</a></li>
-    <li><a href="/docs/queries.html">SoQL Queries</a></li>
-    <li><a href="/docs/paging.html">Paging Through Data</a></li>
+    <li><a href="/docs/queries/">SoQL Queries</a></li>
+    <li><a href="/docs/functions/#{{version}},">Available SoQL Functions</a></li>
+    <li><a href="/docs/paging.html#{{version}}">Paging Through Data</a></li>
   </ul>
 </div>
 
-{{#show_migration}}
-  <h2>Migrating</h2>
+{{#migration}}
+  {{^structural_metadata.newBackend}}
+    <h2>Migrating</h2>
 
-  <p>A <a href="/foundry/#/{{domain}}/{{nbe_uid}}" target="_blank">new version of this dataset</a> exists that you should migrate to as soon as you're ready. This now deprecated version of the dataset will continue to be available for some time, and will be automatically kept in sync with the new dataset. The last time this dataset was synchronized was {{ last_synced }}, and the dataset was last updated at {{metadata.rowsUpdatedAt}}.</p>
+    <p>A <a href="/foundry/#/{{domain}}/{{nbe_uid}}" target="_blank">new version of this dataset</a> exists that you should migrate to as soon as you're ready. This now deprecated version of the dataset will continue to be available for some time, and will be automatically kept in sync with the new dataset. The last time this dataset was synchronized was {{ last_synced }}, and the dataset was last updated at {{metadata.rowsUpdatedAt}}.</p>
 
-  <p>Most things will continue to function exactly the same, but the new dataset has great new features like <a href="/docs/functions/index.html">new query functionality</a>, increased performance, and <a href="http://labs.socrata.com">access to new beta APIs</a>. Those features <em>will not</em> be available on the legacy dataset.</p>
+    <p>Most things will continue to function exactly the same, but the new dataset has great new features like <a href="/docs/functions/index.html">new query functionality</a>, increased performance, and <a href="http://labs.socrata.com">access to new beta APIs</a>. Those features <em>will not</em> be available on the legacy dataset.</p>
 
-  {{#has_structural_changes}}
-    <p>For this dataset, the following complex columns will change structurally:</p>
-    <ul>
-      {{#splits}}
-        <li><code>{{from_col}}</code> will be split into {{&to_cols}}</li>
-      {{/splits}}
-    </ul>
-  {{/has_structural_changes}}
+    {{#splits}}
+      <p>For this dataset, the following complex columns will change structurally:</p>
+      <ul>
+        {{#splits}}
+          <li><code>{{from_col}}</code> will be split into {{&to_cols}}</li>
+        {{/splits}}
+      </ul>
+    {{/splits}}
 
-  {{#has_renames}}
-    <p>The following columns are renamed in the new version:</p>
-    <ul>
-      {{#renames}}
-        <li><code>{{from}}</code> will be renamed to <code>{{to}}</code></li>
-      {{/renames}}
-    </ul>
-  {{/has_renames}}
+    {{#renames}}
+      <p>The following columns are renamed in the new version:</p>
+      <ul>
+        {{#renames}}
+          <li><code>{{from}}</code> will be renamed to <code>{{to}}</code></li>
+        {{/renames}}
+      </ul>
+    {{/renames}}
 
-  <div class="well">
-    Learn more about <a target="_blank" href="/changelog/2015/04/27/new-higher-performance-apis.html">the migration process</a>.
-  </div>
-{{/show_migration}}
+    <div class="well">
+      Learn more about <a target="_blank" href="/changelog/2015/04/27/new-higher-performance-apis.html">the migration process</a>.
+    </div>
+  {{/structural_metadata.newBackend}}
+{{/migration}}
 
 <ul class="fields panel-group" id="accordion">
-  {{#metadata.columns}}
-    {{^hidden}}
-      <li class="field panel panel-default">
-        <div class="heading panel-heading {{dataTypeName}}" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{id}}">
-          <h3 class="panel-title">
-            <i class="collapse-icon fa fa-fw fa-plus-square-o"></i>
-            <code class="field-name {{dataTypeName}}">{{fieldName}}</code>
-            <code class="datatype">{{dataTypeName}}</code>
-          </h3>
-          <span class="human-name">{{name}}</span>
-        </div>
-        <div id="collapse-{{id}}" data-datatype="{{dataTypeName}}" data-fieldname="{{fieldName}}" class="panel-collapse collapse">
-          <div class="panel-body">
-            {{#description}}
-              <p class="description">{{description}}</p>
-            {{/description}}
+  {{#columns}}
+    <li class="field panel panel-default">
+      <div 
+        class="heading panel-heading {{dataTypeName}} ga-track" 
+        data-toggle="collapse" 
+        data-parent="#accordion" 
+        href="#collapse-{{id}}" 
+        data-action="expand" 
+        data-label="column-header" 
+        data-value="{{uid}}-{{dataTypeName}}" 
+        data-tracking-category="foundry" 
+        data-tracking-label="field-{{uid}}-{{fieldName}}">
+        <h3 class="panel-title">
+          <i class="collapse-icon fa fa-fw fa-plus-square-o"></i>
+          <code class="field-name {{dataTypeName}}">{{fieldName}}</code>
+          <code class="datatype hidden-xs">{{dataTypeName}}</code>
+        </h3>
+        <span class="human-name hidden-xs">{{name}}</span>
+      </div>
+      <div 
+        id="collapse-{{id}}" 
+        data-datatype="{{dataTypeName}}" 
+        data-fieldname="{{fieldName}}" 
+        data-query-base="{{full_url}}"
+        data-display-url="{{display_url}}"
+        class="panel-collapse collapse">
+        <div class="panel-body">
+          <h4 class="visible-xs-block">{{name}}</h4>
 
-            <p class="overview">The <code>{{fieldName}}</code> column is of the <a href="/docs/datatypes/{{dataTypeName}}.html"><code>{{dataTypeName}}</code></a> datatype.</p>
+          {{#description}}
+            <p class="description">{{{description}}}</p>
+          {{/description}}
 
-            <div class="tryit">
-              <p><i class="fa fa-code fa-spin"></i> Please wait while we fetch an example for you...</p>
-            </div>
+          <p class="overview">The <code>{{fieldName}}</code> column is of the <a href="/docs/datatypes/{{dataTypeName}}.html#{{version}},"><code>{{dataTypeName}}</code></a> datatype.</p>
 
-            <p>For more details on what query options you have for this column, see the <a href="/docs/datatypes/{{dataTypeName}}.html">detailed docs on the <code>{{dataTypeName}}</code> datatype</a></p>
+          <div class="tryit">
+            <p><i class="fa fa-code fa-spin"></i> Please wait while we fetch an example for you...</p>
           </div>
+
+          <p>For more details on what query options you have for this column, see the <a href="/docs/datatypes/{{dataTypeName}}.html#{{version}},">detailed docs on the <code>{{dataTypeName}}</code> datatype</a>.</p>
         </div>
-      </li>
-    {{/hidden}}
-  {{/metadata.columns}}
+      </div>
+    </li>
+  {{/columns}}
 </ul>

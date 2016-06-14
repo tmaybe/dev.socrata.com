@@ -5,7 +5,7 @@
   <li><a href="/data/">Finding Open Data</a></li>
 
   <li class="nav-header dropdown-header">Examples</li>
-  {% for page in site.pages %}
+  {% for page in site.posts %}
     {% if page.type == 'example' and page.audience == 'consumer' %}
       {% if page.external_url %}
         <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
@@ -29,11 +29,6 @@
 {% when 'publisher' %}
   <li class="nav-header dropdown-header">Data Publishers</li>
   <li><a href="/publishers/">Publisher Guide</a></li>
-  <li class="nav-header dropdown-header">The Publisher API</li>
-  <li><a href="/publishers/getting-started.html">Publisher API Basics</a></li>
-  <li><a href="/publishers/direct-row-manipulation.html">Direct Row Manipulation</a></li>
-  <li><a href="/publishers/upsert.html">Updating via "Upsert"</a></li>
-  <li><a href="/publishers/replace.html">Full Replace</a></li>
 
   <li class="nav-header dropdown-header">Tools &amp; Connectors</li>
   {% for page in site.pages %}
@@ -45,6 +40,13 @@
       {% endif %}
     {% endif %}
   {% endfor %}
+
+  <li class="nav-header dropdown-header">The Publisher API</li>
+  <li><a href="/publishers/getting-started.html">Publisher API Basics</a></li>
+  <li><a href="/publishers/direct-row-manipulation.html">Direct Row Manipulation</a></li>
+  <li><a href="/publishers/upsert.html">Updating via "Upsert"</a></li>
+  <li><a href="/publishers/replace.html">Full Replace</a></li>
+  <li><a href="/publishers/import/">The Import API</a></li>
 
   <li class="nav-header dropdown-header">SDKs &amp; Libraries</li>
   {% for page in site.pages %}
@@ -58,7 +60,7 @@
   {% endfor %}
 
   <li class="nav-header dropdown-header">Examples</li>
-  {% for page in site.pages %}
+  {% for page in site.posts %}
     {% if page.type == 'example' and page.audience == 'publisher' %}
       {% if page.external_url %}
         <li><a href="{{ page.external_url }}" rel="external">{{ page.title }}</a></li>
@@ -82,29 +84,47 @@
 
   <li class="nav-header dropdown-header">Filtering &amp; Querying</li>
   <li><a href="/docs/filtering.html">Simple Filters</a></li>
-  <li><a href="/docs/queries.html">SoQL Queries</a></li>
+  <li><a href="/docs/queries/">SoQL Queries</a></li>
   <li><a href="/docs/paging.html">Paging Through Data</a></li>
-  <li><a href="/docs/functions/index.html">SoQL Function Listing</a></li>
+  <li><a href="/docs/functions/">SoQL Function Listing</a></li>
 
-  <li class="nav-header dropdown-header">Data Formats</li>
-  <li><a href="/docs/formats/index.html">Selecting Output Formats</a></li>
-  <li><a href="/docs/formats/json.html">JSON</a></li>
-  <li><a href="/docs/formats/geojson.html">GeoJSON</a></li>
-  <li><a href="/docs/formats/csv.html">CSV</a></li>
-  <li><a href="/docs/formats/rdf-xml.html">RDF-XML</a></li>
-  <li><a href="/odata/">OData</a></li>
+  <li class="nav-header dropdown-header"><a href="/docs/formats/">Data Formats</a></li>
+  <li class="dropdown-hide"><a href="/docs/formats/json.html">JSON</a></li>
+  <li class="dropdown-hide"><a href="/docs/formats/geojson.html">GeoJSON</a></li>
+  <li class="dropdown-hide"><a href="/docs/formats/csv.html">CSV</a></li>
+  <li class="dropdown-hide"><a href="/docs/formats/rdf-xml.html">RDF-XML</a></li>
 
-  <li class="nav-header dropdown-header">Datatypes</li>
+  <li class="nav-header dropdown-header"><a href="/docs/datatypes/">Datatypes</a></li>
   {% for page in site.pages %}
     {% if page.type == 'datatype' %}
-      <li><a href="{{ page.url }}">{{ page.title | replace: ' Datatype', '' }}</a></li>
+      <li class="dropdown-hide"><a href="{{ page.url }}">{{ page.title | replace: ' Datatype', '' }}</a></li>
     {% endif %}
   {% endfor %}
   {% comment %} <li><a href="/docs/datatypes/converting.html">Conversions</a></li> {% endcomment %}
 
   <li class="nav-header dropdown-header">Other</li>
+  <li><a href="/odata/">OData</a></li>
   <li><a href="/changelog/">API Changelog</a></li>
   <li><a href="/support.html">Getting Help</a></li>
+
+{% when 'post' %}
+  <li>
+    <ul class="meta">
+      <li><em>Posted:</em> {{ page.date | date_to_string }}</li>
+      {% if page.categories %}<li><em>Category:</em> {{ page.categories | array_to_sentence_string }}</li>{% endif %}
+      {% if page.tags %}<li><em>Tagged:</em> {{ page.tags | array_to_sentence_string }}</li>{% endif %}
+    </ul>
+  </li>
+
+  <li id="related">
+    <h4>Related Posts</h4>
+    <dl class="posts">
+      {% for post in site.related_posts limit:3 %}
+        <dt><a href="{{post.url}}"><a href="{{post.url}}"><i class="fa fa-fw {{ post.icon | default: "fa-rss" }}"></i> {{ post.title }}</a></dt>
+        <dd><em><a href="https://github.com/{{post.author}}">{{post.author}}</a> on {{ post.date | date_to_string }}</em></dd>
+      {% endfor %}
+    </dl>
+  </li>
 
 {% else %}
   <li>Whoever created this page messed something up. Please <a href="/contributing.html">file an issue</a> and ask them to pass a "type" variable.</li>

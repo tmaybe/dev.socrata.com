@@ -1,10 +1,14 @@
 ---
 layout: with-sidebar
-sidebar: documentation 
+sidebar: documentation
+type: format 
 title: GeoJSON Format
 audience: documentation
-redirect_from:
-- /docs/formats/json
+versions:
+- 2.1
+extension: geojson
+mime-type: application/vnd.geo+json;charset=utf-8
+format: GeoJSON 
 ---
 
 [GeoJSON](http://geojson.org/) is a commonly used and standardized flavor of [JSON](/docs/formats/json.html) used for geospatial data. With the introduction of the [Point](/docs/datatypes/point.html) datatype and geospatial functions like [`convex_hull(...)`](/docs/functions/convex_hull.html), GeoJSON is a powerful addition that works awesomely with geospatial frameworks like [Leaflet](http://leafletjs.com/).

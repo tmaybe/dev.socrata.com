@@ -1,0 +1,15 @@
+301   /console                                        /
+301   /querying-datasets                              /docs/queries/
+301   /getting-started/                               /consumers/getting-started.html
+301   /consumers/getting-started.html/                /consumers/getting-started.html
+301   /4                                              /
+301   /changelog/2016/01/04/system                    /changelog/2016/01/04/system-fields.html
+301   /docs/                                          /docs/endpoints.html
+301   /build.txt                                      /build.json
+
+# I have no idea how these field guide links got directed to me, but lets clean this up
+301   /open-data-field-guide/three-tips-to-it-savings-with-open-data/   https://www.socrata.com/open-data-field-guide/
+301   /open-data-field-guide/schedule-a-briefing/                       https://www.socrata.com/open-data-field-guide/
+301   /open-data-field-guide-chapter/the-data-plan/                     https://www.socrata.com/open-data-field-guide/
+301   /open-data-field-guide/how-to-run-a-hackathon/                    https://www.socrata.com/open-data-field-guide/
+

@@ -1,15 +1,17 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><code>{{include.function_name}}</code></h3>
+    <h3 class="panel-title"><code>{{page.title}}</code></h3>
   </div>
   <div class="panel-body">
-    <p>{{include.description}}</p>
+    <p>{{page.description}}</p>
 
     <p>Works with the following datatypes:</p>
     <ul>
-      {% for datatype in include.datatypes %}
+      {% for datatype in page.datatypes %}
         <li><a href="/docs/datatypes/{{datatype}}.html">{{datatype | replace: '_', ' ' | capitalize}}</a></li>
       {% endfor %}
     </ul>
+
+    <p><i class="fa fa-info-circle"></i> This function works with {{page.versions | array_to_sentence_string }} endpoint(s). <a href="/docs/endpoints.html">What does this mean? &raquo;</a></p>
   </div>
 </div>

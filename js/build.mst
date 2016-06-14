@@ -1,0 +1,1 @@
+Last updated <a class="last-built" href="{{ href }}" data-toggle="tooltop" title="{{ date }}">{{ ago }}</a>.

@@ -4,12 +4,26 @@ sidebar: documentation
 title: like '...'
 
 type: function
+function: "$1 like $match"
+description: Allows for substring searches in text strings
+versions:
+- 2.1
 datatypes:
 - text 
-description: Allows for substring searches in text strings
+params:
+  $1:
+  - text
+  $match:
+  - text
+returns: boolean
+
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 The `like '...'` function allows you to filter for [Text](/docs/datatypes/text.html) values that match a given pattern. Patterns can include placeholders to make fuzzy matches:
 

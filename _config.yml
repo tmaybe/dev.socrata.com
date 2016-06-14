@@ -1,7 +1,8 @@
+# Jekyll Config
 destination: public
 exclude: 
 - public
-- Makefile
+- Rakefile
 - Gemfile
 - Gemfile.lock
 - .rvmrc, 
@@ -9,8 +10,13 @@ exclude:
 - vendor
 - README.md
 - node_modules
+- _tests
+- package.json
+- bin
 
 # permalink: pretty
+
+# Template Config
 splash: false
 splash_homepage: false
 
@@ -22,15 +28,17 @@ icon: fa fa-code
 github_repo: https://github.com/socrata/dev.socrata.com
 contribute: /contributing.html
 
+dataset_limit: 50000
+
 # Setup for RSS feeds
-name: 'Socrata Developer Portal Changelog'
-description: 'Recent, significant changes to http://dev.socrata.com'
+name: 'Socrata Developer Portal'
+description: 'Updates, examples, and significant changes to http://dev.socrata.com'
 url: 'https://dev.socrata.com'
 author: 
   name: 'Socrata Developer Program'
   uri: 'https://dev.socrata.com'
 
-
+# JS Configuration Flags
 flags:
   show_migration: true
   peeper:
@@ -43,12 +51,12 @@ custom_js:
 - /js/main.js
 - /js/snuffleupadata.js
 - /js/peeper.js
+- /js/github.js
 - /common/js/lib/socrata-status.js
-- /common/js/lib/clipboard.js
+- /common/js/lib/ga-tracking.js
 
 gems:
 - jekyll-redirect-from
-- jekyll-sitemap
 - jekyll-mentions
 - jekyll-feed
 

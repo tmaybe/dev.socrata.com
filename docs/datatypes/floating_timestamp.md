@@ -1,9 +1,15 @@
 ---
 layout: with-sidebar
-sidebar: documentation 
+sidebar: documentation
+custom_js:
+- /js/function_listing.js 
 title: Floating Timestamp Datatype
 audience: documentation
 type: datatype
+versions:
+- 2.0
+- 2.1
+datatype: floating_timestamp
 redirect_from:
   - /docs/datatypes/timestamps.html
   - /docs/datatypes/floating-timestamp.html
@@ -11,9 +17,12 @@ redirect_from:
   - /docs/datatypes/date.html
   - /docs/datatypes/timestamp.html
   - /docs/datatypes/calendar_date.html
+definition:
+  type: string
+  format: date-time
 ---
 
-Floating timestamps represent an instant in time with millisecond precision, with no timezone value, encoded as [ISO8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) with no timezone offset. For example:
+Floating timestamps represent an instant in time with millisecond precision, with no timezone value, encoded as [ISO8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times) with no timezone offset. When writing data, accuracy to only the second is required, but the service will always return precision to the millisecond. For example:
 
 {% highlight javascript %}
 [ {

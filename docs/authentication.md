@@ -2,8 +2,6 @@
 layout: with-sidebar
 sidebar: documentation
 title: Authentication
-redirect_from:
-  - /authentication
 ---
 
 <div class="alert alert-info"><em>Note:</em> Authentication is only necessary when accessing datasets that have been marked as <em>private</em> or when making write requests (<code>PUT</code>, <code>POST</code>, and <code>DELETE</code>). For reading datasets that have not been marked as private, simply use an <a href="/docs/app-tokens.html">application token</a>.</div>
@@ -16,7 +14,7 @@ There are two methods available for authentication: HTTP Basic and OAuth 2.0.
 
 Requests can be authenticated by passing in HTTP Basic Authentication headers. We only support this method for legacy purposes, and encourage all our API users to use the OAuth 2.0 workflow to authenticate their users. We may deprecate this authentication method in the future.
 
-All HTTP-basic-authenticated requests *must* be performed over a secure (`https`) connection, and *must* include an application token, which is obtained when you [register your application](http://opendata.socrata.com/profile/app_tokens). Authenticated requests made over an insecure connection or without an application token will be denied.
+All HTTP-basic-authenticated requests *must* be performed over a secure (`https`) connection, and should include an application token, which is obtained when you [register your application](http://opendata.socrata.com/profile/app_tokens). However, authentication tokens are not strictly required when a request is authenticated. Authenticated requests made over an insecure connection will be denied.
 
 Here is a sample HTTP session that uses HTTP Basic Authentication:
 
@@ -46,7 +44,7 @@ To authenticate with OAuth 2.0, you will first need to [register your applicatio
 
 Once you have an application and a secret token, you'll be able to authenticate with the SODA OAuth 2.0 endpoint. You'll first need to redirect the user to the Socrata-powered site you wish to access so that they may log in and approve your application. For example:
 
-    https://sandbox.socrata.com/oauth/authorize?client_id=YOUR_AUTH_TOKEN&response_type=code &redirect_uri=YOUR_REDIRECT_URI
+    https://soda.demo.socrata.com/oauth/authorize?client_id=YOUR_AUTH_TOKEN&response_type=code &redirect_uri=YOUR_REDIRECT_URI
 
 Note that the `redirect_uri` here must be an absolute, secure (`https:`) URI which starts with the `Callback Prefix` you specified when you registered your application. If any of these cases fail, the user will be shown an error indicating as much.
 
@@ -60,7 +58,7 @@ If your `redirect_uri` contain a querystring, it will be preserved, and the `cod
 
 Now that the user has authorized your application, the next step is to retrieve an `access_token` so that you can perform operations on their behalf. You can do this by making the following `POST` request from your server:
 
-    https://sandbox.socrata.com/oauth/access_token
+    https://soda.demo.socrata.com/oauth/access_token
     ?client_id=YOUR_AUTH_TOKEN
     &client_secret=YOUR_SECRET_TOKEN
     &grant_type=authorization_code
@@ -89,9 +87,9 @@ Once you have obtained an `access_token`, you should include it on requests whic
 
 One quirk of authenticating via OAuth 2.0 is that the entire process happens without the 3rd party application (that's you!) having any knowledge of who, exactly, the user is that just authorized the application. To remedy this, we have set up an endpoint that simply returns the information of the current user. To return the data in JSON:
 
-    https://sandbox.socrata.com/api/users/current.json
+    https://soda.demo.socrata.com/api/users/current.json
 
 To return the data in XML:
 
-    https://sandbox.socrata.com/users/current.xml
+    https://soda.demo.socrata.com/users/current.xml
 

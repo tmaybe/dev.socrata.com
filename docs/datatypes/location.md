@@ -1,9 +1,28 @@
 ---
 layout: with-sidebar
-sidebar: documentation 
+sidebar: documentation
+custom_js:
+- /js/function_listing.js 
 title: Location Datatype
 type: datatype
+versions:
+- 2.0
+datatype: location
 audience: documentation
+definition:
+  type: object
+  properties: 
+    type: 
+      description: "The GeoJSON type of this object, `Point`"
+      type: string
+      enum: 
+      - Point
+    coordinates: 
+      description: "The longitude, latitude coordinates for this Point, in WGS84"
+      type: array
+      items: 
+        type: number
+        format: double
 ---
 
 <div class="alert alert-info">

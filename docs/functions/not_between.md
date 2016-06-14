@@ -4,15 +4,34 @@ sidebar: documentation
 title: not between ... and ...
 
 type: function
+function: $1 not between $low and $high
+description: Returns TRUE for values not in a given range
+versions:
+- 2.1
 datatypes:
 - number
 - double
 - money
 - floating_timestamp
-description: Returns TRUE for values not in a given range
+params:
+  $1:
+  - number
+  - double
+  - money
+  - floating_timestamp
+  $low:
+  - typeof($1)
+  $high:
+  - typeof($1)
+returns: boolean
+
+parent_paths: 
+- /docs/functions/
+parents: 
+- SoQL Function Listing 
 ---
 
-{% include function_header.html function_name=page.title description=page.description datatypes=page.datatypes %}
+{% include function_header.html %}
 
 `not between` is used with the `$where` parameter to return numeric or time stamp values excluding those between two input values. For example, to get all of the individuals who make less than $40,000 or more than $150,000 at the White House:
 

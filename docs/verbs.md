@@ -9,7 +9,7 @@ The Socrata API follows the [REST](http://en.wikipedia.org/wiki/Representational
 
 ### GET
 
-Use the HTTP GET method to obtain data. As described in the [Endpoints](/docs/endpoints.html) section, GET can be used to retrieve column data from multiple rows or from one single row. The [Filtering](/docs/filtering.html) section describes how to filter the data and the [Queries](/docs/queries.html) section describes how to do sophisticated queries, all with the GET method. 
+Use the HTTP GET method to obtain data. As described in the [Endpoints](/docs/endpoints.html) section, GET can be used to retrieve column data from multiple rows or from one single row. The [Filtering](/docs/filtering.html) section describes how to filter the data and the [Queries](/docs/queries/) section describes how to do sophisticated queries, all with the GET method. 
 
 Note that you do not need to authenticate in order to use the GET method, but you will want to use an [application token](/docs/app-tokens.html) to reduce throttling.
 
