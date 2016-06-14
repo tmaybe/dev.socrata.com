@@ -18,7 +18,7 @@
     </div>
     <div class="panel-body">
       <ul>
-        <li><em>Dataset Identifier:</em> <code>{{uid}}</code></li>
+        <li><em>Dataset Identifier:</em> <code id="uid">{{uid}}</code></li>
         <li><em>Total Rows:</em> <span class="row-count" data-query-base="{{query_base}}" data-uid="{{uid}}">&hellip;</span></li>
         <li><em>Source Domain:</em> <a href="http://{{domain}}">{{domain}}</a></li>
         <li><em>Created:</em> {{metadata.createdAt}}</li>
@@ -67,9 +67,7 @@
 </div>
 
 {{#metadata.description}}
-  <div class="description">
-    <p class="description">{{{metadata.description}}}</p>
-  </div>
+  <p class="description">{{{metadata.description}}}</p>
 {{/metadata.description}}
 
 <div class="getting-started">
