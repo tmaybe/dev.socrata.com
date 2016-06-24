@@ -17,4 +17,7 @@ group :development do
   gem 'rack-contrib'
   gem 'simple-rss'
   gem 'reverse_markdown'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'rspec'
 end
