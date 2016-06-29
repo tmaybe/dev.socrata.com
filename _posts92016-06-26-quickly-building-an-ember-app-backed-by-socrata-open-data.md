@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Quickly Visualizing Socrata Data with Ember
+title: Quickly Building an Ember Application Backed by Socrata Open Data
 sidebar: post
 type: post
 audience: consumer
@@ -16,7 +16,9 @@ date: 2016-06-26
 icon: fa-bar-chart
 ---
 
-In this post we're going to be making a simple bar chart out of Chicago Transit Authority's yearly ridership data, provided by the [City of Chicago's open data portal](https://data.cityofchicago.org/). We'll assume you have [Ember CLI](https://ember-cli.com/) to help us initialize our project and generate scaffolding as we develop. We'll also make use of the [`ember-socrata`](https://emberobserver.com/addons/ember-socrata) and [`ember-cli-chartjs`](https://emberobserver.com/addons/ember-cli-chartjs) addons for pulling data from a Socrata data repository and displaying it with a simple chart.  All the code in this walkthrough is located at https://github.com/zachgarwood/cta-ridership.
+[`ember-socrata`](https://emberobserver.com/addons/ember-socrata) is an addon for the client-side Javascript framework [Ember](http://emberjs.com/),specifically its data abstraction layer Ember Data. Ember Data allows you to create your application's models based on data retrieved data from some client-side service. `ember-socrata` is an adapter that allows you to pull information directly from a Socrata open data repository. In this post we're going to walk through how simple it is to utilize `ember-socrata` to build a bar chart out of Chicago Transit Authority's yearly ridership data, provided by the [City of Chicago's open data portal](https://data.cityofchicago.org/), a Socrata open data repository.
+
+For this walkthrough, I'll assume you have [Ember CLI](https://ember-cli.com/) installed. It is a command line tool that allows you to quickly initialize a project and generate scaffolding. We'll also make use of the [`ember-cli-chartjs`](https://emberobserver.com/addons/ember-cli-chartjs) addon for displaying our data with a simple chart.  All the code in this walkthrough is located at https://github.com/zachgarwood/cta-ridership.
 
 [![Ember][ember-badge]][embadge]
 [![Ember Socrata][ember-socrata-badge]][embadge]
@@ -37,7 +39,7 @@ cd cta-ridership
 ember serve
 ```
 
-If you navigate to http://localhost:4200, you should see an Ember welcome message. We're ready to start developing our project.
+If you navigate to http://localhost:4200, you should see an Ember welcome message. Now we're ready to start developing our project.
 
 ## Creating a basic route and template
 Ember has a built-in router that maps URLs to controllers and templates. We're going to use the `index` route (`/`) to display our chart. Let's generate this route:
@@ -212,7 +214,7 @@ Again, we've changed the imported and extended serializer to be the application'
 ## Using live data
 Now we've got everything set up, and all that's left is to replace the dummy data with real data.
 
-### Update the route
+### Updating the route
 First, we need to finally update the `app/routes/index.js` file we created a while ago so that it requests all of the ridership models from the store:
 
 ```javascript
@@ -228,8 +230,10 @@ export default Ember.Route.extend({
 });
 ```
 
-### Update the controller
-Now we need to update the controller to use the model from the route to generate our chart data.
+The `model()` hook is called when the user enters the route (`/`) and gives the descendant controller and template access to a `model` property (in this case, an array of ridership models.
+
+### Updating the controller
+Now we need to update the controller to use the model passed in from the route to generate our chart data.
 
 ```javascript
 // app/controllers/index.js
@@ -247,7 +251,9 @@ chartData: Ember.computed('model', function() {
 //...
 ```
 
-We've made several updates to `chartData`. First, we've updated its value from a <abbr>POJO</abbr> to [`Ember.computed()`](http://emberjs.com/api/classes/Ember.computed.html). Then we've used the [`mapBy()`](http://emberjs.com/api/classes/Ember.Enumerable.html#method_mapBy) function to generate lists of labels and data points from the model.
+We've made several updates to `chartData`. First, we've updated its value from a <abbr>POJO</abbr> to a computed property (read more about [`Ember.computed()`](http://emberjs.com/api/classes/Ember.computed.html)). Then we've used the [`mapBy()`](http://emberjs.com/api/classes/Ember.Enumerable.html#method_mapBy) convenience function to generate lists of labels and data points from the model in place of the dummy data.
+
+Now when we run the development server and refresh the page, we should see a chart of actual data!
 
 ## Conclusion
-So, now we've a chart that is getting it's data directly from a Socrata data repository. You can customize the chart itself using various options in the controller's `chartData`. And you can change the data that the chart displays by creating new models/adapters/serializers for other Socrata open data repositories.
+So, we've make a quick and easy chart that is getting it's data directly from a Socrata data repository. You can create new models/adapters/serializers for other datasets to create other charts, tables, or various other displays of open data.
