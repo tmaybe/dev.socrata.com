@@ -1,0 +1,8 @@
+---
+type: snippet
+title: Stata
+language: stata
+description: "Copy and paste the following to import this dataset into Stata"
+---
+clear
+. import delimited "https://%%domain%%/resource/%%uid%%.csv?%24limit=5000&%24%24app_token=YOURAPPTOKENHERE"
