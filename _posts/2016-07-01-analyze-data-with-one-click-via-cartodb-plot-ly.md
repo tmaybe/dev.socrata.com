@@ -12,6 +12,7 @@ tags:
 title: "Analyze data with one click via CartoDB, Plot.ly"
 date: 2016-07-01
 author: chrismetcalf
+icon: fa-map-o
 ---
 
 We're excited to introduce a new feature of our API documentation tool - one-click integration with the [Plot.ly](https://plot.ly/) data visualization and analysis tool, as well as the [CartoDB](https://cartodb.com/) geospatial mapping platform.
