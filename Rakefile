@@ -160,6 +160,25 @@ task :blog do
   system(ENV['EDITOR'], filename)
 end
 
+desc "update the date for a blog post"
+task :redate do
+  post = ENV['POST']
+  date = ENV['DATE'] || Time.now.strftime("%Y-%m-%d")
+
+  raise "You must specify a POST to update!" unless File.exist?(post)
+  raise "DATE must be in the correct YYYY-mm-dd format" unless date.match(/^\d{4}-\d{2}-\d{2}$/)
+
+  IO.write(post, File.open(post) {|f| f.read.gsub(/^date: \d{4}-\d{2}-\d{2}/, "date: #{date}")})
+  new_post = post.gsub(/\d{4}-\d{2}-\d{2}/, date)
+  puts "#{post} -> #{new_post}"
+
+  if system("git ls-files #{post} --error-unmatch")
+    system("git mv #{post} #{new_post}")
+  else
+    system("mv #{post} #{new_post}")
+  end
+end
+
 # Pre-compile task for Heroku
 namespace :assets do
   task :precompile do
