@@ -7,7 +7,7 @@ tags:
 - search
 - open data
 title: "Open Data and Search Relevance"
-date: 2016-07-01
+date: 2016-07-06
 author: rlvoyer
 icon: fa-bar-chart
 use_math: true
