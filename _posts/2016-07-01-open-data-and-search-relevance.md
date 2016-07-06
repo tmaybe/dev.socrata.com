@@ -14,7 +14,7 @@ use_math: true
 ---
 
 <script type="text/javascript"
-    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 One of the interesting byproducts of the continued adoption of the Socrata platform is a constantly
@@ -198,12 +198,12 @@ to capture as much information as possible at a reasonable cost.
 <td>
 <ul>
 <li>simple annotation task</li>
-<li>reusable judgments (assuming [transitivity](#transitivity))</li>
+<li>reusable judgments (assuming <a href="#transitivity">transitivity</a>)</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>requires n<sup>2</sup> (worst-case) judgments [[*](#transitivity)]</li>
+<li>requires n<sup>2</sup> (worst-case) judgments <a href="#transitivity">[&dagger;]</a></li>
 </ul>
 </td>
 </tr>
@@ -232,7 +232,7 @@ to capture as much information as possible at a reasonable cost.
 </table>
 <br/>
 
-[<a name="transitivity">*</a>]
+<a name="transitivity">[&dagger;]</a>
 [Carterette et al](http://research.microsoft.com/en-us/um/people/pauben/papers/HereOrThere-ECIR-2008.pdf)
 set out to show that pairwise judgments are the simplest for assessors. They show that relevance
 judgments typically obey transitivity, which means that the full set of n<sup>2</sup> pairwise
@@ -274,12 +274,8 @@ click data to train a machine learned ranking model.
 
 ## References
 
-["Google Organic Click-through Rates in 2014", Philip Petrescu](https://moz.com/blog/google-organic-click-through-rates-in-2014)
-
-["Measuring Search Relevance", Hugh Williams](http://hughewilliams.com/2014/10/11/measuring-search-relevance/)
-
-["Yes, Bing Has Human Search Quality Raters & Here’s How They Judge Web Pages", Matt McGee](http://searchengineland.com/bing-search-quality-rating-guidelines-130592)
-
-[Learning to rank: from pairwise approach to listwise approach, Cao, Qin, Liu et al.](http://research.microsoft.com/en-us/people/tyliu/listnet.pdf)
-
-[Here or There: Preference Judgments for Relevance](http://research.microsoft.com/en-us/um/people/pauben/papers/HereOrThere-ECIR-2008.pdf)
+- ["Google Organic Click-through Rates in 2014", Philip Petrescu](https://moz.com/blog/google-organic-click-through-rates-in-2014)
+- ["Measuring Search Relevance", Hugh Williams](http://hughewilliams.com/2014/10/11/measuring-search-relevance/)
+- ["Yes, Bing Has Human Search Quality Raters & Here’s How They Judge Web Pages", Matt McGee](http://searchengineland.com/bing-search-quality-rating-guidelines-130592)
+- [Learning to rank: from pairwise approach to listwise approach, Cao, Qin, Liu et al.](http://research.microsoft.com/en-us/people/tyliu/listnet.pdf)
+- [Here or There: Preference Judgments for Relevance](http://research.microsoft.com/en-us/um/people/pauben/papers/HereOrThere-ECIR-2008.pdf)
