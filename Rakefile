@@ -60,7 +60,7 @@ end
 
 desc "test links with htmlproof"
 task :htmlproof => [:jekyll] do
-  sh "bundle exec htmlproof ./public/ --only-4xx --check-html --href-ignore \"/#/,/\/foundry/,/\/register/,/APP_TOKEN/\""
+  sh "bundle exec htmlproof ./public/ --only-4xx --check-html --verbose --href-ignore \"/#/,/\/foundry/,/\/register/,/APP_TOKEN/\""
 end
 
 desc "stage site to #{URL}"
