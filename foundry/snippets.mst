@@ -31,7 +31,7 @@
           <p>The following resources might also be helpful:</p>
           <ul>
             {{#see_also}}
-              <li><a href="{{url>}}" target="_blank">{{name}}</a></li>
+              <li><a href="{{url}}" target="_blank">{{name}}</a></li>
             {{/see_also}}
           </ul>
         {{/see_also_count}}
