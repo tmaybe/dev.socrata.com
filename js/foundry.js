@@ -1,6 +1,6 @@
 define(
-  ['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit', 'jquery.redirect', 'jquery.splash', 'jquery.sanitize', 'proxy', 'micromarkdown'],
-  function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt, Redirect, Splash, Sanitize, Proxy, micromarkdown) {
+  ['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit', 'jquery.redirect', 'jquery.splash', 'jquery.sanitize', 'proxy', 'micromarkdown', 'hljs', 'clipboard'],
+  function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt, Redirect, Splash, Sanitize, Proxy, micromarkdown, Highlight, Clipboard) {
 
   // Set up some JQuery convenience functions
   $.fn.extend({
@@ -278,7 +278,7 @@ define(
 
         // Fetch count from the discussions forum on GitHub
         $.when(
-          $.ajax(Proxy.root() + 
+          $.ajax(Proxy.root() +
             "/github/search/issues?q=repo:socrata/discuss state:open " + nugget
           ),
           $.ajax("/foundry/issues.mst")
@@ -303,6 +303,7 @@ define(
 
     // Load discussion details from GitHub
     update_external_integrations: function() {
+      // TODO #546: Move this into config
       var integration_configs = [
         {"slug":"plotly", "name":"Plot.ly", "url":"https://plot.ly/external/?url=", "tagline":"Collaborative data science", "format":"csv", "file_size_warning":"has a file size limit of 5MB"},
         {"slug":"cartodb", "name":"CartoDB.com", "url":"http://oneclick.cartodb.com/?file=", "tagline":"Maps for the web, made easy", "format":"geojson", "file_size_warning":"has different file size limits depending on your user account. Free users are limited to importing datasets of up to 250 MB."}
@@ -316,9 +317,9 @@ define(
 
         var integrations = _.map(integration_configs, function(integration_config){
           integration_config.url += ["https://",domain,"/api/views/"+uid+"/rows.",integration_config.format,"?accessType=DOWNLOAD"].join('')
-          return integration_config  
+          return integration_config
         })
-        
+
         $.when(
           $.ajax('/foundry/external-integrations.mst')
         ).done(function(template) {
@@ -329,8 +330,44 @@ define(
           }));
         });
       });
-    }
+    },
 
+    // Load snippets
+    update_snippets: function() {
+      $(this).each(function() {
+        var uid = $(this).attr('data-uid');
+        var domain = $(this).attr('data-domain');
+        var el = $(this);
+
+        $.when(
+          $.ajax('/foundry/snippets.mst'),
+          $.ajax("/snippets.json")
+        ).done(function(template, snippets) {
+          // Mark up the first snippet
+          snippets[0].snippets[0].first = true;
+
+          // Modify the snippets themselves to drop in the domain and UID
+          _.each(snippets[0].snippets, function(snip) {
+            snip.code = snip.code
+              .replace("%%domain%%", domain)
+              .replace("%%uid%%", uid);
+            snip.see_also_count = snip.see_also != null
+              ? snip.see_also.length
+              : 0;
+          });
+
+          // Render out our template
+          $(el).html(Mustache.render(template[0], {
+            snippets: snippets[0].snippets,
+          }));
+
+          // Pretty print!
+          el.find('.prettyprint').each(function(i, block) {
+            Highlight.highlightBlock(block);
+          });
+        });
+      });
+    }
   });
 
   // Render the page given the proper metadata
@@ -338,7 +375,7 @@ define(
     // Parallelize our data and metadata requests
     $.when(
       $.ajax("/foundry/template.mst")
-    ).done(function(template) {
+    ).done(function(template, snippets) {
       var metadata = args.metadata;
       var structural_metadata = args.structural_metadata;
       var columns = args.columns;
@@ -368,7 +405,7 @@ define(
 
       // Clean up our columns a bit
       var columns = _.chain(structural_metadata.columns)
-        .filter(function(col) { 
+        .filter(function(col) {
           // Some things unfortunately need to be hidden...
           return !col.fieldName.match(/^:@computed_region/);
         })
@@ -453,7 +490,7 @@ define(
         // Private datasets
         is_private: !is_public,
         username: Proxy.username(),
-        logout_url: Proxy.logout_url()
+        logout_url: Proxy.logout_url(),
       });
       $(args.target).html(content);
 
@@ -470,7 +507,7 @@ define(
           icon: 'warning',
           title: 'Heads up!',
           message: 'A <a target="_blank" href="/foundry/' +
-            domain + '/' + migration.nbeId + 
+            domain + '/' + migration.nbeId +
             '">new, improved version of this API</a> is available for your use.'
         });
       }
@@ -518,6 +555,9 @@ define(
 
       // Load external integration options
       $('.external-integrations').update_external_integrations();
+
+      // Load snippets
+      $('.snippets').update_snippets();
 
       // If we're on a small screen, un-float the float
       if($(window).width() < 768) {

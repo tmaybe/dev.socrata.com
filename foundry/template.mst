@@ -217,3 +217,5 @@
     </li>
   {{/columns}}
 </ul>
+
+<div class="snippets" data-uid="{{uid}}" data-domain="{{domain}}"></div>

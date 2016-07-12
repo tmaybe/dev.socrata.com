@@ -1,0 +1,41 @@
+<h2 id="code-snippets">Code Snippets</h2>
+
+<p>The following are grab-and-go code code samples you can use with popular programming languages and data science tools.</p>
+
+<div class="container">
+  <ul class="nav nav-tabs">
+    {{#snippets}}
+      <li class="{{#first}}active{{/first}}">
+        <a href="#{{key}}" data-toggle="tab">{{title}}</a>
+      </li>
+    {{/snippets}}
+  </ul>
+
+  <div class="tab-content ">
+    {{#snippets}}
+      <div class="tab-pane {{#first}}active{{/first}}" id="{{key}}">
+
+        <div class="snippet-description">{{{description}}}</div>
+
+        <div class="code-wrapper">
+          <div class="toolbar">
+            <div class="pull-right btn-group btn-group-xs tools" role="group" aria-label="Actions on this sample code">
+              <a class="btn btn-default btn-last copy-it has-tooltip ga-track" data-toggle="tooltip" title="" target="_blank" data-original-title="Copy this URL to the clipboard" data-placement="left" data-container="body" data-tracking-category="samples" data-category-label="copy" data-tracking-value="{{key}}" data-clipboard-target="#{{key}} .code "><i class="fa fa-clipboard"><!-- This Space Left Blank --></i> copy</a>
+            </div>
+          </div>
+
+          <pre class="code prettyprint clip-it">{{{ code }}}</pre>
+        </div>
+
+        {{#see_also_count}}
+          <p>The following resources might also be helpful:</p>
+          <ul>
+            {{#see_also}}
+              <li><a href="{{url>}}" target="_blank">{{name}}</a></li>
+            {{/see_also}}
+          </ul>
+        {{/see_also_count}}
+      </div>
+    {{/snippets}}
+  </div>
+</div>

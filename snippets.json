@@ -1,0 +1,17 @@
+---
+---
+{% assign snippets = site.pages | where: "type", "snippet" %}
+
+{
+  "snippets" : [
+    {% for snip in snippets %}
+      {
+        "key" : {{ snip.name | replace: '.', '-' | jsonify }},
+        "title" : {{ snip.title | jsonify }},
+        "description" : {{ snip.description | markdownify | jsonify }},
+        "language" : {{ snip.language | jsonify }},
+        "code" : {{ snip.content | jsonify }},
+        "see_also" : {{ snip.see_also | jsonify }}
+      }{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]
+}
