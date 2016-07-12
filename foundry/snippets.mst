@@ -15,7 +15,7 @@
     {{#snippets}}
       <div class="tab-pane {{#first}}active{{/first}}" id="{{key}}">
 
-        <div class="description">{{{description}}}</div>
+        <div class="snippet-description">{{{description}}}</div>
 
         <div class="code-wrapper">
           <div class="toolbar">
