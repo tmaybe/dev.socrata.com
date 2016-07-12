@@ -9,7 +9,7 @@ tags:
 - api foundry
 title: "Pre-generated code snippets for Socrata Open Data APIs"
 date: 2016-07-11
-author: metcalf
+author: chrismetcalf
 icon: fa-code
 ---
 
