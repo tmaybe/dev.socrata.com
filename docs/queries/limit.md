@@ -26,7 +26,7 @@ For example, if you wanted to only return the top ten strongest earthquakes, you
 When combined with an aggregation via [`$group`](/docs/queries/group.html), `$limit` is applied _after_ the aggregation. For example, if the aggregation reduces a result set from 10,000 records to 100, the `$limit` is applied to the result set of 100, rather than the original records.
 
 <div class="alert alert-info">
-  <p><strong>Note:</strong> Depending on <a href="/docs/endpoints.html">the version of the API endpoint</a>, it will have different maximums for <code>$limit</code>:
+  <p><strong>Note:</strong> Depending on <a href="/docs/endpoints.html">the version of the API endpoint</a>, it will have different maximums for <code>$limit</code>:</p>
   <ul>
     <li>Version 2.0 endpoints have a maximum <code>$limit</code> of 50,000</li>
     <li>Version 2.1 endpoints have no maximum</li>
