@@ -33,7 +33,7 @@ The `Line` datatype represents a path on the Earth as a sequence of WGS84 Latitu
 
 {% highlight javascript %}
 {
-  "type": "Point",
+  "type": "Feature",
   "geometry": {
     "type": "LineString",
     "coordinates": [
