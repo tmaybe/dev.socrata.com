@@ -1,8 +1,8 @@
 require(['jquery', 'googlemaps'], function($, google) {
   // Construct the query string
-  url = 'https://data.ct.gov/resource/9k2y-kqxn.json?'
+  url = 'https://data.ct.gov/resource/v4tt-nt9n.json?'
     + 'organization_type=Public%20School%20Districts'
-    + '&$$app_token=CGxaHQoQlgQSev4zyUh5aR5J3';
+    + '&$$app_token=09sIcqEhoY0teGY5rhupZGqhW';
 
   // Intialize our map
   var center = new google.maps.LatLng(41.7656874,-72.680087);
@@ -16,8 +16,8 @@ require(['jquery', 'googlemaps'], function($, google) {
   $.getJSON(url, function(data, textstatus) {
     $.each(data, function(i, entry) {
       var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(entry.location_1.latitude, 
-                      entry.location_1.longitude),
+        position: new google.maps.LatLng(entry.location_1.coordinates[1], 
+                      entry.location_1.coordinates[0]),
         map: map,
         title: location.name
       });

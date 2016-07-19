@@ -18,15 +18,15 @@ Everybody loves the [Google Maps JavaScript API](https://developers.google.com/m
 
 <div id="map" style="height: 480px; width: 640px"><!-- This space intentionally left blank --></div>
 
-This example pulls data live from [this State of Connecticut directory of schools](https://data.ct.gov/Education/Education-Directory/9k2y-kqxn?) via the SODA API.
+This example pulls data live from [this State of Connecticut directory of schools](/foundry/data.ct.gov/v4tt-nt9n) via the SODA API.
 
 To start, we'll build our [SoQL query](http://dev.socrata.com/docs/queries/). Our query filters our results by the `organization_type` column to only `Public School Districts`:
 
 {% highlight javascript %}
 // Construct the query string
-url = 'https://data.ct.gov/resource/9k2y-kqxn.json?'
+url = 'https://data.ct.gov/resource/v4tt-nt9n.json?'
       + 'organization_type=Public%20School%20Districts'
-      + '&$$app_token=CGxaHQoQlgQSev4zyUh5aR5J3';
+      + '&$$app_token=09sIcqEhoY0teGY5rhupZGqhW';
 {% endhighlight %}
 
 Then we initialize our map and center it on Trenton, CT:
@@ -68,9 +68,9 @@ To finish it up, we wrap the whole thing in jQuery's `$(window).load` function s
 {% highlight javascript %}
 $(window).load(function() {
     // Construct the query string
-    url = 'https://data.ct.gov/resource/9k2y-kqxn.json?'
+    url = 'https://data.ct.gov/resource/v4tt-nt9n.json?'
           + 'organization_type=Public%20School%20Districts'
-          + '&$$app_token=CGxaHQoQlgQSev4zyUh5aR5J3';
+          + '&$$app_token=09sIcqEhoY0teGY5rhupZGqhW';
     
     // Intialize our map
     var center = new google.maps.LatLng(41.7656874,-72.680087);
@@ -84,8 +84,8 @@ $(window).load(function() {
     $.getJSON(url, function(data, textstatus) {
           $.each(data, function(i, entry) {
               var marker = new google.maps.Marker({
-                  position: new google.maps.LatLng(entry.location_1.latitude, 
-                                                   entry.location_1.longitude),
+                  position: new google.maps.LatLng(entry.location_1.coordinates[1], 
+                                                   entry.location_1.coordinates[0]),
                   map: map,
                   title: location.name
               });
@@ -95,3 +95,6 @@ $(window).load(function() {
 {% endhighlight %}
 
 That's all it takes! If you've got a walk-through of your own that you'd like to share, we'll gladly accept [your contribution](/contributing.html).
+
+_2016-07-19 Update:_ Revised this example to use the [new SODA 2.1 API](https://dev.socrata.com/foundry/data.ct.gov/v4tt-nt9n) for this dataset.
+
