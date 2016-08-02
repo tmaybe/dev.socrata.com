@@ -1,6 +1,6 @@
 branches:
   only:
-    - gh-pges
+    - gh-pages
     - /.*/
 language: ruby
 rvm:
