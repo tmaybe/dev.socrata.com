@@ -370,6 +370,13 @@ define(
     }
   });
 
+  var build_url = function(args) {
+    return [
+      args.base + args.domain + "/" + args.uid,
+      _.keys(args.options).join("/")
+    ].join("/").replace(/\/$/, '');
+  };
+
   // Render the page given the proper metadata
   var render = function(args) {
     // Parallelize our data and metadata requests
@@ -618,7 +625,8 @@ define(
           title: 'Please wait!',
           message: "Redirecting you to the API endpoint for this filtered view..."
         });
-        $.redirect(args.base + args.domain + "/" + default_view[0]["id"]);
+        // $.redirect(args.base + args.domain + "/" + default_view[0]["id"]);
+        $.redirect(build_url($.extend(args, { uid: default_view[0].id })));
         return false;
       } else if(!default_view && by_resource && by_resource[1] == "success") {
         // We didn't get a default view, but we did get it by resource
@@ -627,7 +635,7 @@ define(
 
       // Check to see if we're on a 2.0 endpoint and should redirect to 2.1
       // If we're looking at an OBE dataset and we haven't forced these docs, redirect
-      if(migration && migration[1] == "success" && migration[0].nbeId != args.uid && !args.no_redirect) {
+      if(migration && migration[1] == "success" && migration[0].nbeId != args.uid && !args.options.no_redirect) {
         console.log("Redirecting user to the NBE API for this dataset");
         $("#splash").splash({
           level: "info",
@@ -635,7 +643,8 @@ define(
           title: 'Please wait!',
           message: "Redirecting you to the new API endpoint for this datset..."
         });
-        $.redirect( + args.domain + "/" + migration[0].nbeId);
+        // $.redirect(args.base + args.domain + "/" + migration[0].nbeId);
+        $.redirect(build_url($.extend(args, { uid: migration[0].nbeId })));
         return false;
       }
 
