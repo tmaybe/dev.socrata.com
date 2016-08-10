@@ -18,7 +18,7 @@ require(
     var params = path[2].split("/");
     if($.inArray('embed', params.slice(2)) >= 0) {
       // If we're in embed mode, make all links open in new windows
-      $('#foundry-docs').delegate('a[href]:not(.tryit-link a)', 'click', function(e) {
+      $('#foundry-docs').delegate('a[href]:not(.tryit-link a):not(.snippets .nav a)', 'click', function(e) {
         e.preventDefault();
         e.stopPropagation();
         window.open(this.href, $('#foundry-docs').attr('data-target'));
