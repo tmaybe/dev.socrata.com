@@ -4,7 +4,7 @@
     window.addEventListener('message', function(e) {
       if(e.origin !== source) return;
       if(isNaN(e.data.height)) return;
-      iframe.height = (e.data.height + 32) + "px";
+      iframe.height = (e.data.height + 64) + "px";
     }, false);
   }
 </script>
