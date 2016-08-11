@@ -708,7 +708,7 @@ define(
           $(args.target).append('<p>This dataset is private, and you will need to authenticate before you can access it. When you authenticate, you\'ll be asked to log in and allow access to your private APIs before continuing</p>');
           $(args.target).append('<p>Curious to <a href="/changelog/2015/10/27/private-api-docs.html">learn more about how this works</a>?</p>');
 
-          $(args.target).append('<a href="' + auth_url + '" type="button" class="btn btn-primary">Authenticate</a>');
+          $(args.target).append('<a href="' + auth_url + '" type="button" class="btn btn-primary authenticate">Authenticate</a>');
           $(args.target).show();
           break;
         case 404:
