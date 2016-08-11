@@ -590,9 +590,6 @@ define(
       // Load snippets
       $('.snippets').update_snippets();
 
-      // Load embed 
-      $('.embed').update_embed();
-
       // If we're on a small screen, un-float the float
       if($(window).width() < 768) {
         $('.metadata')
