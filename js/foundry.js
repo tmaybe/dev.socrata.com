@@ -486,8 +486,8 @@ define(
         host_domain: location.hostname
       });
 
-      // Encode our HTML code
-      code = $('<div/>').text(code).html();
+      // Escape our HTML code
+      code = code.replace(/"/, "\\\"");
 
       var content = Mustache.render(template[0], {
         // Metadata
