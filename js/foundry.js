@@ -1,6 +1,6 @@
 define(
-  ['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit', 'jquery.redirect', 'jquery.splash', 'jquery.sanitize', 'proxy', 'micromarkdown', 'hljs', 'clipboard'],
-  function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt, Redirect, Splash, Sanitize, Proxy, micromarkdown, Highlight, Clipboard) {
+  ['jquery', 'mustache', 'underscore', 'jquery.forgiving', 'readmore', 'js.cookie', 'tryit', 'jquery.redirect', 'jquery.splash', 'jquery.sanitize', 'jquery.message_height', 'proxy', 'micromarkdown', 'hljs', 'clipboard'],
+  function($, Mustache, _, Forgiving, Readmore, Cookies, TryIt, Redirect, Splash, Sanitize, MessageHeight, Proxy, micromarkdown, Highlight, Clipboard) {
 
   // Set up some JQuery convenience functions
   $.fn.extend({
@@ -208,6 +208,9 @@ define(
             }));
 
             TryIt.setup_livedocs($(el).find('a.tryit'));
+
+            // Update our height
+            $.message_height();
           } catch(err) {
             console.log("Error loading sample data: " + err);
           }
@@ -365,6 +368,9 @@ define(
           el.find('.prettyprint').each(function(i, block) {
             Highlight.highlightBlock(block);
           });
+
+          // Update our height
+          $.message_height();
         });
       });
     }
@@ -381,8 +387,9 @@ define(
   var render = function(args) {
     // Parallelize our data and metadata requests
     $.when(
-      $.ajax("/foundry/template.mst")
-    ).done(function(template, snippets) {
+      $.ajax("/foundry/template.mst"),
+      $.ajax('/foundry/embed-code.mst')
+    ).done(function(template, embed_code) {
       var metadata = args.metadata;
       var structural_metadata = args.structural_metadata;
       var columns = args.columns;
@@ -472,7 +479,17 @@ define(
         metadata.description = micromarkdown.parse($.sanitize(metadata.description));
       }
 
-      var content = Mustache.render(template, {
+      // Render our code bloc
+      var code = Mustache.render(embed_code[0], {
+        uid: args.uid,
+        domain: args.domain,
+        host_domain: location.hostname
+      });
+
+      // Encode our HTML code
+      code = $('<div/>').text(code).html();
+
+      var content = Mustache.render(template[0], {
         // Metadata
         uid: args.uid,
         domain: args.domain,
@@ -498,6 +515,7 @@ define(
         is_private: !is_public,
         username: Proxy.username(),
         logout_url: Proxy.logout_url(),
+        embed_code: code
       });
       $(args.target).html(content);
 
@@ -537,6 +555,9 @@ define(
             .removeClass("fa-plus-square-o")
             .addClass("fa-minus-square-o");
 
+          // Update our height
+          $.message_height();
+
           // Drop in our examples
           $(this).load_query_suggestions();
         });
@@ -544,6 +565,9 @@ define(
           $(this).parent().find(".collapse-icon")
             .removeClass("fa-minus-square-o")
             .addClass("fa-plus-square-o");
+
+          // Update our height
+          $.message_height();
         });
       });
 
@@ -566,6 +590,9 @@ define(
       // Load snippets
       $('.snippets').update_snippets();
 
+      // Load embed 
+      $('.embed').update_embed();
+
       // If we're on a small screen, un-float the float
       if($(window).width() < 768) {
         $('.metadata')
@@ -574,6 +601,9 @@ define(
           .detach()
           .insertBefore('.getting-started');
       }
+
+      // Update our content height in the hash
+      $.message_height();
     });
   };
 
