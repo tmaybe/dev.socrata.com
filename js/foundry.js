@@ -485,9 +485,7 @@ define(
         domain: args.domain,
         host_domain: location.hostname
       });
-
-      // Escape our HTML code
-      code = code.replace(/"/, "\\\"");
+      code = $('<div/>').text(code).html();
 
       var content = Mustache.render(template[0], {
         // Metadata
@@ -542,10 +540,6 @@ define(
 
       // Set up our livedocs links
       TryIt.setup_livedocs($(args.target).find('a.tryit'));
-
-      // Set up our clipboard buttons
-      // TODO: Find a non-Flash clipbutton option
-      // ClipBoard.clipbutton($('pre'));
 
       // Set up handlers for our collapse-o icons. Unfortunately events only seem
       // to fire on IDs, so we need to be a bit more long winded.
