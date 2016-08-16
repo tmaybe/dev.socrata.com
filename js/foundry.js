@@ -352,8 +352,8 @@ define(
           // Modify the snippets themselves to drop in the domain and UID
           _.each(snippets[0].snippets, function(snip) {
             snip.code = snip.code
-              .replace("%%domain%%", domain)
-              .replace("%%uid%%", uid);
+              .replace(new RegExp("%%domain%%", "g"), domain)
+              .replace(new RegExp("%%uid%%", "g"), uid);
             snip.see_also_count = snip.see_also != null
               ? snip.see_also.length
               : 0;
