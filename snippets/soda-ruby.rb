@@ -12,7 +12,6 @@ see_also:
 #!/usr/bin/env ruby
 
 require 'soda/client'
-
 %%if_private%%
 client = SODA::Client.new({:domain => "%%domain%%", :app_token => "YOURAPPTOKENHERE",
                            :username => "user@agency.gov", :password => "password"})
