@@ -2,10 +2,10 @@
 layout: post
 categories: blog
 date: 2016-08-19
-tags: examples, publishers
+tags: examples, publishers, open source, pentaho
 redirect_from:
 - /publishers/examples/ssis-socrata-datasync.html
-title: Using Open Source to read from Salesforce and write to Socrata
+title: Using Pentaho to Read data from Salesforce and Publish to Socrata
 sidebar: post
 type: example
 audience: publisher
@@ -21,34 +21,37 @@ This example shows how to use Pentaho Kettle Data Integration to read data from 
 
 [Pentaho Kettle Data Integation](http://community.pentaho.com/projects/data-integration/) is a free, open source ETL software. The tool's abilities can be separated into 4 types of funtionality: Extract, Transform, Load data (ETL), and job Automation.
 
-###### 1. Extract
-The user can connect directly through a myriad of source systems. Some examples are: SQL Server; Microsoft Access, SAP, and Salesforce. When the data in these source systems update, so does the data that Pentaho extracts.
+##### 1. Extract
+The user can connect directly through a myriad of source systems. Some examples are: SQL Server, Microsoft Access, SAP, and Salesforce. When the data in these source systems update, so does the data that Pentaho extracts.
 
-###### 2. Transform
-Often times the raw data directly from the source is not in the desired format for presentation. For example any Personally identifiable information (PII) would need to be masked before publishing. In this example we will cover how to create an attribute that the [Socrata platform can geocode](https://support.socrata.com/hc/en-us/articles/202950508-Location-Information-Data-which-can-be-geocoded).
+##### 2. Transform
+Often times the raw data directly from the source is not in the desired format for presentation. For example any Personally Identifiable Information (PII) would need to be masked before publishing. In this example we will cover how to create an attribute that the [Socrata platform can geocode](https://support.socrata.com/hc/en-us/articles/202950508-Location-Information-Data-which-can-be-geocoded).
 
-###### 3. Load
+##### 3. Load
 Next the data is ready for publishing! In this example we will cover how to utilize the [Socrata Output plugin](https://github.com/socrata/socrata-kettle) and publish the data directly to the platform from the workflow.
 
-The plugin uses Datasync under the hood to update the dataset. Users familiar with this tool will be ahead of the curve whith this plugin.
+The plugin uses Datasync under the hood to update the dataset. Users familiar with this tool will be ahead of the curve with this plugin.
 
 *Before continuing on please follow the link, download, and configure the plugin within your Pentaho Kettle instance.*
 
-#### Extract Data, Salesforce Input
+##### 4. Automate
+Create a Pentaho job file (.kjb) to run this and other transformation workflows on a scheduled basis.
+
+#### 1. Extract Data, Salesforce Input
 ![Salesforce Input](/img/pentaho-salesForce-input.png)
 
 * Open a new Transform file (.ktr)
 * Go to Design > Input > Salesforce Input
-* For the credentials the password = <password><securitytoken>
+* For the credentials the password = passwordsecuritytoken
     * For example: "mypassword12343mysecuritytoken45678"
     * To generate a salesforce security token go [here](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm&language=en_US) or search for Salesforce Security Token
 * Don't know which Salesforce objects you need to connect to? Try using the Salesforce Schema Builder to see which objects house the desired attributes.
 * _Gotcha_: the default date formatter can sometimes incur errors. Try pressing play on the workflow after connecting to the salesforce object. If the log file mentions a date error, try adjusting the format in the Input.
 
-![SSIS screenshot dataflow](/img/DataFlowTransformationTasks.PNG)
-
-#### Join, Transform, Hide PII, Geocode
+#### 2. Join, Transform, Hide PII, Geocode
 In this example I have connected to 3 different objects. Now I need to rename fields, filter out others, join the objects, and create a field for the Socrata platform to geocode.
+
+![workflow](/img/pentaho-salesForce.png)
 
 * "Select Rename Values" step, labeled here as Remove Unnecessary Fields, renames fields and removes others I will not need on my Socrata dataset.
 * Join Salesforce objects:
@@ -60,43 +63,48 @@ In this example I have connected to 3 different objects. Now I need to rename fi
   * Using the step "Filter Rows" I filter out all attributes where Location Name = "Private Residence"
   * The next step "Set Field Values to a Constant" entitled "set private address info to blank" I set the address attributes to null.
 * Create a new Location attribute that will geocode:
-  * Latitude and longitude are in two different columns
-  * Concatenate these together using the "Concat Fields" step
+  * Latitude and longitude are in two different columns.
+  * Concatenate these together using the "Concat Fields" step.
+  * Lastly, surround lat, long in parenthesis using the Formula step.
 
-![workflow](pentaho-salesForce.png)
+  ![workflow](/img/pentaho-salesForce-location.png)
 
-#### Load to Socrata
+
+
+#### 3. Load to Socrata
 Now that you have downloaded and configured the Socrata plugin (link provided above) you should see the Socrata Output in the list of Outputs.
 
-###### Settings Tab
-The Settings tab is where you configure your credentials. You must be a user on your domain with [publishing rights](https://support.socrata.com/hc/en-us/articles/202950278-Understanding-user-roles) to this dataset.
+##### Settings Tab
 
-Update options:
-* Replace: Replaces the entire dataset with this data extract.
-* Upsert: Updates any rows that already exist and inserts rows which do not.
+* Configure your credentials. You must be a user on your domain with [publishing rights](https://support.socrata.com/hc/en-us/articles/202950278-Understanding-user-roles) to this dataset.
+* Update options:
+  * Replace: Replaces the entire dataset with this data extract.
+  * Upsert: Updates any rows that already exist and inserts rows which do not.
 
 Use Socrata geocoding: check yes if one or more columns are type Location
+![Socrata-Output](/img/pentaho-salesForce-output1.png)
 
-###### Fields Tab
+##### Fields Tab
 * Field names should match the Socrata dataset
 * Can remove attributes that are not on the dataset, not necessary.
 * Make sure to click the button 'Minimum Width' so the fields do not get accidentally truncated.
 
-![Socrata-Output](pentaho-salesForce-output1.png)
+![Socrata-Output](/img/pentaho-salesForce-output.png)
 
-#### Automate
-* Open a new job .kjb file
-* To kick off workflow use the "Start" step
+#### 4. Automate
+* Open a new job .kjb file.
+* To kick off workflow use the "Start" step.
 * To run the ETL job created above connect the "Transformation" step to Start.
 * Additionally you can add as many other .ktr files to be run from here.
-* Configure this file to be from a Windows Task Scheduler.
+* Configure this file to be run from a Windows Task Scheduler.
 
-![Runner](pentaho-salesForce-automate.png)
+![Runner](/img/pentaho-salesForce-automate.png)
 
 #### Resources
 * [Pentaho Steps Documentation](http://wiki.pentaho.com/display/EAI/Latest+Pentaho+Data+Integration+%28aka+Kettle%29+Documentation)
 * [Salesforce Schema Builder](https://help.salesforce.com/HTViewHelpDoc?id=schema_builder.htm)
 * [Pentaho Salesforce Input Documentation](http://wiki.pentaho.com/display/EAI/SalesForce+Input)
+* [How to set up a Windows Task Scheduler with a Kettle Job file](https://www.youtube.com/watch?v=8-b3WWJwr3c)
 
 #### Downloads
 * [Pentaho Data Integration Download](http://community.pentaho.com/projects/data-integration/)
