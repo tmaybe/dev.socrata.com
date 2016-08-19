@@ -340,6 +340,7 @@ define(
       $(this).each(function() {
         var uid = $(this).attr('data-uid');
         var domain = $(this).attr('data-domain');
+        var priv = ($(this).attr('data-private') == "true");
         var el = $(this);
 
         $.when(
@@ -351,9 +352,23 @@ define(
 
           // Modify the snippets themselves to drop in the domain and UID
           _.each(snippets[0].snippets, function(snip) {
+            // Replace our domain and UID
             snip.code = snip.code
-              .replace("%%domain%%", domain)
-              .replace("%%uid%%", uid);
+              .replace(new RegExp("%%domain%%", "g"), domain)
+              .replace(new RegExp("%%uid%%", "g"), uid);
+
+            // Only include the relevant half of the public/private block
+            if(priv) {
+              snip.code = snip.code
+                .replace(/%%else%%[\s\S]*%%end%%/gm, '')
+                .replace(/\s*%%if_private%%/, '');
+            } else {
+              snip.code = snip.code
+                .replace(/%%if_private%%[\s\S]*%%else%%/gm, '')
+                .replace(/\s*%%end%%/, '');
+            }
+
+            // Mustache doesn't know how to count
             snip.see_also_count = snip.see_also != null
               ? snip.see_also.length
               : 0;

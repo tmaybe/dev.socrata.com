@@ -223,4 +223,4 @@
   {{/columns}}
 </ul>
 
-<div class="snippets" data-uid="{{uid}}" data-domain="{{domain}}"></div>
+<div class="snippets" data-uid="{{uid}}" data-domain="{{domain}}" data-private="{{is_private}}"></div>
