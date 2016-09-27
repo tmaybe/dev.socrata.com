@@ -16,9 +16,9 @@ using System.Linq;
 // PM> Install-Package CSM.SodaDotNet
 using SODA;
 %%if_private%%
-var client = new SodaClient("%%domain%%", "YOURAPPTOKENHERE", "user@agency.gov", "password");
+var client = new SodaClient("https://%%domain%%", "YOURAPPTOKENHERE", "user@agency.gov", "password");
 %%else%%
-var client = new SodaClient("%%domain%%", "YOURAPPTOKENHERE");
+var client = new SodaClient("https://%%domain%%", "YOURAPPTOKENHERE");
 %%end%%
 
 // Get a reference to the resource itself
@@ -34,5 +34,5 @@ Console.WriteLine("Got {0} results. Dumping first results:", rows.Count());
 
 foreach (var keyValue in rows.First())
 {
-  Console.WriteLine(keyValue);
+    Console.WriteLine(keyValue);
 }
